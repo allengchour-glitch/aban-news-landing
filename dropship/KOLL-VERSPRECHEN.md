@@ -1,17 +1,19 @@
-# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-25 20:37 UTC
+# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-26 16:57 UTC
 
-⚠️ KOLL-VERSPRECHEN: 4 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 4/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 12/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
+⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 12/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
 
-Geprüft: 1747 Kollektionen (1573 im Onlineshop veröffentlicht, 174 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 4 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/214565814663. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
+Geprüft: 1747 Kollektionen (1573 im Onlineshop veröffentlicht, 174 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 5 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/214565814663. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
 
 R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegtes CH-Lager (Anteil < 95 %; 50–94 % nur Werktage in qualifiziertem Satzteil; der Lager-Ort allein ist kein Fund) · R5 «Premium-Marken/-Qualität» ausserhalb Premium-Kollektionen · R6 «ab CHF 50» ohne Land in der Nähe der Zusage · R9 Markenname ohne ein aktives Produkt im Shop (Liste `marken_ohne_ware`). «manuell» = Titel/SEO-Titel (das Werkzeug schreibt sie nicht), «Premium-Hinweis» = Premium-Kollektion (dort nur Satzpaare, PREMIUM_VOLL aus) — beide zählen nicht in die Rot-Zahl, stehen aber unten mit Handle. «Ware-Hinweis» = im Text genannte Ware, die in der Kollektion kein aktives Produkt hat (Liste `ware_im_text`, zählt nicht rot).
 
-## Im Onlineshop veröffentlicht (4)
+## Im Onlineshop veröffentlicht (6)
 
 - `aus-tiktok-und-instagram` — R6 descriptionHtml: «Versand CHF 7, gratis ab CHF 50 nach Rabatt»
 - `eu-lager-schnell` — R6 seo.description: «Lieferzeit auf jeder Produktseite, Gratis-Versand ab CHF 50 nach Rabatt»
+- `gliederarmbaender` — R6 descriptionHtml: «Der Versand kostet CHF 7 und ist ab CHF 50 Bestellwert nach Abzug von Rabatten gratis»
 - `notizbuecher-journaling` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
 - `tassen-becher` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
+- `weihnachten-2026` · CH-Lager 4+?/310 (< 95%, nach 250 abgebrochen) — R4 descriptionHtml: «Ein festes Datum sichern wir nicht zu: Im Direktversand rechnest du mit 10–20 Werktagen in die Schweiz und 15–»
 
 ## Nicht im Onlineshop veröffentlicht (42)
 
