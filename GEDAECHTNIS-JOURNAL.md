@@ -20994,9 +20994,11 @@ Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten 
 
 (Verbatim aus CLAUDE.md verschoben am 21.09.2026 — dort steht jetzt die Kurzfassung.)
 
-## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
+## 📚 Index-Archiv: zwei Einzeilen vom 24.11.2026 (🎄🔋 🖼️, aus CLAUDE.md verschoben am 26.11.2026)
 - 2026-11-24 · 🖼️ **«verschönere rizinusöl seite» + «mach andere produkte auch besser»: Rizinus-Wickel (Lifestyle-Hero, 2 Infografiken aus echten Fotos, saubere Farbfelder, Ratgeber bebildert; `dropship/rizinus-2411/`) + 14 meistbesuchte Produktseiten (Hero/erste Variante, Galerie-Reihenfolge, 52 Doppel-/Werbe-/Fremdbilder raus; Analyst+Prüfer je Produkt, `automation/produktseite_verbessern.py`, `dropship/produktseiten-2411/`). Hebel: Das Theme zeigt zuerst das Bild der ERSTEN Variante → Variante/Farbwerte umordnen statt nur Medien.**
 - 2026-11-24 · 🎄🔋 **Startseite saisonal: 18 Weihnachts-/Winterprodukte in `startseite-pool-trends`, 6 in `startseite-pool-mehr` (abwechselnd mit den alten, Sicherung `dropship/startseite-saison-2411/pools_vorher.json`). Einzel-Akkus/Powerstations (UN3480) = kein CH-Versand → 19 gedraftet (Tag `akku-einzeln-kein-ch-versand`), Sperre `lib/akku_einzeln.mjs` in category_fill + trending_import.**
+
+## 📚 Index-Archiv: Einzeilen 14.–18.09.2026 (aus CLAUDE.md verschoben am 23.09.2026)
 - 2026-10-12 · 🚦 **Bestell-Ampel: `cj_order_watch.py` schrieb den Zustand nur aus der CJ-Liste neu und löschte den manuellen #1024 (Mister DTF) 2× → `behalte_manuell()` (Status «MANUELL…» bleibt, `--selbsttest`). Wer seinen Zustand neu schreibt, löscht alles Fremde.**
 - 2026-10-12 · 🧾 **Versandsatz gegen die Kasse: «Versand CHF 7» stimmte für 45–49,99 CHF nicht (Kasse gratis ab 45, Zusage ab 50) → Wächter `versand_band_wache.py`, 2 Produkte korrigiert. Gegenprobe: Bewertungs-Import hat Lieferanten-Kommentare mit Platzhalter-Namen als Shop-Bewertungen veröffentlicht → Stopp-Datei `dropship/_bewertungen_stopp.txt`, Betreiber entscheidet. Journal 12.10. 04:50.**
 - 2026-10-12 · 🖼️ **Google-Bilder: Bildtausch wirkt (getauscht 76–91 % frei vs. Vergleich 46 %); Waffenzubehör nie tauschen (Holster-Regel, Kanarien 8/0); `tools/bild_text_weg.py` entfernt Werbetext nur auf gleichmässigem Grund (Selbsttest 4/4, Balken-Regel), 1 von 24 sicher; «Unable to show image» = nicht bei uns (40/40 HTTP 200)** → `dropship/GOOGLE-BILDER-2026-10-12.md`
