@@ -62,6 +62,22 @@
 
 
 
+## 2026-11-26 abends · 🔎 «1 geht. 2 wie? 3 4 5 mach du» — was die Sitzung bei fremden Diensten NICHT kann
+- **iPhone-Kasse in ChatGPT geht** (Betreiber-Test): TWINT und Apple Pay kommen zur Kasse zurück → Verdacht «In-App-Browser klemmt» widerlegt (ANALYSE.md).
+- Workflow «kanaele-selbst-machen» (4 Recherchen + 4 Skeptiker). **Microsoft, Trustpilot und Klarna kann die Sitzung NICHT selbst** (Login, AGB, Captcha, Ausweis).
+  Schritte und Texte: `dropship/KUNDEN-WEGE-2611.md`, Profiltexte `dropship/CHATGPT-PROFIL-TEXTE.md`.
+- **Microsoft:** Store 50042597, Werbekonto G1203U3V, Manager J1070073ZA. **Nur EIN Review pro Store**, ein abgelehnter Store lässt sich nicht löschen.
+  Store-Status ist per API nicht lesbar (Content-API nur geschlossene Beta). Die Ablehnung vom 01.10. kam NICHT per Mail.
+  «MSFT Growth Agent Service App» (09.10., nur Pixel-Rechte) kam über Shopify-Autopilot. Autopilot + Microsoft = bezahlte Performance-Max → nicht wieder verbinden.
+  Die App «Microsoft Channel» bietet die Schweiz nicht an. Fusszeile nennt jetzt die Lieferzeit (2–3 / 7–20 / LI 15–45, Sicherung `theme_backup/footer-group.json.vor-lieferzeit-fuss-2611`).
+  ⚠️ Damit passt `.md5-nachher` des Popup-Patches nicht mehr: `--zurueck` verweigert bewusst.
+- **Trustpilot:** Gratisplan mit 50 Einladungen/Monat; AFS per BCC; Smart Sending MUSS aus; Auslöser «Placed Order» statt «Fulfilled Order»
+  (sonst Auswahl nach Etappe = verboten). Scraping verbietet Trustpilot. Daten gehen nach Dänemark → Satz in die Datenschutzerklärung (Art. 19 DSG).
+- **Klarna Search & Compare:** = Werbung mit Bezahlung pro Klick (USD 100/Monat gratis, danach USD), CH für Händler unbelegt,
+  Garantie für Bildrechte mit Haftung (heikel bei CJ-Fotos) → Empfehlung NICHT machen, Betreiber entscheidet.
+- **ChatGPT-Profil:** richtige App = «ChatGPT» von OpenAI (Bewertung 1.6), NICHT die installierte «Shopify ChatGPT MCP App» (= Shopify-Connector).
+  Weg ohne App: chatgpt.com/business-hub. Persona-Ausweis nötig, Profil endgültig, Lizenz an den Basisdaten dauerhaft. Nutzen: nur Messung.
+
 ## 2026-11-26 · 📨 Neue Kunden-Wege: Fenster über die Sitzung + Warenkorb-Erinnerung
 Betreiber «suche kunden die noch nicht gemacht hast sachen machen». Workflow «neue-kunden-wege» (10 Wege + Skeptiker), Liste
 `dropship/KUNDEN-WEGE-2611.md`, Tore `dropship/tore/neue-kunden-wege.md` (3/4, T4 Wirkung ab 26.12.).
