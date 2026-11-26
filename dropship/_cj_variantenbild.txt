@@ -9396,3 +9396,11 @@ gid://shopify/Product/15483934409089	zugeordnet	9	Solar-Beleuchtung
 gid://shopify/Product/15483934441857	zugeordnet	20	Winter-Hausschuhe aus Baumwolle
 gid://shopify/Product/15483934540161	zugeordnet	2	Holzduft-Parfum
 gid://shopify/Product/15483934572929	zugeordnet	3	Wasser-Tropfen-Befeuchter
+gid://shopify/Product/15483934638465	zugeordnet	1	Auto-Luftreiniger
+gid://shopify/Product/15483934704001	zugeordnet	5	Kinderanzug
+gid://shopify/Product/15483934736769	zugeordnet	70	Dicke Absatz-Sandalen
+gid://shopify/Product/15483934802305	zugeordnet	12	Jungens-Outfit
+gid://shopify/Product/15483934867841	zugeordnet	4	Camping Schlafmatte
+gid://shopify/Product/15483934900609	zugeordnet	3	Beruhigendes Kuscheltier
+gid://shopify/Product/15483935031681	zugeordnet	2	Elektrischer Bleistiftspitzer
+gid://shopify/Product/15483935097217	zugeordnet	2	Abflusskorb

@@ -2070,7 +2070,7 @@ fi
 #     Fehlt nur der Hinweis → einmal neu einfügen (idempotent, Anker-geprüft, Sicherung in /tmp); Tarif-Abweichung nur melden.
 if [ -f "$REPO/automation/warenkorb_gratisversand.py" ] && [ ! -f /tmp/warenkorb_versand_$(date -u +%F).stamp ]; then
   touch /tmp/warenkorb_versand_$(date -u +%F).stamp
-  WV=$(cd "$REPO" && timeout 120 python3 automation/warenkorb_gratisversand.py --pruefen 2>&1 | tail -1)
+  WV=$(cd "$REPO" && timeout 360 python3 automation/warenkorb_gratisversand.py --pruefen 2>&1 | tail -1)  # 26.11.: 120 s reichten unter Last nicht (154 s gemessen, Shopify-Drossel)
   case "$WV" in
     *"Hinweis fehlt"*) ( cd "$REPO" && SCHARF=1 timeout 120 python3 automation/warenkorb_gratisversand.py 2>&1 | tail -1 ) | sed "s/^/$(date -u +%H:%M) warenkorb-versand neu: /" ;;
     *"⚠️"*) echo "$(date -u +%H:%M) $WV" ;;

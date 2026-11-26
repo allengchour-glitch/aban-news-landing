@@ -3837,3 +3837,4 @@
 16739023585671	Farbe:16:16+ki	2026-11-25	echte-leder-munzborse-625300
 16738683453831	Farbe:9:9+ki	2026-11-25	handtasche-aus-rindleder-lange-leichte-geldbor-628000
 16739825254791	Farbe:13+Grösse:4:52+ki	2026-11-26	chenillentoilette-mit-3-5-cm-pile-rutschfest-s-601700
+16739818045831	stecker-eu	2026-11-26	tragbare-flanell-heissdecke-grau-631000
