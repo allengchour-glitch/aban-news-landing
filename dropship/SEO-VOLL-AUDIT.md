@@ -1,6 +1,6 @@
-# SEO-Voll-Audit · 25.11.2026 20:31 UTC
+# SEO-Voll-Audit · 26.11.2026 21:07 UTC
 
-Aktive Produkte im Onlineshop: **55933** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
+Aktive Produkte im Onlineshop: **56083** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
 
 | Klasse | Produkte | Beispiele |
 |---|---:|---|
@@ -9,9 +9,9 @@ Aktive Produkte im Onlineshop: **55933** · Prüfungen wie Semrush Site Audit, l
 | h1_im_text | 0 |  |
 | meta_leer | 0 |  |
 | titel_lang | 0 |  |
-| meta_lang | 1 | wasserwellen-projektor-mit-sternenlicht-bluetooth-musik-fernbedienung-nachtlicht-furs-schlafzimmer |
-| text_duenn | 46 | eliza-circle-frosch-halskrause-fur-hunde-004288, hopfenfilter-aus-edelstahl-9f9627, manueller-eisraspler-fur-zuhause-621600, kuhlbeutel-fur-rotwein-631000 |
-| alt_leer | 4 | kleiner-kissenbezug-wildleder-680256, magnetische-erdungszwinge-fur-schweissgerate-e67c68, harz-schmuckfarbe-c11c75, bandschleifmaschine-zum-polieren-d8198a |
+| meta_lang | 0 |  |
+| text_duenn | 45 | eliza-circle-frosch-halskrause-fur-hunde-004288, hopfenfilter-aus-edelstahl-9f9627, manueller-eisraspler-fur-zuhause-621600, kuhlbeutel-fur-rotwein-631000 |
+| alt_leer | 4 | rundzahnzange-7-zoll-361ffb, gummischlauch-mit-zink-alloy-duse-362e71, wanddeko-aus-stoff-nordisches-kinderzimmermoti-76ebd8, besteckkasten-aus-edelstahl-fur-die-kuche-536832 |
 
 ## Grösste Titel-Gruppen
 - 3× «smartwatch mit herzfrequenz | luxestyle ch»
