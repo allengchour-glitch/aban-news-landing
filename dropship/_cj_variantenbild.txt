@@ -9335,3 +9335,10 @@ gid://shopify/Product/15483793244545	zugeordnet	5	Automatischer Seifenspender
 gid://shopify/Product/15483793342849	zugeordnet	50	Baby-Kleidungsset aus 100% Baumwolle
 gid://shopify/Product/15483793703297	zugeordnet	4	Dreifach-Ladegerät
 gid://shopify/Product/15483793768833	zugeordnet	71	Haarentferner
+gid://shopify/Product/15483876606337	zugeordnet	3	Kuechenreibe
+gid://shopify/Product/15483876671873	zugeordnet	20	Bauch- und Taille-Formschneider
+gid://shopify/Product/15483876704641	zugeordnet	74	Cargo-Hosen
+gid://shopify/Product/15483876737409	zugeordnet	4	Solar Wandbeleuchtung
+gid://shopify/Product/15483876868481	zugeordnet	36	Winterjacke
+gid://shopify/Product/15483876901249	zugeordnet	18	Taktisches Outdoor-Shirt
+gid://shopify/Product/15483876934017	zugeordnet	48	Bequeme Yoga-Shorts
