@@ -1,6 +1,6 @@
-# Heilversprechen in SEO-Feldern und Handles — Stand 2026-11-25 17:45 UTC
+# Heilversprechen in SEO-Feldern und Handles — Stand 2026-11-26 17:02 UTC
 
-Geprüft: 55923 aktive Produkte · SEO bereinigt: 1 · Fehler: 0
+Geprüft: 56003 aktive Produkte · SEO bereinigt: 0 · Fehler: 0
 
 ## Offen (Produkttitel selbst noch mit Muster → Hauptwache/Ersatztabelle)
 
