@@ -19,9 +19,10 @@
   "ohne_treffer": 22
  },
  "2026-11-26": {
-  "suchen": 4,
-  "irrelevant": 195,
-  "relevant": 5,
-  "ohne_treffer": 2
+  "suchen": 5,
+  "irrelevant": 222,
+  "relevant": 8,
+  "ohne_treffer": 2,
+  "angelegt": 3
  }
 }

@@ -831,8 +831,8 @@
 #done search:red knit cardigan women
 #done search:striped crew neck knit sweater women
 #ohne-treffer 2026-11-25 search:satin lace trim cami top
-search:slim oval sunglasses
-search:wearable blanket hoodie
-search:sherpa fleece throw blanket
-search:compression packing cubes set
-search:canvas weekender bag
+#ohne-treffer 2026-11-26 search:slim oval sunglasses
+#done search:wearable blanket hoodie
+#done search:sherpa fleece throw blanket
+#ohne-treffer 2026-11-26 search:compression packing cubes set
+#done search:canvas weekender bag
