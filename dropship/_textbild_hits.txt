@@ -18996,3 +18996,4 @@ gid://shopify/Product/16739824468359	17->1	Lockeres Oberteil mit Puffärmel und 
 gid://shopify/Product/16739853042055	85->0	A-Linien-Maxi-Kleid mit V-Ausschnitt, Schlitze, Taschen
 gid://shopify/Product/16740090413447	122->2	Halterhals-Bandage-Bodycon-Maxidress
 gid://shopify/Product/16740351246727	15->0	Grosses Canvas-Tote mit viel Stauraum
+gid://shopify/Product/16740546969991	8->0	Retro Nachtlicht mit Kerzenlicht-Design
