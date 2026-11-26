@@ -12,11 +12,11 @@
   "tracking": "EQKPT8613048701YQ"
  },
  "LX1025": {
-  "status": "DELIVERED",
+  "status": "CLOSED",
   "tracking": "EQKPT8613073836YQ"
  },
  "LX1026": {
-  "status": "DELIVERED",
+  "status": "CLOSED",
   "tracking": "EQKPT8613073835YQ"
  },
  "LX1028": {
@@ -56,7 +56,7 @@
   "tracking": "JD014600012856577708"
  },
  "LX1039": {
-  "status": "SHIPPED",
+  "status": "DELIVERED",
   "tracking": "EQKPT8613316360YQ"
  },
  "LX1040": {
