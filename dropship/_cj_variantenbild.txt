@@ -9381,3 +9381,4 @@ gid://shopify/Product/15483933720961	zugeordnet	12	Dino-Kinder-T-Shirt
 gid://shopify/Product/15483933753729	bild-urls-tot
 gid://shopify/Product/15483933786497	zugeordnet	4	Canvas-Rucksack
 gid://shopify/Product/15483933819265	zugeordnet	8	Gemuese-Scheibe
+gid://shopify/Product/15483933852033	zugeordnet	18	Schuhe für den Alltag
