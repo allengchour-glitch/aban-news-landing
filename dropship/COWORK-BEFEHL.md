@@ -1,5 +1,32 @@
 # COWORK-BEFEHL — Fassung 21.09.2026, 09:40 UTC (für heute Abend)
 
+## 🆕 26.11.2026 abends — Microsoft + Trustpilot in DEINEM Browser (diesen Block 1:1 in Claude/Cowork auf dem PC einfügen)
+> Warum über dich: Die Cloud-Sitzung hat keinen Login bei Microsoft und Trustpilot. Trustpilot hat einen Bot-Schutz, der nicht umgangen werden darf.
+> Dein PC ist für die Cloud nicht erreichbar («MSI»: Ordner nicht freigegeben; meist hilft ein Update der Claude-App unter Windows).
+
+```
+Du arbeitest in meinem eingeloggten Browser. Nichts bezahlen, keine Kampagne, kein Guthaben, keine Identitätsprüfung mit Ausweis.
+Passwort/2FA gebe ich selbst ein. Jede Aufgabe mit Screenshot quittieren.
+
+1) SHOPIFY (admin.shopify.com, Shop LuxeStyle): Onlineshop → Einstellungen (Preferences) → «Bild für soziale Medien und SEO» →
+   Meta-Beschreibung ersetzen durch genau diesen Text und speichern:
+   LuxeStyle aus Belp: Mode, Beauty, Technik und Wohnen. Lieferung nur in die Schweiz und nach Liechtenstein. 30 Tage Rückgabe, ausser selbst gestaltete Artikel.
+
+2) MICROSOFT (ads.microsoft.com, Werbekonto «LuxeStyle» G1203U3V): Tools → Merchant Center → Store 50042597 «LuxeStyle CH» → Edit →
+   Store-Beschreibung ersetzen durch genau diesen Text und speichern:
+   LuxeStyle aus Belp, Schweiz. Mode, Beauty, Technik und Wohnen. Lieferung nur in die Schweiz und nach Liechtenstein. Lieferzeit ab Schweizer Lager meist 2 bis 3 Werktage, sonst 7 bis 20 Werktage, nach Liechtenstein 15 bis 45 Tage. 30 Tage Rückgabe, ausser selbst gestaltete Artikel. Kontakt info@luxestyle.ch.
+   ERST DANACH: Merchant Center → Summary → Reiter «Product issues» → «Request a review» (es gibt nur EINEN Versuch).
+   Fehlt der Knopf: Screenshot, nichts anderes klicken. NICHT: Geldmittel, Kampagne, Performance Max, App «Microsoft Channel», Autopilot verbinden.
+
+3) TRUSTPILOT (signup.business.trustpilot.com/create-account): Land Switzerland, Firma «LuxeStyle», Website luxestyle.ch,
+   E-Mail info@luxestyle.ch, Kontaktdaten wie im Impressum (luxestyle.ch/policies/legal-notice). Kein Abo, nur Gratisplan.
+   Aktivierungslink aus dem Postfach info@luxestyle.ch öffnen. AGB zeige ich mir an und bestätige selbst.
+   Danach: Invitations → Emails → «Automatic Feedback Service (AFS)» → Set up → die eindeutige AFS-E-Mail-Adresse kopieren und MIR melden.
+   Keine Einladungen selbst verschicken, keine Kontakte hochladen.
+```
+**Quittung an die Cloud-Sitzung:** (1) «Shopify gespeichert» → ich prüfe `shop.description`. (2) «Review beantragt» → ich schaue 5 Tage ins Postfach. (3) Die AFS-Adresse → ich baue die Einladung an ALLE Besteller (nicht selektiv) und den Datenschutz-Satz.
+**ChatGPT-Profil** geht nur mit deinem Ausweis (Persona) — Schritte in `dropship/KUNDEN-WEGE-2611.md` Punkt 2.
+
 ## ✅ 20.10. 21:40 UTC — HETZNER-BOT LÄUFT WIEDER (erledigt, nichts mehr zu tun; nur eine Empfehlung unten)
 **Nachgemessen im Repo (nicht nur am Bildschirm):** `Bot-Puls` von `luxe-agent` um 21:35:45 UTC (Commit `0820b260b9`), dazu die vier Auftrags-Claims (`cj-reelquellen`, `server-zustand`, `storefront-18.`/`19.10.`) — `bot_puls.py`: «Puls frisch, keine hängenden Aufträge». Der Token ist gültig und schreibberechtigt, **läuft nicht ab** (GitHub meldet kein Ablaufdatum; im Puls steht `token_ablauf: keiner`). Die Web-Konsole hatte beim Einfügen `_` in `-` getauscht (3×) — das Skript hat es selbst zurückgetauscht.
 **Empfehlung (kein Muss, 3 Minuten):** der Token stand im Chat. Wenn dich das stört: bei GitHub einen neuen anlegen (gleiche Einstellungen), den alten löschen, auf dem Server `bash t.sh` erneut (die Datei `t.sh` liegt noch in /root; sonst die zwei Zeilen von oben) und den neuen Token einfügen. Danach `history -c`.
