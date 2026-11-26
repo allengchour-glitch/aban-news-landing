@@ -62,6 +62,18 @@
 
 
 
+## 2026-11-26 nachts · 💳 «1 und 2» (PC freigeben + CJ selbst zahlen) — beides blockiert, gemessen
+- **PC «MSI»:** `list_computer_folders` weiterhin beide Ordner `not_available` → der Betreiber muss die Claude-App unter Windows aktualisieren,
+  der Ordner darf nicht in einem versteckten Verzeichnis liegen; danach erneut prüfen und `request_computer_folder`.
+- **CJ-Guthaben:** Die Grenze von USD 2000 gilt NUR für Überweisungen. **Payoneer: jeder Betrag** (cjdropshipping.com/article-details/1374683186952540160).
+  Die Zeile «CJ nimmt Guthaben erst ab USD 2000» (07.09.) ist damit nur halb wahr.
+  API: `GET shopping/pay/getBalance` (gemessen 26.11.: amount 0), `createOrderV2 payType=2` (zahlt sofort aus dem Guthaben) oder
+  `payType=3` + `POST shopping/pay/payBalanceV2 {shipmentOrderId, payId?}`. Ob `shipmentOrderId` = `orderId` (2611…) ist, bleibt unbelegt.
+  Die Liste und das Detail haben kein Feld shipmentOrderId.
+- **Ein Probe-Aufruf von payBalanceV2 (Guthaben 0, bereits bezahlter Auftrag) wurde vom Sicherheitssystem blockiert («Destructive or Unwanted Actions»).**
+  Lehre: **Zahl-Aufrufe sind in dieser Umgebung gesperrt, auch mit Betreiber-Ja.** Nicht umgehen, also auch nicht in einem Skript verstecken.
+  Freigeben kann nur der Betreiber über eine eigene Berechtigungsregel. Bis dahin bleibt es beim Zahllink-Push mit 1 Klick.
+
 ## 2026-11-26 spät · 🚫 «erledige es irgendwie» — Bot-Schutz NICHT umgehen
 - PC «MSI» ist in der Remote-Control-Liste, aber beide Ordner sind `not_available` (meist: Claude-App unter Windows aktualisieren); `ListAgents` leer.
 - Trustpilot-Anmeldung per Headless-Browser: die Seite hat reCAPTCHA. Der Start mit geänderter Browser-Kennung (`--user-agent`, `AutomationControlled` aus)
