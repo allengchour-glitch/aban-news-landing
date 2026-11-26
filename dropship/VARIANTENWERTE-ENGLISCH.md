@@ -6,14 +6,14 @@
 
 ## Zahlen
 
-- Produkte gesehen: **46'859**
-- Optionen mit englischen Werten (Kandidaten): 1'380
+- Produkte gesehen: **47'446**
+- Optionen mit englischen Werten (Kandidaten): 1'393
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'993
+- Werte mit unbekanntem Wort (unverändert): 4'029
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 30
-- übersprungen «kleidungsstueck-im-wert»: 28
+- übersprungen «kleidungsstueck-im-wert»: 30
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -28,6 +28,8 @@
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: Grau weite Hose | Grau K02 Hose | Grau / Schwarz Sweatpants | Grau Schlaghose | Grau Blumenhose | Grau / Blumen Hose | Weiss K02 Hose | Weiss / Schwarz Sweatpants
 - `15494642336129` [Farbe] **Figurbetonendes Camisole-Kleid im Zweiteiler-Set** — rock · Titel nennt Set: Skirt | Mantel Rock Anzug
 - `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Schwarz Cardigan, Übergrösse L | Schwarz Cardigan, Übergrösse XL | Schwarz Cardigan, Übergrösse 2XL | Schwarz Cardigan, Übergrösse 3XL | Schwarz Cardigan, Übergrösse 4XL | Schwarz Cardigan | Ärmelloser Blumenrock, Übergrösse L | Ärmelloser Blumenrock, Übergrösse XL
+- `16603331658119` [Farbe] **Lange Steppweste mit Kapuze** — jacke, weste: Schwarz Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
+- `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Schwarz, Kapuze | Marineblau, Kapuze | Rosenrot, Kapuze | Weiss, Kapuze | Bohnengrün, Kapuze
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -85,5 +87,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 147, `powder` 105, `french` 84, `core` 74, `elegant` 67, `high` 64, `one` 63, `size` 63, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `×` 33, `space` 33, `blossom` 31, `tc` 31, `avocado` 31, `end` 31, `li` 31, `lotus` 30, `of` 30, `carbon` 30, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `happy` 25, `gun` 24, `two` 24, `weiß` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `star` 22, `no` 21, `love` 21, `inside` 21, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `2er` 19, `color` 19, `line` 19, `the` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19
+`⟨satzbau:adjektiv-vor-nomen⟩` 147, `powder` 105, `french` 84, `core` 74, `elegant` 67, `high` 64, `one` 63, `size` 63, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `color` 34, `×` 33, `space` 33, `blossom` 31, `tc` 31, `lotus` 31, `avocado` 31, `end` 31, `li` 31, `of` 30, `carbon` 30, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `happy` 25, `gun` 24, `two` 24, `weiß` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `star` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `cool` 19, `line` 19, `the` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19
 
