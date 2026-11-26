@@ -52,7 +52,9 @@ GERAET = re.compile(r'H[öo]rger[äa]t|H[öo]rverst[äa]rker|H[öo]rtest|Fetusst
                     r'(?:Stirn|Fieber|Ohr)thermometer|Thermometer.{0,20}kontaktlos|'
                     r'kontaktlos.{0,20}Thermometer|Milchpumpe|Entlastungsschuh|'
                     r'Vorfuss\w*schuh|Zahnsteinentferner|Zahnstein\w*Entferner|'
-                    r'Lichtwellen[- ]?Therapie|Lasertherapie\w*|Blutbestrahlung', re.I)
+                    r'Lichtwellen[- ]?Therapie|Lasertherapie\w*|Blutbestrahlung|'
+                    # 26.11.2026 (Shop-Audit): «Doppler zur Fetalbeat-Messung» und «Atmungsübungsgerät» hiessen anders als die Liste
+                    r'Doppler.{0,40}(?:Fetal|F[öo]tal|Herz|Baby|Schwanger)|Fetal\w*|F[öo]tal\w*|Atmungs[üu]bung\w*', re.I)
 # ⚠️ Zubehör ist kein Gerät. Das «Reinigungsset für digitale Hörgeräte» trägt das Wort
 # «Hörgerät» im Titel und ist doch nur eine Bürste mit Tuch.
 ZUBEHOER = re.compile(r'Reinigungs(?:set|-?Set|b[üu]rste)|Pflegeset|Ersatz(?:filter|polster)|'
@@ -204,9 +206,9 @@ def main():
 def selbsttest():
     import types
     quelle = open(os.path.abspath(__file__), encoding="utf-8").read()
-    ECHT = ["Hörgerät für Senioren", "Hörverstärker mit Akku", "Fetusstethoskop", "Ventilator Nasenpolster-Set", "Infrarot Stirnthermometer", "Ultraschall-Vernebler für Kinder",
+    ECHT = ["Handgefertigter Doppler zur Fetalbeat-Messung", "Atmungsübungsgerät", "Hörgerät für Senioren", "Hörverstärker mit Akku", "Fetusstethoskop", "Ventilator Nasenpolster-Set", "Infrarot Stirnthermometer", "Ultraschall-Vernebler für Kinder",
             "Atemtrainer für Lungen", "Elektrische Milchpumpe"]
-    KEIN = ["Reinigungsset für digitale Hörgeräte", "Aroma-Diffusor Ultraschall-Vernebler", "Scheinwerfer-Vernebler-Becher", "Luftbefeuchter mit Vernebler",
+    KEIN = ["Herzschlag-Kissen für Hund & Katze", "Reinigungsset für digitale Hörgeräte", "Aroma-Diffusor Ultraschall-Vernebler", "Scheinwerfer-Vernebler-Becher", "Luftbefeuchter mit Vernebler",
             "Tisch-Ventilator mit Vernebler und Wasserspray", "Mini-Kühler mit Vernebler für den Sommer", "Vernebler-Lüfter für Terrasse", "Silberoxid-Knopfzellen 10er Pack",
             "Smartwatch mit Pulsmesser"]
 
