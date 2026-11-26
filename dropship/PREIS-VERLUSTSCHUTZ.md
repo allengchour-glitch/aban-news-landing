@@ -1,22 +1,21 @@
-# Preis-Verlustschutz — scharf 2026-11-26 22:13 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 22:16 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **12** · Varianten gehoben: **15** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.05× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 12 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **11** · Varianten gehoben: **87** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.16× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 11 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| USB-Ladegerät für 18650 Li-ion Akkus | 18.90 | 15.99 | **20.90** | 1.11× |
-| Wasserdichte Solar-Powerbank mit Wireless Chargi | 19.90 | 15.89 | **20.90** | 1.05× |
-| Smartwatch mit HD-Display und Bluetooth-Anrufen | 19.90 | 16.15 | **20.90** | 1.05× |
-| PD66W Powerbank 20000 mAh mit Kabel | 19.90 | 15.99 | **20.90** | 1.05× |
-| Magnetische Wireless Powerbank | 19.90 | 15.92 | **20.90** | 1.05× |
-| Kabelloses Ladegerät mit LED-Schreibtischlampe | 19.90 | 15.93 | **20.90** | 1.05× |
-| Bartpflege Öl | 14.90 | 14.73 | **18.90** | 1.27× |
-| PS5 Wireless Controller Ladestation mit RGB-Lich | 19.90 | 16.54 | **20.90** | 1.05× |
-| Solar Powerbank mit Digitalanzeige | 19.90 | 16.58 | **20.90** | 1.05× |
-| Leuchtende UFO-Drohne für Kinder | 18.90 | 21.35 | **26.90** | 1.42× |
-| Elektrischer Flaschenöffner mit Zubehör | 15.90 | 14.23 | **17.90** | 1.13× |
-| Multifunktionale Ladestation für Nintendo Switch | 18.90 | 19.19 | **24.90** | 1.32× |
+| Handmixer für Rahm und Eischnee | 18.90 | 17.51 | **22.90** | 1.21× |
+| Patent Leder Sandalen | 18.90 | 15.77 | **19.90** | 1.05× |
+| Retro Leder-Sandalen mit offener Spitze | 15.90 | 15.29 | **19.90** | 1.25× |
+| LED Leucht-Sneaker für Kinder | 18.90 | 15.13 | **19.90** | 1.05× |
+| Doppelscheinwerfer Solar Powerbank | 18.90 | 16.10 | **20.90** | 1.11× |
+| Mini-Rock-Lederrock | 18.90 | 15.14 | **19.90** | 1.05× |
+| Schwarze Sandalen mit Lederriemen | 17.90 | 15.29 | **19.90** | 1.11× |
+| Universal Ladegerät | 18.90 | 16.04 | **20.90** | 1.11× |
+| LED Leucht-Sandalen für Kinder | 18.90 | 16.02 | **20.90** | 1.11× |
+| Kinder LED Sportschuhe atmungsaktiv | 17.90 | 15.06 | **19.90** | 1.11× |
+| Nackenmassagegerät mit Frequenzumwandlung | 18.90 | 15.20 | **19.90** | 1.05× |
