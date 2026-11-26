@@ -25,7 +25,13 @@ export const GROQ_MODELLE = [
   // «Gepolsterte Kapuzenjacke für Damen» — besser als 20b). Vor compound-mini, das Details erfindet.
   { model: 'openai/gpt-oss-120b', body: { reasoning_effort: 'low', max_tokens: 2500 } },
   // 26.11.2026: groq/compound-mini gibt es nicht mehr (404 model_not_found für alle Schlüssel) — entfernt.
-  // qwen/qwen3.8-27b getestet: Ausgabegrenze 1'000 Tokens/Minute → für Produkttexte zu klein.
+  // 26.11.2026 23:45 (Messung): Das Limit ist 200'000 Tokens/TAG je Modell und ORGANISATION, nicht je Schlüssel —
+  // Schlüssel 1, 2, 4, 5 sind dieselbe Organisation (…00m9s9vb), Schlüssel 3 eine zweite. Beide Organisationen hatten
+  // gpt-oss-20b UND -120b am Abend bei ~199'800 → 22 von 28 Produkten «skip(gemini)», DeepSeek (Guthaben 0.00) und Gemini
+  // (402 prepayment depleted) fangen nichts auf. qwen3.8-27b hat ein eigenes Kontingent; mit reasoning_effort none kommt
+  // gültiges JSON in ~0,7 s mit ~150 Ausgabe-Tokens (Probe Herrenhemd: Format, ss, keine erfundenen Angaben) — die
+  // Grenze von 1'000 Ausgabe-Tokens/Minute reicht damit für ~6 Texte/Minute je Organisation. Darum als drittes Modell.
+  { model: 'qwen/qwen3.8-27b', body: { reasoning_effort: 'none', max_tokens: 1400 } },
 ];
 
 export function jsonAusText(c) {
