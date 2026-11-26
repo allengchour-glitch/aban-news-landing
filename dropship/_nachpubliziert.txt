@@ -436,3 +436,8 @@ gid://shopify/Product/16740699275655	bodycon-set-mit-ruschenarmeln-midi-rock-600
 gid://shopify/Product/16740699439495	titanium-kochgeschirr-set-fur-outdoor-601900	Titanium-Kochgeschirr-Set für Outdoor
 gid://shopify/Product/16740781457799	tragbare-leselampe-mit-zeichenbrett-635900	Tragbare Leselampe mit Zeichenbrett
 gid://shopify/Product/16740818878855	armelloses-deep-v-kleid-mit-schlitz-629100	Ärmelloses Deep-V Kleid mit Schlitz
+gid://shopify/Product/16740839162247	rutschfeste-eingangsmatte-50-80-cm-631400	Rutschfeste Eingangsmatte – 50 × 80 cm
+gid://shopify/Product/16740839195015	langes-satin-ice-silk-nachthemd-mit-tragern-615700	Langes Satin-Ice Silk Nachthemd mit Trägern
+gid://shopify/Product/16740888347015	rosa-samt-und-pailletten-bodycon-mini-kleid-610100	Rosa Samt- und Pailletten-Bodycon Mini Kleid
+gid://shopify/Product/16740888412551	runde-baby-spielmatte-aus-gepolstertem-latex-638700	Runde Baby-Spielmatte aus gepolstertem Latex
+gid://shopify/Product/16740888445319	sonnenuntergangslampe-10-cm-schwarz-602600	Sonnenuntergangslampe – 10 cm, schwarz
