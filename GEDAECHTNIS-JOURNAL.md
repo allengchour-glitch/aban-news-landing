@@ -62,6 +62,18 @@
 
 
 
+## 2026-11-26 · 📨 Neue Kunden-Wege: Fenster über die Sitzung + Warenkorb-Erinnerung
+Betreiber «suche kunden die noch nicht gemacht hast sachen machen». Workflow «neue-kunden-wege» (10 Wege + Skeptiker), Liste
+`dropship/KUNDEN-WEGE-2611.md`, Tore `dropship/tore/neue-kunden-wege.md` (3/4, T4 Wirkung ab 26.12.).
+- **Newsletter-Fenster** (`custom_liquid_lxpopup`, footer-group.json): ab 2. Seite + Sitzung ≥ 45 s mobil (30 s Desktop) → nach 10/8 s,
+  nie auf `/products/` (`popup_sitzung_patch_2611.py`, sessionStorage `lx_pop_s`). Wächter `popup_tor_wache.py` prüft `LX-POP-SITZUNG`.
+- **Klaviyo T9aiM7** «Warenkorb-Erinnerung · 4 Std»: Added to Cart TFy7Yn → 4 h → Mail (Vorlage W6Z3bs, Kopie von XGnDS5), nur Abonnenten,
+  raus bei Checkout Started XhnJPv / Placed Order W7XTVD seit Start, Wiedereintritt 7 T, ohne Rabatt. Basis: 8 Ereignisse bekannter Personen 07.09.–16.11.
+- Lehren: (1) **Rücklesen direkt nach `themeFilesUpsert` kann noch den alten Text liefern** (neue md5, alter Inhalt) → mit Pause wiederholen,
+  nicht gleich «fehlgeschlagen» melden. (2) **Browser-Test des Fensters braucht den Klick «Nur notwendige» im eigenen `#lx-cookie-banner`** —
+  CSS-Verstecken der Shopify-Banner reicht nicht, das Tor `bannerOffen()` sieht das eigene Banner. (3) `shop.description` (Startseiten-Meta,
+  «… nach Deutschland») hat keine Admin-Mutation → Betreiber-Klick; das Theme überschreibt die Startseite schon (`settings.luxe_home_meta_description`).
+
 ## 2026-11-26 · 🛒 Warenkorb-Schreiber aufs Live-Theme + teure Versandprofil-Abfrage
 - Workflow wf_d6e5dcb3-ae2 (Umbauer im Worktree + 2 Skeptiker + Nachbesserung): `warenkorb_gratisversand.py`/`warenkorb_einig.py` lesen das Live-Theme zur Laufzeit (`live_theme()` → `main_theme.gid()`), Reparatur-BLOCK und JS_NEU = heutiger Soll («ab CHF 50 nach Rabatt», «noch X» 5556, Balken /5000 wie live), cart.json aus dem Reparaturpfad, doppelter Hinweis wird nicht eingefügt. `abendaktion.py --start` gesperrt (Anker 4500 veraltet), `--aufraeumen` nur im Theme der Aktion; `theme_gratis_schwelle_50.py` fest aufs alte Theme, `--zurueck` nur bei Prüfsummen-Gleichheit. Neues Prüfgerät `automation/theme_attrappe.py` (Attrappen-Theme, Netz gesperrt, liest das Reizwort direkt aus fixer_keepalive.sh) → Aufseher-Vertrag getestet, 51/51 Mutanten. Live `--pruefen`: alle drei ✓.
 - **Lehre Drossel:** `--pruefen` brach zweimal nach ~150 s mit «Throttled (40x gedrosselt)» ab. Ursache: `deliveryProfiles(first:10){…locationGroupZones(first:20){…methodDefinitions(first:30)…}}` kostet 618 Punkte; neben den Dauerläufern stand der Eimer bei ~540 → nie genug. Gelesen wird nur das General profile → `deliveryProfile(id: GENERAL)` mit kleineren Seiten (0,4 s; fail-closed, wenn es nicht mehr Standard ist), auch in `google_org_richtlinien.tarif_li`. Regel: **Abfragekosten messen (`Shopify-GraphQL-Cost-Debug: 1` → extensions.cost.requestedQueryCost); über ~500 Punkte bleibt eine Abfrage unter Last dauerhaft gedrosselt.** Aufseher-Timeout für den Prüfer 120 → 360 s.

@@ -23,7 +23,8 @@ import json, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kaufwille_zeile import gql
 
-PFLICHT = ['MIN_MS=MOBIL?30000:20000', 'bannerOffen()', 'seiteOk()', 'if(!MOBIL) document.addEventListener("mouseout"']
+PFLICHT = ['MIN_MS=MOBIL?30000:20000', 'bannerOffen()', 'seiteOk()', 'if(!MOBIL) document.addEventListener("mouseout"',
+           'LX-POP-SITZUNG', 'indexOf("/products/")<0']  # 26.11.: Sitzungszeit (popup_sitzung_patch_2611.py), nie auf Produktseiten
 VERBOTEN = ['setTimeout(show,', 'window.scrollY/h>=0.4){ scrollGezeigt=true; show(); }']
 # 13.10.2026: Cookie-Banner darf nur über einer SICHTBAREN Kaufleiste schweben
 BANNER_PFLICHT = ['.sticky-add-to-cart__bar[data-stuck="true"]) #lx-cookie-banner', 'leiste.dataset.stuck==="true"']
