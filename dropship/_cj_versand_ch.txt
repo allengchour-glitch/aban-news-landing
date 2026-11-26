@@ -1685,3 +1685,4 @@ gid://shopify/Product/16615208616327	ok	Reisetasche aus Leder für Herren
 gid://shopify/Product/16740820386183	nicht-versendbar	Holz Monitorständer mit 2-stufigem Organizer 100 cm
 gid://shopify/Product/16740938482055	ok	Bonsai-Blumentopf aus Purpursand, mittel
 gid://shopify/Product/16740940153223	ok	Edelstahl-Gemüse- und Obstschneider
+gid://shopify/Product/16740779295111	ok	Aufbewahrungsbox mit Reissverschluss und Deckel
