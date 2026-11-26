@@ -17,6 +17,7 @@ const VORRANG_DATEI = '/tmp/cj_vorrang', VORRANG_SKRIPTE = ['cj_kosten_backfill'
 const IMMER_FREI = ['cj_fulfill', 'cj_order', 'cj_zahlung', 'versand_stillstand', 'bestell', 'cj_takt', 'cj_ausgelistet', 'cj_ersatz', 'besuchte_seiten', 'mobilfunk_netz'];  // 10.10.: = cj_takt.py
 const VORRANG_MAX_S = parseFloat(process.env.VORRANG_MAX_S || '5400');
 const ANTEIL = ['cj_video_reel_engine'];   // 28.09.: fester kleiner Anteil trotz Vorrang (siehe vorrangWarten)
+const GRIND = ['cj_category_fill', 'cj_sku_import', 'cj_perpetual'];   // 26.11.: Grind-Anteil trotz Vorrang (siehe vorrangWarten)
 async function vorrangWarten() {
   const name = (process.argv[1] || '?').split('/').pop();
   if (VORRANG_SKRIPTE.some(v => name.startsWith(v))) { try { fs.writeFileSync(VORRANG_DATEI, name); } catch {} return; }
@@ -44,6 +45,25 @@ async function vorrangWarten() {
       let alter; try { alter = Date.now() - fs.statSync(UHR).mtimeMs; } catch { alter = A; }
       if (alter >= A) { try { fs.writeFileSync(UHR, name); } catch {} return; }
       await sleep(Math.min(A - alter, 30000) + 100);
+    }
+  }
+  // 26.11.2026 GRIND-ANTEIL: der Kosten-Nachtrag (kosten_neu_runner, 53'604 Produkte, 6'653 versucht) hielt den Grind
+  // nach jedem Neustart bis zu 90 min an (21:44–21:54: Grind 0 Aufrufe, Kosten 93, auswahl_nachruesten 70) — Betreiber
+  // «grinde mehr produkten» / «gute cj produkten grinden». Grind-Skripte laufen trotz Vorrang, aber höchstens 1 Aufruf
+  // je GRIND_ANTEIL_S (Vorgabe 6 s = ≤ 600/h, alle Grind-Skripte zusammen, eigene Uhr). Ohne Vorrang: kein Deckel.
+  if (GRIND.some(v => name.startsWith(v))) {
+    let aktiv = false; try { aktiv = Date.now() - fs.statSync(VORRANG_DATEI).mtimeMs <= 120000; } catch {}
+    if (aktiv) {
+      const A = parseFloat(process.env.GRIND_ANTEIL_S || '6') * 1000, UHR = '/tmp/cj_grind_anteil_letzter';
+      for (;;) {
+        await sperren();   // prüfen + Uhr stellen unter derselben Sperre wie der Takt (sonst nehmen zwei Runner denselben Platz)
+        let alter; try { alter = Date.now() - fs.statSync(UHR).mtimeMs; } catch { alter = A; }
+        const frei = alter >= A;
+        if (frei) { try { fs.writeFileSync(UHR, name); } catch {} }
+        try { fs.rmdirSync(LOCKDIR); } catch {}
+        if (frei) return;
+        await sleep(Math.min(A - alter, 30000) + 100 + Math.random() * 300);
+      }
     }
   }
   const ende = Date.now() + VORRANG_MAX_S * 1000;
