@@ -354758,3 +354758,13 @@
 56105779986817	heben	34.90	36.90	29.22	2026-11-26	schuh-aus-leder-mit-atmungsaktiver-sohle-600900
 56105780019585	heben	34.90	36.90	29.38	2026-11-26	schuh-aus-leder-mit-atmungsaktiver-sohle-600900
 56105780052353	heben	35.90	36.90	29.55	2026-11-26	schuh-aus-leder-mit-atmungsaktiver-sohle-600900
+56111035482497	heben	29.90	30.90	24.52	2026-11-26	elegante-peep-toe-sandalette-aus-wildleder-613000
+56111035515265	heben	30.90	31.90	24.85	2026-11-26	elegante-peep-toe-sandalette-aus-wildleder-613000
+56111035613569	heben	25.90	26.90	20.86	2026-11-26	elegante-peep-toe-sandalette-aus-wildleder-613000
+56111035679105	heben	25.90	29.90	23.35	2026-11-26	elegante-peep-toe-sandalette-aus-wildleder-613000
+67676131721607	heben	36.90	37.90	30.07	2026-11-26	smartwatch-mit-touchscreen-und-herzfrequenz-618880
+67676158919047	heben	36.90	37.90	30.07	2026-11-26	smartwatch-mit-touchscreen-und-herzfrequenz-618880
+67676158951815	heben	36.90	37.90	30.07	2026-11-26	smartwatch-mit-touchscreen-und-herzfrequenz-618880
+67676158984583	heben	36.90	37.90	30.07	2026-11-26	smartwatch-mit-touchscreen-und-herzfrequenz-618880
+67760468918663	heben	36.90	37.90	29.84	2026-11-26	magnetische-levitation-sci-fi-studentenuhr-616600
+67767075963271	heben	36.90	37.90	29.84	2026-11-26	magnetische-levitation-sci-fi-studentenuhr-616600
