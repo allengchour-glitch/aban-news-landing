@@ -9025,3 +9025,25 @@ gid://shopify/Product/15479487201665	zugeordnet	35	Freizeitschuhe aus Leder mit 
 gid://shopify/Product/15479487299969	zugeordnet	48	Minimalistische Peep-Toe Sandalen mit Metallschnalle
 gid://shopify/Product/15479487627649	zugeordnet	24	Damen-Sandalen mit Riemchen und Lochmuster
 gid://shopify/Product/15479487660417	bild-urls-tot
+gid://shopify/Product/15479487824257	zugeordnet	18	Atmungsaktive Open-Toe Sandalen für Damen
+gid://shopify/Product/15479487857025	zugeordnet	21	Herren Kork-Sandalen mit Kreuzriemen
+gid://shopify/Product/15479487922561	zugeordnet	16	Atmungsaktive Mesh-Schuhe mit Absatzerhöhung
+gid://shopify/Product/15479488086401	zugeordnet	10	Sportliche Leder-Freizeitschuhe für Damen
+gid://shopify/Product/15479488151937	zugeordnet	14	Lässige Leder-Flip-Flops für Herren
+gid://shopify/Product/15479488217473	zugeordnet	15	Pumps mit Plateau und Rundspitze
+gid://shopify/Product/15479488708993	zugeordnet	33	Herren Sneaker aus Lederimitat
+gid://shopify/Product/15479488774529	zugeordnet	22	Stylische Slip-on Lederschuhe für Herren
+gid://shopify/Product/15479488840065	zugeordnet	30	Freizeitschuhe Herren Leder Steinmuster
+gid://shopify/Product/15479488905601	zugeordnet	40	Herren Freizeit-Lederschuhe
+gid://shopify/Product/15479489003905	zugeordnet	22	Business Slipper aus Leder für Herren
+gid://shopify/Product/15479512367489	bild-urls-tot
+gid://shopify/Product/15479512531329	zugeordnet	32	Herren-Flip-Flops mit 5.5cm Holzabsatz
+gid://shopify/Product/15479512859009	zugeordnet	30	Kork-Slippers für Herren
+gid://shopify/Product/15479513022849	zugeordnet	24	Herren Sandalen und Pantoletten für den Sommer
+gid://shopify/Product/15479513219457	zugeordnet	36	Atmungsaktive Casual-Sandalen aus Leder mit Hohl-Design
+gid://shopify/Product/15479513547137	zugeordnet	18	Western-Slipper aus Rindsleder
+gid://shopify/Product/15479513842049	zugeordnet	27	Herren Freizeit-Pantoletten aus Vollnarbenleder
+gid://shopify/Product/15479513907585	zugeordnet	66	Leder-Sandalen für Herren
+gid://shopify/Product/15479514104193	zugeordnet	18	Atmungsaktive Slide-Sandalen für Herren
+gid://shopify/Product/15479514268033	zugeordnet	12	Freizeit-Slipper aus Veloursleder
+gid://shopify/Product/15479514431873	bild-urls-tot
