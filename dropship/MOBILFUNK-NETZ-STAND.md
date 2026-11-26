@@ -375,3 +375,9 @@
 | Urteil | Beleg | Produkt |
 |---|---|---|
 | unklar |  | [Schlüsselanhänger mit integriertem Locator](https://luxestyle.ch/products/schlusselanhanger-mit-integriertem-locator-601100) |
+
+## Lauf 2026-11-26 06:42 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| unklar-sim | SIM ohne Netz | [Auto-Montierbarer 5G GPS-Tracker mit Aufnahmefunktion](https://luxestyle.ch/products/auto-montierbarer-5g-gps-tracker-mit-aufnahmef-634300) |
