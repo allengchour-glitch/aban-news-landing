@@ -355154,3 +355154,17 @@
 67761397825927	heben	32.90	33.90	26.80	2026-11-26	mark-fairwhale-herren-quarzuhr-606000
 67763099468167	heben	32.90	33.90	26.80	2026-11-26	mark-fairwhale-herren-quarzuhr-606000
 67763099500935	heben	32.90	33.90	26.80	2026-11-26	mark-fairwhale-herren-quarzuhr-606000
+56095022186881	heben	31.90	40.90	32.56	2026-11-26	4k-quadrocopter-mit-dual-kamera-1a81c7
+56099839541633	heben	27.90	29.90	23.36	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099839574401	heben	28.90	29.90	23.68	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099839607169	heben	29.90	30.90	24.01	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099839771009	heben	27.90	29.90	23.36	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099839803777	heben	28.90	29.90	23.68	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099839836545	heben	29.90	30.90	24.01	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099840000385	heben	27.90	29.90	23.36	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099840033153	heben	28.90	29.90	23.68	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56099840065921	heben	29.90	30.90	24.01	2026-11-26	freizeitschuhe-aus-leder-fur-kinder-413568
+56123035124097	heben	31.90	32.90	25.82	2026-11-26	elektrischer-dampf-nagellackentferner-606500
+56140670861697	heben	31.90	32.90	26.06	2026-11-26	tanico-negativ-ionen-gesichtsspray-3f5869
+56164350558593	heben	31.90	39.90	31.45	2026-11-26	uv-desinfektionslampe-mit-ozonsterilisation-457ead
+56193975222657	heben	31.90	32.90	26.34	2026-11-26	herren-umhangetasche-aus-pu-leder-116352
