@@ -62,6 +62,19 @@
 
 
 
+## 2026-11-26 22:30 · ⭐ Trustpilot-Einladungen LIVE (nicht selektiv) + Datenschutz
+- AFS-Adresse `luxestyle.ch+a0cc73ef58@invite.trustpilot.com` (Konto aktiv, Gratisplan, «Quick set-up").
+- **Klaviyo RnTvsY, Aktion 107500830 «Review Request T+28d» (live):** `bcc_email` = AFS-Adresse, **Smart Sending AUS** (sonst Vorauswahl),
+  keine Zusatzfilter. Damit lädt Trustpilot jeden Besteller ca. 28 Tage nach der Bestellung ein, also nach der Lieferung (CH 10–20 Werktage).
+  Lücke: Wer sich vom Marketing abgemeldet hat, bekommt die Klaviyo-Mail nicht und damit auch keine Einladung. Das ist keine Auswahl nach Erfahrung.
+  Sicherung + Rückweg: `dropship/trustpilot-2611/rntvsy-vorher.json`. Die Bestellbestätigung Y3pKip in derselben Flow bleibt Entwurf (Entscheid Black Week).
+- **Datenschutzerklärung:** neuer Abschnitt «Bewertungseinladungen über Trustpilot» (Name, E-Mail, ggf. Bestellnummer → Trustpilot A/S, Dänemark,
+  Land mit angemessenem Schutz, berechtigtes Interesse, Widerspruch per Mail/Abmeldelink); «Letzte Fassung: 26. November 2026».
+  Sicherung `dropship/trustpilot-2611/privacy-vorher.html`.
+- Nachweis, dass Einladungen ankommen: nur im Trustpilot-Einladungsverlauf (Betreiber-Login). Der erste Fall ist frühestens ~24.12. fällig
+  (Bestellungen ab heute + 28 T), ältere Bestellungen, die schon in der 28-Tage-Wartezeit sind, kommen früher.
+- PC «MSI» nach «pc bereit»: weiterhin `not_available` (Ursache unsicher). Was funktioniert: Claude im Browser auf dem PC (so lief der Cowork-Block).
+
 ## 2026-11-26 22:00 · ✅ Betreiber-Agent (Claude in Chrome) erledigte den Cowork-Block — Microsoft-Store ist GENEHMIGT
 - **Shopify `shop.description`** ist neu (per API gemessen): «LuxeStyle aus Belp: … 30 Tage Rückgabe, ausser selbst gestaltete Artikel.» Damit kein «Deutschland» mehr.
 - **Microsoft Merchant Center:** Store 50042597 «LuxeStyle CH» hat den **Status «genehmigt»** (Screenshot 26.11.). Die Ablehnung vom 01.10.

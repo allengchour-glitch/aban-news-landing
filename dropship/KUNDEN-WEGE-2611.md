@@ -38,7 +38,7 @@ Was ohne dich geht, ist erledigt oder vorbereitet.
      3. Erst danach: Merchant Center → Summary → Reiter «Product issues» → **«Request a review»**. ⚠️ Es gibt nur EINEN Versuch pro Store. Die Prüfung dauert bis 5 Tage.
      4. Nach der Freigabe: Feeds → «Import from Google Merchant Center» (Konto 5797470070), Zielregion Schweiz.
    - Nicht klicken: Guthaben, Kampagne, Performance Max. Die App «Microsoft Channel» nicht installieren (Schweiz fehlt). Microsoft in Shopify-Autopilot nicht wieder verbinden (das wären bezahlte Anzeigen).
-4. **Trustpilot** — 26.11.: Anmeldung abgeschickt, Link geöffnet; es fehlt nur AGB-Häkchen + «Complete setup», dann AFS-Adresse an mich.
+4. **Trustpilot** — ✅ 26.11. 22:30: Konto aktiv, Einladungen live (Klaviyo-Bewertungsmail T+28 mit BCC an Trustpilot, Smart Sending aus), Datenschutzerklärung ergänzt.
    - Die Sitzung kann das nicht: Das Formular hat ein Captcha und verlangt deine Zustimmung zu den AGB.
    - Du: signup.business.trustpilot.com/create-account → Land Schweiz, «LuxeStyle», luxestyle.ch → E-Mail **info@luxestyle.ch** (damit ist die Domain gleich bestätigt) → Link in der Mail klicken → AGB → fertig.
      Dann Invitations → Emails → «Automatic Feedback Service» → Adresse kopieren und mir schicken.
