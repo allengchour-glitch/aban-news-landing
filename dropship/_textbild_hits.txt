@@ -18947,3 +18947,4 @@ gid://shopify/Product/16613404541319	15->3	Uhrarmband aus Stahl mit Doppeldiaman
 gid://shopify/Product/16616719942023	15->1	Gaming-Maus mit Atemlicht
 gid://shopify/Product/16639335530887	139->0	Wanderrucksack 36–55 L
 gid://shopify/Product/16639484330375	10->3	Canvas-Reiserucksack 33x11x29 cm
+gid://shopify/Product/16733438443911	13->2	G45 Schlüsselanhänger 1:4 Massstab

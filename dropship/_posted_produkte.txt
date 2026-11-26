@@ -628,3 +628,5 @@ pid:15480490492289
 slug:handgemachte-ice-transparent-nagel
 name:metallic
 slug:intelligentes-nacken-und-schultermassagegerat-c6c310
+slug:nibosi-herrenuhr-wasserdicht-kalender-quarz-867614
+name:nibosiherrenuhr
