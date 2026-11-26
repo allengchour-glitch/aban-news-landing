@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-26T15:23Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-26T16:22Z
 
-Aktive gescannt: 8 · ohne Kategorie: 8 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 15 · ohne Kategorie: 15 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,8 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- ionenspharen-lampe-mit-touch-steuerung-616200 · Beleuchtung → Home & Garden > Lighting
-- pilz-nachtlicht-mit-wiederaufladbarer-led-638300 · Beleuchtung → Home & Garden > Lighting
-- retro-nachtlicht-mit-kerzenlicht-design-603600 · Beleuchtung → Home & Garden > Lighting
-- lockerer-plus-size-alltagskleid-639100 · Damenmode → Apparel & Accessories > Clothing
+- schwarzes-v-ausschnitt-damenkleid-mit-high-wai-634100 · Damenmode → Apparel & Accessories > Clothing
+- strickkleid-mit-langen-armeln-midi-620700 · Damenmode → Apparel & Accessories > Clothing
+- asymmetrisches-tullkleid-mit-ruschenrand-628200 · Damenmode → Apparel & Accessories > Clothing
+- tischlampe-mit-bluten-und-schmetterlingsdesign-612800 · Beleuchtung → Home & Garden > Lighting
+- lotusblatter-armchen-kurzrock-mit-stickerei-639500 · Damenmode → Apparel & Accessories > Clothing
 
