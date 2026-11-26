@@ -36,3 +36,5 @@ gid://shopify/Product/16617694560647	draft-medizinprodukt	Tragbarer Ultraschall-
 gid://shopify/Product/15496320024961	draft-medizinprodukt	Digitales Hand-Spirometer
 gid://shopify/Product/15496384872833	draft-medizinprodukt	Atem-Hantel für Lungenfunktion & Yoga
 gid://shopify/Product/15496705737089	draft-medizinprodukt	Atemtrainer für Yoga und Pilates
+gid://shopify/Product/16613834981767	draft-medizinprodukt	Handgefertigter Doppler zur Fetalbeat-Messung
+gid://shopify/Product/15501848084865	draft-medizinprodukt	Atmungsübungsgerät
