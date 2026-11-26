@@ -9436,3 +9436,5 @@ gid://shopify/Product/15484369600897	zugeordnet	18	Suede Pumps · Damen
 gid://shopify/Product/15484369928577	zugeordnet	20	Leichtlaufende Sneaker
 gid://shopify/Product/15484398567809	zugeordnet	25	V-Ausschnitt Freizeitkleid Unifarben
 gid://shopify/Product/15484398797185	zugeordnet	8	Elegantes Pailletten Midi-Kleid
+gid://shopify/Product/15484398862721	zugeordnet	10	Sommerliches Chiffonkleid mit Blumenprint
+gid://shopify/Product/15484399059329	zugeordnet	40	A-Linien Trägerkleid mit Taillenschnürung
