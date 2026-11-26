@@ -62,6 +62,12 @@
 
 
 
+## 2026-11-26 23:30 · 🛍️ «shop campagne aufpimpen und shop app» + Grind-Anteil trotz Vorrang
+- **Shop-App = Kanal Nr. 2** (4 Kampagnen-Bestellungen #1037/#1040/#1047/#1048, alles Neukunden, ROAS 5.5, CAC 6.48, kein Rabatt — Shop Cash). Reichweite hängt an 6 Signalen über 90 T, nicht am Budget (genutzt ~13 % von CHF 100). Schwach: Erfüllung ≤ 96 h 58 %, Zustellung gemeldet 1/26 (Tracking-Firma «CJPacket» ist Shopify unbekannt). Doku + Betreiber-Klicks: `dropship/SHOP-APP-KAMPAGNE-2611.md`.
+- **Gesperrt (DRAFT):** Lederbearbeitungs-Set (Messer nur im BILD, Titel ohne Klingenwort → Klingenregel um «Ledermesser» + Leder-Sets mit Schneiden/Trimmen erweitert, Test 84/84), Doppler/Fetal + Atmungsübungsgerät (Medizinregel erweitert, Selbsttest ok), Rohrreiniger (NaOH, Gefahrgut), **Augencreme = Paula's-Choice-Markenfoto** (CJ-Bilder zeigen «RESIST Anti-Aging Eye Gel»; #1047 bei CJ bezahlt → Betreiber-Entscheid A/B). Lehre: **vor dem Nachladen von CJ-Bildern den Kontaktbogen ansehen** — der Markenname steht oft nur im Bild, nie im CJ-Titel.
+- **Grind stand still trotz 4 Runnern:** `cj_takt.mjs` Vorrang (Kosten-Nachtrag 53'604 Produkte, 6'653 versucht ≈ 18 T Rest) liess Grind-Skripte bis 90 min warten (21:44–21:54: Grind 0 Aufrufe). Fix: GRIND-Anteil (cj_category_fill/cj_sku_import/cj_perpetual) 1 Aufruf je 6 s trotz Vorrang, eigene Uhr unter der Takt-Sperre. **Lehre: nach jeder Änderung an einer Node-Bibliothek die LAUFENDEN Prozesse neu starten** — die Runner-Prozesse liefen 29 min mit dem alten Groq-Code weiter (Runner starten erst nach der Gruppe neu).
+- «Geschenkideen unter CHF 30» im Shop-Kanal freigegeben; Fusszeilen-Block «Follow on Shop» eingebaut (`follow_on_shop_patch_2611.py`, live noch nicht sichtbar — `shop.features.follow_on_shop?`).
+
 ## 2026-11-26 22:50 · ⛏️ «gute cj produkten grinden»: Groq-Engpass behoben + beliebte Ware zuerst
 - **Befund:** Die 4 Runner liefen, aber ~880× «skip(gemini)» in den Logs. Groq war in Spitzen gedrosselt: je Schlüssel 8'000 Tokens/Minute
   und ~1'000 Anfragen/Tag je Modell (Header `x-ratelimit-*`). Bei 4 parallelen Läufen und nur 3 Schlüsseln traf ein 429 alle Versuche → Text null.

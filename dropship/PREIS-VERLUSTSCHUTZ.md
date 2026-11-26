@@ -1,20 +1,18 @@
-# Preis-Verlustschutz — scharf 2026-11-26 21:55 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 22:00 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **10** · Varianten gehoben: **163** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.11× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 10 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **8** · Varianten gehoben: **29** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.24× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 8 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Gaming-Headset mit LED-Licht & Tiefbass für PS4/ | 20.90 | 19.77 | **24.90** | 1.19× |
-| Rückenmassagegerät 10 Magnetpunkte 96 Nadeln | 18.90 | 15.54 | **19.90** | 1.05× |
-| Lenkradbezug aus Kunstleder | 20.90 | 17.34 | **21.90** | 1.05× |
-| Jazz-Tanzschuhe aus Echtleder für Kinder | 20.90 | 16.81 | **21.90** | 1.05× |
-| Keile-Zehensteg-Sandalen aus Wildleder | 16.90 | 17.65 | **22.90** | 1.36× |
-| Herren Flip-Flops aus Rindsleder | 18.90 | 18.59 | **23.90** | 1.26× |
-| Kinder-Softschaufel-Sandalen aus Kunstleder | 14.90 | 15.09 | **19.90** | 1.34× |
-| Magnetisches kabelloses Ladegerät mit Dual-Coil  | 20.90 | 16.72 | **21.90** | 1.05× |
-| Bluetooth-Lautsprecher Stereo-Bass | 20.90 | 16.95 | **21.90** | 1.05× |
-| Gürtel aus Wildleder, perforiert, 105 cm | 20.90 | 16.97 | **21.90** | 1.05× |
+| 4er-Pack CR123A Li-Ion Akkus mit USB-Ladegerät | 19.90 | 16.28 | **20.90** | 1.05× |
+| Ultra-dünne 10000 mAh Powerbank mit Digitalanzei | 20.90 | 16.83 | **21.90** | 1.05× |
+| Kabelloses Ladegerät | 20.90 | 16.81 | **21.90** | 1.05× |
+| 3-in-1 Powerbank mit AC-Stecker, 10'000 mAh | 20.90 | 16.69 | **21.90** | 1.05× |
+| Elektrischer Spielball für kleine bis mittelgros | 20.90 | 16.93 | **21.90** | 1.05× |
+| Leuchtende Sportschuhe für Mädchen | 16.90 | 16.12 | **20.90** | 1.24× |
+| Silikon-Einsatz mit Deckel für Mixer | 20.90 | 16.82 | **21.90** | 1.05× |
+| Faltbarer LED-Scheinwerfer für E-Scooter & Bikes | 19.90 | 16.00 | **20.90** | 1.05× |
