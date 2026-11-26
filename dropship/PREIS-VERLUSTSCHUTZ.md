@@ -1,21 +1,23 @@
-# Preis-Verlustschutz — scharf 2026-11-26 18:48 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 18:56 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **11** · Varianten gehoben: **35** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.09× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 11 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **14** · Varianten gehoben: **90** · gesperrt (Faktor > 2.0): 1
+- Median-Faktor der Hebungen: 1.10× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 14 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Vintage Umhängetasche aus Vollnarbenleder | 22.90 | 21.58 | **27.90** | 1.22× |
-| Multifunktionaler manueller Massageroller | 22.90 | 19.64 | **24.90** | 1.09× |
-| Aroma Diffuser mit 7 LED-Farben | 22.90 | 20.31 | **25.90** | 1.13× |
-| PU-Leder Rucksack für Freizeit & Reisen | 22.90 | 19.07 | **23.90** | 1.04× |
-| Flache Ledersandalen für Damen | 21.90 | 17.60 | **22.90** | 1.05× |
-| Leder-Leinen- und Halsband-Set für Hunde | 22.90 | 22.63 | **28.90** | 1.26× |
-| Solar LED Wasserfall-Lichterkette mit Stern | 22.90 | 23.43 | **29.90** | 1.31× |
-| Mini Crossbody Tasche aus PU-Leder | 22.90 | 18.96 | **23.90** | 1.04× |
-| Mini-Elektroschleifer mit Bohrfutter | 22.90 | 18.71 | **23.90** | 1.04× |
-| PU-Leder Satteltasche für Motorrad | 22.90 | 18.61 | **23.90** | 1.04× |
-| LED-Rucksack mit Fernbedienung für Sicherheit | 22.90 | 18.75 | **23.90** | 1.04× |
+| Portabler USB-Becher-Mixer | 22.90 | 21.72 | **27.90** | 1.22× |
+| Kabellose Ladetischlampe mit Magnetfliegentechni | 20.90 | 19.53 | **24.90** | 1.19× |
+| Damen Wildleder-Stiefeletten mit spitzer Kappe | 19.90 | 17.72 | **22.90** | 1.15× |
+| Chunky-heeled Non-slip Soft Leather Pumps Slip-o | 22.90 | 18.60 | **23.90** | 1.04× |
+| Chunky-Pumps mit Schnürung aus Wildleder | 16.90 | 16.81 | **21.90** | 1.30× |
+| Elektrisches Make-up Pinsel Reinigungs-Set | 22.90 | 19.68 | **24.90** | 1.09× |
+| Elektrisches Gesichtsreinigungsbürsten-Set | 22.90 | 25.62 | **31.90** | 1.39× |
+| LED-Schminkbox mit Lichtspiegel | 22.90 | 21.43 | **26.90** | 1.17× |
+| Frauenleder Cortez Schuhe mit atmungsaktivem Mes | 18.90 | 17.68 | **22.90** | 1.21× |
+| Elektrischer Ohrenreiniger Weiss für alle Hautty | 22.90 | 22.03 | **27.90** | 1.22× |
+| Elektrisches Lockenstab-Set | 22.90 | 22.20 | **27.90** | 1.22× |
+| Elektrisches Porenreinigungsgerät | 22.90 | 18.62 | **23.90** | 1.04× |
+| Geldbörse Rindsleder mit Blumenmuster | 22.90 | 18.55 | **23.90** | 1.04× |
