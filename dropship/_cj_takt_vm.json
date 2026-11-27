@@ -1,12 +1,14 @@
 {
  "host": "vm",
- "stunde": "2026-11-27T03:00Z",
- "stand": "2026-11-27T03:30:23Z",
+ "stunde": "2026-11-27T05:00Z",
+ "stand": "2026-11-27T05:26:53Z",
  "fenster_min": 60,
- "summe": 69,
+ "summe": 61,
  "skripte": {
-  "cj_category_fill.mjs": 65,
-  "cj_perpetual.mjs": 3,
+  "cj_category_fill.mjs": 46,
+  "cj_order_engine.py": 11,
+  "cj_verfuegbarkeit.py": 2,
+  "cj_perpetual.mjs": 1,
   "cj_video_reel_engine.mjs": 1
  }
 }
