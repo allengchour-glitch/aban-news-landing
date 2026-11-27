@@ -1,12 +1,11 @@
-# Preis-Verlustschutz — scharf 2026-11-27 10:49 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 11:18 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **2** · Varianten gehoben: **2** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.50× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 2 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **1** · Varianten gehoben: **1** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.06× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 1 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Lederhalsband mit schwarzen Nieten für Hunde | 15.90 | 18.86 | **23.90** | 1.50× |
-| Luftbefeuchter mit ätherischem Öl | 15.90 | 14.15 | **17.90** | 1.13× |
+| Magnetische Steckdosenleisten-Halterung | 15.90 | 12.72 | **16.90** | 1.06× |
