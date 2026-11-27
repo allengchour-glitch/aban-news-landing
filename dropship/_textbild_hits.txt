@@ -18997,3 +18997,16 @@ gid://shopify/Product/16739853042055	85->0	A-Linien-Maxi-Kleid mit V-Ausschnitt,
 gid://shopify/Product/16740090413447	122->2	Halterhals-Bandage-Bodycon-Maxidress
 gid://shopify/Product/16740351246727	15->0	Grosses Canvas-Tote mit viel Stauraum
 gid://shopify/Product/16740546969991	8->0	Retro Nachtlicht mit Kerzenlicht-Design
+gid://shopify/Product/16740577051015	999->3	Lotusblätter-Ärmchen-Kurzrock mit Stickerei
+gid://shopify/Product/16740699308423	999->1	Press-on-Nägel mit Schneeflocken-Glitzer
+gid://shopify/Product/16740781457799	999->0	Tragbare Leselampe mit Zeichenbrett
+gid://shopify/Product/16740820418951	999->0	LED Nachttischlampe Touch-sensibel mit USB
+gid://shopify/Product/16740926521735	999->0	Bunte Schmetterlingslampe für Weihnachtsdeko
+gid://shopify/Product/16740931502471	999->0	Kaffebraunes Mini-Kleid mit hoher Taille
+gid://shopify/Product/16740936515975	999->0	A-Linien Kleid mit V-Ausschnitt und hohem Taillenb
+gid://shopify/Product/16740938678663	999->3	Handgemachter Nude Cat-Eye Nagellack
+gid://shopify/Product/16740939858311	999->0	Keramische Minimalist-Vase in Creme
+gid://shopify/Product/16740940087687	999->0	Keramische Vase mit Ornament
+gid://shopify/Product/16740940448135	999->2	Postmoderne Acryl Nachttisch Hängeleuchte
+gid://shopify/Product/16740944183687	999->0	Silikon Küchen-Set 15-Teilig
+gid://shopify/Product/16740944609671	20->1	Minimalistische Nachttischlampe – weiss oder schwarz
