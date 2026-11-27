@@ -359408,3 +359408,5 @@
 67667352813959	heben	79.90	83.90	67.14	2026-11-27	kapuzenpullover-mit-boxhandschuh-stickerei-628500
 67667352846727	heben	79.90	83.90	67.46	2026-11-27	kapuzenpullover-mit-boxhandschuh-stickerei-628500
 67667352879495	heben	79.90	83.90	67.79	2026-11-27	kapuzenpullover-mit-boxhandschuh-stickerei-628500
+68122753008007	heben	80.90	81.90	65.59	2026-11-27	universal-kuchenmaschinen-und-mikrowellen-orga-614900
+68122753040775	heben	80.90	81.90	65.59	2026-11-27	universal-kuchenmaschinen-und-mikrowellen-orga-614900
