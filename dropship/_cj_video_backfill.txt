@@ -2018,3 +2018,4 @@ gid://shopify/Product/15448012063105	kein-video-beim-lieferanten
 gid://shopify/Product/15448012259713	kein-video-beim-lieferanten
 gid://shopify/Product/15448012390785	kein-video-beim-lieferanten
 gid://shopify/Product/15448012554625	kein-video-beim-lieferanten
+gid://shopify/Product/16741847236999	ok-lokal

@@ -12308,3 +12308,4 @@ gid://shopify/Product/15428421353857	1795757839	ok	12 Shop / 12 CJ / 0 fehlend /
 gid://shopify/Product/15428421386625	1795791466	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15428421419393	1795791466	ok	2 Shop / 2 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15428421452161	1795791466	ok	9 Shop / 9 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15428427940225	1795808812	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
