@@ -13915,3 +13915,10 @@ baseball-cap-wellness-rot-stickerei	2059079399988719618	16	5.61	ok	landeseite
 baseball-cap-paris-schwarz-stickerei	2059101589130031105	16	5.62	ok	landeseite
 edelstahl-armband-amore-herz-geburtsstein-gold	2606151028301606800	16	4.40	ok	landeseite
 edelstahl-armband-coeur-herz-gold	2606151011001608800	16	4.42	ok	landeseite
+edelstahl-armband-tresor-doppellagig-mit-charms-silber	2606150957291602100	16	4.52	ok	landeseite
+edelstahl-halskette-goutte-tropfen-anhanger-silber	2606150942441611100	16	4.52	ok	landeseite
+edelstahl-armreif-couleur-verstellbar-gold	-	-	-	unklar keine CJ-SKU	landeseite
+titan-edelstahl-armband-noeud-knoten-anlauffrei-silber	-	-	-	unklar keine CJ-SKU	landeseite
+schmetterling-ohrhanger-papillon-kristall-grun	-	-	-	unklar keine CJ-SKU	landeseite
+ohrhanger-fleur-herz-mit-trockenblumen-gold	-	-	-	unklar keine CJ-SKU	landeseite
+creolen-ohrhanger-cascade-mit-tropfen-gold	2066405372735291394	16	4.60	ok	landeseite
