@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 15:05 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 15:45 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **12'637**
-- Optionen mit englischen Werten (Kandidaten): 548
+- Produkte gesehen: **13'233**
+- Optionen mit englischen Werten (Kandidaten): 570
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 1'462
+- Werte mit unbekanntem Wort (unverändert): 1'514
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 19
-- übersprungen «kleidungsstueck-im-wert»: 12
+- übersprungen «kollision-nach-uebersetzung»: 21
+- übersprungen «kleidungsstueck-im-wert»: 13
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -48,6 +48,8 @@
 - `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
 - `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
 - `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
+- `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
+- `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -76,5 +78,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 75, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `opp` 22, `plush` 22, `one` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `line` 18, `tea` 17, `size` 17, `⟨satzbau:praeposition⟩` 17, `cherry` 17, `four` 17, `degrees` 17, `carbon` 17, `pin` 15, `tc` 15, `blossom` 14, `to` 14, `rain` 14, `elegant` 13, `cup` 13, `titanium` 12, `sunflower` 12, `bag` 11, `shell` 11, `hat` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `of` 10, `the` 10, `fiber` 10, `ding` 10, `three` 9, `milk` 9, `hot` 9, `insert` 9, `deep` 9, `cocoa` 9, `promax` 9, `ball` 9, `data` 9, `electric` 8, `full` 8, `gun` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8
+`⟨satzbau:adjektiv-vor-nomen⟩` 75, `powder` 45, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `opp` 22, `plush` 22, `one` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `line` 18, `tea` 17, `size` 17, `⟨satzbau:praeposition⟩` 17, `cherry` 17, `four` 17, `degrees` 17, `carbon` 17, `elegant` 15, `pin` 15, `tc` 15, `blossom` 14, `shell` 14, `to` 14, `rain` 14, `of` 13, `cup` 13, `the` 12, `titanium` 12, `sunflower` 12, `bag` 11, `hat` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `ding` 10, `three` 9, `milk` 9, `hot` 9, `insert` 9, `deep` 9, `lotus` 9, `cocoa` 9, `promax` 9, `ball` 9, `data` 9, `electric` 8, `full` 8, `gun` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8
 
