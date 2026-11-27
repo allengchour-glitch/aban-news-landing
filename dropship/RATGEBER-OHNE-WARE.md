@@ -19,8 +19,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 |---|---:|
 | [Lavendel — Der Wellness-Champion. Warum dieses eine Öl alles](/blogs/ratgeber/lavendel-wellness-champion-schweiz) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
-| [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
-| [Partner-Geschenke & Couple-Sets: Ideen für Verliebte 2026](/blogs/ratgeber/partner-geschenke-couple-sets-ideen-fur-verliebte-2026) | 0 |
 | [Open-Ear Kopfhörer: Die bessere Wahl für Sport, Velo & Büro?](/blogs/ratgeber/open-ear-kopfhoerer-sport-velo-ratgeber) | 0 |
 | [Strohtaschen & Beach-Bags 2026: die schönsten Sommer-Looks](/blogs/ratgeber/strohtaschen-beach-bags-sommer-looks-2026) | 0 |
 | [Leinen pflegen: knitterfrei waschen, trocknen & bügeln](/blogs/ratgeber/leinen-pflegen-knitterfrei-material-guide) | 0 |
@@ -111,7 +109,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Haarstyling-Tools: Föhn, Glätteisen & Lockenstab richtig ein](/blogs/ratgeber/haarstyling-tools-fohn-glatteisen-lockenstab-richtig-einsetzen) | 0 |
 | [Laptop-Rucksack-Guide: Schutz, Komfort & Stauraum fürs Büro](/blogs/ratgeber/laptop-rucksack-guide-schutz-komfort-stauraum-furs-buro) | 0 |
 | [Angeln für Einsteiger: die richtige Grundausstattung zum Sta](/blogs/ratgeber/angeln-fur-einsteiger-die-richtige-grundausstattung-zum-start) | 0 |
-| [Gürtel-Guide: Breite, Material & Schnalle richtig wählen](/blogs/ratgeber/gurtel-guide-breite-material-schnalle-richtig-wahlen) | 0 |
 | [IPL-Haarentfernung: Ratgeber für dauerhaft glatte Haut](/blogs/ratgeber/ipl-haarentfernung-ratgeber-fur-dauerhaft-glatte-haut) | 0 |
 | [Dashcam kaufen: worauf achten?](/blogs/ratgeber/dashcam-kaufen-worauf-achten) | 0 |
 | [Saugroboter-Ratgeber: den richtigen Robo-Sauger finden](/blogs/ratgeber/saugroboter-ratgeber-den-richtigen-robo-sauger-finden) | 0 |

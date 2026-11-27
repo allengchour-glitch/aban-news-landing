@@ -1,4 +1,4 @@
-# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-27 16:05 UTC
+# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-27 17:04 UTC
 
 ⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 11/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
 
