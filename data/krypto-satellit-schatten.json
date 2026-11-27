@@ -164,10 +164,17 @@
    "S2": 9942.92,
    "BTC150": 9198.48,
    "BTC": 7793.97
+  },
+  {
+   "tag": "2026-11-26",
+   "S1": 9942.92,
+   "S2": 9942.92,
+   "BTC150": 9198.48,
+   "BTC": 7809.34
   }
  ],
  "preise": {
-  "BTCUSDT": 60458.01,
+  "BTCUSDT": 60577.18,
   "PEPEUSDT": 4.52e-06
  },
  "reihen": {
@@ -176,7 +183,7 @@
    "bar": 9942.922921145833,
    "menge": {},
    "ziele": {},
-   "entschieden": "2026-11-19",
+   "entschieden": "2026-11-26",
    "handel": 2
   },
   "S2": {
@@ -184,7 +191,7 @@
    "bar": 9942.922921145833,
    "menge": {},
    "ziele": {},
-   "entschieden": "2026-11-19",
+   "entschieden": "2026-11-26",
    "handel": 2
   },
   "BTC150": {
@@ -192,7 +199,7 @@
    "bar": 9198.480332032515,
    "menge": {},
    "ziele": {},
-   "entschieden": "2026-11-19",
+   "entschieden": "2026-11-26",
    "handel": 2
   },
   "BTC": {
@@ -204,10 +211,10 @@
    "ziele": {
     "BTCUSDT": 1.0
    },
-   "entschieden": "2026-11-19",
+   "entschieden": "2026-11-26",
    "handel": 1
   }
  },
- "letzter_stand": "2026-11-25",
+ "letzter_stand": "2026-11-26",
  "fehlende_coins": []
 }
