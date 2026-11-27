@@ -1,8 +1,8 @@
-# Versprechen ohne Beleg — Stand 2026-11-26 16:57 UTC
+# Versprechen ohne Beleg — Stand 2026-11-27 16:05 UTC
 
-Kollektionen und Theme (zählt nur, Liste `dropship/KOLL-VERSPRECHEN.md`): ⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 12/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok [1747 Kollektionen, Anteil 5× gemessen, 676 s]
+Kollektionen und Theme (zählt nur, Liste `dropship/KOLL-VERSPRECHEN.md`): ⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 11/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok [1747 Kollektionen, Anteil 5× gemessen, 594 s]
 
-Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 56003 aktive · geändert: 0 () · Fehler: 0
+Regel: `automation/data/versprechen_regel.json` (Lieferversprechen nur bei Schweizer Lager; «Qualität geprüft», «meistverkauft», «unser Bestseller» nie; dekorative «Diamanten» = Strasssteine bzw. Zirkonia). Geprüft: 56380 aktive · geändert: 0 () · Fehler: 0
 
 ## Beispiele
 

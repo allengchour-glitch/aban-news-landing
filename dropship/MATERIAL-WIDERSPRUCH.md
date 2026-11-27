@@ -1,10 +1,10 @@
-# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-11-26 16:57 UTC
+# Material-Widerspruch Titel ↔ Materialangabe — Stand 2026-11-27 16:05 UTC
 
-Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Geändert: 1 · Fehler: 0 · nur gemeldet: 1
+Regel: `automation/material_widerspruch.py` (Leder automatisch, Rest gemeldet). Geändert: 0 · Fehler: 0 · nur gemeldet: 1
 
 ## Änderungen
 
-- `genuine-leder-portemonnaie-weinrot-622300` (leder, Material «pu-leder»): «Genuine Leder Portemonnaie – Weinrot» → «Genuine Kunstleder Portemonnaie – Weinrot»
+
 
 ## Nur gemeldet (Sichtprüfung)
 

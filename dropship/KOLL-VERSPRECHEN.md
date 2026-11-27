@@ -1,6 +1,6 @@
-# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-26 16:57 UTC
+# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-27 16:05 UTC
 
-⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 12/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
+⚠️ KOLL-VERSPRECHEN: 6 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 1/1 · R5 0/0 · R6 5/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 11/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
 
 Geprüft: 1747 Kollektionen (1573 im Onlineshop veröffentlicht, 174 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 5 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/214565814663. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
 
@@ -13,7 +13,7 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 - `gliederarmbaender` — R6 descriptionHtml: «Der Versand kostet CHF 7 und ist ab CHF 50 Bestellwert nach Abzug von Rabatten gratis»
 - `notizbuecher-journaling` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
 - `tassen-becher` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
-- `weihnachten-2026` · CH-Lager 4+?/310 (< 95%, nach 250 abgebrochen) — R4 descriptionHtml: «Ein festes Datum sichern wir nicht zu: Im Direktversand rechnest du mit 10–20 Werktagen in die Schweiz und 15–»
+- `weihnachten-2026` · CH-Lager 4+?/311 (< 95%, nach 250 abgebrochen) — R4 descriptionHtml: «Ein festes Datum sichern wir nicht zu: Im Direktversand rechnest du mit 10–20 Werktagen in die Schweiz und 15–»
 
 ## Nicht im Onlineshop veröffentlicht (42)
 
@@ -107,7 +107,7 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 Roter Fund in einer Kollektion, die im Onlineshop unveröffentlicht ist, aber in anderen Verkaufskanälen steht (ohne Headless, Inbox, Luxe Style Headless, Online Store, Point of Sale). Ob diese Kanäle den Kollektionstext anzeigen, ist nicht geprüft; die Ampel zählt nur den Onlineshop.
 
 
-## Ware-Hinweis (im Text genannt, kein aktives Produkt in der Kollektion) (16)
+## Ware-Hinweis (im Text genannt, kein aktives Produkt in der Kollektion) (14)
 
 - `3d-drucker` — 3D-Drucker als Gerät (nur Zubehör «für 3D-Drucker») (0/13) · title
 - `3d-filament` — ABS-Filament (0/9) · seo.title
@@ -117,9 +117,7 @@ Roter Fund in einer Kollektion, die im Onlineshop unveröffentlicht ist, aber in
 - `bar-glaeser` — Sektgläser (nur ein Organizer) (0/14) · seo.title
 - `bar-wein-accessoires` — Whisky (0/49) · seo.title
 - `beauty-geraete` — Epilierer (0/113) · descriptionHtml
-- `beauty-geraete` — IPL-Geräte (0/113) · descriptionHtml
 - `gesichtspflege-geraete` — Gesichtssaunen (0/40) · seo.title
-- `ipl-haarentfernung` — IPL-Geräte (0/17) · title, seo.title
 - `reise-gadgets` — Packwürfel (0/309) · seo.title
 - `spielzeug-schminkset` — Aqua-Schminke — im Ersatztext genannt (14.10.: 5/39 aktiv) · descriptionHtml
 - `wellness-gesundheit` — Blutdruckmessgeräte (0/27) · seo.title
