@@ -26,7 +26,7 @@ Quelle: Workflow `shop-campaign-app-pimpen` (3 Recherchen, 3 Gegenprüfungen). R
 2. **Reichweiten-Status ansehen (1 Minute):** Admin → Vertriebskanäle → Shop → Advertising.
    - Kein Banner: Status «Good», nichts zu tun.
    - Banner «Your ad reach is significantly limited»: auf «View improvements» klicken und mir die 6 Werte als Screenshot schicken.
-3. **CJ-Zahllinks am selben Tag zahlen.** Das ist der stärkste Hebel für das Signal «Versand in 96 h»: 11 von 26 Bestellungen kamen später.
+3. ~~CJ-Zahllinks am selben Tag zahlen = stärkster Hebel~~ **Korrigiert 27.11.: Zahlung ist kein Engpass (22/25 LX-Aufträge ≤ 1 h nach Anlage bezahlt). Engpass ist die CJ-Lagerzeit (7 von 11 Verspätungen: #1021, #1029, #1034, #1038, #1039, #1042, #1044).** Sync-Verzug (#1041) ist seit 27.11. behoben (Fulfill-Sync über die ganze CJ-Liste). Die Lagerzeit wird ab jetzt nur gemessen (`dropship/_cj_versandoptionen.tsv`), Urteile erst bei n ≥ 20 je Lager.
 4. **Shop-Store gestalten** (geht nur im Admin): Shop → Store → Customize.
    - Unter «Categories» (bis 12) in dieser Reihenfolge eintragen: Uhren, Smartwatches, Weihnachten 2026, Geschenke für Sie, Geschenke für Ihn, Geschenkideen unter CHF 30, Schuhe, Wohnen & Dekoration, Blitzversand Schweiz, Gerade im Trend.
    - Unter «Header» das Logo (quadratisch, mind. 512 px) und ein Hintergrundbild (1080×1170) setzen.
