@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 16:53 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 18:28 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 174 · **114 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 87, teilweise: 25, keine: 2; Preisspanne > 2×: 16) · 1 CJ-Variante: 59 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 184 · **123 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 95, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 60 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -11,6 +11,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Samtiges Hundehalsband-Set mit Leine und Schleife (`samtiges-hundehalsband-set-mit-leine-und-schle-621500`) | 96 | 96 | 2.46–2.46 | 15.90 | Dog Collar-Aqua-XXS, Dog Collar-Aqua-XS, Dog Collar-Aqua-S, Dog Collar-Aqua-M |
 | Beruhigende Angst-Weste für Haustiere (`beruhigende-angst-weste-fur-haustiere-155712`) | 95 | 80 | 4.62–11.99 | 26.90 | Dark Grey-XS, Dark Grey-M, Dark Grey-L, Dark Grey-XL |
 | Reflektierendes taktisches Hundegeschirr (`reflektierendes-taktisches-hundegeschirr-892544`) | 90 | 85 | 3.08–4.63 | 22.90 | Black Chest Strap-XS, Black Chest Strap-S, Black Chest Strap-M, Black Chest Strap-L |
+| Standkollar-Fleece-Workjacke für Männer (`standkollar-fleece-workjacke-fur-manner-628900`) | 90 | 90 | 6.6–8.16 | 37.90 | Red Collar-M, Red Collar-L, Red Collar-XL, Red Collar-XXL |
+| Kissenbezug mit abstraktem Kunstmuster (`kissenbezug-mit-abstraktem-kunstmuster-620200`) | 88 | 88 | 2.21–10.07 | 48.90 | Dust Trail Brown-70×70cm, Dust Trail Brown-70×90cm, Dust Trail Brown-70×120cm, Dust Trail Brown-70×150cm |
 | Winter Haustierjacke in Kaschmir-Optik (`winter-cashmere-haustierjacke-600400`) | 80 | 80 | 3.68–5.03 | 15.90 | DZ279 Purple Camouflage-S, DZ279 Purple Camouflage-M, DZ279 Purple Camouflage-L, DZ279 Purple Camouflage-XL |
 | Samtiges Haustierhalsband mit Leine (`samtiges-haustierhalsband-mit-leine-423808`) | 80 | 80 | 5.33–7.15 | 17.90 | Dog pen dog rope1-XS, Dog pen dog rope1-S, Dog pen dog rope1-M, Dog pen dog rope1-L |
 | Leinen-Baumwollstoff für Vorhänge und Kissen (`leinen-baumwollstoff-fur-vorhange-und-kissen-836800`) | 80 | 80 | 2.61–3.48 | 21.90 | Color1-3m, Color1-4m, Color2-3m, Color2-4m |
@@ -46,13 +48,16 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Pure Color UV Gel-Nagelsticker (`pure-color-uv-gel-nagelsticker-333824`) | 23 | 19 | 2.69–2.69 | 15.90 | BSS0195-Paper Box Packaging, BSS0196-Paper Box Packaging, BSS0197-Paper Box Packaging, BSS0198-Paper Box Packaging |
 | Mückenschutz-Vorhangstoff, mehrfarbig, 90x200/100x200 cm (`muckenschutz-vorhangstoff-mehrfarbig-90x200-10-624100`) | 22 | 22 | 2.19–2.19 | 15.90 | R'deer Purple-90×200cm, R'deer Purple-100×200cm, R'deer Yellow-90×200cm, R'deer Yellow-100×200cm |
 | Kabelloser Mini Food Processor (`kabelloser-mini-food-processor-a67010`) | 22 | 18 | 3.36–12.0 | 22.90 | White 250ml, 3Colors, 3White, 2White1Green |
+| Transparente Bauklötze für Kinder (`transparente-bauklotze-fur-kinder-489856`) | 22 | 19 | 11.58–47.2 | 31.90 | Rounded corners 15pcs, Square corner 25pcs, Round and square 25pcs, Rounded corner light 25pcs |
 | Augenbrauen- & Wimpernstempel für natürlichen Look (`augenbrauen-wimpernstempel-fur-naturlichen-loo-639300`) | 20 | 20 | 7.69–7.69 | 15.90 | Eyebrow-Color Ink Classic Black-Standard eyebrow, Eyebrow-Color Ink Classic Black-Natural eyebrows, Eyebrow-Color Ink Classic Black-Shooting Star Eyebrows, Eyebrow-Color Ink Classic Black-Xiao Omei |
 | Haarkurllinie (`haarkurllinie-612300`) | 20 | 20 | 8.13–8.13 | 27.90 | Pink 20mm-US, Pink 22mm-US, Pink 25mm-US, Pink 28mm-US |
 | Mehrfarbiger Falttürvorhang (`mehrfarbiger-faltturvorhang-619600`) | 19 | 16 | 2.94–13.27 | 47.90 | White-180x180cm, White-180x200cm, Pink-180x180cm, Pink-180x200cm |
 | Armband Drache Pi Xiu Leopard-Muster (`armband-drache-pi-xiu-leopard-muster-615200`) | 18 | 18 | 2.07–2.6 | 14.90 | M937 Gold-19cm, M937 Gold-21cm, M937 Gold-23cm, M937 Steel Color-19cm |
 | Kinder-Buchweizenkissen aus Baumwolle (`kinder-buchweizenkissen-aus-baumwolle-605000`) | 16 | 12 | 2.09–2.82 | 21.90 | Red Squinting Bear-Pillowcase, Red Squinting Bear-Pillowcase Buckwheat Hull, Green Squinting Bear-Pillowcase, Green Squinting Bear-Pillowcase Buckwheat Hull |
+| Handgemachtes Press-on Nägel Set (`handgemachtes-press-on-nagel-set-610100`) | 16 | 16 | 2.57–2.57 | 16.90 | Short Square-XS, Short Square-S, Short Square-M, Short Square-L |
 | Faltbares Anti-Mückennetz für Babys & Kleinkinder (`faltbares-anti-muckennetz-fur-babys-kleinkinde-616200`) | 14 | 14 | 5.27–6.08 | 35.90 | Pink Space Rabbit-98x55x60cm, Pink Space Rabbit-120X60x65cm, Pink Space Rabbit-128x65x70cm, Gray Space Rabbit Purple-98x55x60cm |
 | GPS-Halsband für Katzen mit Cartoon-Muster (`gps-halsband-fur-katzen-mit-cartoon-muster-619500`) | 13 | 13 | 4.21–5.47 | 19.90 | Collar Black Black Locator-For Apple, Collar Black White Locator-For Apple, Collar Pink Black Locator-For Apple, Collar Pink White Locator-For Apple |
+| Nordisches Kissenbezug-Set mit geometrischem Muster (`nordisches-kissenbezug-set-mit-geometrischem-m-522944`) | 13 | 13 | 5.62–5.62 | 16.90 | Q4668-45x45cm, Q4669-45x45cm, Q4670-45x45cm, Q4671-45x45cm |
 | Aromatherapie-Uhrenarmband aus Metall (`aromatherapie-uhrenarmband-aus-metall-608200`) | 12 | 6 | 4.19–4.19 | 23.90 | Star Gold Luminous Green-42/44/45/46/49MM, Starlight Gold Transparent-42/44/45/46/49MM, Starlight Gold Black-42/44/45/46/49MM, Starlight Gold Midnight Blue-42/44/45/46/49MM |
 | Dynamische Reflexion Keramik-Kaffeetasse (`dynamische-reflexion-keramik-kaffeetasse-621700`) | 12 | 12 | 6.47–6.47 | 24.90 | Upgraded Majin-240ml, Upgraded Version Of Ma Yin-240ml, Upgraded Butterfly Gold-240ml, Upgraded Butterfly Silver-240ml |
 | Neigbare Baby-Schlafunterlage mit Tiermotiven (`neigbare-baby-schlafunterlage-mit-tiermotiven-615100`) | 12 | 12 | 16.75–25.26 | 72.90 | 1 Style-100x56cm, 2 Style-100x56cm, 3 Style-100x56cm, 4 Style-100x56cm |
@@ -67,6 +72,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sturmfeuerzeug mit Power-Display und Puncher (`sturmfeuerzeug-mit-power-display-und-puncher-605700`) | 10 | 10 | 6.38–6.38 | 19.90 | HB198 Blue, HB198 Black Brushed, HB198 Flame Red, HB198 Orange |
 | Hundehalsband mit Gravur und Zugfunktion (`hundehalsband-mit-gravur-und-zugfunktion-063168`) | 10 | 10 | 2.38–5.82 | 16.90 | Pink graffiti-L, Pink graffiti-M, Pink graffiti-S, Pink graffiti-XL |
 | Frischhaltedose für Mikrowelle, Silikon (`frischhaltedose-fur-mikrowelle-silikon-622500`) | 10 | 10 | 2.02–2.46 | 21.90 | Mintcream 700ml, Pink 700ml, Gray 700ml, Gray Blue 700ml |
+| Floral Lederkartenbeutel (`floral-lederkartenbeutel-616000`) | 10 | 10 | 2.99–2.99 | 16.90 | 1 Light Pink, 2 Rose Red, 3 Deep Pink, 4 Yellow |
+| Gebetsmatte mit geometrischem Druck, 80x120 cm (`gebetsmatte-mit-geometrischem-druck-80x120-cm-637900`) | 10 | 10 | 2.94–2.94 | 28.90 | Dark Green-80x120cm, Silver Gray-80x120cm, Navy Blue-80x120cm, Wine Red-80x120cm |
 | Windspiel Kolibri für Garten & Balkon (`windspiel-kolibri-fur-garten-balkon-630300`) | 9 | 9 | 3.46–3.46 | 15.90 | Hummingbird Style A-17x30cm, Hummingbird Style B-17x30cm, Gold Wing Finch-17x30cm, Robin-17x30cm |
 | Nagel-Set "Thigh Coarse Hair Bow" (`nagel-set-thigh-coarse-hair-bow-258880`) | 9 | 9 | 2.42–2.42 | 15.90 | Prolate Ellipse-XS, Prolate Ellipse-S, Prolate Ellipse-M, Long T-XS |
 | Magnetisches L-förmiges Ladekabel für diverse Geräte (`magnetisches-l-formiges-ladekabel-fur-diverse-947712`) | 9 | 9 | 3.87–3.87 | 16.90 | Red-8PIN, Red-Micro USB, Red-Typc, Black-8PIN |
@@ -100,6 +107,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Feuchtigkeitsspendende Body Lotion (`feuchtigkeitsspendende-body-lotion-622300`) | 5 | 5 | 10.78–10.78 | 30.90 | Spring Wilderness 250ml, Prosperous Garden 250ml, Floating Water 250ml, My Teenager 250ml |
 | Hoch elastisches Gummiband (`hoch-elastisches-gummiband-628100`) | 5 | 5 | 7.46–7.46 | 27.90 | 1745 Plain, 1745 Red, 1745 Green, 1745 Black |
 | Multifunktionale Wangenauflage-Tasche (`multifunktionale-wangenauflage-tasche-766016`) | 5 | 5 | 3.28–3.28 | 22.90 | Black, Wolf brown, Army Green, Desert digital |
+| Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
 | Digitaler Kalenderwecker mit Medikamenten-Erinnerung (`digitaler-kalenderwecker-mit-medikamenten-erin-609900`) | 4 | 4 | 15.28–15.28 | 26.90 | US-White, EU-White, JP-White, AU-White |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
 | Panda Tee-Set Geschenkbox (`panda-tee-set-geschenkbox-619300`) | 4 | 4 | 7.96–7.96 | 24.90 | Panda Teacup Sandalwood, Panda Tea Cup Agarwood, Panda Teacup Laoshan, Panda Teacup Water Sink |
@@ -115,6 +123,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
 | Super-schnelle Mini Power Bank (`super-schnelle-mini-power-bank-639200`) | 3 | 3 | 5.8–8.29 | 14.90 | 5000mA, 10000mA, 10000mAU pgraded version |
 | Kamera Bausteine mit Ewiger Blume Deko (`kamera-bausteine-mit-ewiger-blume-deko-614700`) | 3 | 3 | 10.93–17.64 | 44.90 | Huayu Polaroid, Huayu Instant Camera Gift Box, Huayu Polaroid Greeting Card |
+| Mikrostrom-Gesichtspflegegerät (`mikrostrom-gesichtspflegegerat-278016`) | 3 | 3 | 14.75–23.4 | 42.90 | Pink, White, Set |
 | Haarpflege-Spray (`haarpflege-spray-607400`) | 2 | 2 | 2.53–2.53 | 15.90 | 50ML-Untitled, 50ML-Original standard |
 | 3A Common Style Add Resin Jelly Glue Wear Armor · Press-on-Nägel (`3a-common-style-add-resin-jelly-glue-wear-armo-627800`) | 2 | 2 | 2.11–2.46 | 14.90 | 4 piece set, 5 piece set |
 | Eau de Parfum «Rosenduft» (`the-odour-of-roses-eau-de-parfum-630848`) | 2 | 2 | 2.1–2.1 | 14.90 | 100ml-7306a Royal Crown, 100ml-7306b Dark Rose |
