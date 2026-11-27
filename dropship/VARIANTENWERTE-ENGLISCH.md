@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 14:44 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 15:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **4'816**
-- Optionen mit englischen Werten (Kandidaten): 190
+- Produkte gesehen: **11'447**
+- Optionen mit englischen Werten (Kandidaten): 511
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 479
+- Werte mit unbekanntem Wort (unverändert): 1'366
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 12
-- übersprungen «kleidungsstueck-im-wert»: 9
+- übersprungen «kollision-nach-uebersetzung»: 19
+- übersprungen «kleidungsstueck-im-wert»: 12
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -23,6 +23,7 @@
 - `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil · Titel nennt Set: Herren Oberteil | Herren Shorts | Damen Shirt | Damen Stil Rock | Grün Cheongsam Anzug
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
+- `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Lange Ärmel | Vest | Off shoulder
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -40,6 +41,13 @@
 - `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
+- `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Set2 → Set 2; Set1 → Set 1; Yellow 3pcs → Gelb · 3 Stück
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
+- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Set1 → Set 1; Set2 → Set 2; Set3 → Set 3; Set4 → Set 4
+- `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Weissweiss → Weiss; Schwarzschwarz → Schwarz
+- `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
+- `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
+- `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -68,5 +76,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 37, `diamond` 36, `powder` 27, `opp` 20, `deer` 19, `degrees` 17, `tea` 12, `⟨satzbau:praeposition⟩` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `electric` 7, `cherry` 7, `bag` 7, `hot` 7, `blossom` 7, `glittering` 7, `soft` 7, `washed` 7, `one` 6, `size` 6, `gun` 6, `color` 6, `waist` 6, `ice` 6, `stone` 6, `three` 5, `bright` 5, `milk` 5, `storage` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `elegant` 4, `plugin` 4, `models` 4, `drill` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `elektrisch` 3, `flesh` 3, `aromatherapy` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3
+`⟨satzbau:adjektiv-vor-nomen⟩` 74, `powder` 42, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `opp` 22, `plush` 22, `one` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `line` 18, `tea` 17, `size` 17, `⟨satzbau:praeposition⟩` 17, `cherry` 17, `degrees` 17, `tc` 15, `blossom` 14, `to` 14, `carbon` 14, `sunflower` 12, `elegant` 11, `bag` 11, `shell` 11, `titanium` 11, `hat` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `ding` 10, `three` 9, `hot` 9, `four` 9, `insert` 9, `cocoa` 9, `promax` 9, `ball` 9, `data` 9, `electric` 8, `milk` 8, `full` 8, `gun` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8, `sport` 8, `button` 8, `machine` 7, `washed` 7, `back` 7, `filter` 7
 
