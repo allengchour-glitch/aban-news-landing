@@ -358531,3 +358531,5 @@
 56007268532609	heben	15.90	21.90	16.83	2026-11-27	oarmio-powerbank-20000-mah-604900
 56030239719809	heben	15.90	20.90	16.66	2026-11-27	elektrische-haarglattburste-608000
 56075663540609	heben	15.90	16.90	12.95	2026-11-27	diy-powerbank-kit-fur-16x-18650-akkus-685824
+56052974322049	heben	14.90	16.90	12.91	2026-11-27	usb-beheizbare-wasserdichte-wildleder-fingerha-615700
+56052974354817	heben	14.90	16.90	13.39	2026-11-27	usb-beheizbare-wasserdichte-wildleder-fingerha-615700
