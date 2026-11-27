@@ -486,7 +486,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
-- 2026-11-28 · **Codex: Cascade-Vorschau als Lichtreferenz, Drehkarte präzisiert. Nachfrage-Tag erhält bestehende Google-Sperren.** `dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md`
+- 2026-11-28 · **Codex: Cascade-Vorschau als Lichtreferenz, Drehkarte präzisiert. Google-Pilot mit 3 Produkten und 53 Varianten zur Freigabe.** `dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md`
 - 2026-11-27 · 🤝 **Übergabe an Codex (Betreiber «speichere memory für chatgpt codex er macht weiter»): Einstieg `docs/UEBERGABE-CODEX-2711.md`, `AGENTS.md` auf dem Branch zeigt dorthin. Shop-Kampagne: CAC 12, ROAS 4x, Budget 100/Monat; Klaviyo-Domain aktiv; Postfach aufgeräumt.**
 - 2026-11-27 · 🛒 **Google-Kanal gehört dem GMC-Schaufenster (origin/main): Rückholer ans Manifest gebunden (fail-closed, Deckel 300), Aufseher nur Trockenlauf — vorher Ping-Pong (+49'000 Varianten am 23.11.). Lehre: vor «Leck»-Alarm den Gegenspieler suchen (origin/main, product.events-App).**
 - 2026-11-27 · 🛒 **«push für mehr einkäufe»: Trichter nur mit `session_country='Switzerland'` messen (China-Bots), Shop-App-Käufe fehlen im Sitzungs-Trichter. Umgesetzt: BW-Seite/Warenkorb-Hinweis, Vertrauen unter Kaufknopf, Leiste TWINT/Klarna, «Inkl. MwSt.» raus, Abbruch-Mail mit Produktbildern. Betreiber: Klaviyo-DNS (5/10 Bounces), «Stufe 3 ja», Geschenkkarte.** `dropship/verkauf-2711/PUSH.md`
