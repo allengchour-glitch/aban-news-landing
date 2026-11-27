@@ -1,14 +1,19 @@
-# Auswahl nachrüsten — scharf 2026-11-27 17:15 UTC
+# Auswahl nachrüsten — scharf 2026-11-27 20:23 UTC
 
-umgebaut: 14 · MANUELL: 435 · Fehler: 0
+umgebaut: 2 · MANUELL: 385 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- 7-teiliges Nagelverlängerungs-Set · 7 Stück (`7-teiliges-nagelverlangerungs-set-7-stuck-159936`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Weihnachts-Geschenksäckli aus Baumwolle/Leinen (`weihnachts-geschenksackli-aus-baumwolle-leinen-638400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- 7-teiliges Nagelverlängerungs-Set · 7 Stück (`7-teiliges-nagelverlangerungs-set-7-stuck-159936`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Weihnachts-Geschenksäckli aus Baumwolle/Leinen (`weihnachts-geschenksackli-aus-baumwolle-leinen-638400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — HTTP 429: {"error":{"message":"
+- Schwebendes Saturn-Nachtlicht (`schwebendes-saturn-nachtlicht-883072`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Kleine Weihnachtszug-Nachtlampe (`kleine-weihnachtszug-nachtlampe-607900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- 3D LED Nachtlicht mit Halloween-Totenkopf (`3d-led-nachtlicht-mit-halloween-totenkopf-06b4c3`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Interaktiver Fussball für Hunde (`interaktiver-fussball-fur-hunde-673536`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Personalisierte Buchstabenlampe aus Holz (`personalisierte-buchstabenlampe-aus-holz-097984`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Kleine Kristallkugel Nachtlampe 6 cm (`kleine-kristallkugel-nachtlampe-6-cm-623100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Nordische Tischlampe mit Dimmfunktion und Bluetooth-Lautsprecher (`nordische-tischlampe-mit-dimmfunktion-und-blue-657216`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Silikon-Häschen-Nachtlicht mit Farbwechsel (`silikon-haschen-nachtlicht-mit-farbwechsel-779136`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Ecklampe mit Farbwechsel (`ecklampe-mit-farbwechsel-608623`): Stecker-Teil nicht in jedem Schlüssel genau einmal
 - Induktionsnachtlicht LED, Plexiglas, Druckknopf (`induktionsnachtlicht-led-plexiglas-druckknopf-edbd08`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Häsli-Nachtlicht mit LED-Beleuchtung (`hasli-nachtlicht-mit-led-beleuchtung-2c6a5d`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Umhängetasche (`umhangetasche-3d5230`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -24,7 +29,6 @@ umgebaut: 14 · MANUELL: 435 · Fehler: 0
 - Modernes Nachtlicht mit Knopf- und Fernbedienung (`modernes-nachtlicht-mit-knopf-und-fernbedienun-504448`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Nachtlicht mit Bluetooth-Lautsprecher und 10 W Wireless-Ladestation (`nachtlicht-mit-bluetooth-lautsprecher-und-10-w-229120`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - LED Spinnenweben-Licht für Halloween (`led-spinnenweben-licht-fur-halloween-900480`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nordisches Sofa-Kissen 30×50 cm (`nordisches-sofa-kissen-30-50-cm-863680`): Titel nennt nur «30×50 cm» (Grösse: ['30×50 cm', '40×60 cm', '45×45 cm', '50×50 cm']) → Titel prüfen (Mensch)
 - Schwangerschaftskissen mit Lendenstütze (`schwangerschaftskissen-mit-lendenstutze-626700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - 3D-Illusions-LED-Lampe Knot 2 (`3d-illusions-led-lampe-knot-2-bb91f1`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Luftdichter Aufbewahrungsbehälter 1-2 L, Kunststoff (`luftdichter-aufbewahrungsbehalter-1-2-l-kunsts-623400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -137,8 +141,6 @@ umgebaut: 14 · MANUELL: 435 · Fehler: 0
 - Grosses Edelstahl-Becher mit Strohhalm 680 ml (`grosses-edelstahl-becher-mit-strohhalm-680-ml-636800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Handgemachte blaue Cat-Eye Press-on-Nägel (`handgemachte-blaue-cat-eye-press-on-nagel-615900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Handgemachtes Press-on Nagelset (`handgemachtes-press-on-nagelset-634100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Metallbasierte Aromatherapie-Wachslampe (`metallbasierte-aromatherapie-wachslampe-610600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Runde Picknickmatte aus Polyester, 150 cm Durchmesser (`runde-picknickmatte-aus-polyester-150-cm-durch-619700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Handgemachtes Press-on Nägel Set (`handgemachtes-press-on-nagel-set-610100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Verstellbare Nachttischlampe aus Bambus und Holz (`verstellbare-nachttischlampe-aus-bambus-und-ho-607200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Press-on-Nägel mit Diamant- und Cat-Eye-Design (`press-on-nagel-mit-diamant-und-cat-eye-design-607300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -387,55 +389,3 @@ umgebaut: 14 · MANUELL: 435 · Fehler: 0
 - Dekorativer Kissenbezug aus Samt (`dekorativer-kissenbezug-aus-samt-937280`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kabelloses Desktop-Ladegerät für Smartphones (`kabelloses-desktop-ladegerat-fur-smartphones-245312`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Granitbohrer mit Sechskantschaft (`granitbohrer-mit-sechskantschaft-604800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Elastischer Sofabezug «Four Seasons» (`elastischer-sofabezug-four-seasons-374272`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Leichter Strick-Kimono für Damen (`leichter-strick-kimono-fur-damen-615100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Rollender Messerschärfer mit Diamantbeschichtung (`rollender-messerscharfer-mit-diamantbeschichtu-627600`): CJ-Antwort ungültig (code 1602002: Product has been removed from shelves, pid:24090203410116276)
-- Wasserdichte Anti-Rutsch Hundeschuhe · 4 Stück (`wasserdichte-anti-rutsch-hundeschuhe-620900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Sitzkissen Daisy aus Baumwoll-Leinen (`sitzkissen-daisy-aus-baumwoll-leinen-143744`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Chenille Fussmatte – saugstark & rutschfest (`chenille-fussmatte-saugstark-rutschfest-628600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Dekokissen für Sofa und Bett (`dekokissen-fur-sofa-und-bett-618600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Memory Foam Stuhlkissen für langes Sitzen (`memory-foam-stuhlkissen-fur-langes-sitzen-943680`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Atmungsaktive Denim-Leine für Hunde (`atmungsaktive-denim-leine-fur-hunde-609100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Künstliche Nägel «Pure Hand Drawing» (`kunstliche-nagel-pure-hand-drawing-613300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Weisse Nagel-Tips mit Strass, fertig designt (`weisse-nagel-tips-mit-strass-fertig-designt-605000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemalte Nägel mit Eiseffekt (`handgemalte-nagel-mit-eiseffekt-612500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagelclipper für Senioren – 5,7 cm & 8 cm (`nagelclipper-fur-senioren-5-7-cm-8-cm-138112`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagelverlängerung Gel Kit 15 ml – Soak‑Off UV (`nagelverlangerung-gel-kit-15-ml-soak-off-uv-429312`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Abnehmbare Kunstnägel mit UV-Schutz (`abnehmbare-kunstnagel-mit-uv-schutz-521664`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Opal-Look Press-on Nägel mit Herzmuster (`opal-look-press-on-nagel-mit-herzmuster-783552`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Peach Blush Beige Nagel-Set (`peach-blush-beige-nagel-set-065088`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Bucheriti Cat's Eye Press-on Nägel (`bucheriti-cat-s-eye-press-on-nagel-867712`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Camellia Serie – Abnehmbare Nagelsticker (`camellia-serie-abnehmbare-nagelsticker-390848`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemachte Fake Nails – langanhaltende Maniküre (`handgemachte-fake-nails-langanhaltende-manikur-669184`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Elegante, handgemachte Nägel zum Aufkleben (`elegante-handgemachte-nagel-zum-aufkleben-618600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Dark Punk Hot Girl Persönlichkeit Nägel (`dark-punk-hot-girl-personlichkeit-nagel-621100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Dunkle Spinnennetz-Nägel zum Aufkleben (`dunkle-spinnennetz-nagel-zum-aufkleben-604200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Starry Sky Cat Eye Maniküre (`starry-sky-cat-eye-manikure-621100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Miao Jiang Gu Du Luxus-Nagelset (`miao-jiang-gu-du-luxus-nagelset-615400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemachte Cat Eye Nägel im Grünton (`handgemachte-cat-eye-nagel-im-grunton-619800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemachte Cat Eye Nägel für Herbst/Winter (`handgemachte-cat-eye-nagel-fur-herbst-winter-624100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- French Cat Eye Press-on Nägel (`french-cat-eye-press-on-nagel-609900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Lucky Paper Drunk Fan Nagelsticker (`lucky-paper-drunk-fan-nagelsticker-614200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Devil Wing Künstliche Nägel (`devil-wing-kunstliche-nagel-617400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Hochzeits-Nagel-Set (`hochzeits-nagel-set-132352`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Herbst/Winter Press-on Nägel (`herbst-winter-press-on-nagel-859520`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Fantasy Diamond Luxus-Press-on Nägel (`fantasy-diamond-luxus-press-on-nagel-613700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Dunkle Spitze & Blutiger Schmetterling Nägel (`dunkle-spitze-blutiger-schmetterling-nagel-622000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Blumen-Nagel-Sticker · 10 Stück (`blumen-nagel-sticker-002112`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Rotes Cat's Eye Nagelset zum Aufkleben (`rotes-cat-s-eye-nagelset-zum-aufkleben-612300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- French Cherry Manicure Press-On Nägel (`french-cherry-manicure-press-on-nagel-622000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagel-Patches (`nagel-patches-601600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Profi-Gel für Nageldesign – Grosse Flasche (`profi-gel-fur-nageldesign-grosse-flasche-606000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- UV Nagellack Gel – Aushärtender Farbkleber (`uv-nagellack-gel-aushartender-farbkleber-4fb466`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Glitzer Reflektierender UV/LED Gel Nagellack (`glitzer-reflektierender-uv-led-gel-nagellack-039488`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- DIY Nagelbild-Set zur Entspannung (`diy-nagelbild-set-zur-entspannung-575552`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagelklebestift-Set (`nagelklebestift-set-635800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Pure Color UV Gel-Nagelsticker (`pure-color-uv-gel-nagelsticker-333824`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemachte, abnehmbare Kunstnägel (Kurz) (`handgemachte-abnehmbare-kunstnagel-kurz-981056`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- "Lost Paradise" Nagel-Set im Dark Personality Stil (`lost-paradise-nagel-set-im-dark-personality-st-610700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagel-Set "Thigh Coarse Hair Bow" (`nagel-set-thigh-coarse-hair-bow-258880`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Rosafarbene Diamant-Kunstnägel (`rosafarbene-diamant-kunstnagel-340288`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Silber-Schwarz Super Cool Nagelsticker (`silber-schwarz-super-cool-nagelsticker-610700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Transparente, kühle handgemachte Nägel (`transparente-kuhle-handgemachte-nagel-635400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Multifunktionales Nagelverlängerungsgel 15ml (`multifunktionales-nagelverlangerungsgel-15ml-617600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nagelart Blumen Motiv (`nagelart-blumen-motiv-609600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
