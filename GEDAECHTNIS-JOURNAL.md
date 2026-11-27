@@ -62,6 +62,10 @@
 
 
 
+## 2026-11-27 20:30 · 🤝 Übergabe an Codex
+- Betreiber: «speichere memory für chatgpt codex er macht weiter». Einstieg für Codex: `docs/UEBERGABE-CODEX-2711.md` (Gedächtnis-Orte, Betreiber-Regeln, Zugänge ohne Werte, Motoren, geplante Aufgaben mit Datum, Stand 27.11., Shop-Kampagne, offene Entscheide, Fallen, offene Bestellungen). `AGENTS.md` (Kopie von main + Hinweis oben) liegt jetzt auch auf `claude/luxestyle-status-tztnn1`.
+- Vorher am Abend: Postfach aufgeräumt (95 Threads + 14 Drive-Screenshots in den Papierkorb; Belege/Kunden/Sicherheit/Recht behalten; ein Teilagent verweigerte, weil ihm der Betreiber-Auftrag fehlte — Lehre: Agenten-Prompts müssen den WÖRTLICHEN Betreiber-Auftrag enthalten). #1021-Beschwerde (Kassensturz-Drohung) aus dem Papierkorb zurückgeholt; Bestellung war am 30.10. voll erstattet. Campaign Autopilot: Betreiber setzte CAC 12 (meine erste Zahl; korrigierte Empfehlung 10, Bremse ist ROAS 4x → Vorschlag 3x).
+
 ## 2026-11-27 18:45 · ✉️ Klaviyo-Sendedomain send.luxestyle.ch AKTIV
 - Betreiber trug die 5 DNS-Einträge bei Namecheap ein (Screenshots per Drive). DoH (cloudflare-dns.com) zeigte alle 5 sofort; `create_sending_domain_verification_job` → verified 5/5; `create_sending_domain_activation_job` mit `warming_enabled:false` (bei nur einer Domain nicht unterstützt) → active. Damit gehen Klaviyo-Mails nicht mehr über die geteilte Klaviyo-Domain (Bounce-Problem 5/10 vom 27.11.). Endspurt-Mail 29.11. läuft schon über die eigene Domain. Nachmessen: Bounce-Rate der Endspurt-Kampagne (get_campaign_report) am 30.11.
 - SHOP-APP Werbung abgelesen (kein Reichweiten-Banner) → Zustell-Melder bleibt AUS; die 37 «gelisteten, unveröffentlichten» Shop-Produkte sind absichtlich gesperrt (Shisha = raucher/smoke-zubehoer, Mini-Kamera = ueberwachungstechnik) — NICHT «Alle veröffentlichen».

@@ -359373,3 +359373,13 @@
 68301216842119	heben	81.90	98.90	79.89	2026-11-27	jacke-mit-fellkragen-recyceltes-material-609900
 68301216874887	heben	81.90	98.90	79.56	2026-11-27	jacke-mit-fellkragen-recyceltes-material-609900
 68301216907655	heben	81.90	99.90	80.21	2026-11-27	jacke-mit-fellkragen-recyceltes-material-609900
+68122566459783	heben	79.90	80.90	64.97	2026-11-27	haushaltshandsage-aus-holz-625000
+67948174541191	heben	78.90	83.90	67.55	2026-11-27	soja-milch-smoothie-maker-628100
+67948174573959	heben	80.90	85.90	68.96	2026-11-27	soja-milch-smoothie-maker-628100
+56150594126209	heben	24.90	25.90	19.96	2026-11-27	schwarzer-sofabezug-mit-pflanzenmuster-620200
+56150751019393	heben	78.90	79.90	64.50	2026-11-27	ennio-7-zoll-farb-video-tursprechanlage-0065d7
+56150515089793	sperren	79.90	160.90	130.22	2026-11-27	brustmuskel-trainingsgerat-fur-zuhause-492416
+15508397392257	draft				2026-11-27	brustmuskel-trainingsgerat-fur-zuhause-492416
+67948039733639	heben	78.90	79.90	64.18	2026-11-27	schwebender-globus-mit-spiegel-sockel-5133ac
+67948039766407	heben	78.90	79.90	64.18	2026-11-27	schwebender-globus-mit-spiegel-sockel-5133ac
+67948039799175	heben	78.90	79.90	64.18	2026-11-27	schwebender-globus-mit-spiegel-sockel-5133ac

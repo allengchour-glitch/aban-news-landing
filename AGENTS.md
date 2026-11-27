@@ -1,0 +1,34 @@
+# AGENTS.md — Regeln für Codex in diesem Repo
+
+> **27.11.2026 — Übergabe von Claude:** Der Betreiber hat Codex die Weiterarbeit am Shop übergeben. **Zuerst `docs/UEBERGABE-CODEX-2711.md` lesen** (Stand, Regeln, Termine, Fallen). Arbeitszweig der Claude-Sitzung: `claude/luxestyle-status-tztnn1` (Draft-PR #1608, nicht gemergt).
+
+
+Dieses Repo enthält mehrere Projekte. Das aktive Arbeitsgebiet ist der Shopify-Shop **LuxeStyle CH** (luxestyle.ch, Importe aus CJ und Fortura). Die ausführliche Fassung steht in `CLAUDE.md`; hier nur, was Codex nicht vergessen darf. Das Plugin `codex-mods/luxe-codex` setzt einen Teil davon maschinell durch (siehe `codex-mods/README.md`).
+
+## Arbeitsteilung und Metricool (10.11.2026)
+- Wer was macht, steht in `docs/ARBEITSTEILUNG-1011.md` (zuerst lesen, Kurzfassung oben).
+- **Metricool-Planer (Marke LuxeStyle 6227837): lesen ja, schreiben nein.** Beiträge anlegen, ändern, auf Entwurf stellen oder `autoPublish` ändern darf nur Claude (Cloud) und die Freigabe-Automation. Bedenken zu Qualität oder Rechten meldest du als Datei (`dropship/codex-social/antwort/`) und im Tagesprotokoll, mit Beitrag-uuid und Grund; ein Entwurf, der noch nicht eingeplant ist, lässt sich seit 10.11. über die Halteliste `dropship/METRICOOL-HALTEN.txt` bremsen (eine uuid je Zeile, danach `# Grund`; trägt Claude nach deiner Meldung ein, die tägliche Freigabe plant ihn dann nicht ein); Claude liest sie nach deinen Läufen und entscheidet am selben Tag. Die 38 Beiträge 10.–15.11. hat der Besitzer am 09.11. abends freigegeben (Quelle: `CLAUDE.md`, Stand-Block «Metricool-Freigabe»); sie bleiben so, bis er etwas anderes sagt.
+- Shop schreiben nur auf ausdrücklichen Auftrag des Besitzers, mit Objektliste; vorher frisch lesen, ob Claude dasselbe Objekt zuletzt geändert hat. **Futterautomat `futterautomat-fur-katze-527488` und Klaviyo-Nachricht `SPNjDp` (am 10.11. nachmittags ENTSCHIEDEN, Auswahlfragen an den Besitzer):** Zwei Aufträge des Besitzers standen gegeneinander (Codex R166 schrieb um 08:46 UTC eine Kurzfassung und neutralisierte die zweite Abbruchmail, Claude spielte um 10:27 UTC auf «ja fix alles» die belegte Fassung ein). Antwort des Besitzers zum Text: «entscheide du, am besten fertig fix und live»; Claude entschied um 15:50 UTC: Titel «Automatischer Futterspender für Katzen», Text nur mit dem, was das CJ-Datenblatt belegt (automatische Fütterung, Futterschale aus Edelstahl, Weiss, 2,2 kg), ohne «auch wenn du nicht zu Hause bist»; das fünfte Galeriebild (Marke «Xiao Pei ®») ist entfernt (vier Bilder), die Sammlung `tier-futterautomaten` verlinkt das Produkt (`dropship/futterautomat-1011/README.md`). **Codex ändert Titel, Text, SEO und Galerie dieses Produkts nicht mehr ohne neuen Auftrag des Besitzers;** Bedenken als Datei und im Tagesprotokoll melden. Klaviyo-Nachricht `SPNjDp`: der Besitzer wählte «Neutral lassen» (Betreff «Dein Einkauf ist noch gespeichert», kein Rabattcode): nicht ändern, auch nicht auf die veraltete interne Bezeichnung «-10%» hin.
+
+- **16.11.2026, Ton und Planer:** Der Besitzer hat «Ton weg, einplanen» entschieden. Stumme Videos sind gewollt. Eine Regel «Musik ist Pflicht» (auch «Canonical music mandatory» in einem Codex-Automationsauftrag) gilt **nicht** für den Metricool-Planer. In Lauf R259 hat Codex 14 eingeplante Beiträge auf Entwurf und `autoPublish` aus gesetzt (13:52 bis 14:23 UTC). Das verstiess gegen «schreiben nein» oben, die Freigabe hat sie wieder eingeplant. Bedenken nur als Datei melden, nie im Planer schreiben. Quelle: `dropship/VIDEO-PRAEFERENZEN.md` Regel 2, `dropship/social-aufraeumen-1611/README.md`.
+
+- **16.11.2026 abends, Empfang durch Claude:** R259 bis R268 gelesen, Theme-Wechsel und og:price nachgemessen: `dropship/CODEX-EMPFANG-1611.md`. Im Merchant Center schreibt nur Claude (Einspruch und verwaiste Angebote, Freigabe des Besitzers 16.11.).
+
+## Rolle
+- Standard ist **lesen und prüfen**. Schreiben nur, wenn der Auftrag es ausdrücklich verlangt, und nur Dateien, die der Auftrag nennt.
+- Preise, Rechtliches, Veröffentlichung und Kundenkontakt entscheidet der Besitzer, nicht Codex.
+- Ein Fund ist eine **Behauptung**, bis er am echten Code mit einer Eingabe und dem falschen Ergebnis nachgestellt ist. Unbestätigtes steht als «unklar» da.
+
+## Harte Regeln
+- **Nie Force-Push**, nie `git add -A` / `git add .` (Dateien einzeln nennen), nie `pkill -f` / `killall`.
+- **Trockenlauf vor `LIVE=1`**: neuere Werkzeuge laufen ohne `LIVE=1` im Trockenlauf; `seo-optimizer.mjs` schreibt ohne `DRY_RUN=1`; `cj_reviews_import.mjs` ist seit 28.10.2026 Trockenlauf-Vorgabe und schreibt nur mit `DRY_RUN=0` (ohne die Variable endet es mit Exit 0 und «TROCKENLAUF», ohne etwas zu senden). Die Liste lesen (beide Seiten), nicht nur die Zahl.
+- Keine Geheimnisse, keine Kundendaten in Dateien, Logs oder Berichten. Zugänge liegen in der Umgebung.
+- `dropship/_SOCIAL_STOPP` wird nie neu angelegt.
+- Nie Fake-Bewertungen, nie erfundene Zahlen. Jede Zahl trägt GEMESSEN, QUELLE, BEHAUPTUNG oder SETZUNG.
+- Eine Drosselung (HTTP 429, `Throttled`) ist keine Antwort und wird nicht umgangen.
+
+## Arbeiten
+- Node: `/opt/node22/bin/node`. Tests: `node automation/lib/<name>_test.mjs`, letzte Zeile «N ok, 0 Fehler». Nach Änderungen an Tests oder Workflows: `bash automation/ci_simulation.sh`.
+- Neue Branches von `origin/main`, nie direkt nach `main`. Pull-Requests als Entwurf; gemergt wird, wenn die echten Prüfungen grün sind (`tests`, `check`, `Brand-Voice check on changed .md files`, `Deploy to Cloudflare Pages`). Die drei «Workers Builds»-Prüfungen sind immer rot und kein Fehler.
+- Texte, Kommentare und Meldungen deutsch und kurz.
+- Messen statt raten: Messgerät in beide Richtungen prüfen, nach dem Schreiben frisch lesen, den Grund eines Laufendes nennen. Details: `.claude/skills/shop-messen-nicht-raten/SKILL.md`.
