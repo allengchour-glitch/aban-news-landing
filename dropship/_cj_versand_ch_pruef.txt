@@ -13901,3 +13901,17 @@ spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landesei
 strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
 aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
 streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
+strick-bluse-maglia-hollow-out-loose-langarm	-	-	-	unklar keine CJ-SKU	landeseite
+chiffon-set-solare-bluse-weite-hose	-	-	-	unklar keine CJ-SKU	landeseite
+baseball-cap-l-a-hellblau	2065248811213283329	16	5.81	ok	landeseite
+baseball-cap-classic-rot-baumwolle	-	-	-	unklar keine CJ-SKU	landeseite
+bucket-hat-banana-schwarz-print	2062719290632798209	16	5.54	ok	landeseite
+cord-bucket-hat-manchester-navy	2062344126670561282	16	5.65	ok	landeseite
+denim-cap-bleu-washed-hellblau	2061987170318778369	16	5.77	ok	landeseite
+baseball-cap-wellness-rot-stickerei	2059079399988719618	16	5.61	ok	landeseite
+baseball-cap-paris-schwarz-stickerei	2059101589130031105	16	5.62	ok	landeseite
+edelstahl-armband-amore-herz-geburtsstein-gold	2606151028301606800	16	4.40	ok	landeseite
+edelstahl-armband-coeur-herz-gold	2606151011001608800	16	4.42	ok	landeseite
