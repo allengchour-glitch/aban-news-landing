@@ -1,20 +1,20 @@
-# Preis-Verlustschutz — scharf 2026-11-27 17:44 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 17:52 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **10** · Varianten gehoben: **35** · gesperrt (Faktor > 2.0): 8
-- Median-Faktor der Hebungen: 1.06× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 10 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **11** · Varianten gehoben: **29** · gesperrt (Faktor > 2.0): 28
+- Median-Faktor der Hebungen: 1.01× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 11 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Gravity Shisha – Vielseitig & Kompakt | 147.90 | 126.05 | **155.90** | 1.05× |
-| 360° Driving Recorder HD Nachtsicht kabellos | 138.90 | 112.69 | **139.90** | 1.01× |
-| Sportwagen Kleinpartikel Bausteine | 153.90 | 124.77 | **154.90** | 1.01× |
-| Laptop Rucksack für Studium & Alltag | 136.90 | 114.36 | **141.90** | 1.04× |
-| Dekoratives Messing-Tablett aus Indien | 50.90 | 42.16 | **52.90** | 1.04× |
-| Edle Glasschale im nordischen Design | 113.90 | 93.75 | **115.90** | 1.02× |
-| Rotierender Kristall-Glas-Wein-Entkorker 1000 ml | 141.90 | 124.07 | **153.90** | 1.08× |
-| Multifunktionaler Sandsack für das Krafttraining | 123.90 | 101.18 | **124.90** | 1.01× |
-| Tierische Skelettmodelle | 47.90 | 39.11 | **48.90** | 1.02× |
-| Stahl-Deckel für Schnellöffnung von Schächten | 116.90 | 99.87 | **123.90** | 1.06× |
+| Erweiterbarer Multifunktions-Rollkoffer 20 Zoll | 132.90 | 108.02 | **133.90** | 1.01× |
+| Elegante gelbe Keramikvase | 128.90 | 104.95 | **129.90** | 1.01× |
+| Faltbares, regenfestes 2-Personen-Zelt | 134.90 | 109.79 | **135.90** | 1.01× |
+| Auto Modell zum Zusammenbauen | 121.90 | 99.48 | **122.90** | 1.01× |
+| Elegante Glas-Obstschale | 87.90 | 77.27 | **95.90** | 1.09× |
+| Racing Sportwagen Bausteine · XL-Modell | 110.90 | 89.91 | **111.90** | 1.01× |
+| Multifunktionale Türreckstange für Zuhause | 129.90 | 108.60 | **134.90** | 1.04× |
+| Jieshi 3-in-1 Saug- und Wischroboter | 130.90 | 107.67 | **132.90** | 1.02× |
+| Kettlebell aus Stahl für Krafttraining | 100.90 | 113.92 | **140.90** | 1.40× |
+| Schutzweste für Training und Outdoor | 41.90 | 34.47 | **42.90** | 1.02× |
