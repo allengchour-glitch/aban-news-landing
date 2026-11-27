@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:05 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:12 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **23'427**
-- Optionen mit englischen Werten (Kandidaten): 901
+- Produkte gesehen: **30'616**
+- Optionen mit englischen Werten (Kandidaten): 1'077
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'770
+- Werte mit unbekanntem Wort (unverändert): 3'287
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 26
-- übersprungen «kleidungsstueck-im-wert»: 17
+- übersprungen «kollision-nach-uebersetzung»: 27
+- übersprungen «kleidungsstueck-im-wert»: 21
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -25,6 +25,8 @@
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
 - `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Lange Ärmel | Vest | Off shoulder
 - `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
+- `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: Grau weite Hose | Grau K02 Hose | Grau / Schwarz Sweatpants | Grau Schlaghose | Grau Blumenhose | Grau / Blumen Hose | Weiss K02 Hose | Weiss / Schwarz Sweatpants
+- `15494642336129` [Farbe] **Figurbetonendes Camisole-Kleid im Zweiteiler-Set** — rock · Titel nennt Set: Skirt | Mantel Rock Anzug
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -56,6 +58,7 @@
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: US8 → US 8; US9 → US 9; US9.5 → US 9.5; US10.5 → US 10.5; US11.5 → US 11.5
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 3 Apricot → 3 Aprikose; 3 Apricot color → 3 Aprikose
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -84,5 +87,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 117, `powder` 89, `french` 84, `high` 51, `shell` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `one` 44, `diamond` 40, `chain` 39, `elegant` 37, `cherry` 37, `space` 33, `tc` 31, `end` 29, `four` 28, `intergold` 28, `opp` 26, `plush` 26, `gel` 26, `stickers` 26, `of` 25, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `carbon` 22, `blossom` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `line` 19, `lamp` 19, `holder` 19, `full` 18, `lotus` 18, `to` 18, `titanium` 18, `basic` 18, `rabbit` 17, `size` 17, `⟨satzbau:praeposition⟩` 17, `two` 17, `degrees` 17, `no` 17, `color` 16, `waist` 16, `light` 16, `love` 16, `the` 16, `rain` 16, `three` 15, `pin` 15, `ice` 15, `sunflower` 15, `strawberry` 15, `speed` 15, `hard` 15
+`⟨satzbau:adjektiv-vor-nomen⟩` 123, `powder` 94, `french` 84, `size` 69, `elegant` 52, `cherry` 52, `one` 51, `high` 51, `shell` 50, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 44, `chain` 39, `four` 34, `space` 33, `tc` 31, `li` 31, `core` 30, `end` 29, `intergold` 28, `opp` 27, `blossom` 27, `of` 27, `carbon` 27, `inner` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `×` 23, `eyelashes` 23, `two` 21, `avocado` 21, `lotus` 20, `no` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `oxford` 20, `gun` 19, `line` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `full` 18, `color` 18, `waist` 18, `to` 18, `titanium` 18, `three` 17, `rabbit` 17, `⟨satzbau:praeposition⟩` 17, `degrees` 17, `light` 17, `ice` 17, `the` 17
 

@@ -358540,3 +358540,10 @@
 67657137848711	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
 67657137881479	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
 67657137914247	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
+55885250199937	heben	14.90	15.90	12.45	2026-11-27	lenkradschutz-aus-leder-elastisch-sportlich-623300
+55884911739265	heben	14.90	15.90	12.47	2026-11-27	elektronischer-geschwindigkeitsmesser-776320
+55889729683841	heben	14.90	16.90	12.93	2026-11-27	drahtloses-dual-ladegerat-fur-smartphones-8c3055
+55889937269121	heben	14.90	18.90	14.82	2026-11-27	elektrische-edelstahl-pfeffermuhle-69057d
+55889937301889	heben	14.90	25.90	20.18	2026-11-27	elektrische-edelstahl-pfeffermuhle-69057d
+55889937334657	heben	14.90	25.90	20.59	2026-11-27	elektrische-edelstahl-pfeffermuhle-69057d
+55907177890177	heben	14.90	20.90	16.11	2026-11-27	holz-nistkasten-fur-fledermause-627200
