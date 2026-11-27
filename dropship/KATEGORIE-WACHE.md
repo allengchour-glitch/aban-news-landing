@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-27T16:43Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-27T17:39Z
 
-Aktive gescannt: 67 · ohne Kategorie: 67 · heute gesetzt: 66 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- faltbare-aufbewahrungssitzbank-fur-sofa-und-sc-624300 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
-- rattan-funf-sterne-led-licht-599b76 · Beleuchtung → Home & Garden > Lighting
-- wasserdichte-brusttasche-mit-verstellbarem-sch-682368 · Taschen → Luggage & Bags
-- farbwechselnde-led-nachtlampe-fur-bett-und-cam-ec2aa1 · Beleuchtung → Home & Garden > Lighting
-- holz-desktop-kosmetik-aufbewahrungsbox-617700 · Aufbewahrung & Organizer → Home & Garden > Household Supplies > Storage & Organization
+- kleine-kristallkugel-nachtlampe-6-cm-623100 · Beleuchtung → Home & Garden > Lighting
+- 3d-gamepad-nachtlicht-mit-touch-und-fernbedien-5175e3 · Beleuchtung → Home & Garden > Lighting
+- induktions-nachtlicht-mit-pir-sensor-bb768d · Beleuchtung → Home & Garden > Lighting
+- led-tierform-nachtlicht-mit-bewegungssensor-02bd38 · Beleuchtung → Home & Garden > Lighting
+- rgb-symphony-tischlampe-nachtlicht-028288 · Beleuchtung → Home & Garden > Lighting
 
