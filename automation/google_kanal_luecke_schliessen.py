@@ -29,7 +29,7 @@ Ohne IDS liest es die IDs aus dem Bericht des Wächters.
 import json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag
+from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag, schaufenster_filtern
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -178,6 +178,7 @@ def main():
     if os.path.exists(LEDGER):
         erledigt = {l.split("\t")[0] for l in open(LEDGER)}
     offen = [i for i in ids if i not in erledigt]
+    offen = schaufenster_filtern(offen, schreibt=not DRY, wer="google_kanal_luecke_schliessen")  # 27.11.2026
     print(f"{len(ids)} gemeldet · {len(offen)} noch offen", flush=True)
 
     frei, blockiert, schon = [], [], 0

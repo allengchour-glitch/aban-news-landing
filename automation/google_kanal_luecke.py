@@ -187,6 +187,13 @@ def main():
         else:
             kandidaten.append(p)
 
+    # 27.11.2026: GMC-Schaufenster (origin/main) hat Vorrang — Abgewählte nie zurückholen; Deckel 300 je Lauf.
+    from google_sperrliste import schaufenster_filtern
+    _frei = set(schaufenster_filtern([p["id"] for p in kandidaten], schreibt=WRITE, wer="google_kanal_luecke"))
+    _ab = len(kandidaten) - len(_frei)
+    kandidaten = [p for p in kandidaten if p["id"] in _frei]
+    if _ab:
+        gruende["GMC-Schaufenster abgewählt (Merchant-Quote) / Deckel"] = _ab
     print(f"Ausserhalb des Google-Kanals: {len(alle):,}")
     print(f"Davon mit gutem Grund draussen: {len(alle)-len(kandidaten):,}")
     for g, n in sorted(gruende.items(), key=lambda x: -x[1])[:12]:

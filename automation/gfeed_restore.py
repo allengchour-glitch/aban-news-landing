@@ -49,7 +49,7 @@ Lieferanten-SKU.
 import json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt
+from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt, schaufenster_filtern
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -207,6 +207,8 @@ def main():
     if vorher != len(offen):
         print(f"⛔ Google-Sperrliste: {vorher - len(offen)} gemeldete Richtlinienverstösse "
               f"bleiben draussen", flush=True)
+
+    offen = schaufenster_filtern(offen, schreibt=not DRY, wer="gfeed_restore")
 
     f = open(LEDGER, "a")
     zurueck = schon_drin = uebersprungen = gesperrt = 0

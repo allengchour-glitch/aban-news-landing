@@ -30,7 +30,7 @@ DRY=1 meldet nur.
 import json, os, re, subprocess, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt
+from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt, schaufenster_filtern
 
 # ⛔ NACHKONTROLLE 14.08.2026: Dieses Skript hat zwei Produkte in den Google-Kanal
 # publiziert, die wegen von GOOGLE SELBST gemeldeter Richtlinienverstösse dort
@@ -132,6 +132,8 @@ def main():
     if os.path.exists(LEDGER):
         done = {l.split("\t")[0] for l in open(LEDGER)}
     offen = [k for k in kandidaten if k[0] not in done]
+    _frei = set(schaufenster_filtern([k[0] for k in offen], schreibt=not DRY, wer="google_kanal_nachziehen"))
+    offen = [k for k in offen if k[0] in _frei]
     if DRY:
         for gid, t, pr in sorted(offen, key=lambda x: -x[2])[:12]:
             print(f"   CHF {pr:>7.2f}  {t[:56]}", flush=True)

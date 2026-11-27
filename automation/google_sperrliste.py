@@ -174,6 +174,77 @@ def entfernte_handles(verzeichnis=None):
     return hs
 
 
+class SchaufensterFehler(RuntimeError):
+    """Manifest des GMC-Schaufensters nicht lesbar oder zu alt — Rückholer dürfen dann NICHT schreiben."""
+
+
+def schaufenster_ids(max_alter_h=48, fetch=True):
+    """IDs (Zahl-Zeichenkette), die das GMC-Schaufenster bewusst vom Google-Kanal genommen hat.
+
+    27.11.2026: Der Google-Kanal gehört dem Schaufenster (nur auf origin/main: .github/workflows/gmc-schaufenster.yml,
+    automation/gmc_schaufenster.mjs, Merchant-Quote 150'000, Budget 78'000 Varianten, Betreiber-Freigaben 28.10.).
+    google_kanal_luecke.py holte am 23.11. ~1'700 Abgewählte zurück → 127'860 Varianten, am 24.11. wieder 2'086 ab.
+    Quelle: `git show origin/main:dropship/gmc_schaufenster_manifest.jsonl`; massgeblich ist die LETZTE Aktion je ID
+    (alles ausser «auf» = abgewählt). FAIL-CLOSED: nicht lesbar oder origin/main älter als max_alter_h → SchaufensterFehler.
+    """
+    import subprocess
+    repo = _repo()
+    if fetch:
+        subprocess.run(["git", "-C", repo, "fetch", "-q", "origin", "main"], timeout=120,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        ct = int(subprocess.run(["git", "-C", repo, "log", "-1", "--format=%ct", "origin/main"], capture_output=True,
+                                text=True, timeout=30, check=True).stdout.strip())
+        roh = subprocess.run(["git", "-C", repo, "show", "origin/main:dropship/gmc_schaufenster_manifest.jsonl"],
+                             capture_output=True, text=True, timeout=60, check=True).stdout
+    except Exception as e:  # noqa: BLE001
+        raise SchaufensterFehler(f"Manifest nicht lesbar: {e}")
+    import time as _t
+    alter_h = (_t.time() - ct) / 3600
+    if alter_h > max_alter_h:
+        raise SchaufensterFehler(f"origin/main {alter_h:.0f} h alt (> {max_alter_h} h)")
+    letzte = {}
+    for z in roh.splitlines():
+        z = z.strip()
+        if not z:
+            continue
+        try:
+            d = _json.loads(z)
+        except ValueError:
+            continue
+        n = id_zahl(d.get("id"))
+        if n:
+            letzte[n] = d.get("aktion", "")
+    if not letzte:
+        raise SchaufensterFehler("Manifest leer")
+    return {n for n, a in letzte.items() if a != "auf"}
+
+
+def schaufenster_filtern(ids, schreibt, wer="", max_n=None):
+    """Gemeinsames Tor für jeden Google-Rückholer (27.11.2026): wirft vom Schaufenster Abgewählte raus und deckelt.
+
+    schreibt=True und Manifest unlesbar/alt → Exit 3 OHNE zu schreiben (fail-closed). Im Trockenlauf nur Warnung.
+    max_n (Vorgabe GOOGLE_RUECKHOLER_MAX bzw. 300): harte Obergrenze je Lauf; Gekapptes wird gemeldet, nie still."""
+    ids = list(ids)
+    try:
+        ab = schaufenster_ids()
+    except SchaufensterFehler as e:
+        if schreibt:
+            print(f"⛔ {wer}: GMC-Schaufenster-Manifest {e} — schreibe NICHTS (Exit 3)", flush=True)
+            sys.exit(3)
+        print(f"⚠️ {wer}: GMC-Schaufenster-Manifest {e} (Trockenlauf, ungefiltert)", flush=True)
+        ab = set()
+    vorher = len(ids)
+    ids = [i for i in ids if id_zahl(i) not in ab]
+    if vorher != len(ids):
+        print(f"⛔ {wer}: {vorher - len(ids)} vom GMC-Schaufenster abgewählt (Merchant-Quote) — bleiben draussen", flush=True)
+    m = int(os.environ.get("GOOGLE_RUECKHOLER_MAX", "300")) if max_n is None else max_n
+    if len(ids) > m:
+        print(f"⚠️ {wer}: Deckel {m} je Lauf — {len(ids) - m} Kandidaten auf den nächsten Lauf verschoben", flush=True)
+        ids = ids[:m]
+    return ids
+
+
 def tag_gesperrt(tags):
     """Trägt das Produkt einen Google-Sperr-Tag?
 

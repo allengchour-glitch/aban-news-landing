@@ -607,7 +607,10 @@ while true; do
     # Prozessende vom Kernel freigegeben. ⚠️ NICHT inline in den bash -c-String schreiben —
     # 10:11–16:20 stand sie dort und startete SECHS STUNDEN keinen Waechter (Quoting-Ebenen,
     # siehe Kopf von shopify_schranke.sh).
-    SCHRANKE_NAME=reiniger_slot SCHRANKE_PLAETZE=1 setsid bash "$REPO/automation/shopify_schranke.sh" python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
+    # 27.11.2026: gfeed_restore NUR als Trockenlauf — der Google-Kanal gehoert dem GMC-Schaufenster
+    # (origin/main gmc-schaufenster.yml, Budget 78'000 Varianten); Rueckholen nur dort (PHASE=aufnehmen).
+    GDRY=""; [ "$p" = gfeed_restore ] && GDRY=1
+    DRY=$GDRY SCHRANKE_NAME=reiniger_slot SCHRANKE_PLAETZE=1 setsid bash "$REPO/automation/shopify_schranke.sh" python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
@@ -3025,6 +3028,13 @@ KLT=/tmp/test_klingen_tor.log
   else
     echo "$(date -u +%H:%M) ⚠️ automation/besuchte_seiten_lieferbar.py FEHLT"
   fi
+  # ⛔ 27.11.2026: NUR NOCH TROCKENLAUF (kein WRITE=1). Der Google-Kanal gehoert dem GMC-Schaufenster
+  # (origin/main .github/workflows/gmc-schaufenster.yml + automation/gmc_schaufenster.mjs, Merchant-Quote
+  # 150'000, Budget 78'000 Varianten, Betreiber-Freigaben 28.10.). Der Lauf vom 23.11. 22:38 publizierte
+  # ~1'700 Abgewaehlte zurueck → Schaufenster meldete 127'860 Varianten, 24.11. wieder 2'086 ab (Ping-Pong).
+  # Zurueckgeholt wird nur noch ueber PHASE=aufnehmen des Schaufensters.
+  # ÜBERHOLT (27.11.): «Google = einziger Kanal mit Verkaeufen» — sag_organic 0 Kaeufe seit 09/2026,
+  # ChatGPT ist der staerkste Kanal (CLAUDE.md 25.11.). Alte Begruendung:
   # Google-Kanal-Luecke. Google ist der EINZIGE Kanal mit belegten Verkaeufen
   # (4 von 10 Bestellungen); Pinterest/TikTok/Meta tragen den Katalog zwar auch,
   # haben aber nie verkauft. Gemessen 16.09.: 2'497 aktive Produkte lagen ausserhalb
@@ -3040,7 +3050,7 @@ KLT=/tmp/test_klingen_tor.log
       touch "$GKL"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_google_kanal.lock; flock -n 9 || exit 0; exec >> \"$GKL\" 2>&1; \
-           WRITE=1 exec python3 automation/google_kanal_luecke.py" 9>&- & )
+           exec python3 automation/google_kanal_luecke.py" 9>&- & )
       # Ergebnis des VORIGEN Laufs melden, nicht den Start (Lehre 15.09.).
       if [ -s "$GKL" ] && tail -n 25 "$GKL" | grep -q "Traceback\|Error:"; then
         echo "$(date -u +%H:%M) ⚠️ Google-Kanal-Schliesser: letzter Lauf mit Fehler ($GKL)"
