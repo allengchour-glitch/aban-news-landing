@@ -1,6 +1,6 @@
-# Füllmenge fehlt — Stand 2026-11-26 18:40 UTC
+# Füllmenge fehlt — Stand 2026-11-27 17:21 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 137 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 136 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
@@ -44,7 +44,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Heller werdender Anti-Falten Gesichtstoner](https://luxestyle.ch/products/heller-werdender-anti-falten-gesichtstoner-936193) | — | nichts lesbar |  |
 | [Collagen-Reinigungscreme von DR Snail](https://luxestyle.ch/products/collagen-reinigungscreme-von-dr-snail-134402) | — | nichts lesbar |  |
 | [DR Japanische Sakura Creme](https://luxestyle.ch/products/dr-japanische-sakura-creme-178242) | — | nichts lesbar |  |
-| [Anti-Aging Augencreme](https://luxestyle.ch/products/anti-aging-augencreme-615300) | — | nichts lesbar |  |
 | [Ganzkörper Sonnencreme SPF50 mit Lichtschutz](https://luxestyle.ch/products/ganzkorper-sonnencreme-spf50-mit-lichtschutz-624700) | — | nichts lesbar |  |
 | [7-in-1 Gesichtsreiniger & Lifter](https://luxestyle.ch/products/7-in-1-gesichtsreiniger-lifter-216832) | — | nichts lesbar |  |
 | [Kapsel-Reiniger für die Haut](https://luxestyle.ch/products/kapsel-reiniger-fur-die-haut-5a9ade) | — | nichts lesbar |  |
