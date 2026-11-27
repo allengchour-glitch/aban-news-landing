@@ -62,6 +62,12 @@
 
 
 
+## 2026-11-27 13:30 · 🧹 «mach für mich alles, bin ned zuhause» — Produktseiten aus dem Kauf-Workflow
+- Gewitterwolken-Licht: Tabelle «Höhe 1000 m / Masse 1000 mm» → Länge 60–70 cm / Breite 35–40 cm; «Stromversorgung: Batterie/Akku» → «USB 5 V (Netzteil nicht enthalten)» (Klasse: `cj_specs.mjs:171` übersetzt CJ-Versandmerkmal BATTERY in Stromversorgung — Bestand ~1'566, Klassenrunde offen). Doppelte Import-Bewertung 1287641784 (kürzere Kopie) per curated=spam ausgeblendet (`dropship/_judgeme_ausgeblendet_doppel.tsv`).
+- Nagel (UV-Lack-Set, Mobray, Polygel-Kit, Polygel-Set): Satz «Härtet unter UV/LED-Licht – Lampe nicht im Set» + Links 80-W- und Mini-Lampe. CJ «phototherapy pen» = Gel-PINSEL, kein Licht → Mobray-Text «Phototherapie-Stift» → «Gel-Pinsel». Mobray-Varianten «2Stil» → «Stil 2» (productOptionUpdate, SKUs unverändert).
+- Thermo-Strumpfhose: 79 Werte sortiert (1 Stück → Packungen, Farbe, Fuss, 80→220→300 g), Varianten-IDs/SKU/Preis vorher = nachher. Sicherungen `dropship/verkauf-2711/*-vorher.*`.
+- Erinnerung 01.12. 09:00 UTC (send_later): Abbruch-Mail-Filter, FAQ-Runde 3, Black-Week-Rückbau. Betreiber-Punkte unverändert offen: CJ-Ticket #1047 (Portal-Login), Geschenkkarten aktivieren, Klaviyo-DNS.
+
 ## 2026-11-27 12:45 · ✅ Betreiber «1 2 3 ja eins nach dem andern, bin noch ned am pc»
 - **2 = Stufe 3 CH-Lager LIVE** (`_ch_lager_profil_stufe.json` stufe 3, seit 27.11.): +591 Varianten, 578 Produkte neu mit `profil-ch-lager`, fehlt 0; Korb-Matrix 8/8, Kassen-Sentinel 0 Befunde. Weihnachts-Hinweis auf Asien-Ware verlinkt jetzt zuerst `/collections/spielzeug-ch-lager` (data/anlass_kollektionen.json, Metafeld luxe.anlass_hinweis zurückgelesen, «bis So, 20. Dez.»).
 - **3 = Geschenkkarte VORBEREITET, nicht live:** productSet giftCard → «Gift card products can only be created after they have been activated» → Betreiber-Klick Admin → Produkte → Geschenkkarten aktivieren; Ablaufdatum = Shop-Einstellung (API nur lesend, heute null = verfällt nicht). Danach `SCHARF=1 python3 automation/geschenkkarte_anlegen.py` (Produkt CHF 25/50/100, Bild luxestyle-geschenkkarte.jpg, Onlineshop+Shop, Tag nicht-google-bewerben, AGB-Abschnitt liest die Gültigkeit selbst). Preis-Skripte überspringen Produkte ohne unitCost.

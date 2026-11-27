@@ -1,0 +1,883 @@
+{
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17882827555201",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491746689",
+     "name": "Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491681153",
+     "name": "Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491713921",
+     "name": "Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491779457",
+     "name": "Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491812225",
+     "name": "Hautfarben Schwarz mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491844993",
+     "name": "Schwarz / Transparent Fusssteg, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491877761",
+     "name": "Schwarz / Transparent Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491910529",
+     "name": "Schwarz / Transparent Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491943297",
+     "name": "Schwarz / Transparent Fusssteg, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046491976065",
+     "name": "Hautfarben Kaffee mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492008833",
+     "name": "Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492041601",
+     "name": "Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492074369",
+     "name": "Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492107137",
+     "name": "Hautfarben Kaffee mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492139905",
+     "name": "Hautfarben Kaffee Fusssteg, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492172673",
+     "name": "Hautfarben Kaffee Fusssteg, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492205441",
+     "name": "Hautfarben Kaffee Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492238209",
+     "name": "Hautfarben Kaffee Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492270977",
+     "name": "Hautfarben Kaffee Fusssteg, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492303745",
+     "name": "Hautfarben Grau mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492336513",
+     "name": "Hautfarben Grau mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492369281",
+     "name": "Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492402049",
+     "name": "Hautfarben Grau mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492434817",
+     "name": "Hautfarben Grau mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492467585",
+     "name": "Hautfarben Grau Fusssteg, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492500353",
+     "name": "Hautfarben Grau Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492533121",
+     "name": "Hautfarben Grau Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492565889",
+     "name": "Hautfarben Grau Fusssteg, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492598657",
+     "name": "3 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492631425",
+     "name": "5 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492664193",
+     "name": "Schwarz / Transparent Fusssteg, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492696961",
+     "name": "Hautfarben Schwarz mit Füssen, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492729729",
+     "name": "Hautfarben Kaffee Fusssteg, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492762497",
+     "name": "Hautfarben Kaffee mit Füssen, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492795265",
+     "name": "Hautfarben Grau mit Füssen, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492828033",
+     "name": "Hautfarben Grau Fusssteg, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492860801",
+     "name": "2 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492893569",
+     "name": "2 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492926337",
+     "name": "2 Stk. Schwarz / Transparent Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492959105",
+     "name": "2 Stk. Schwarz / Transparent Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046492991873",
+     "name": "2 Stk. Hautfarben Kaffee Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493024641",
+     "name": "2 Stk. Hautfarben Kaffee Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493057409",
+     "name": "2 Stk. Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493090177",
+     "name": "2 Stk. Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493122945",
+     "name": "2 Stk. Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493155713",
+     "name": "2 Stk. Hautfarben Grau mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493188481",
+     "name": "2 Stk. Hautfarben Grau Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493221249",
+     "name": "2 Stk. Hautfarben Grau Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493254017",
+     "name": "3 Stk. Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493286785",
+     "name": "5 Stk. Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493319553",
+     "name": "Schwarz mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493352321",
+     "name": "Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493385089",
+     "name": "Schwarz mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493417857",
+     "name": "3 Stk. Set mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493450625",
+     "name": "3 Stk. Set mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493483393",
+     "name": "3 Stk. Set mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493516161",
+     "name": "3 Stk. Set Fusssteg, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493548929",
+     "name": "3 Stk. Set Fusssteg, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493581697",
+     "name": "3 Stk. Set Fusssteg, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493614465",
+     "name": "3 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493647233",
+     "name": "3 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493680001",
+     "name": "5 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493712769",
+     "name": "5 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493745537",
+     "name": "2 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493778305",
+     "name": "2 Stk. Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493811073",
+     "name": "2 Stk. Hautfarben Grau mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493843841",
+     "name": "3 Stk. Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493876609",
+     "name": "3 Stk. Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493909377",
+     "name": "3 Stk. Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493942145",
+     "name": "3 Stk. Hautfarben Kaffee mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046493974913",
+     "name": "3 Stk. Hautfarben Kaffee mit Füssen, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494007681",
+     "name": "3 Stk. Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494040449",
+     "name": "3 Stk. Hautfarben Grau mit Füssen, 220g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494073217",
+     "name": "3 Stk. Hautfarben Grau mit Füssen, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494105985",
+     "name": "3 Stk. Hautfarben Grau mit Füssen, 300g, Fleece, verdickt"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494138753",
+     "name": "3 Stk. Hautfarben Grau mit Füssen, 300g, extra gross, Plüsch"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494171521",
+     "name": "Set 6, 80g, Übergrösse"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494204289",
+     "name": "Set 7, 80g, Frühling / Herbst Stil"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046494237057",
+     "name": "2 Stk. Hautfarben Schwarz mit Füssen, 300g, Fleece, verdickt"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55889679384961",
+    "sku": "CJ-CJDD157416003CX",
+    "price": "14.90",
+    "position": 1,
+    "title": "Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679319425",
+    "sku": "CJ-CJDD157416001AZ",
+    "price": "14.90",
+    "position": 2,
+    "title": "Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679352193",
+    "sku": "CJ-CJDD157416002BY",
+    "price": "14.90",
+    "position": 3,
+    "title": "Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679417729",
+    "sku": "CJ-CJDD157416004DW",
+    "price": "14.90",
+    "position": 4,
+    "title": "Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679450497",
+    "sku": "CJ-CJDD157416005EV",
+    "price": "14.90",
+    "position": 5,
+    "title": "Hautfarben Schwarz mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679483265",
+    "sku": "CJ-CJDD157416006FU",
+    "price": "14.90",
+    "position": 6,
+    "title": "Schwarz / Transparent Fusssteg, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679516033",
+    "sku": "CJ-CJDD157416008HS",
+    "price": "14.90",
+    "position": 7,
+    "title": "Schwarz / Transparent Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679548801",
+    "sku": "CJ-CJDD157416009IR",
+    "price": "14.90",
+    "position": 8,
+    "title": "Schwarz / Transparent Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679581569",
+    "sku": "CJ-CJDD157416010JQ",
+    "price": "14.90",
+    "position": 9,
+    "title": "Schwarz / Transparent Fusssteg, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679614337",
+    "sku": "CJ-CJDD157416011KP",
+    "price": "14.90",
+    "position": 10,
+    "title": "Hautfarben Kaffee mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679647105",
+    "sku": "CJ-CJDD157416012LO",
+    "price": "14.90",
+    "position": 11,
+    "title": "Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679679873",
+    "sku": "CJ-CJDD157416013MN",
+    "price": "14.90",
+    "position": 12,
+    "title": "Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679712641",
+    "sku": "CJ-CJDD157416014NM",
+    "price": "14.90",
+    "position": 13,
+    "title": "Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679745409",
+    "sku": "CJ-CJDD157416015OL",
+    "price": "14.90",
+    "position": 14,
+    "title": "Hautfarben Kaffee mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679778177",
+    "sku": "CJ-CJDD157416016PK",
+    "price": "14.90",
+    "position": 15,
+    "title": "Hautfarben Kaffee Fusssteg, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679810945",
+    "sku": "CJ-CJDD157416017QJ",
+    "price": "14.90",
+    "position": 16,
+    "title": "Hautfarben Kaffee Fusssteg, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679843713",
+    "sku": "CJ-CJDD157416018RI",
+    "price": "14.90",
+    "position": 17,
+    "title": "Hautfarben Kaffee Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679876481",
+    "sku": "CJ-CJDD157416019SH",
+    "price": "14.90",
+    "position": 18,
+    "title": "Hautfarben Kaffee Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679909249",
+    "sku": "CJ-CJDD157416020TG",
+    "price": "14.90",
+    "position": 19,
+    "title": "Hautfarben Kaffee Fusssteg, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679942017",
+    "sku": "CJ-CJDD157416021UF",
+    "price": "14.90",
+    "position": 20,
+    "title": "Hautfarben Grau mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889679974785",
+    "sku": "CJ-CJDD157416022VE",
+    "price": "14.90",
+    "position": 21,
+    "title": "Hautfarben Grau mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680007553",
+    "sku": "CJ-CJDD157416023WD",
+    "price": "14.90",
+    "position": 22,
+    "title": "Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680040321",
+    "sku": "CJ-CJDD157416024XC",
+    "price": "14.90",
+    "position": 23,
+    "title": "Hautfarben Grau mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680073089",
+    "sku": "CJ-CJDD157416025YB",
+    "price": "14.90",
+    "position": 24,
+    "title": "Hautfarben Grau mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680105857",
+    "sku": "CJ-CJDD157416026ZA",
+    "price": "14.90",
+    "position": 25,
+    "title": "Hautfarben Grau Fusssteg, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680138625",
+    "sku": "CJ-CJDD157416028BY",
+    "price": "14.90",
+    "position": 26,
+    "title": "Hautfarben Grau Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680171393",
+    "sku": "CJ-CJDD157416029CX",
+    "price": "14.90",
+    "position": 27,
+    "title": "Hautfarben Grau Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680204161",
+    "sku": "CJ-CJDD157416030DW",
+    "price": "14.90",
+    "position": 28,
+    "title": "Hautfarben Grau Fusssteg, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680236929",
+    "sku": "CJ-CJDD157416035IR",
+    "price": "14.90",
+    "position": 29,
+    "title": "3 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680269697",
+    "sku": "CJ-CJDD157416040NM",
+    "price": "16.90",
+    "position": 30,
+    "title": "5 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680302465",
+    "sku": "CJ-CJDD157416047UF",
+    "price": "14.90",
+    "position": 31,
+    "title": "Schwarz / Transparent Fusssteg, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680335233",
+    "sku": "CJ-CJDD157416039MN",
+    "price": "14.90",
+    "position": 32,
+    "title": "Hautfarben Schwarz mit Füssen, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680368001",
+    "sku": "CJ-CJDD157416046TG",
+    "price": "14.90",
+    "position": 33,
+    "title": "Hautfarben Kaffee Fusssteg, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680400769",
+    "sku": "CJ-CJDD157416036JQ",
+    "price": "14.90",
+    "position": 34,
+    "title": "Hautfarben Kaffee mit Füssen, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680433537",
+    "sku": "CJ-CJDD157416042PK",
+    "price": "14.90",
+    "position": 35,
+    "title": "Hautfarben Grau mit Füssen, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680466305",
+    "sku": "CJ-CJDD157416048VE",
+    "price": "14.90",
+    "position": 36,
+    "title": "Hautfarben Grau Fusssteg, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680499073",
+    "sku": "CJ-CJDD157416050XC",
+    "price": "14.90",
+    "position": 37,
+    "title": "2 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680531841",
+    "sku": "CJ-CJDD157416051YB",
+    "price": "14.90",
+    "position": 38,
+    "title": "2 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680564609",
+    "sku": "CJ-CJDD157416056DW",
+    "price": "18.90",
+    "position": 39,
+    "title": "2 Stk. Schwarz / Transparent Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680597377",
+    "sku": "CJ-CJDD157416057EV",
+    "price": "18.90",
+    "position": 40,
+    "title": "2 Stk. Schwarz / Transparent Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680630145",
+    "sku": "CJ-CJDD157416062JQ",
+    "price": "18.90",
+    "position": 41,
+    "title": "2 Stk. Hautfarben Kaffee Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680662913",
+    "sku": "CJ-CJDD157416063KP",
+    "price": "18.90",
+    "position": 42,
+    "title": "2 Stk. Hautfarben Kaffee Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680695681",
+    "sku": "CJ-CJDD157416068PK",
+    "price": "19.90",
+    "position": 43,
+    "title": "2 Stk. Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680728449",
+    "sku": "CJ-CJDD157416069QJ",
+    "price": "14.90",
+    "position": 44,
+    "title": "2 Stk. Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680761217",
+    "sku": "CJ-CJDD157416074VE",
+    "price": "14.90",
+    "position": 45,
+    "title": "2 Stk. Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680793985",
+    "sku": "CJ-CJDD157416075WD",
+    "price": "14.90",
+    "position": 46,
+    "title": "2 Stk. Hautfarben Grau mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680826753",
+    "sku": "CJ-CJDD157416080BY",
+    "price": "19.90",
+    "position": 47,
+    "title": "2 Stk. Hautfarben Grau Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680859521",
+    "sku": "CJ-CJDD157416081CX",
+    "price": "18.90",
+    "position": 48,
+    "title": "2 Stk. Hautfarben Grau Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680892289",
+    "sku": "CJ-CJDD157416076XC",
+    "price": "15.90",
+    "position": 49,
+    "title": "3 Stk. Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680925057",
+    "sku": "CJ-CJDD157416082DW",
+    "price": "16.90",
+    "position": 50,
+    "title": "5 Stk. Hautfarben Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680957825",
+    "sku": "CJ-CJDD157416085GT",
+    "price": "14.90",
+    "position": 51,
+    "title": "Schwarz mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889680990593",
+    "sku": "CJ-CJDD157416087IR",
+    "price": "14.90",
+    "position": 52,
+    "title": "Schwarz mit Füssen, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681023361",
+    "sku": "CJ-CJDD157416090LO",
+    "price": "14.90",
+    "position": 53,
+    "title": "Schwarz mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681056129",
+    "sku": "CJ-CJDD157416097SH",
+    "price": "27.90",
+    "position": 54,
+    "title": "3 Stk. Set mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681088897",
+    "sku": "CJ-CJDD157416098TG",
+    "price": "25.90",
+    "position": 55,
+    "title": "3 Stk. Set mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681121665",
+    "sku": "CJ-CJDD1574160102XC",
+    "price": "33.90",
+    "position": 56,
+    "title": "3 Stk. Set mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681154433",
+    "sku": "CJ-CJDD1574160103YB",
+    "price": "24.90",
+    "position": 57,
+    "title": "3 Stk. Set Fusssteg, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681187201",
+    "sku": "CJ-CJDD1574160104ZA",
+    "price": "25.90",
+    "position": 58,
+    "title": "3 Stk. Set Fusssteg, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681219969",
+    "sku": "CJ-CJDD1574160108DW",
+    "price": "32.90",
+    "position": 59,
+    "title": "3 Stk. Set Fusssteg, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681252737",
+    "sku": "CJ-CJDD157416037KP",
+    "price": "24.90",
+    "position": 60,
+    "title": "3 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681285505",
+    "sku": "CJ-CJDD157416038LO",
+    "price": "25.90",
+    "position": 61,
+    "title": "3 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681318273",
+    "sku": "CJ-CJDD157416055CX",
+    "price": "40.90",
+    "position": 62,
+    "title": "5 Stk. Hautfarben Schwarz mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681351041",
+    "sku": "CJ-CJDD157416031EV",
+    "price": "41.90",
+    "position": 63,
+    "title": "5 Stk. Hautfarben Schwarz mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681383809",
+    "sku": "CJ-CJDD157416073UF",
+    "price": "14.90",
+    "position": 64,
+    "title": "2 Stk. Hautfarben Schwarz mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681416577",
+    "sku": "CJ-CJDD157416099UF",
+    "price": "14.90",
+    "position": 65,
+    "title": "2 Stk. Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681449345",
+    "sku": "CJ-CJDD157416094PK",
+    "price": "14.90",
+    "position": 66,
+    "title": "2 Stk. Hautfarben Grau mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681482113",
+    "sku": "CJ-CJDD157416043QJ",
+    "price": "30.90",
+    "position": 67,
+    "title": "3 Stk. Hautfarben Kaffee mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681514881",
+    "sku": "CJ-CJDD157416044RI",
+    "price": "26.90",
+    "position": 68,
+    "title": "3 Stk. Hautfarben Kaffee mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681547649",
+    "sku": "CJ-CJDD1574160105AZ",
+    "price": "14.90",
+    "position": 69,
+    "title": "3 Stk. Hautfarben Kaffee mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681580417",
+    "sku": "CJ-CJDD1574160107CX",
+    "price": "31.90",
+    "position": 70,
+    "title": "3 Stk. Hautfarben Kaffee mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681613185",
+    "sku": "CJ-CJDD157416066NM",
+    "price": "29.90",
+    "position": 71,
+    "title": "3 Stk. Hautfarben Kaffee mit Füssen, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681645953",
+    "sku": "CJ-CJDD1574160109EV",
+    "price": "24.90",
+    "position": 72,
+    "title": "3 Stk. Hautfarben Grau mit Füssen, 220g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681678721",
+    "sku": "CJ-CJDD1574160110FU",
+    "price": "26.90",
+    "position": 73,
+    "title": "3 Stk. Hautfarben Grau mit Füssen, 220g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681711489",
+    "sku": "CJ-CJDD1574160111GT",
+    "price": "15.90",
+    "position": 74,
+    "title": "3 Stk. Hautfarben Grau mit Füssen, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681744257",
+    "sku": "CJ-CJDD1574160113IR",
+    "price": "34.90",
+    "position": 75,
+    "title": "3 Stk. Hautfarben Grau mit Füssen, 300g, Fleece, verdickt"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681777025",
+    "sku": "CJ-CJDD1574160114JQ",
+    "price": "31.90",
+    "position": 76,
+    "title": "3 Stk. Hautfarben Grau mit Füssen, 300g, extra gross, Plüsch"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681809793",
+    "sku": "CJ-CJDD1574160147QJ",
+    "price": "15.90",
+    "position": 77,
+    "title": "Set 6, 80g, Übergrösse"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681842561",
+    "sku": "CJ-CJDD1574160154XC",
+    "price": "14.90",
+    "position": 78,
+    "title": "Set 7, 80g, Frühling / Herbst Stil"
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889681875329",
+    "sku": "CJ-CJDD157416032FU",
+    "price": "22.90",
+    "position": 79,
+    "title": "2 Stk. Hautfarben Schwarz mit Füssen, 300g, Fleece, verdickt"
+   }
+  ]
+ }
+}

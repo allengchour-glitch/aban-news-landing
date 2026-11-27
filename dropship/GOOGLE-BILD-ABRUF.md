@@ -1,4 +1,4 @@
-# Google «Unable to show image» — Stand 2026-11-26T17:01Z
+# Google «Unable to show image» — Stand 2026-11-27T14:07Z
 
 GOOGLE-BILD: 0 «Unable to show image» · 0 neu adressiert · 0 warten (< 3 T) · 0 in Ruhe · 0 Eskalation · 0 Bild kaputt · 0 übersprungen · 0 nicht mehr gemeldet
 
