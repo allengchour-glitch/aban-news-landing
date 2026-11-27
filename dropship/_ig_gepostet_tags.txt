@@ -184,3 +184,6 @@
 2026-11-26T17:04Z	gid://shopify/Product/15414270624129	+	ig-seit-2026-11-26	herz-muschel-anhanger-titanstahl-wasserfest-stahl-rosegold-gold
 2026-11-26T17:04Z	gid://shopify/Product/15414270689665	+	ig-seit-2026-11-26	offenes-armband-metallic-verstellbarer-cuff-4-farben
 2026-11-26T17:04Z	gid://shopify/Product/15450832372097	+	ig-seit-2026-11-26	intelligentes-nacken-und-schultermassagegerat-c6c310
+2026-11-27T15:47Z	gid://shopify/Product/15414270755201	+	ig-seit-2026-11-26	ohrringe-duo-2-fach-tragbar-zirkonia-in-silber-optik
+2026-11-27T15:47Z	gid://shopify/Product/15414490399105	+	ig-seit-2026-11-27	oversized-sonnenbrille-street-getont-square-style-3-farben
+2026-11-27T15:47Z	gid://shopify/Product/15421564912001	+	ig-seit-2026-11-27	samt-cap-velours-retro-baseball-mutze-verstellbar
