@@ -778,6 +778,7 @@ if [ -f /tmp/_secret_neustart_autostart ] && [ "${VORRANG:-0}" = 0 ]; then
   rm -f /tmp/_secret_neustart_autostart
   bash "$REPO/automation/autostart.sh" 2>&1 | grep -E "gestartet|abgelehnt" | head -5
 fi
+timeout 240 python3 "$REPO_AUTO/schaufenster_ampel.py" 2>/dev/null || echo "SCHAUFENSTER: unklar (Skript-Fehler)"   # 27.11.: GMC-Schaufenster (origin/main) — Log nur je neuem Lauf
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim
