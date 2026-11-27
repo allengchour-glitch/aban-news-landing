@@ -392,6 +392,34 @@
     "btc": 60378.19921875,
     "eth": 1690.76904296875
    }
+  },
+  {
+   "stand": "2026-11-26",
+   "zeit": "2026-11-27T13:57:47+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 778,
+   "kosten_usd": 0.022639,
+   "stufe": "opus",
+   "eskaliert": {
+    "von": "claude-haiku-5-5",
+    "grund": "Haiku nur 0.50 sicher bei Ethereum"
+   },
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Der Abwärtstrend ist klar: −25 % in 30 Tagen und rund 16–19 % unter allen gleitenden Schnitten. Seit dem Tief bei 58'799 pendelt der Kurs seitwärts zwischen 59'700 und 61'200, ein neues Tief gab es nicht. Angst&Gier 11 und MVRV 1,14 deuten auf Kapitulation hin, ein Gegenrücklauf ist möglich. Kleinen Short halten, kein Ausbau: Er kassiert leicht positives Funding und kostet ohne Änderung keine Gebühr.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist schwächer als BTC (−28 % in 30 Tagen, −22 % unter dem 50-Tage-Schnitt). MVRV 0,84 heisst, der Markt liegt im Schnitt im Verlust. Das spricht gegen einen Short auf diesem Niveau, und die Schwankung von 67 % macht ihn riskant. Die Seitwärtsphase um 1'680–1'720 liefert kein Long-Signal. Flach bleiben.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Trend zeigt nach unten, die Stimmung ist aber extrem überverkauft und der Kurs stabilisiert sich seit einer Woche. Ich behalte die bestehenden Positionen bei: keine Gebühren, kaum Risiko. Ein Schluss unter 58'800 bei BTC bzw. 1'620 bei ETH würde einen grösseren Short rechtfertigen. Über 62'000 bzw. 1'780 käme eine Glattstellung und ein vorsichtiger Long in Frage.",
+   "kurse": {
+    "btc": 60494.7109375,
+    "eth": 1687.7418212890625
+   }
   }
  ]
 }
