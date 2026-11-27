@@ -382,7 +382,23 @@ def fracht(produkte, land="CH"):
     echten (hoeheren) Betrag."""
     d = cj("/api2.0/v1/logistic/freightCalculate",
            {"startCountryCode": "CN", "endCountryCode": land, "products": produkte})
-    return [o for o in (d.get("data") or []) if o.get("logisticPrice") is not None]
+    # 27.11.2026: 16900500 = CJ-Punkte knapp → None (nächster Lauf), NICHT «keine Versandoption» (Fehlalarm «Kunde erstatten»)
+    if str(d.get("code")) == "16900500" or "Insufficient API points" in str(d.get("message") or ""):
+        return None
+    opts = [o for o in (d.get("data") or []) if o.get("logisticPrice") is not None]
+    # 27.11.2026: alle Optionen protokollieren (Workflow zustellung P5 — nur messen, kein Umschalten; Auswertung nach ≥ 4 Wochen)
+    try:
+        pfad = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dropship", "_cj_versandoptionen.tsv")
+        with open(pfad, "a", encoding="utf-8") as f:
+            for o in opts:
+                f.write("\t".join([time.strftime("%Y-%m-%dT%H:%M", time.gmtime()), FRACHT_KONTEXT.get("lx", ""), land,
+                                   str(o.get("logisticName") or ""), str(o.get("logisticPrice")), str(o.get("logisticAging") or "")]) + "\n")
+    except OSError:
+        pass
+    return opts
+
+
+FRACHT_KONTEXT = {}   # 27.11.: setzt der Aufrufer (lx), damit das Protokoll die Bestellung kennt
 
 
 def max_tage(aging):
@@ -604,7 +620,11 @@ def main(host=None):
             print(f"  {o['name']}: ⚠️ Lieferland {land} ist nicht freigegeben", flush=True)
             melde(f"{o['name']}-land", f"⚠️ Bestellung {o['name']}: Lieferland {land}", "Nur CH und LI sind freigegeben — manuell prüfen.")
             continue
+        FRACHT_KONTEXT["lx"] = o["name"]
         opts = fracht(produkte, land)
+        if opts is None:
+            print(f"  {o['name']}: CJ-Punkte knapp (16900500) — nächster Lauf", flush=True)
+            continue
         if not opts:
             print(f"  {o['name']}: ⚠️ keine Versandoption nach {land}", flush=True)
             melde(f"{o['name']}-versand", f"⚠️ Bestellung {o['name']}: kein CJ-Versand nach {LAENDER[land][0]}", f"CJ bietet für diese Ware keine Versandoption nach {LAENDER[land][0]} — Kunde informieren oder erstatten.")

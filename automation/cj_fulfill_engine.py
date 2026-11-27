@@ -3,7 +3,10 @@
 Ergaenzt cj_order_engine.py (das die Bestellung bei CJ anlegt). Zusammen decken die beiden alles
 ab ausser dem Aufladen der CJ-Geldboerse — das kann nur der Kontoinhaber.
 
-Je Bestellung aus dropship/_cj_orders_done.txt:
+Je Bestellung aus dropship/_cj_orders_done.txt — und seit 27.11.2026 auch jeder CJ-Auftrag «LXnnnn» aus der CJ-Liste,
+der im Ledger fehlt (#1029–#1041, #1043 standen nie darin; Sync-Verzug dort 10,7–18,4 h statt 0–2,4 h). Bearbeitet wird nur,
+was in Shopify noch offen ist (EINE Abfrage der unerfüllten/teilerfüllten Bestellungen der letzten 60 T); alles andere ohne
+CJ-Aufruf übersprungen. Nicht-Ledger-Aufträge werden NIE bezahlt (nur gemeldet).
   IN_CART  + Guthaben reicht  -> bezahlen (mehrere ID-Varianten, CJ ist hier inkonsistent)
            ⚠️ Guthaben reicht bei diesem Shop NIE: CJ nimmt Einzahlungen erst ab USD 2000
            an (Betreiber 07.09.2026). Der Zweig bleibt fuer den Fall, dass sich das aendert;
@@ -16,7 +19,7 @@ bewegt. Nie eine Nummer raten oder aus einer stornierten Bestellung uebernehmen.
 
 DRY=1 meldet nur, was passieren wuerde.
 """
-import json, subprocess, time, os, sys
+import json, subprocess, time, os, sys, re, datetime as _dt
 import os as _os_takt, sys as _sys_takt
 _sys_takt.path.insert(0, _os_takt.path.join(_os_takt.environ.get('REPO', '/home/user/aban-news-landing'), 'automation'))
 from cj_takt import takt  # 21.09.: reservierte Startzeiten gegen CJs 1/s-Drossel
@@ -125,6 +128,63 @@ def bezahlen(det):
     return False, " | ".join(fehler)
 
 
+def offene_bestellungen(tage=60):
+    """27.11.2026: EINE Abfrage — Name → Bestellung (unerfüllt/teilerfüllt, letzte `tage` Tage), mit Fulfillment-Order-Positionen."""
+    seit = (_dt.datetime.utcnow() - _dt.timedelta(days=tage)).strftime("%Y-%m-%d")
+    # ⚠️ 27.11.: mit fulfillmentOrders/lineItems im selben Abruf lag die Abfrage über Shopifys Kostengrenze (dauerhaft «Throttled»)
+    # → hier nur Name/Status (billig), die Positionen holt positionen_holen() je Kandidat.
+    q = '''query($q:String!,$c:String){orders(first:100, after:$c, query:$q){pageInfo{hasNextPage endCursor} nodes{
+      id name displayFulfillmentStatus cancelledAt
+    }}}'''
+    out, cur = {}, None
+    for _ in range(10):
+        d = ((gql(q, {"q": f"created_at:>={seit}", "c": cur}).get("data") or {}).get("orders") or {})
+        for o in d.get("nodes") or []:
+            if o.get("cancelledAt") or o["displayFulfillmentStatus"] not in ("UNFULFILLED", "PARTIALLY_FULFILLED", "IN_PROGRESS", "ON_HOLD", "OPEN", "SCHEDULED"):
+                continue
+            out[o["name"]] = o
+        if not (d.get("pageInfo") or {}).get("hasNextPage"):
+            break
+        cur = d["pageInfo"]["endCursor"]
+    return out
+
+
+def positionen_holen(order_id):
+    q = '''query($id:ID!){order(id:$id){ displayFulfillmentStatus
+      fulfillmentOrders(first:5){nodes{id status lineItems(first:30){nodes{id remainingQuantity lineItem{sku}}}}}}}'''
+    return ((gql(q, {"id": order_id}).get("data") or {}).get("order")) or {}
+
+
+def _ist_cj_sku(sku):
+    try:
+        import cj_order_engine as _coe   # dieselbe Regel wie beim Bestellen (cj_sku + Zuordnung)
+        return _coe.ist_cj_sku(sku)
+    except Exception:  # noqa: BLE001
+        u = (sku or "").strip().upper()
+        return u.startswith("CJ-") or u.startswith("CJ")
+
+
+def cj_positionen(order):
+    """[(fo_id, [(foLineItemId, menge)…])] nur offene FO-Positionen mit CJ-SKU. Gemischte Bestellung (CJ + Fortura):
+    nur die CJ-Zeilen werden erfüllt — vorher nahm der Code einfach fo[0] ganz."""
+    erg, fremd = [], []
+    for fo in (order.get("fulfillmentOrders") or {}).get("nodes") or []:
+        if fo["status"] not in ("OPEN", "IN_PROGRESS", "SCHEDULED"):
+            continue
+        cjz = []
+        for li in (fo.get("lineItems") or {}).get("nodes") or []:
+            if not li.get("remainingQuantity"):
+                continue
+            sku = ((li.get("lineItem") or {}).get("sku")) or ""
+            if _ist_cj_sku(sku):
+                cjz.append((li["id"], li["remainingQuantity"]))
+            else:
+                fremd.append(sku or "?")
+        if cjz:
+            erg.append((fo["id"], cjz))
+    return erg, fremd
+
+
 def shopify_bestellung(name):
     """Eine bestimmte Bestellung gezielt holen.
     ⚠️ Vorher wurden pauschal die 30 neuesten bezahlten Bestellungen geladen — sobald der Shop
@@ -162,11 +222,14 @@ def carrier_name(provider, logistic):
     return "CJPacket"
 
 
-def fulfillen(fo_id, track, provider, logistic):
+def fulfillen(fo_id, track, provider, logistic, positionen=None):
     m = '''mutation($f:FulfillmentV2Input!){ fulfillmentCreateV2(fulfillment:$f){
        fulfillment{ status trackingInfo{number company} } userErrors{message field} }}'''
+    lbfo = {"fulfillmentOrderId": fo_id}
+    if positionen:   # 27.11.: nur die CJ-Zeilen (gemischte Bestellung)
+        lbfo["fulfillmentOrderLineItems"] = [{"id": i, "quantity": q} for i, q in positionen]
     v = {"f": {
-        "lineItemsByFulfillmentOrder": [{"fulfillmentOrderId": fo_id}],
+        "lineItemsByFulfillmentOrder": [lbfo],
         "trackingInfo": {"number": track, "company": carrier_name(provider, logistic),
                          "url": f"https://t.17track.net/en#nums={track}"},
         "notifyCustomer": NOTIFY,
@@ -212,18 +275,37 @@ def schatten_warnen(cjo):
 def main():
     if not os.path.exists(LEDGER):
         print("kein Ledger — erst cj_order_engine.py laufen lassen"); return
-    zeilen = [l.strip().split("\t") for l in open(LEDGER) if l.strip()]
-    bal = guthaben()
+    ledger = {}
+    for l in open(LEDGER):
+        t = l.strip().split("\t")
+        if t and t[0]:
+            ledger[t[0]] = (t[2] if len(t) > 2 else "").upper() or "LX" + t[0].lstrip("#")
+    offen = offene_bestellungen()
     cjo = cj_bestellungen()
-    print(f"CJ-Guthaben {bal:.2f} USD | {len(cjo)} CJ-Bestellungen | DRY={DRY}", flush=True)
+    # Kandidaten = Ledger ∪ CJ-Liste (LXnnnn) — nur was in Shopify noch offen ist
+    kand = dict(ledger)
+    for num in cjo:
+        if re.fullmatch(r"LX\d{4}", num) and f"#{num[2:]}" not in kand:
+            kand[f"#{num[2:]}"] = num
+    arbeit = {n: lx for n, lx in kand.items() if n in offen}
+    braucht_geld = any(n in ledger and (cjo.get(lx.lstrip("#")) or {}).get("orderStatus") == "IN_CART" for n, lx in arbeit.items())
+    bal = guthaben() if braucht_geld else 0.0
+    print(f"CJ-Guthaben {bal:.2f} USD | {len(cjo)} CJ-Bestellungen | Shopify offen {len(offen)} | Arbeit {len(arbeit)} "
+          f"(davon ohne Ledger {sum(1 for n in arbeit if n not in ledger)}) | DRY={DRY}", flush=True)
     schatten_warnen(cjo)
 
-    for t in zeilen:
-        name = t[0]                      # z.B. #1012
-        lx = (t[2] if len(t) > 2 else "").upper() or "LX" + name.lstrip("#")
+    for name, lx in sorted(arbeit.items()):
         det = cjo.get(lx.lstrip("#"))
+        im_ledger = name in ledger
         if not det:
             print(f"  {name}: {lx} nicht in der CJ-Liste", flush=True); continue
+        liste_status = det.get("orderStatus")
+        if liste_status == "IN_CART" and not im_ledger:
+            print(f"  {name} ({lx}): IN_CART bei CJ, nicht im Ledger → ⚠️ Betreiber/Zahllink prüfen (wird hier nie bezahlt)", flush=True)
+            continue
+        if liste_status not in ("SHIPPED", "DELIVERED", "IN_CART"):
+            # 27.11.: nie fulfillen, nur weil die Liste schon eine Nummer trägt (bei UNSHIPPED vorhanden, z. B. LX1045)
+            print(f"  {name} ({lx}): Status {liste_status} — wartet auf Versand", flush=True); continue
         voll = (cj(f"/api2.0/v1/shopping/order/getOrderDetail?orderId={det.get('orderId')}").get("data"))
         if not voll:
             # Nicht auf den Listeneintrag ausweichen: der hat keine Tracking-Nummer, und
@@ -234,6 +316,8 @@ def main():
         betrag = float(voll.get("orderAmount") or 0)
 
         if status == "IN_CART":
+            if not im_ledger:
+                print(f"  {name} ({lx}): IN_CART, nicht im Ledger — nur Meldung", flush=True); continue
             if bal < betrag:
                 print(f"  {name} ({lx}): unbezahlt, {betrag:.2f} USD nötig, Guthaben {bal:.2f} "
                       f"→ ⚠️ Betreiber muss in der CJ-Konsole bezahlen "
@@ -249,18 +333,20 @@ def main():
 
         track = voll.get("trackNumber")
         if status in ("SHIPPED", "DELIVERED") and track:
-            fo_id, ff_status = shopify_bestellung(name)
-            if not fo_id:
-                print(f"  {name} ({lx}): versendet ({track}), Shopify bereits "
-                      f"{ff_status or 'nicht gefunden'}", flush=True)
+            pos, fremd = cj_positionen(positionen_holen(offen[name]["id"]))
+            if not pos:
+                print(f"  {name} ({lx}): versendet ({track}), Shopify ohne offene CJ-Position "
+                      f"({offen[name]['displayFulfillmentStatus']}{', fremd: ' + ','.join(fremd) if fremd else ''})", flush=True)
                 continue
+            zus = f" · andere Lieferanten offen: {','.join(fremd)}" if fremd else ""
             if DRY:
-                print(f"  {name} ({lx}): würde Shopify mit {track} fulfillen "
-                      f"(Versand: {carrier_name(voll.get('trackingProvider'), voll.get('logisticName'))})",
+                print(f"  {name} ({lx}): würde {sum(len(p) for _, p in pos)} CJ-Position(en) mit {track} erfüllen "
+                      f"(Versand: {carrier_name(voll.get('trackingProvider'), voll.get('logisticName'))}){zus}",
                       flush=True); continue
-            r = fulfillen(fo_id, track, voll.get("trackingProvider"), voll.get("logisticName"))
-            errs = r.get("userErrors") or []
-            print(f"  {name} ({lx}): {'✅ fulfilled ' + track if not errs else '❌ ' + str(errs[:1])}", flush=True)
+            for fo_id, p in pos:
+                r = fulfillen(fo_id, track, voll.get("trackingProvider"), voll.get("logisticName"), positionen=p if fremd else None)
+                errs = r.get("userErrors") or []
+                print(f"  {name} ({lx}): {'✅ fulfilled ' + track if not errs else '❌ ' + str(errs[:1])}{zus}", flush=True)
             continue
 
         print(f"  {name} ({lx}): Status {status}, Tracking {track or '—'} — nichts zu tun", flush=True)
