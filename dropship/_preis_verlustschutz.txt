@@ -358788,3 +358788,17 @@
 67844381835655	heben	40.90	53.90	43.07	2026-11-27	titan-schneidebrett-fur-camping-624400
 67844381606279	sperren	40.90	81.90	66.13	2026-11-27	titan-schneidebrett-fur-camping-624400
 67844381737351	sperren	40.90	91.90	73.66	2026-11-27	titan-schneidebrett-fur-camping-624400
+67797660795271	heben	110.90	111.90	90.10	2026-11-27	black-tech-power-mechanik-marathon-laufschuhe-620900
+67871159288199	heben	106.90	107.90	86.70	2026-11-27	manueller-brotschneider-im-retro-stil-613600
+67871159320967	heben	106.90	107.90	86.70	2026-11-27	manueller-brotschneider-im-retro-stil-613600
+67948233982343	heben	103.90	104.90	84.31	2026-11-27	bambus-schneidebrett-mit-deckel-quadratisch-659968
+56156404580737	heben	108.90	109.90	88.82	2026-11-27	sportwagen-modellbausatz-liegender-t5019-945408
+67681785971079	heben	76.90	78.90	63.16	2026-11-27	ton-schmortopf-fur-reis-und-eintopfe-09f11d
+67866085163399	heben	83.90	84.90	68.18	2026-11-27	rc-drift-sportwagen-bausatz-805056
+67866085196167	heben	106.90	114.90	92.70	2026-11-27	rc-drift-sportwagen-bausatz-805056
+67844497801607	heben	111.90	151.90	122.76	2026-11-27	3d-puzzle-kleinpartikel-baustein-spielzeug-855424
+67814933791111	heben	101.90	103.90	83.35	2026-11-27	hangende-beinheber-trainingseinheit-fur-zuhaus-708736
+67814933823879	heben	111.90	115.90	93.59	2026-11-27	hangende-beinheber-trainingseinheit-fur-zuhaus-708736
+67879982170503	heben	110.90	117.90	94.74	2026-11-27	korallen-ornament-mit-kristallbasis-631400
+67879982203271	heben	110.90	111.90	89.94	2026-11-27	korallen-ornament-mit-kristallbasis-631400
+67874125873543	heben	106.90	107.90	86.76	2026-11-27	nordischer-kupfer-brushed-gold-tischkran-058e6b
