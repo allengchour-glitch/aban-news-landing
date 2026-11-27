@@ -1,6 +1,6 @@
 # Kollektionstexte bewerben nicht kaufbare Ware
 
-Stand: 26.11.2026 16:40 UTC · MELDET NUR, ein Kollektionstext ist eine redaktionelle Entscheidung.
+Stand: 27.11.2026 16:48 UTC · MELDET NUR, ein Kollektionstext ist eine redaktionelle Entscheidung.
 
 | Kollektion | beworbener Name | Treffer im Katalog |
 |---|---|---:|
