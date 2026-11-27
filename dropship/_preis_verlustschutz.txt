@@ -358520,3 +358520,9 @@
 55971526345089	heben	14.90	19.90	15.79	2026-11-27	high-waisted-wildleder-fransenrock-fur-damen-610400
 55971526377857	heben	15.90	20.90	16.12	2026-11-27	high-waisted-wildleder-fransenrock-fur-damen-610400
 55971526410625	heben	15.90	20.90	16.44	2026-11-27	high-waisted-wildleder-fransenrock-fur-damen-610400
+56001184268673	heben	15.90	21.90	16.91	2026-11-27	x8x9x10-smartwatch-mit-powerbank-headset-638600
+56001438515585	heben	15.90	20.90	16.43	2026-11-27	kompakte-5000mah-powerbank-fur-heizwesten-622000
+56003510534529	heben	15.90	21.90	17.00	2026-11-27	powerbank-mit-integrierten-ladekabeln-608800
+56003546317185	heben	15.90	16.90	12.68	2026-11-27	ultradunne-magnetische-wireless-power-bank-609200
+56003825009025	heben	15.90	21.90	16.70	2026-11-27	bluetooth-speaker-mit-rgb-lampe-tws-641200
+56004081451393	heben	15.90	24.90	19.48	2026-11-27	hd-4k-uberwachungskamera-mit-tf-speicherkarte-592640

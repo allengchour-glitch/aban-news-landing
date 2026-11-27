@@ -1,20 +1,23 @@
 {
- "stand": "2026-11-26T17:01Z",
- "gescannt": 56003,
- "seiten": 225,
+ "stand": "2026-11-27T14:16Z",
+ "gescannt": 56356,
+ "seiten": 226,
  "vollstaendig": true,
- "blocker": 35,
+ "blocker": 40,
  "klassen": {
   "Restricted adult content": 9,
   "Promotional overlay on image": 9,
   "Tobacco products & related equipment": 7,
   "Sale of live animals": 6,
+  "Item pending processing": 2,
   "Adult-oriented content": 2,
+  "Unable to show image": 2,
   "Image not processed": 1,
-  "Item pending processing": 1
+  "Image too small": 1,
+  "Guns and Parts": 1
  },
  "ohne_onlineStoreUrl": {},
- "anzeigen_meldungen": 3516,
+ "anzeigen_meldungen": 3855,
  "handles": {
   "Restricted adult content": [
    "3er-pack-ultra-soft-sheer-tights-382018",
@@ -59,18 +62,29 @@
    "cigarren-etui-aus-pu-leder-8er-8-stuck-473344"
   ],
   "Item pending processing": [
+   "manikure-set-family-portrait-gem-box-205504",
    "handbemalte-3d-blumen-nagel-milch-tee-212864"
   ],
   "Adult-oriented content": [
    "brustgeschirr-mit-leine-fur-haustiere-513856",
    "tpr-aktivspielzeug-fur-hunde-625000"
+  ],
+  "Image too small": [
+   "wandlampe-spotlicht-wasserdicht-628600"
+  ],
+  "Unable to show image": [
+   "toilettenschild-rechteck-3d-rundes-wascheschil-c7f1a5",
+   "led-wandschleier-neon-alien-licht-704896"
+  ],
+  "Guns and Parts": [
+   "gel-kissen-mit-memory-schaum-und-gel-50-30-10-aa6879"
   ]
  },
  "andere_apps": {
-  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 14
+  "[Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal": 33
  },
  "nur_ausland": {
-  "Missing shipping info in some countries [LI]": 1519,
+  "Missing shipping info in some countries [LI]": 2447,
   "Alcoholic beverages [LI]": 3
  },
  "nur_personalisiert": {
@@ -107,7 +121,6 @@
    "stillkissen-mit-taillenstutze-619100",
    "gehhilfe-fur-senioren-654900",
    "bauchstutzgurtel-fur-schwangere-627600",
-   "led-akne-behandlungsgerat-626600",
    "beckenboden-trainingsgerat-fur-zuhause-627500",
    "elegantes-zweiteiliges-spitzenkleid-fur-fotosh-629900",
    "atemaktiver-gurt-fur-schwangerschaft-633728",
@@ -144,12 +157,13 @@
    "mutterkissen-mit-rucken-und-bauchstutze-633200",
    "halbliegendes-kissen-fur-magen-und-speiserohre-609600",
    "umstands-kleid-mit-ruschensaum-634400",
-   "u-formiges-seitenschlaf-wickelkissen-616000",
    "sicherheitsgurt-fur-schwangere-im-auto-df4988",
-   "handgefertigter-doppler-zur-fetalbeat-messung-20fd87",
    "seitenschlaferkissen-fur-schwangerschaft-610800",
    "schwangerschaftskissen-fur-bauchstutze-619000",
-   "mehrzweck-babypflaster-fur-muttermilch-stillki-629200"
+   "mehrzweck-babypflaster-fur-muttermilch-stillki-629200",
+   "u-form-schwangerschaftsschlafkissen-e880a0",
+   "u-form-schwangerschaftskissen-c51a22",
+   "multifunktionales-schwangerschaftskissen-aus-r-999552"
   ],
   "Personalized advertising: Sexual interests": [
    "3er-pack-ultra-soft-sheer-tights-382018",
@@ -172,12 +186,12 @@
    "kaffeemuhlen-reinigungsburste-aus-aluminiumleg-634500",
    "edelstahl-ruhrspaten-fur-maische-und-wurze-168000",
    "rotierender-kristall-glas-wein-entkorker-1000-607700",
-   "deckenmantel-mit-kapuze-638900"
+   "lassige-shirtjacke-mit-blau-weissem-karomuster-607300"
   ]
  },
  "wartet": {
-  "Title under review": 327,
-  "Image under review": 45
+  "Title under review": 326,
+  "Image under review": 48
  },
  "handles_wartet": {
   "Image under review": [
@@ -190,6 +204,9 @@
    "sitzkissen-mit-integrierter-ruckenlehne-616400",
    "farbiger-regenwolken-befeuchter-601900",
    "cocktail-shaker-set-618400",
+   "kellner-portemonnaie-fga45733",
+   "plusch-schildkrote-30-cm-fga17844",
+   "bruder-bworld-fahrradshop-fga063120",
    "smartwatch-mit-sprachassistent-offline-zahlung-602800",
    "gps-armband-fur-senioren-mit-notruffunktion-610944",
    "dtx-smartwatch-1-78-hd-sport-alarm-356160",
@@ -222,10 +239,10 @@
    "holz-ceramik-katzenbowlenset-440960",
    "katzenwasserschussel-aus-keramik-607936",
    "business-rucksack-mit-usb-grosser-stauraum-010960",
-   "business-rucksack-mit-streifenmuster-c469bf",
    "kabinett-sichtschutzvorhang-611000",
    "wandteppich-naturbaum-mit-sternenhimmel-456fc5",
-   "rucksack-fur-15-laptop-canvas-farben-kaffee-sc-1478b5"
+   "rucksack-fur-15-laptop-canvas-farben-kaffee-sc-1478b5",
+   "samtkissen-mit-3d-pp-vliesfullung-afa356"
   ],
   "Title under review": [
    "zirkon-blumenohrringe-fur-frauen-050562",
@@ -257,7 +274,6 @@
    "gepolstertes-stuhlkissen-fur-liegestuhle-067264",
    "geweebter-kissenbezug-mit-tufting-muster-271488",
    "vier-jahreszeiten-holland-fleece-sitzkissen-241088",
-   "tulpen-teppich-fur-kinderzimmer-583680",
    "gepolstertes-kissen-mit-kontrastfarben-302400",
    "rundes-cartoon-sofa-kissen-fur-kinder-154816",
    "keramik-schalchen-mit-deckel-639300",
@@ -292,7 +308,6 @@
    "anti-kollisionsring-fur-blinde-haustiere-8f4cdd",
    "tragbares-nagelpoliergerat-langlebig-leistungs-625700",
    "ausziehbares-doppelschubladen-regal-477760",
-   "herren-quarz-armbanduhr-mit-strass-inlay-412160",
    "hundegeschirr-mit-fliege-grau-5f6782",
    "muttco-fliege-fur-haustierhalsband-f397d8",
    "bohemian-strick-kissenbezug-mit-fransen-f7740b",
@@ -302,6 +317,7 @@
    "hundehalsband-und-leinen-set-red-cowboy-b10f27",
    "sttwunake-mini-sprachrekorder-8gb-980bf3",
    "supermooi-nudelholz-aus-massivem-nussbaumholz-684992",
+   "blumen-perlen-nagel-set-zum-aufkleben-623200",
    "blau-gepunktetes-sofakissen-024384",
    "samtiges-hundehalsband-set-mit-leine-schleife-439424",
    "buntes-fisch-diamond-painting-rund-oder-eckig-380928",
@@ -311,9 +327,12 @@
    "solar-luftreiniger-furs-auto-mit-ionisator-594624",
    "edelstahl-wok-mit-antihaft-und-dreischichtbode-449024",
    "smart-ring-mit-nfc-funktion-3aeba8",
+   "handgemachte-luxus-press-on-nagel-drachen-phon-619900",
+   "zirkon-schmetterling-press-on-nagel-600300",
    "morandi-fritteuse-mit-temperaturkontrolle-093440",
    "smarte-wlan-video-turklingel-431360",
    "business-rucksack-mit-laptopfach-und-usb-ladea-969536",
+   "mandel-manikure-mit-blush-effekt-624200",
    "diy-sticknadel-set-mit-holzgriff-704320",
    "jacquard-kissenhulle-mit-chinesischem-tusche-m-380992",
    "silbergraues-kissen-mit-streifenmuster-783296",
@@ -387,7 +406,6 @@
    "hundeleine-ring-0d28b7",
    "blaues-hunde-gstaltli-42796b",
    "reinigungsgerat-aus-silikon-0eb5d1",
-   "rotierendes-silikon-reinigungsgerat-dd9f2a",
    "uutone-mikrostrom-gesichtsstraffer-d32dec",
    "ultraleichter-baby-rucksack-mit-tiermotiven-621900",
    "tragbarer-pillen-organizer-mit-7-fachern-612900",
@@ -530,9 +548,7 @@
    "stahl-korkenzieher-fur-auto-klimaanlage-1-4-666624",
    "kantenpressen-zur-reparatur-von-karosseriefalt-695232",
    "nordisches-checkerboard-kissen-30-50-cm-617600",
-   "gurteltasche-mit-schnalle-60de5a",
    "boho-geometrisches-kissenbezug-603800",
-   "schwarzes-weisses-oder-rosafarbenes-wollkissen-618100",
    "cartoon-dreieckkissen-mit-big-eye-h-621500",
    "memory-cotton-kissen-mit-nackenstutze-609500",
    "memory-pillow-aus-kuhl-silke-620200",
@@ -558,7 +574,7 @@
   ]
  },
  "nur_demand_gen": {
-  "Inappropriate image": 249
+  "Inappropriate image": 260
  },
  "handles_demand_gen": {
   "Inappropriate image": [
@@ -638,6 +654,7 @@
    "moderner-ethanol-tischkamin-aus-metall-631100",
    "durchsichtiges-kleid-620300",
    "bruder-polizistin-mit-dunklem-fga060431",
+   "man-tga-holztransport-lkw-mit-ladekran-und-fga02769",
    "bruder-polizistin-mit-hellem-fga060430",
    "bruder-bworld-polizist-fga060051",
    "bruder-bworld-figur-police-fga062151",
@@ -722,7 +739,6 @@
    "multifunktionaler-hammer-7bdfc1",
    "kleines-top-mit-breiten-tragern-622500",
    "edelstahl-eis-sieb-fur-cocktails-630600",
-   "magnetisches-kabelloses-ladegerat-fur-handy-613400",
    "ovaler-tischkamin-ethanol-feuerstelle-620700",
    "solar-led-outdoor-kerze-109312",
    "gaming-pc-gehause-rgb-full-penetration-086400",
@@ -765,14 +781,12 @@
    "kantenpressen-zur-reparatur-von-karosseriefalt-695232",
    "werkzeuggurteltasche-aus-robustem-oxford-b811f2",
    "shark-design-taschentuchhalter-501907",
-   "digitaler-leckage-detektor-d333d3",
    "schleuderkraft-wasserpistole-626c9a",
    "sandstrahlpistole-anti-rost-7d06a2",
    "messerregal-aus-edelstahl-077632",
    "tarn-rucksack-fur-bergtouren-541888",
    "alkoholfuehrter-kochtopf-aus-kohlenstoffstahl-600100",
    "messenger-tasche-aus-canvas-45x16x32-cm-325824",
-   "multifunktionales-bauchmuskelrad-fur-home-gym-767936",
    "oxford-polyester-rucksack-outdoor-camping-334720",
    "faltbares-bauchtrainer-rad-984192",
    "wandlampe-mit-marmormotiv-fur-bettgestell-639500",
@@ -780,7 +794,6 @@
    "mittelrock-set-im-retro-stil-628700",
    "multifunktionaler-militar-rucksack-27-l-972a42",
    "rucksack-mit-totenkopf-motiv-578ccd",
-   "outdoor-sport-camouflage-rucksack-2b101b",
    "3-dimensionaler-totenkopf-rucksack-4d700a",
    "dreiteiliges-panda-rucksack-set-899a71",
    "rucksack-mit-lowen-gesicht-804480",
@@ -802,7 +815,6 @@
    "taktischer-rucksack-fur-outdoor-sport-613100",
    "umhangetasche-mit-pragung-610200",
    "outdoor-taktik-rucksack-fur-bergsport-871936",
-   "laptop-rucksack-aus-pu-leder-36-55-l-908096",
    "luminoser-skelet-rucksack-20-35-l-906752",
    "flanell-lazydecke-130-180-cm-601800",
    "leichte-elastische-camouflage-aufbewahrungstas-631500",
@@ -810,19 +822,34 @@
    "herren-umhangetasche-camouflage-603400",
    "wachs-schmelzer-aus-schmiedeeisen-fur-aromathe-608200",
    "magnetisches-mondlicht-orb-nachtlicht-639900",
-   "retro-nachtlicht-mit-kerzenlicht-design-603600"
+   "vasenlampe-mit-kabellosem-laden-und-blumendeko-636000",
+   "g45-schlusselanhanger-1-4-massstab-634100",
+   "deckenmantel-mit-kapuze-638900",
+   "retro-nachtlicht-mit-kerzenlicht-design-603600",
+   "wasserdichte-gartenpfeilerlampe-fur-wege-und-t-619900",
+   "plus-size-spaghettitrager-a-linienkleid-midi-614900",
+   "led-nachttischlampe-touch-sensibel-mit-usb-620400",
+   "glas-nachtlicht-mit-led-sternlicht-617400",
+   "wandlampe-spotlicht-wasserdicht-628600",
+   "halloween-lichterkette-mit-fledermausen-kurbis-170304",
+   "weiche-einsteigerschuhe-fur-babys-0-12-monate-614700",
+   "kurzliche-kurbis-nachtlampe-aus-silikon-990080",
+   "ems-gesichtsslimming-und-v-line-formgerat-616300",
+   "3d-led-kurbis-nachtlicht-mit-fernbedienung-c27370",
+   "halloween-lava-stein-schadel-lampe-612400",
+   "solar-licht-fur-camping-faltbare-wasserdichte-be70e2"
   ]
  },
  "rueckmeldung": {
-  "gescannt": 56003,
-  "leer": 51246,
-  "leer_prozent": 91.5,
-  "frisch_24h": 868,
-  "frisch_72h": 3620,
-  "juengste": "2026-11-26T17:01:19Z"
+  "gescannt": 56356,
+  "leer": 50679,
+  "leer_prozent": 89.9,
+  "frisch_24h": 1148,
+  "frisch_72h": 3299,
+  "juengste": "2026-11-27T13:48:19Z"
  },
- "dauer_s": 1442,
- "wartet_summe": 372,
+ "dauer_s": 571,
+ "wartet_summe": 374,
  "wartet_ueber_tage": 14,
  "wartet_ueber": 1,
  "wartet_aeltestes": "2026-10-19"

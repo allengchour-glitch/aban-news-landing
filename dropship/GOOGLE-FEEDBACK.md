@@ -1,10 +1,10 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-11-26T17:01Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-11-27T14:16Z
 
-Gescannt: 56003 aktive Produkte in 225 Seiten (vollständig), 1442 s. Meldungen nur für Shopping Ads (ignoriert): 3516.
+Gescannt: 56356 aktive Produkte in 226 Seiten (vollständig), 571 s. Meldungen nur für Shopping Ads (ignoriert): 3855.
 
-Rückmeldungs-Abdeckung (21.10.2026): 51246 von 56003 aktiven Produkten (91.5 %) haben KEINE Rückmeldung der App «Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): 868 / 3620, jüngste Rückmeldung 2026-11-26T17:01:19Z.
+Rückmeldungs-Abdeckung (21.10.2026): 50679 von 56356 aktiven Produkten (89.9 %) haben KEINE Rückmeldung der App «Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): 1148 / 3299, jüngste Rückmeldung 2026-11-27T13:48:19Z.
 
-## Free-Listings-Blocker: 35
+## Free-Listings-Blocker: 40
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
@@ -12,14 +12,17 @@ Rückmeldungs-Abdeckung (21.10.2026): 51246 von 56003 aktiven Produkten (91.5 %)
 | Promotional overlay on image | 9 | 0 | – |
 | Tobacco products & related equipment | 7 | 0 | – |
 | Sale of live animals | 6 | 0 | – |
+| Item pending processing | 2 | 0 | – |
 | Adult-oriented content | 2 | 0 | 2 |
+| Unable to show image | 2 | 0 | – |
 | Image not processed | 1 | 0 | – |
-| Item pending processing | 1 | 0 | – |
+| Image too small | 1 | 0 | – |
+| Guns and Parts | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 372
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 374
 
-- Title under review: 327
-- Image under review: 45
+- Title under review: 326
+- Image under review: 48
 
 Verweildauer (dropship/_google_pruefung_seit.json): 1 länger als 14 Tage, ältestes seit 2026-10-19.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
@@ -30,14 +33,14 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 1519
+- Missing shipping info in some countries [LI]: 2447
 - Alcoholic beverages [LI]: 3
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync «may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 249
+- Inappropriate image: 260
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
@@ -50,7 +53,7 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 14
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 33
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
@@ -101,8 +104,9 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - automatischer-lockenstab-usb-ladefunktion-412608
 - cigarren-etui-aus-pu-leder-8er-8-stuck-473344
 
-### Item pending processing (1)
+### Item pending processing (2)
 
+- manikure-set-family-portrait-gem-box-205504
 - handbemalte-3d-blumen-nagel-milch-tee-212864
 
 ### Adult-oriented content (2)
@@ -110,7 +114,20 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - brustgeschirr-mit-leine-fur-haustiere-513856
 - tpr-aktivspielzeug-fur-hunde-625000
 
-### wartet: Image under review (45) — die ältesten zuerst
+### Image too small (1)
+
+- wandlampe-spotlicht-wasserdicht-628600
+
+### Unable to show image (2)
+
+- toilettenschild-rechteck-3d-rundes-wascheschil-c7f1a5
+- led-wandschleier-neon-alien-licht-704896
+
+### Guns and Parts (1)
+
+- gel-kissen-mit-memory-schaum-und-gel-50-30-10-aa6879
+
+### wartet: Image under review (48) — die ältesten zuerst
 
 - 10-teiliges-silikon-kuchenhelfer-set-986048 (seit 2026-11-23)
 - 3-in-1-pet-flasche-mit-wasser-futter-mullbeute-387264 (seit 2026-11-23)
@@ -130,7 +147,6 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - smartwatch-mit-sprachassistent-offline-zahlung-602800 (seit 2026-11-24)
 - v-face-gerat-634100 (seit 2026-11-24)
 - wimpern-augenbrauen-serum-620200 (seit 2026-11-24)
-- business-rucksack-mit-streifenmuster-c469bf (seit 2026-11-25)
 - elektrischer-rasierer-264576 (seit 2026-11-25)
 - armband-aus-naturlicher-hetian-qinghai-jade-613200 (seit 2026-11-26)
 - automatischer-wasserspender-3-8l-0969ba (seit 2026-11-26)
@@ -152,9 +168,10 @@ Quelle: Google Merchant Help «Demand Gen product ads format requirements» (ans
 - mini-roboter-staubsauger-fur-tastatur-tisch-092288 (seit 2026-11-26)
 - motorrad-bauchtasche-xiaoman-121792 (seit 2026-11-26)
 - multifunktionaler-universal-steckschlussel-132992 (seit 2026-11-26)
+- reise-rucksack-grosses-volumen-815168 (seit 2026-11-26)
 - …
 
-### wartet: Title under review (327) — die ältesten zuerst
+### wartet: Title under review (326) — die ältesten zuerst
 
 - hundegurt-zur-fluchtsicherung-medium-large-625500 (seit 2026-10-19)
 - 10-teiliges-dampfgarer-set-aus-edelstahl-633800 (seit 2026-11-23)

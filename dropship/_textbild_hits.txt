@@ -19010,3 +19010,33 @@ gid://shopify/Product/16740940087687	999->0	Keramische Vase mit Ornament
 gid://shopify/Product/16740940448135	999->2	Postmoderne Acryl Nachttisch Hängeleuchte
 gid://shopify/Product/16740944183687	999->0	Silikon Küchen-Set 15-Teilig
 gid://shopify/Product/16740944609671	20->1	Minimalistische Nachttischlampe – weiss oder schwarz
+gid://shopify/Product/16740946477447	999->2	Induktions-Wandlampe 20 cm, 24 W, IP65
+gid://shopify/Product/16740946837895	999->0	Lässiges Oversize-Hemd mit Stehkragen und Halbreissverschlus
+gid://shopify/Product/16740947329415	999->0	Moderne Minimalistische Wandlampe
+gid://shopify/Product/16740951294343	999->0	Gestreiftes Langarmhemd Slim Fit
+gid://shopify/Product/16740955881863	146->2	Weinverteiler aus Kunststoff – leichtes Luxus-Design
+gid://shopify/Product/16740956144007	30->3	Lässige Shirtjacke mit blau-weissem Karomuster
+gid://shopify/Product/16740956733831	999->0	Slim Fit Herren-Formelle Weste
+gid://shopify/Product/16740972822919	999->2	A4 Sperrholz Schreibblock
+gid://shopify/Product/16740993499527	8->0	Gaming-Tastatur 108 Tasten mit RGB
+gid://shopify/Product/16741009588615	999->1	Kissen mit Philodendron-Muster in Grün
+gid://shopify/Product/16741014569351	999->0	Arbeitsschuhe mit Anti-Puncture Technologie
+gid://shopify/Product/16741014929799	999->1	Elektrisches Gesichtsreinigungsgerät
+gid://shopify/Product/16741018927495	999->2	Dunkelblaue Vorhänge mit Blackout-Print
+gid://shopify/Product/16741025382791	999->0	LED Tischlampe mit einstellbarer Uhr und USB
+gid://shopify/Product/16741026464135	999->3	Enten-Nachtlicht aus Silikon mit USB-Ladefunktion
+gid://shopify/Product/16741027414407	999->1	Drehbares Mond-Nachtlicht mit Wireless-Ladefunktion
+gid://shopify/Product/16741400379783	999->0	Automatischer Lockenstab mit USB-Ladefunktion
+gid://shopify/Product/16741602361735	999->0	LED Sternlichter mit USB-Stromversorgung
+gid://shopify/Product/16741605835143	999->2	Silikon-USB Nachtlicht mit Kippschalter
+gid://shopify/Product/16741607113095	54->1	LED-Feuerwerk-Lichtstreifen für Partys
+gid://shopify/Product/16741607833991	999->0	3D-Mondlicht-Galaxie-Nachtlicht
+gid://shopify/Product/16741613928839	999->0	Dunkelblaue Enten-Nachtlampe aus ABS
+gid://shopify/Product/16741615042951	999->1	Semikreisbogen-Lampe 250x240mm aus Aluminium & Glas
+gid://shopify/Product/16741615370631	999->0	Stufenlichtschalter für Treppenaufgang – LED Wandlampe
+gid://shopify/Product/16741615698311	999->0	Intelligente Weckerlampe mit WLAN & Sprachsteuerung
+gid://shopify/Product/16741615960455	44->0	Panda LED Nachtlicht aus Silikon
+gid://shopify/Product/16741616615815	999->0	Bonsai-Nachtlicht mit Touch-Schalter
+gid://shopify/Product/16741617238407	999->1	Fighting Stick Gaming-Controller PG-9136
+gid://shopify/Product/16741619433863	999->3	3D Mondtischlampe mit Fernbedienung
+gid://shopify/Product/16741630706055	999->0	Ionen-Haartrockner mit Glätteisen und Lockenstab
