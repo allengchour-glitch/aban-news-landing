@@ -508,7 +508,6 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 - 2026-11-24 · 🪙 **Betreiber «gezielt token nicht verschwenden, keine doppelten Prüfungen»: Ergebnis einmal messen und dem Messwert glauben (nicht nachlesen, was ein Rücklesen schon bestätigt hat); keine Workflows/Prüfer für kleine Aufgaben (nur bei Massen-Schreibern); Stop-Hook-Drift = EIN Commit-Befehl + eine Zeile, keine Zweitrunde (Motoren schreiben dauernd, sauber wird es nie); Dateien nur so weit lesen wie nötig.**
 - 2026-11-24 · 🗣️ **Betreiber «weniger details wie codex»: Meldungen kurz — Ergebnis + was er tun muss, 1–3 Zeilen, keine Herleitung, keine IDs/Zahlenkolonnen ausser nötig.**
 
-- 2026-11-24 · ✉️💰 **Betreiber «du bist mail chef» + «mach du alles für mich»: Kundenmails selbst senden (frischen Thread lesen, info@luxestyle.ch) UND Rückerstattungen selbst auslösen (refundCreate). Preise: EK mit Versandgewicht neu (kosten_neu_runner, alle CJ-Produkte), Senker kosten_boden15 begrenzt, Codes > 15 % auch GEPLANTE prüfen (10 gelöscht, GIFT2026 15 %).** → Journal 24.11. ✉️💰
 
 
 - 2026-10-06 · ⛔ **Betreiber «1 nein 2 nein»: KEINE Creator-Anfragen, KEINE eigenen Gesichts-/Handyvideos — nicht erneut vorschlagen; Reichweite nur automatisch.** → Journal 06.10. 19:40
