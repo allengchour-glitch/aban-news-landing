@@ -3986,3 +3986,4 @@
 16741854151047	Farbe:2:2	2026-11-27	elektrischer-3-kopf-rasierer-nass-trocken-usb-610300
 16741846155655	Farbe:5:5	2026-11-27	vertikale-kabellose-ergonomische-maus-b84e99
 16741845074311	Farbe:2:2	2026-11-27	kabelloses-glattebursten-set-mit-4500-mah-akku-611900
+16742229246343	Ausführung:4:4	2026-11-27	handgeblasene-tischlampe-mit-warmlicht-563136
