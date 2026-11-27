@@ -3989,3 +3989,4 @@
 16742229246343	Ausführung:4:4	2026-11-27	handgeblasene-tischlampe-mit-warmlicht-563136
 16742225019271	Grösse:3:3	2026-11-27	mehrstockiger-spielzeugregal-fur-kinder-603800
 16742224691591	Typ:3:3	2026-11-27	led-flammenlicht-im-kohle-design-d27694
+16742220464519	Farbe:5:5	2026-11-27	kleine-nachtlampe-mit-atemmodus-623400

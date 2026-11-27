@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:00 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **19'825**
-- Optionen mit englischen Werten (Kandidaten): 806
+- Produkte gesehen: **20'417**
+- Optionen mit englischen Werten (Kandidaten): 832
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'545
+- Werte mit unbekanntem Wort (unverändert): 2'629
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 24
+- übersprungen «kollision-nach-uebersetzung»: 25
 - übersprungen «kleidungsstueck-im-wert»: 15
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -53,6 +53,7 @@
 - `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
+- `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: US8 → US 8; US9 → US 9; US9.5 → US 9.5; US10.5 → US 10.5; US11.5 → US 11.5
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -81,5 +82,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 114, `powder` 88, `french` 84, `shell` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 40, `chain` 39, `cherry` 37, `elegant` 34, `high` 33, `space` 33, `tc` 31, `intergold` 28, `four` 27, `opp` 26, `end` 26, `plush` 26, `happy` 25, `tea` 24, `you` 24, `one` 23, `eyelashes` 23, `of` 21, `carbon` 21, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `blossom` 19, `lamp` 19, `holder` 19, `full` 18, `line` 18, `lotus` 18, `titanium` 18, `size` 17, `⟨satzbau:praeposition⟩` 17, `degrees` 17, `color` 16, `waist` 16, `to` 16, `love` 16, `the` 16, `rain` 16, `pin` 15, `rabbit` 15, `ice` 15, `strawberry` 15, `light` 14, `basic` 14, `three` 13, `milk` 13, `bag` 13, `starlight` 13, `deep` 13, `no` 13, `cloud` 13, `card` 13
+`⟨satzbau:adjektiv-vor-nomen⟩` 114, `powder` 88, `french` 84, `high` 48, `shell` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 40, `chain` 39, `cherry` 37, `elegant` 35, `one` 33, `space` 33, `tc` 31, `intergold` 28, `four` 27, `opp` 26, `end` 26, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `of` 21, `carbon` 21, `blossom` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `line` 19, `lamp` 19, `holder` 19, `full` 18, `lotus` 18, `titanium` 18, `size` 17, `⟨satzbau:praeposition⟩` 17, `degrees` 17, `color` 16, `waist` 16, `to` 16, `love` 16, `the` 16, `rain` 16, `pin` 15, `rabbit` 15, `ice` 15, `strawberry` 15, `speed` 15, `hard` 15, `disk` 15, `light` 14, `no` 14, `basic` 14, `three` 13, `milk` 13
 
