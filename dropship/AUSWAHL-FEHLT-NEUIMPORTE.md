@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 16:59 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 20:02 UTC)
 
-Suche: `status:active AND created_at:>=2026-11-24` · gemessen 369 · **242 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 214, teilweise: 21, keine: 7; Preisspanne > 2×: 44) · 1 CJ-Variante: 127 · ohne Antwort: 0
+Suche: `status:active AND created_at:>=2026-11-24` · gemessen 368 · **236 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 207, teilweise: 23, keine: 6; Preisspanne > 2×: 45) · 1 CJ-Variante: 132 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -29,16 +29,19 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Magnetische Levitation Sternenhimmel-Lampe 14 cm (`magnetische-levitation-sternenhimmel-lampe-14-635100`) | 28 | 28 | 41.13–41.13 | 76.90 | Galaxy Ball-Deep wood grain base-EU, Galaxy Ball-Deep wood grain base-US, Galaxy Ball-Deep wood grain base-AU, Galaxy Ball-Deep wood grain base-UK |
 | Kristallkugel Luminous Galaxy 3D Laser Gravur (`kristallkugel-luminous-galaxy-3d-laser-gravur-892736`) | 28 | 28 | 3.02–4.19 | 25.90 | Astronaut-6cm Crystal Ball Base, Astronaut-8cm Crystal Ball Base, Cloud Rain-6cm Crystal Ball Base, Cloud Rain-8cm Crystal Ball Base |
 | Seiden-Kissenbezug aus Maulbeers Seide (`seiden-kissenbezug-aus-maulbeers-seide-8d20ef`) | 27 | 17 | 8.78–32.5 | 50.90 | Turquoise, Champagne gold 2pcs, Champagne gold 4pcs, Metal grey 2pcs |
+| Personalisierte Buchstabenlampe aus Holz (`personalisierte-buchstabenlampe-aus-holz-097984`) | 27 | 17 | 6.97–23.66 | 46.90 | Letter lamp height190-USB, Letter lamp height290-USB, Standard desk calendar-USB, A-USB |
 | Satin-Kissenbezug 40 × 80 cm, dunkelblau (`satin-kissenbezug-40-80-cm-dunkelblau-677376`) | 26 | 26 | 2.19–9.09 | 25.90 | Pink-51x91cm, Light grey-51x91cm, Sky Blue-51x91cm, Light green-51x91cm |
 | U-förmiges Nachtlicht – personalisierbare Acrylplatte (`u-formiges-nachtlicht-personalisierbare-acrylp-627200`) | 25 | 25 | 7.08–7.96 | 26.90 | No Lights-102x153mm, No Lights-126x179mm, No Lights-152x204mm, No Lights-179x126mm |
 | Schulranzen für Mädchen – wasserdicht, ultraleicht (`schulranzen-fur-madchen-wasserdicht-ultraleich-603700`) | 24 | 16 | 8.29–14.59 | 35.90 | Pink, Fruit Green, Purple, Blue |
 | 22 mm automatisches Locken- und Glättgerät, 3-Röhren (`22-mm-automatisches-locken-und-glattgerat-3-ro-605100`) | 24 | 24 | 3.69–4.04 | 17.90 | Gold-22mm-US, Gold-22mm-EU, Gold-22mm-UK, Gold-22mm-AU |
 | 3D digitale Wanduhr – einfarbig, USB-Betrieb (`3d-digitale-wanduhr-einfarbig-usb-betrieb-491648`) | 24 | 24 | 4.87–5.11 | 17.90 | Bold blue-Power plug, Bold blue-Send USB cable, Bold green-Power plug, Bold green-Send USB cable |
 | Nordisches Sofa-Kissen 30×50 cm (`nordisches-sofa-kissen-30-50-cm-863680`) | 24 | 24 | 6.6–8.44 | 21.90 | Orange-30x50cm, Orange-45x45cm, Orange-50x50cm, Orange-40x60cm |
+| Kleine Kristallkugel Nachtlampe 6 cm (`kleine-kristallkugel-nachtlampe-6-cm-623100`) | 24 | 18 | 4.91–6.56 | 28.90 | Rose 6CM, Clover 6CM, Umbrella Girl 6CM, One Deer With 6CM |
 | Lunarlicht-Nachtlicht mit Farbwechsel (`lunarlicht-nachtlicht-mit-farbwechsel-0d9367`) | 22 | 22 | 3.79–12.36 | 50.90 | 3colors touch-12cm, 16colors remote-20cm, 16colors touchremote-12cm, 16colors touchremote-18cm |
 | Elektronische Türklingel mit Fernbedienung (`elektronische-turklingel-mit-fernbedienung-189760`) | 21 | 20 | 2.79–13.49 | 30.90 | White-1doorbell to 1waterproof but, White-2doorbell to 1waterproof but, White-1doorbell to2waterproof butt, White-1doorbell host to 1button |
 | Gardine mit Herz-Muster, grün, 1 m (`gardine-mit-herz-muster-grun-1-m-788416`) | 20 | 20 | 10.6–15.27 | 42.90 | Green cloth-1M, Green cloth-1mOrdinary hook processing, Green cloth-1mPunching processing, Green cloth-1mKorean fold hook processing |
 | Gel-Kissen mit Memory-Schaum und Gel 50 × 30 × 10 cm (`gel-kissen-mit-memory-schaum-und-gel-50-30-10-aa6879`) | 20 | 20 | 6.89–10.49 | 48.90 | Grey-2-Without, Purple-2-Without, Dark blue-1-Without, Milky white-2-With gel |
+| 3D LED Nachtlicht mit Halloween-Totenkopf (`3d-led-nachtlicht-mit-halloween-totenkopf-06b4c3`) | 20 | 20 | 4.31–8.34 | 23.90 | 1-Remote control, 5-Remote control, 9-Remote control, 8-Touch 1 |
 | Schreibstift mit OLED-Anzeige, 4-32 GB (`schreibstift-mit-oled-anzeige-4-32-gb-620600`) | 19 | 19 | 16.58–29.52 | 39.90 | Black English Version-4GB, Black English Version-8GB, Black English Version-16GB, Black English Version-32GB |
 | Anti-Hook-Stiftaufbewahrer 2.0 (`anti-hook-stiftaufbewahrer-2-0-620100`) | 18 | 16 | 2.11–5.31 | 16.90 | Blue 2 Upgrade, Pink 2 Upgrade, Blue 1 Upgrade, Pink 1 Upgrade |
 | Metallbasierte Aromatherapie-Wachslampe (`metallbasierte-aromatherapie-wachslampe-610600`) | 17 | 17 | 6.77–9.95 | 36.90 | CN-Dimmer Switch, CN-TimerDimming Switch, EU-Dimmer Switch, EU-TimerDimming Switch |
@@ -59,6 +62,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Halbfleece-Decke mit Schaf-Muster (`halbfleece-decke-mit-schaf-muster-618100`) | 13 | 13 | 17.36–17.36 | 44.90 | Floating Flower-130x170cm, Bow-130x170cm, Geometric Pattern-130x170cm, Fluffy Dumpling-130x170cm |
 | Nordisches Kissenbezug-Set mit geometrischem Muster (`nordisches-kissenbezug-set-mit-geometrischem-m-522944`) | 13 | 13 | 5.62–5.62 | 16.90 | Q4668-45x45cm, Q4669-45x45cm, Q4670-45x45cm, Q4671-45x45cm |
 | Kristallkugeln-Nachtlicht mit 3D-Muster · 8 cm (`kristallkugeln-nachtlicht-mit-3d-muster-8-cm-776832`) | 13 | 11 | 3.1–3.1 | 24.90 | Milky Way-8cm, Solar System-8cm, Jellyfish-8cm, Heart Cloud-8cm |
+| Schwebendes Saturn-Nachtlicht (`schwebendes-saturn-nachtlicht-883072`) | 13 | 13 | 32.99–45.66 | 81.90 | Maglev Saturn Lamp-US, Maglev Saturn Lamp-EU, Maglev Saturn Lamp-UK, Maglev Saturn Lamp-AU |
 | Alcantara Schlüsselhülle für Lamborghini (`alcantara-schlusselhulle-fur-lamborghini-601200`) | 12 | 12 | 6.94–6.94 | 16.90 | Green, Gray, Brown, Orange |
 | Suede Key Case für Mercedes-Benz B-Klasse (`suede-key-case-fur-mercedes-benz-b-klasse-629800`) | 12 | 12 | 6.94–6.94 | 16.90 | Tundra Green, Dark Gray, Brown, Orange |
 | Alcantara Leder-Schlüsselhülle Porsche Macan Turbo (`alcantara-leder-schlusselhulle-porsche-macan-t-614500`) | 12 | 12 | 6.94–6.94 | 16.90 | Green White, Gray  Orange, Brown White, Orange |
@@ -71,6 +75,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silikon-Häschen-Nachtlicht mit Farbwechsel (`silikon-haschen-nachtlicht-mit-farbwechsel-779136`) | 12 | 12 | 9.78–35.07 | 59.90 | Basic model-1PC, Basic remote control model-1PC, Upgraded model-1PC, Upgraded remote control model-1PC |
 | Weinverteiler aus Kunststoff – leichtes Luxus-Design (`weinverteiler-aus-kunststoff-leichtes-luxus-de-cb49b7`) | 11 | 11 | 1.96–4.83 | 17.90 | Pink white glass, Blue white glass, Grey colorful cup, Color glass |
 | Elektronisches Schrankschloss aus ABS/Metall (`elektronisches-schrankschloss-aus-abs-metall-432640`) | 11 | 11 | 4.78–5.8 | 16.90 | L20 Without Lock, L30 Without Lock, L30 With Lock, L30 Lock With Gasket |
+| Interaktiver Fussball für Hunde (`interaktiver-fussball-fur-hunde-673536`) | 11 | 11 | 2.76–5.17 | 17.90 | Puppy White-Diameter 15cm, Puppy White-Diameter 19cm, Little Dinosaur Yellow-Diameter 19cm, Footprints Upgrade-Diameter 15cm |
 | Bluetooth-Maus – kabellose Computer-Maus (`bluetooth-maus-kabellose-computer-maus-605300`) | 10 | 0 | 4.7–6.3 | 16.90 | Matcha Green, Milk Tea Color, Twilight Dark Gray, Sky Blue |
 | Floral Lederkartenbeutel (`floral-lederkartenbeutel-616000`) | 10 | 10 | 2.99–2.99 | 16.90 | 1 Light Pink, 2 Rose Red, 3 Deep Pink, 4 Yellow |
 | Gebetsmatte mit geometrischem Druck, 80x120 cm (`gebetsmatte-mit-geometrischem-druck-80x120-cm-637900`) | 10 | 10 | 2.94–2.94 | 28.90 | Dark Green-80x120cm, Silver Gray-80x120cm, Navy Blue-80x120cm, Wine Red-80x120cm |
@@ -104,13 +109,13 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wandlampe Aisle Balkon – 6 W, Aluminium (`wandlampe-aisle-balkon-6-w-aluminium-67b823`) | 8 | 4 | 5.83–7.09 | 17.90 | White-L-Warm White, White-S-Warm White, Black-S-Warm White, White-L-White |
 | Wandaufbewahrungsbox für Gewürze – japanischer Stil (`wandaufbewahrungsbox-fur-gewurze-japanischer-s-622800`) | 8 | 8 | 2.46–4.7 | 30.90 | Milky White 2 Grid, Milky White 3 Grid, Milky White 4 Grid, Milk White With Storage |
 | Kissenbezug 45 × 45 cm (`kissenbezug-45-45-cm-b83062`) | 8 | 0 | 5.6–5.77 | 16.90 | Dark Coffee-45x45cm, Grey-45x45cm, Light Coffee-45x45cm, Rice white-45x45cm |
-| Einfarbiges Leinenkissen für das Wohnzimmer (`einfarbiges-leinenkissen-fur-das-wohnzimmer-915392`) | 8 | 8 | 3.05–3.05 | 16.90 | Light Grey-45x45cm, Dark Grey-45x45cm, Light green-45x45cm, Orange-45x45cm |
 | Mond-Nachtlicht mit LED und Metallschirm (`mond-nachtlicht-mit-led-und-metallschirm-26ac5c`) | 8 | 8 | 9.3–29.57 | 62.90 | White-Warm light, Black-White light, Black 3pcs-Warm light, White 3pcs-Warm light |
 | Kabellose Cartoon-Maus Mini (`kabellose-cartoon-maus-mini-623100`) | 7 | 7 | 3.35–4.02 | 16.90 | Yellow Tiger, Pinkpig, Green Bear, Blue Bunny |
 | Weihnachtsbaum Geschenkbeutel mit Selbstversiegelung (`weihnachtsbaum-geschenkbeutel-mit-selbstversie-612900`) | 7 | 7 | 0.13–0.13 | 16.90 | Bear-21X15.5cm-1pcs, Cartoon-23.6X19cm-1pcs, Christmas Tree-21X18.5cm-1pcs, Crystal Ball-17.8X20cm-1pcs |
 | Weihnachtsstrumpf Geschenkornament Kinder Süssigkeitenbeutel (`weihnachtsstrumpf-geschenkornament-kinder-suss-619400`) | 7 | 7 | 4.53–5.52 | 16.90 | Red Bottom Bow, Green Background Bow, Bow On White Background, Green Snowflake Style |
 | Wasserwellen-Projektor Nachtlicht (`wasserwellen-projektor-nachtlicht-671552`) | 7 | 5 | 4.18–12.52 | 44.90 | Spherical Water Ripple-Touch Three Colors, Spherical Water Ripple-RGB Remote Control Type, Spherical Water Ripple 2PC-RGB Remote Control Type, Spherical Water Ripple 3PC-RGB Remote Control Type |
 | Feuerwerk-Glühbirnen (`feuerwerk-gluhbirnen-a7bdfc`) | 7 | 7 | 3.32–5.88 | 16.90 | G125, Heart, G80, ST64 |
+| Kleine Weihnachtszug-Nachtlampe (`kleine-weihnachtszug-nachtlampe-607900`) | 7 | 7 | 3.69–4.86 | 16.90 | Painted Train Old Man Tree, Little Train Snowman Tree, Painted Train Boy Tree, Little Train Old Man Tree |
 | Bettlampe mit Aufwärtslicht – PVC-Fassung (`bettlampe-mit-aufwartslicht-pvc-fassung-619000`) | 6 | 6 | 6.1–9.09 | 28.90 | Electrodeless Dimming-Black-US, Electrodeless Dimming-White-US, Three Colors-Black-US, Three Colors-White-US |
 | Wandlampe Outdoor, wasserdicht, 6 W/12 W, 3-Farben (`wandlampe-outdoor-wasserdicht-6-w-12-w-3-farbe-602500`) | 6 | 6 | 11.81–18.23 | 34.90 | 6W Warm Light 3000K, 6W White Light 6000K, 6W Sunset Red, 12W Warm Light 3000K |
 | Auto-Montierbarer 5G GPS-Tracker mit Aufnahmefunktion (`auto-montierbarer-5g-gps-tracker-mit-aufnahmef-634300`) | 6 | 6 | 4.9–9.8 | 18.90 | Enhanced Version-Cloud Storage, Deluxe Edition-Cloud Storage, Permanent Version-Cloud Storage, Endurance Edition-Cloud Storage |
@@ -131,7 +136,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Unterspülen-Organizer aus Eisen – Ausziehbarer Aufbewahrungskorb (`unterspulen-organizer-aus-eisen-ausziehbarer-a-612400`) | 6 | 6 | 5.56–21.53 | 146.90 | White Small 1PC, White Large 2PC, Gray Small 1PC, Gray Small 2PC |
 | Nachtlicht mit Bewegungssensor und Magnetmontage (`nachtlicht-mit-bewegungssensor-und-magnetmonta-409600`) | 6 | 6 | 4.68–5.43 | 16.90 | White-USB-2W, Pink-USB-2W, Yellow-USB-2W, 02.White-USB-2W |
 | Kosmetikaufbewahrungsbeutel – grosse Kapazität (`kosmetikaufbewahrungsbeutel-grosse-kapazitat-625600`) | 6 | 6 | 4.83–5.25 | 28.90 | Beige-No Compartments, Beige-Double layered, Caramel -No Compartments, Caramel -Double layered |
-| Schmuckbox Vintage, 12 × 10 × 6 cm (`schmuckbox-vintage-12-10-6-cm-625700`) | 6 | 6 | 2.72–2.72 | 16.90 | Pink, Green, Black, White |
 | Umhängetasche (`umhangetasche-3d5230`) | 6 | 6 | 4.6–4.6 | 16.90 | green, black, gules, Pink |
 | Neon-Licht mit Hundemotiv – 40x32 cm (`neon-licht-mit-hundemotiv-40x32-cm-618000`) | 5 | 4 | 11.28–13.6 | 38.90 | 40x32cm-USB, Skateboard Puppy 405x32cm-USB, Skateboard Puppy 40x30cm-USB, Toy Dog With Glasses 40 X32cm-USB |
 | Gold-Perlen-Ohrringe aus 304-Edelstahl (`gold-perlen-ohrringe-aus-304-edelstahl-604200`) | 5 | 5 | 1.62–1.62 | 16.90 | ER541G Butterfly, ER542G Love, ER543G Flower, ER544G Shell |
@@ -144,6 +148,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | VR-Brille mit Smartphone-Anschluss (`vr-brille-mit-smartphone-anschluss-060608`) | 5 | 5 | 13.63–16.86 | 37.90 | G07E headset version, G07E plus B01 handle, G07E plus B03 handle, G07E plus Y1 black handle |
 | Umhängetasche aus Canvas klein 20×7×23 cm (`umhangetasche-aus-canvas-klein-20-7-23-cm-433fa8`) | 5 | 5 | 4.62–5.73 | 21.90 | Gray-Big, Black a-Small, Brown-Big, Brown a-Small |
 | Nordische Tischlampe mit Dimmfunktion und Bluetooth-Lautsprecher (`nordische-tischlampe-mit-dimmfunktion-und-blue-657216`) | 5 | 5 | 7.49–10.22 | 26.90 | White-Basic model, White-Bluetooth model, Pink-Basic model, Pink-Bluetooth model |
+| LED Tierform Nachtlicht mit Bewegungssensor (`led-tierform-nachtlicht-mit-bewegungssensor-02bd38`) | 5 | 5 | 4.88–4.88 | 17.90 | D-Black matte battery, B-Black matte battery, A-Black matte battery, C-Black matte battery |
 | Magnetisches Mondlicht-Orb Nachtlicht (`magnetisches-mondlicht-orb-nachtlicht-639900`) | 4 | 4 | 29.62–34.34 | 66.90 | Bulb-US, Moon10.4cm-US, Saturn12cm-US, Saturn 8.5cm-US |
 | Pendelleuchte Modern Minimalist für Flur (`pendelleuchte-modern-minimalist-fur-flur-601700`) | 4 | 4 | 12.44–19.9 | 52.90 | Warm Light-80cm , Warm Light-120cm , Tricolor Light-80cm , Tricolor Light-120cm  |
 | Wandlampe Streifenbeleuchtung 120 cm Sand/Schwarz (`wandlampe-streifenbeleuchtung-120-cm-sand-schw-628000`) | 4 | 4 | 14.24–20.14 | 47.90 | Three Colors-With switch sand white 120cm, Monochrome Warm Light-With switch sand white 120cm, Wuji Tmall Genie-With switch sand white 120cm, Bluetooth Version-With switch sand white 120cm |
@@ -176,7 +181,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Memory Kissen mit Wellenform (`memory-kissen-mit-wellenform-4066a6`) | 4 | 4 | 2.02–5.72 | 44.90 | 50x30x10 7cm 2pcs, 50x30x10 7cm 3pcs, 60x40x12cm, 50x30x10 7cm |
 | Küchenhelfer-Set 7-Teilig aus Edelstahl (`kuchenhelfer-set-7-teilig-aus-edelstahl-766784`) | 4 | 4 | 7.06–7.63 | 34.90 | Black-7piece set, White-7piece set, Grey-7piece set, Dark Blue-7piece set |
 | 5-in-1 Gemüseschneider aus Edelstahl (`5-in-1-gemuseschneider-aus-edelstahl-72230f`) | 4 | 4 | 5.59–5.88 | 32.90 | Orange, Greed, Grey, Blue |
-| Aufbewahrungsbox mit Sitzfunktion, 110 L (`aufbewahrungsbox-mit-sitzfunktion-110-l-628700`) | 4 | 4 | 8.29–8.29 | 97.90 | Gray, Blue, Black, Beige |
 | Modernes Nachtlicht mit Knopf- und Fernbedienung (`modernes-nachtlicht-mit-knopf-und-fernbedienun-504448`) | 4 | 4 | 12.97–16.02 | 43.90 | Button Switch-Noble Gold, Button Switch-White, Remote Control Switch-Noble Gold, Remote Control Switch-White |
 | Phönix-Brosche aus Kupfer, bunt (`phonix-brosche-aus-kupfer-bunt-962240`) | 3 | 3 | 5.0–5.0 | 16.90 | Yellow, Blue, Color |
 | Deckenleuchte Minimalistisch Nordisch Warmweiss (`deckenleuchte-minimalistisch-nordisch-warmweis-639400`) | 3 | 3 | 9.77–10.71 | 34.90 | Three Heads-Warm White Light, Three Heads-Positive White Light, Three Heads-Light Source Not Included |
@@ -199,11 +203,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Atmosphärische Nachtlampe mit USB-Stromversorgung (`atmospharische-nachtlampe-mit-usb-stromversorg-112128`) | 3 | 3 | 7.79–8.75 | 17.90 | Black maple-USB, Red mahogany-USB, White Peach-USB |
 | LED Spinnenweben-Licht für Halloween (`led-spinnenweben-licht-fur-halloween-900480`) | 3 | 3 | 5.28–6.78 | 16.90 | 3A ordinary battery, Waterproof remote control batt, USB remote control |
 | Nachtlicht mit Bluetooth-Lautsprecher und 10 W Wireless-Ladestation (`nachtlicht-mit-bluetooth-lautsprecher-und-10-w-229120`) | 3 | 3 | 11.14–12.05 | 31.90 | Wood Grain, White, Black |
-| Wandlampe mit LED-Beleuchtung (`wandlampe-mit-led-beleuchtung-317760`) | 3 | 3 | 14.59–14.59 | 49.90 | White, Red, Black |
 | Kabelloser 10W Ladeblock mit Tischlampe (`kabelloser-10w-ladeblock-mit-tischlampe-27d109`) | 3 | 3 | 13.63–15.27 | 29.90 | Dark green, Wood, White |
-| U-Form Reisekissen mit Fleece-Futter (`u-form-reisekissen-mit-fleece-futter-089984`) | 3 | 3 | 3.02–3.02 | 16.90 | Black-Free Size, Red-Free Size, Gray-Free Size |
 | Induktionsnachtlicht LED, Plexiglas, Druckknopf (`induktionsnachtlicht-led-plexiglas-druckknopf-edbd08`) | 3 | 3 | 9.1–18.2 | 33.90 | Brown2pcs, White, Brown |
-| Buchlampe mit Klappfunktion – 125×82×22 mm (`buchlampe-mit-klappfunktion-125-82-22-mm-653952`) | 3 | 3 | 6.44–6.44 | 17.90 | Blue-USB, Brown-USB, Pink-USB |
 | Wandlampe Aussen –30 cm, Acryl, Tricolor (`wandlampe-aussen-30-cm-acryl-tricolor-619500`) | 2 | 2 | 8.33–18.58 | 41.90 | Nitecore extreme-A style-30cm, Nitecore extreme-A style-100cm |
 | Aromatherapie-Wachs-Schmelzlampa (`aromatherapie-wachs-schmelzlampa-623500`) | 2 | 2 | 5.9–5.9 | 16.90 | US-Moose Wax Melt Lamp, US-Flame Wax Melting Lamp |
 | Auto-Luftpumpe mit Stromversorgung (`auto-luftpumpe-mit-stromversorgung-605600`) | 2 | 2 | 19.97–21.7 | 49.90 | Ordinary Clip, Smart Clip |
@@ -235,16 +236,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Holz-Handlampe für den Nachttisch (`holz-handlampe-fur-den-nachttisch-519232`) | 2 | 2 | 32.18–32.18 | 50.90 | Black peach, Bamboo |
 | Himmelspunkte Nachtlicht für Kinder (`himmelspunkte-nachtlicht-fur-kinder-a5558e`) | 2 | 2 | 5.28–5.96 | 20.90 | Ordinary paragraph-USB, Rotating section-USB |
 | Holz-Kommoden-Kosmetikschrank mit zwei Schubladen (`holz-kommoden-kosmetikschrank-mit-zwei-schubla-603800`) | 2 | 2 | 7.63–7.63 | 74.90 | Flower Glass, Transparent Glass |
-| Messenger Tasche aus PU-Leder für Herren (`messenger-tasche-aus-pu-leder-fur-herren-65ebbd`) | 2 | 2 | 5.15–5.15 | 18.90 | Black, Brown |
 | 3D-Illusions-LED-Lampe Knot 2 (`3d-illusions-led-lampe-knot-2-bb91f1`) | 2 | 2 | 4.68–6.3 | 17.90 | Touch, Remote control |
-| Astronauten-Nachtlicht aus Harz (`astronauten-nachtlicht-aus-harz-fc2351`) | 2 | 0 | 5.57–5.57 | 22.90 | Gold, Silver |
-| Elektrische Lunchbox mit USB-Aufwärmung, 800 ml (`elektrische-lunchbox-mit-usb-aufwarmung-800-ml-617600`) | 2 | 2 | 8.16–8.16 | 33.90 | Gray, Orange |
 | Nachttisch-Nachtlicht, Silikon, 0,45 W (`nachttisch-nachtlicht-silikon-0-45-w-ec76ad`) | 2 | 2 | 10.39–12.19 | 23.90 | Colorful remote control, Colorful |
-| LED-Lichtband RGB 30 Stück/m 15W 12V (`led-lichtband-rgb-30-stuck-m-15w-12v-808576`) | 2 | 2 | 29.52–31.9 | 48.90 | RGB-Alexa-EU, RGB-Alexa-US |
 | Flugzeug-Nachtlicht mit Touch (`flugzeug-nachtlicht-mit-touch-2dd6c2`) | 2 | 2 | 3.75–3.93 | 16.90 | Crack 3colors touch, Crack 7colors touch |
 | Anti-Diebstahl-Rucksack mit USB-Aufladung (`anti-diebstahl-rucksack-mit-usb-aufladung-a6dc12`) | 2 | 0 | 23.46–24.93 | 58.90 | Black-15 inches, Upgrade black-15 inches |
-| Handlich tragbare Nachttischlampe mit warmem Licht (`handlich-tragbare-nachttischlampe-mit-warmem-l-619400`) | 2 | 2 | 6.33–6.33 | 16.90 | 2W-Pink Warm Light, 2W-Black Warm Light |
-| Vintage-Make-up-Pinselhalter mit mehreren Fächern (`vintage-make-up-pinselhalter-mit-mehreren-fach-621800`) | 2 | 2 | 3.86–3.86 | 16.90 | White, Pink |
-| Business-Rucksack mit grosser Computer-Fach (`business-rucksack-mit-grosser-computer-fach-a5635d`) | 2 | 0 | 22.25–22.25 | 52.90 | 15.6inch, 14inch |
 | Häsli-Nachtlicht mit LED-Beleuchtung (`hasli-nachtlicht-mit-led-beleuchtung-2c6a5d`) | 2 | 2 | 4.53–5.28 | 16.90 | Shy face, Happy face |
-| 3D-Druck-Nachtlicht Drache (`3d-druck-nachtlicht-drache-7ad865`) | 2 | 2 | 10.81–10.81 | 23.90 | Blue, Red |
+| Induktions-Nachtlicht mit PIR-Sensor (`induktions-nachtlicht-mit-pir-sensor-bb768d`) | 2 | 0 | 9.88–9.88 | 19.90 | White, Natural |

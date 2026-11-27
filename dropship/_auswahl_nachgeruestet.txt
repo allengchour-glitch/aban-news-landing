@@ -4006,3 +4006,5 @@
 16742230393223	Farbe:4:4	2026-11-27	aufbewahrungsbox-mit-sitzfunktion-110-l-628700
 16742230065543	Farbe:2:2	2026-11-27	messenger-tasche-aus-pu-leder-fur-herren-65ebbd
 16742230000007	Farbe:8:8	2026-11-27	einfarbiges-leinenkissen-fur-das-wohnzimmer-915392
+16742810157447	Typ:5:5	2026-11-27	led-tierform-nachtlicht-mit-bewegungssensor-02bd38
+16742802653575	Farbe:2:2	2026-11-27	induktions-nachtlicht-mit-pir-sensor-bb768d
