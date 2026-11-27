@@ -571,9 +571,15 @@ while true; do
   ALTER_MOT=$(( $(date +%s) - $(stat -c %Y "$MOT" 2>/dev/null || echo 0) ))
   if [ "$ALTER_MOT" -gt 1200 ] && [ -f "$REPO/automation/engine_keepalive.sh" ]; then
     date +%s > "$MOT"
-    ( cd "$REPO" && OHNE_AUFSEHER=1 timeout 300 bash automation/engine_keepalive.sh \
-        >> /tmp/engine_keepalive_vom_aufseher.log 2>&1 ) &
-    echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
+    # 27.11.2026: kein zweiter engine_keepalive neben einem laufenden (Hook/Routine) — gleiche argv-Prüfung wie autostart.sh;
+    # gemessen: identische «BOT STILL seit 592 h»-Zeilen in _vom_hook.log UND _vom_aufseher.log (Doppellauf = doppelte CJ-Aufrufe).
+    if ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /engine_keepalive\.sh$/ {f=1} END{exit(f?0:1)}'; then
+      echo "$(date -u +%H:%M) engine_keepalive läuft bereits — übersprungen"
+    else
+      ( cd "$REPO" && OHNE_AUFSEHER=1 timeout 300 bash automation/engine_keepalive.sh \
+          >> /tmp/engine_keepalive_vom_aufseher.log 2>&1 ) &
+      echo "$(date -u +%H:%M) Motoren nachgezogen (durch den Aufseher)"
+    fi
   fi
 
   for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit cj_varianten_wache coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix versandschwelle_blog_kollektion google_sperrtags_durchsetzen helvetismen_tags unpublizierte_finden lagerstand_hygiene; do
@@ -2680,7 +2686,7 @@ fi
       touch "$CAW"
       ( cd "$REPO" && setsid bash -c \
           "exec 9>/tmp/lock_cj_ausgelistet.lock; flock -n 9 || exit 0; exec >> \"$CAW\" 2>&1; \
-           exec python3 automation/cj_ausgelistet_sichtbar.py" 9>&- & )
+           ROLLEN=300 exec python3 automation/cj_ausgelistet_sichtbar.py" 9>&- & )   # 27.11.: Stufe B 1500 → 300 (7'015 Prüfungen seit 24.11., 8 «weg» = 0,11 %; 1'003 von 7'843 CJ-Aufrufen)
     fi
   fi
   KLW=/tmp/klinge_ch_wache.log
