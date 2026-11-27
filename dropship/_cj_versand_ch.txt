@@ -1699,3 +1699,15 @@ gid://shopify/Product/15447628710273	ok	Föhn-Bürste mit Konstanttemperatur
 gid://shopify/Product/15443495846273	ok	LED-Projektor «Ambiente» · Stimmungslicht
 gid://shopify/Product/15479416914305	ok	Smartwatch mit Kamera und Telefonfunktion
 gid://shopify/Product/15522210972033	ok	Full HD Smart Mini Beamer mit Handy-Konnektivität
+gid://shopify/Product/16741664981383	ok	Kinderzimmer Deckenleuchte mit LED-Rücklicht
+gid://shopify/Product/16741852545415	ok	U-Form Schwangerschaftskissen
+gid://shopify/Product/16741855297927	nicht-versendbar	Skandinavische Minimalistische Tischlampe
+gid://shopify/Product/16612780441991	ok	Tragbarer Heimkino-Projektor
+gid://shopify/Product/16741399003527	ok	Mondlicht-Bluetooth-Lautsprecher
+gid://shopify/Product/15523841933697	ok	Digitaler Kamera-Rucksack mit mehreren Fächern
+gid://shopify/Product/15480266948993	ok	V10 VR-Kamera
+gid://shopify/Product/15480458871169	ok	Smartwatch mit Android OS & Sportfunktionen
+gid://shopify/Product/15485799334273	ok	Kompakte 3L Kamera-Hüfttasche
+gid://shopify/Product/16613760139655	ok	Smartwatch Business Casual wasserdicht
+gid://shopify/Product/16733438476679	ok	Kabellose Tischlampe mit Aufladestation
+gid://shopify/Product/15449454903681	ok	Handheld-Gimbal mit 4K-Kamera
