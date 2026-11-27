@@ -101,22 +101,31 @@ fi
 # ⚠️ 30.08.: Ein /tmp-Wipe nahm auch die PIP-PAKETE mit — imageio_ffmpeg UND Pillow waren weg,
 # der Symlink zeigte ins Leere und die TikTok-Werkzeuge standen still. Beide werden deshalb
 # bei Bedarf NEU INSTALLIERT, nicht nur verlinkt.
-python3 -c "import PIL" 2>/dev/null || pip install -q pillow >/dev/null 2>&1
+python3 -c "import PIL" 2>/dev/null || python3 -m pip install -q pillow >/dev/null 2>&1
 # 27.09.2026: numpy fehlte im frischen Container — schnitt.py (Reel-Schnitt) und meisterwerk_tor.py (Qualitaetstor vor jedem Post) brauchen es.
-python3 -c "import numpy" 2>/dev/null || pip install -q numpy >/dev/null 2>&1
+python3 -c "import numpy" 2>/dev/null || python3 -m pip install -q numpy >/dev/null 2>&1
 # ⚠️ 17.09.: Derselbe Fall eine Etage tiefer. `hauptbild_ohne_text.py` liest Text AUS Bildern
 # (bildtext_pruefen -> pytesseract -> /usr/bin/tesseract). Beides fehlte, und der Waechter
 # ist deshalb **1230 Mal hintereinander** mit ModuleNotFoundError gestorben, ohne dass es
 # jemand sah. Das Python-Paket allein genuegt nicht — pytesseract ist nur die Huelle um das
 # BINAER, das apt liefert.
-python3 -c "import pytesseract" 2>/dev/null || pip install -q pytesseract >/dev/null 2>&1
+python3 -c "import pytesseract" 2>/dev/null || python3 -m pip install -q pytesseract >/dev/null 2>&1
 command -v tesseract >/dev/null 2>&1 || {
   apt-get install -y -qq tesseract-ocr >/dev/null 2>&1 \
     && echo "$(date -u +%H:%M) tesseract nachinstalliert"
 }
+# 27.11.2026: `pip` gehört hier zu Python 3.13, `python3` ist 3.11 → alle Installationen über `python3 -m pip`.
+# System-ffmpeg (/usr/bin, mit drawtext) und System-ffprobe zuerst verlinken; der ffprobe-Ersatz (fester Pfad
+# /usr/local/bin/ffmpeg) verdeckte sonst das echte /usr/bin/ffprobe. scipy/av für automation/reel/schnitt.py.
+[ -x /usr/local/bin/ffmpeg ] || { [ -x /usr/bin/ffmpeg ] && ln -sf /usr/bin/ffmpeg /usr/local/bin/ffmpeg && echo "$(date -u +%H:%M) ffmpeg (System) verlinkt"; }
+if [ -x /usr/bin/ffprobe ] && [ "$(readlink /usr/local/bin/ffprobe 2>/dev/null)" != /usr/bin/ffprobe ]; then
+  ln -sf /usr/bin/ffprobe /usr/local/bin/ffprobe && echo "$(date -u +%H:%M) ffprobe (System) verlinkt"
+fi
+python3 -c "import scipy" 2>/dev/null || python3 -m pip install -q scipy >/dev/null 2>&1
+python3 -c "import av" 2>/dev/null || python3 -m pip install -q av >/dev/null 2>&1
 FFMPEG_BEIGABE=$(python3 -c "import imageio_ffmpeg,sys;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null)
-if [ -z "$FFMPEG_BEIGABE" ]; then
-  pip install -q imageio-ffmpeg >/dev/null 2>&1
+if [ -z "$FFMPEG_BEIGABE" ] && ! /usr/local/bin/ffmpeg -version >/dev/null 2>&1; then   # 27.11.: nicht jede Stunde pip, wenn System-ffmpeg läuft
+  python3 -m pip install -q imageio-ffmpeg >/dev/null 2>&1
   FFMPEG_BEIGABE=$(python3 -c "import imageio_ffmpeg,sys;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null)
 fi
 if [ -n "$FFMPEG_BEIGABE" ] && ! /usr/local/bin/ffmpeg -version >/dev/null 2>&1; then
