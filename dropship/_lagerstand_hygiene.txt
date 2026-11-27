@@ -1188,3 +1188,7 @@ gid://shopify/Product/15469988282753	reaktiviert	Aqua Make Up Set Pantomime
 gid://shopify/Product/15469989101953	reaktiviert	Pinselset 3-teilig
 gid://shopify/Product/15470019903873	reaktiviert	Sportwagen aus Klemmbausteinen
 gid://shopify/Product/15470019936641	reaktiviert	Waggishose kurz blau
+gid://shopify/Product/15469917700481	draft-ausverkauft	Engelflügel weiss mit LED
+gid://shopify/Product/15469989396865	draft-ausverkauft	Perücke Wuschelkopf
+gid://shopify/Product/15469941817729	reaktiviert	Kostüm Gothic Queen
+gid://shopify/Product/15470010663297	reaktiviert	Fliegerbrille
