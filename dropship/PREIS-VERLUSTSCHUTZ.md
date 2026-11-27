@@ -1,19 +1,20 @@
-# Preis-Verlustschutz — scharf 2026-11-27 17:35 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 17:44 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **9** · Varianten gehoben: **54** · gesperrt (Faktor > 2.0): 10
-- Median-Faktor der Hebungen: 1.01× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 9 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **10** · Varianten gehoben: **35** · gesperrt (Faktor > 2.0): 8
+- Median-Faktor der Hebungen: 1.06× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 10 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Aluminium-Koffer mit Rahmen (20-Zoll) | 162.90 | 132.25 | **163.90** | 1.01× |
-| Keramik-Schatzbecken mit Handmalerei | 179.90 | 146.75 | **181.90** | 1.01× |
-| Drahtloses Mikrofon Little Bee: Sender, Empfänge | 162.90 | 138.08 | **170.90** | 1.05× |
-| Bauchtrainer mit automatischem Rückzug | 176.90 | 143.70 | **177.90** | 1.01× |
-| Holzschmuckkasten | 188.90 | 153.27 | **189.90** | 1.01× |
-| Retro Deko-Kunstset für Eingang und Schlafzimmer | 93.90 | 90.83 | **112.90** | 1.20× |
-| Kaffeebecher aus Bone China – Geschenkset | 135.90 | 110.98 | **137.90** | 1.01× |
-| Multifunktionales Widerstandsband-Set mit Stange | 168.90 | 137.28 | **169.90** | 1.01× |
-| Damen-Kleid Moonlight Melody | 222.90 | 184.39 | **227.90** | 1.02× |
+| Gravity Shisha – Vielseitig & Kompakt | 147.90 | 126.05 | **155.90** | 1.05× |
+| 360° Driving Recorder HD Nachtsicht kabellos | 138.90 | 112.69 | **139.90** | 1.01× |
+| Sportwagen Kleinpartikel Bausteine | 153.90 | 124.77 | **154.90** | 1.01× |
+| Laptop Rucksack für Studium & Alltag | 136.90 | 114.36 | **141.90** | 1.04× |
+| Dekoratives Messing-Tablett aus Indien | 50.90 | 42.16 | **52.90** | 1.04× |
+| Edle Glasschale im nordischen Design | 113.90 | 93.75 | **115.90** | 1.02× |
+| Rotierender Kristall-Glas-Wein-Entkorker 1000 ml | 141.90 | 124.07 | **153.90** | 1.08× |
+| Multifunktionaler Sandsack für das Krafttraining | 123.90 | 101.18 | **124.90** | 1.01× |
+| Tierische Skelettmodelle | 47.90 | 39.11 | **48.90** | 1.02× |
+| Stahl-Deckel für Schnellöffnung von Schächten | 116.90 | 99.87 | **123.90** | 1.06× |
