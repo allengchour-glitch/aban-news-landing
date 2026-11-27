@@ -66,6 +66,7 @@
 - Cascade Modell 1: Der Bildabgleich bei 0,70 s zeigt abweichende Verbindungsstücke in der KI-Vorschau. Vorschau nur für Licht und dunklen Stoff verwenden. Die Drehkarte hält reales Variantenbild, Bildposition und fehlende Takes fest.
 - Google-Schaufenster: Das Nachfrage-Tag allein qualifiziert nicht für Stufe 0. Zwei aktuelle Shopify-Gegenproben tragen ausdrückliche Shopping-Ads-Ausschlüsse, die Wasserwellen-Leuchte zusätzlich eine Bildsperre.
 - Metricool-Plan und vier öffentliche Klaviyo-DNS-Sollwerte nachgelesen. [Abendprotokoll, Kanalentwürfe und Belege](dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md)
+- Nachfrage-Pilot nachgelesen: 11 aktuell ausserhalb Google, 7 mit Anzeigen-Ausschluss, 3 Standardprodukte mit 53 Varianten im Freigabeentwurf, POD separat. Das archivierte Aufnahme-Artefakt enthält das ausgeschlossene Polygel-Set bereits unter Stufe 0. Pilot darum nur mit exakter Produktliste und erneuter Budgetprobe. [Abgleich](dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachfrage-pilot-für-google--abgleich-28112026)
 
 ## 2026-11-27 20:30 · 🤝 Übergabe an Codex
 - Betreiber: «speichere memory für chatgpt codex er macht weiter». Einstieg für Codex: `docs/UEBERGABE-CODEX-2711.md` (Gedächtnis-Orte, Betreiber-Regeln, Zugänge ohne Werte, Motoren, geplante Aufgaben mit Datum, Stand 27.11., Shop-Kampagne, offene Entscheide, Fallen, offene Bestellungen). `AGENTS.md` (Kopie von main + Hinweis oben) liegt jetzt auch auf `claude/luxestyle-status-tztnn1`.
