@@ -168,7 +168,12 @@ export function specZeilen(d, titel){
   if(gw && !specs.some(([k])=>k==='Gewicht')) rows.push(['Gewicht', gw]);
   for(const r of specs) rows.push(r);
   for(const r of textMerkmale(d?.description)) if(!rows.some(([k])=>k===r[0])) rows.push(r);
-  if(liste(d?.productProEn).includes('BATTERY') && !rows.some(([k])=>k==='Stromversorgung')) rows.push(['Stromversorgung','Batterie/Akku']);
+  // 27.11.2026: BATTERY ist bei CJ ein VERSANDmerkmal («enthält Batterie») — keine Stromzeile, wenn der Text das ausdrücklich
+  // verneint oder eine Automatik-/mechanische Uhr vorliegt (harte Widersprüche). USB/Netz allein ist KEIN Widerspruch (eingebauter Akku).
+  const stromTxt=`${titel||''} ${txt}`;
+  const stromWiderspruch=/without batter|no batter|ohne (akku|batterie)|batter(y|ies) (is |are )?not included/i.test(stromTxt)
+    || (/\b(uhr|watch)/i.test(stromTxt) && /\b(automatic|mechanical|automatik|mechanisch|self-winding)/i.test(stromTxt));
+  if(liste(d?.productProEn).includes('BATTERY') && !stromWiderspruch && !rows.some(([k])=>k==='Stromversorgung')) rows.push(['Stromversorgung','Batterie/Akku']);
   return rows;
 }
 
