@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-26 21:22 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 05:48 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 187 · **126 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 98, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 60 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 180 · **119 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 91, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 60 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -66,7 +66,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Portabler HD-Heimprojektor (`portabler-hd-heimprojektor-203584`) | 12 | 12 | 61.99–102.31 | 153.90 | Basic Edition-US, Basic Edition-EU, Basic Edition-UK, Basic Edition-AU |
 | Mini Powerbank mit LED-Taschenlampe (`mini-powerbank-mit-led-taschenlampe-204f73`) | 12 | 4 | 2.99–3.83 | 22.90 | Black-3600mA, Blue-2400mA, Black-4500mA, Red-6000mA |
 | Alice Wonderland aufklebbare Nägel (`alice-wonderland-aufklebbare-nagel-669824`) | 12 | 12 | 2.41–2.41 | 21.90 | Short Ladder-Extra Small XS, Short Ladder-Small Size S, Short Ladder-Medium M, Short Ladder-Large L |
-| Weihnachtsbaumstumpf-Glöckchen in Rot (`weihnachtsbaumstumpf-glockchen-in-rot-635200`) | 12 | 12 | 6.22–9.69 | 41.90 | Gold-45cm, Gold-60cm, Golden Coffee A-45cm, Golden Coffee A-60cm |
 | Full HD Smart Home Beamer Tragbar (`full-hd-smart-home-beamer-tragbar-614900`) | 10 | 10 | 45.69–54.35 | 84.90 | Medium Gauge-Android 4K Full HD Version, Medium Gauge-Same Screen Version, American Standard-Android 4K Full HD Version, American Standard-Same Screen Version |
 | Sturmfeuerzeug mit Power-Display und Puncher (`sturmfeuerzeug-mit-power-display-und-puncher-605700`) | 10 | 10 | 6.38–6.38 | 19.90 | HB198 Blue, HB198 Black Brushed, HB198 Flame Red, HB198 Orange |
 | Hundehalsband mit Gravur und Zugfunktion (`hundehalsband-mit-gravur-und-zugfunktion-063168`) | 10 | 10 | 2.38–5.82 | 16.90 | Pink graffiti-L, Pink graffiti-M, Pink graffiti-S, Pink graffiti-XL |
@@ -92,12 +91,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dimension PD225W Fast Charge Power Bank (`dimension-pd225w-fast-charge-power-bank-629900`) | 7 | 7 | 8.62–14.26 | 18.90 | P168K Black 10000-10000mah, P168K White 10000-10000mah, P169K Black 20000-10000mah, P169K White 20000-10000mah |
 | Trendige Velo-Schultertasche für Sport & Freizeit (`trendige-velo-schultertasche-fur-sport-freizei-959488`) | 7 | 7 | 5.51–5.51 | 18.90 | Green, Blue, Rose pink, Light Grey |
 | Glänzender matter Lidschatten-Stick (`glanzender-matter-lidschatten-stick-997696`) | 7 | 7 | 2.5–2.5 | 21.90 | Champagne purple sparkle, Diamond rose gold, Streamer bronze, Can Ruo Galaxy |
-| Deckenmantel mit Kapuze (`deckenmantel-mit-kapuze-638900`) | 7 | 7 | 8.33–8.33 | 34.90 | Leopard Print-Free Size, Cow-Free Size, Red And Black Plaid-Free Size, Light Pink-Free Size |
 | Handgemachte, abnehmbare Kunstnägel (Kurz) (`handgemachte-abnehmbare-kunstnagel-kurz-981056`) | 6 | 6 | 5.02–5.02 | 15.90 | Jasmine flower-M New Short Square, Jasmine flower-S New Short Square, Jasmine flower-XS New Short Square, Jasmine flower-XS Short Ladder |
 | Mini-Uhr-Ladegerät (`mini-uhr-ladegerat-290698`) | 6 | 2 | 2.15–2.35 | 14.90 | Green-2400mah, Pink-3600mah, Pink-2400mah, Green-3600mah |
 | Rollender Messerschärfer mit Diamantbeschichtung (`rollender-messerscharfer-mit-diamantbeschichtu-627600`) | 6 | 6 | 9.95–11.5 | 28.90 | Wood Black Leather, Wood Color Graywall, Black, Set1 |
 | Intelligenter Quadcopter mit drei Kameras (`intelligenter-quadcopter-mit-drei-kameras-620700`) | 6 | 6 | 24.05–30.02 | 41.90 | Gray-Single Battery Version, Gray-Dual Battery Version, Gray-Three Battery Versions, Carbon Fiber-Single Battery Version |
-| Cat Eye Oval-Kunstnägel – Transparent Fluorescent (`cat-eye-oval-kunstnagel-transparent-fluorescen-609700`) | 6 | 6 | 6.54–6.54 | 19.90 | M-Medium Ellipse, M-Short ellipse, S-Medium Ellipse, S-Short ellipse |
 | Bucheriti Cat's Eye Press-on Nägel (`bucheriti-cat-s-eye-press-on-nagel-867712`) | 6 | 6 | 4.87–4.87 | 17.90 | XS Short Square, S Short Square, M Short Square, XS Short Ladder |
 | Retro-Minimalistische Herrenuhr mit grossem Zifferblatt (`retro-minimalistische-herrenuhr-mit-gro-em-zif-616300`) | 5 | 5 | 8.96–8.96 | 16.90 | White X White X G, G X G X G, Gold X Gold X Green, Gold X Gold X White |
 | 4L Trinkbrunnen für Haustiere (`4l-trinkbrunnen-fur-haustiere-634800`) | 5 | 4 | 15.38–18.92 | 38.90 | Water Droplet Shaped Window-US, Water Droplet Shaped Window-EU, Water Droplet Shaped Window-AU, Water Droplet Shaped Window-UK |
@@ -110,14 +107,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
 | Digitaler Kalenderwecker mit Medikamenten-Erinnerung (`digitaler-kalenderwecker-mit-medikamenten-erin-609900`) | 4 | 4 | 15.28–15.28 | 26.90 | US-White, EU-White, JP-White, AU-White |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
-| Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |
 | Panda Tee-Set Geschenkbox (`panda-tee-set-geschenkbox-619300`) | 4 | 4 | 7.96–7.96 | 24.90 | Panda Teacup Sandalwood, Panda Tea Cup Agarwood, Panda Teacup Laoshan, Panda Teacup Water Sink |
 | Waben-Bratpfanne aus Edelstahl, doppelseitig (`waben-bratpfanne-aus-edelstahl-doppelseitig-615000`) | 4 | 4 | 36.15–54.39 | 137.90 | Frying Pan 28cm, Wok 30cm, Wok 32cm, Wok 34cm |
 | Vollautomatisches Auto- und Fahrzeugladegerät (`vollautomatisches-auto-und-fahrzeugladegerat-602500`) | 4 | 4 | 6.97–6.97 | 28.90 | W08 GB-National Standard-Lead Acid Battery, W08 American Standard-American Standard-Lead Acid Battery, W08 European Standard-European Standard-Lead Acid Battery, W08 British Standard-British Standard-Lead Acid Battery |
 | Parfüm-Öl Middle East Dubai (`parfum-ol-middle-east-dubai-615900`) | 4 | 2 | 4.19–4.19 | 16.90 | Reverse Paris, Real Me, Black Opium, Azure |
 | Lidschatten-Palette "Blue Petals" (`lidschatten-palette-blue-petals-483264`) | 4 | 4 | 3.16–3.16 | 15.90 | FE 101 Spring Color, FE 102 Sweet Tea Slow Notes, FE103 Iris Tectorum, FE 104 Ice Crushing Blue |
-| Handgemachte Luxus-Press-on-Nägel «Drachen & Phönix» (`handgemachte-luxus-press-on-nagel-drachen-phon-619900`) | 4 | 4 | 43.94–43.94 | 66.90 | XS-Dragon, S-Dragon, M-Dragon, L-Dragon |
-| Abnehmbare Kunstnägel «North Sea King» (`abnehmbare-kunstnagel-north-sea-king-624900`) | 4 | 4 | 10.66–10.66 | 24.90 | Sunset-XS, Sunset-S, Sunset-M, Sunset-L |
 | Nacken- und Schultermassagekissen (`nacken-und-schultermassagekissen-176640`) | 4 | 4 | 48.86–48.86 | 73.90 | Lemon yellow-USB, Soft brown-USB, Turquoise-USB, Vibrant Orange-USB |
 | Douji Wear Armor Turmalin Feenkrone K9 Edelstein Aurora Maniküre (`douji-wear-armor-turmalin-feenkrone-k9-edelste-534272`) | 4 | 4 | 24.1–24.1 | 42.90 | XS-As Shown, S-As Shown, M-As Shown, L-As Shown |
 | Miniatur Diamant-Partikel Häuschen Puzzle (`miniatur-diamant-partikel-hauschen-puzzle-616256`) | 4 | 4 | 4.36–4.36 | 23.90 | Sweetheart handmade, Afternoon time, Annies studio, Sunshine flower house |
@@ -126,7 +120,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`) | 3 | 3 | 5.47–5.47 | 14.90 | Old Style, New And Refreshed Model, ModelY YL |
 | Super-schnelle Mini Power Bank (`super-schnelle-mini-power-bank-639200`) | 3 | 3 | 5.8–8.29 | 14.90 | 5000mA, 10000mA, 10000mAU pgraded version |
 | Kamera Bausteine mit Ewiger Blume Deko (`kamera-bausteine-mit-ewiger-blume-deko-614700`) | 3 | 3 | 10.93–17.64 | 44.90 | Huayu Polaroid, Huayu Instant Camera Gift Box, Huayu Polaroid Greeting Card |
-| Sommerliches Blumen-Nagelset zum Aufkleben (`sommerliches-blumen-nagelset-zum-aufkleben-624700`) | 3 | 3 | 6.09–6.09 | 18.90 | XS-Short Square, S-Short Square, M-Short Square |
 | Haarpflege-Spray (`haarpflege-spray-607400`) | 2 | 2 | 2.53–2.53 | 15.90 | 50ML-Untitled, 50ML-Original standard |
 | 3A Common Style Add Resin Jelly Glue Wear Armor · Press-on-Nägel (`3a-common-style-add-resin-jelly-glue-wear-armo-627800`) | 2 | 2 | 2.11–2.46 | 14.90 | 4 piece set, 5 piece set |
 | Eau de Parfum «Rosenduft» (`the-odour-of-roses-eau-de-parfum-630848`) | 2 | 2 | 2.1–2.1 | 14.90 | 100ml-7306a Royal Crown, 100ml-7306b Dark Rose |
