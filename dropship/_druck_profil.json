@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-24T07:27Z",
+ "stand": "2026-11-27T09:45Z",
  "profil": "gid://shopify/DeliveryProfile/152645108103",
  "stufe": 2,
  "stufe_roh": {
@@ -16,14 +16,10 @@
   "stufe2_gesetzt": "2026-10-20T02:14Z"
  },
  "modus": "scharf",
- "schwelle_befunde": [
-  "General: Gratis ab [45.0] ≠ GRATIS_AB_CH 50.00"
- ],
+ "schwelle_befunde": [],
  "bearbeitung_tage": 1,
- "tarife_ok": false,
- "tarif_befunde": [
-  "CH/Kostenloser Versand: Bedingungen [[('TOTAL_PRICE', 'GREATER_THAN_OR_EQUAL_TO', 50.0)]] ≠ General [[('TOTAL_PRICE', 'GREATER_THAN_OR_EQUAL_TO', 45.0)]]"
- ],
+ "tarife_ok": true,
+ "tarif_befunde": [],
  "transit_ok": true,
  "transit_befunde": [],
  "standort_befund": {},
@@ -31,8 +27,8 @@
  "mitglieder_regel": 0,
  "soll_produkte": 0,
  "soll_handles": [],
- "kosten_alter_tage": 0.0,
- "geloest": 245,
+ "kosten_alter_tage": 3.1,
+ "geloest": 0,
  "zugeordnet": 0,
  "kein_tarif": {},
  "matrix": {
