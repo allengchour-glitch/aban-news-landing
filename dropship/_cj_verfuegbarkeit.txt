@@ -52911,3 +52911,5 @@ gid://shopify/Product/16612325917063	ok
 gid://shopify/Product/16612326375815	ok
 gid://shopify/Product/16612337648007	ok
 gid://shopify/Product/16612337811847	ok
+gid://shopify/Product/16612337877383	ok
+gid://shopify/Product/16612339745159	ok

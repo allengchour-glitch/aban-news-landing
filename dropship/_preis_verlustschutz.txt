@@ -358526,3 +358526,5 @@
 56003546317185	heben	15.90	16.90	12.68	2026-11-27	ultradunne-magnetische-wireless-power-bank-609200
 56003825009025	heben	15.90	21.90	16.70	2026-11-27	bluetooth-speaker-mit-rgb-lampe-tws-641200
 56004081451393	heben	15.90	24.90	19.48	2026-11-27	hd-4k-uberwachungskamera-mit-tf-speicherkarte-592640
+56007267516801	heben	15.90	16.90	12.87	2026-11-27	mini-powerbank-pd20w-mit-kabel-634200
+56007268073857	heben	15.90	16.90	12.83	2026-11-27	super-fast-charge-powerbank-645000
