@@ -9528,3 +9528,8 @@ gid://shopify/Product/15485690216833	zugeordnet	25	Langarm V-Neck Top Slim-Fit
 gid://shopify/Product/15485690347905	zugeordnet	25	Waffle-Strick Langarmshirt mit Rückenknöpfen
 gid://shopify/Product/15485690478977	zugeordnet	30	Samt-Bluse mit Schnürung und Ballonärmeln
 gid://shopify/Product/15485692051841	zugeordnet	12	Herren Sport T-Shirt Langarm – Sommer
+gid://shopify/Product/15485692215681	zugeordnet	48	Lässiges Kurzarm-Shirt aus Baumwoll-Mix
+gid://shopify/Product/15485751361921	zugeordnet	35	Doppeldreh-Sneaker
+gid://shopify/Product/15485751525761	zugeordnet	33	Einfache Mesh Sneaker
+gid://shopify/Product/15485751624065	zugeordnet	36	Casual Low-top Schuhe
+gid://shopify/Product/15485751787905	zugeordnet	28	Retro Sneaker mit dicker Sohle
