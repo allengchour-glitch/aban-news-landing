@@ -383,3 +383,4 @@
 2026-11-23	gid://shopify/Product/15483934441857	finken	Winter-Hausschuhe aus Baumwolle
 2026-11-23	gid://shopify/Product/16732218360199	finken	Plüsch Hausschuh für Kinder – dicke Fellfütterung
 2026-11-26	gid://shopify/Product/16737984610695	finken	Flauschige Häschen-Hausschuhe für Kinder
+2026-11-27	gid://shopify/Product/16741638340999	natel	VR-Brille mit Smartphone-Anschluss
