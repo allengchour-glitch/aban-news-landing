@@ -62,6 +62,11 @@
 
 
 
+## 2026-11-27 11:00 · 🛒 «push für mehr einkäufe» — Workflow + 6 Umsetzungen
+- Messung: CH 7 T 318 → 13 → 10 → 2; Shop-App-Käufe fehlen im Sitzungs-Trichter (5 in 30 T); 758 China-Bot-Sitzungen am 27.11. verzerren Gesamtzahlen → immer `WHERE session_country = 'Switzerland'`. Black-Week-Rabatt 0× genutzt (Ø-Korb 31.80). BF-Mail 17 Empfänger / 0 Klicks. Abbruch-Mail 1: 5/10 Bounces, Klaviyo-Sendedomain send.luxestyle.ch seit 17.10. «pending» (DNS fehlt, Betreiber).
+- Umgesetzt: Black-Week-Seite ≥80 zuerst; Warenkorb-Hinweis bis 30.11. (`bw_warenkorb_hinweis_2711.py`); PDP Vertrauen/Zahlarten direkt unter Kaufknopf (`pdp_vertrauen_reihenfolge_2711.py`); Leiste TWINT/Klarna + «Inkl. MwSt.» → «Preise in CHF.» (nicht MWST-pflichtig, `vertrauen_leiste_mwst_2711.py`); Abbruch-Mail RfQt4V mit Produktbildern (Klaviyo-Event: `event.extra.line_items[].product.images.0.src`, `|slice:":3"` funktioniert); Reel-Texte «nach Rabatt».
+- Gestrichen nach Gegenprüfung: BW-Schwelle 60, 2. BF-Mail, Warenkorb-Zusatzartikel, Heizdecke→Hoodie-Decke (nicht beheizt), Zustellereignisse (erst messen, ob ≤ 10 T). Betreiber offen: DNS 4 Einträge, «Stufe 3 ja», Geschenkkarte, Shop-App-Klicks, Trustpilot-Land. Doku `dropship/verkauf-2711/PUSH.md`.
+
 ## 2026-11-27 05:45 · 💄 #1047 Augencreme: Betreiber «1047 A» → CJ-Support gefragt
 - LX1047 (SD2611251301040644900) bezahlt 25.11., UNSHIPPED, Tracking EQKPT8613518515YQ. Mail an support@cjdropshipping.com (vom CJ-Konto-Gmail): ohne Marke → normal versenden; mit Paula's-Choice-Name/Logo → NICHT versenden, Ersatz ohne Marke oder Storno ins Wallet; ob PID 2607070621261615300 generell Markenware ist. Bestellnotiz gesetzt, Nachkontrolle 28.11. per send_later. Kommt «branded» → Produkt bleibt DRAFT, Kundin informieren (frischen Thread lesen), bei Storno Rückerstattung selbst auslösen.
 - Daneben: CJ-Ticket vom 21.11. zu SD2611172218050640600 («Products Discontinued», «Awaiting your response», lief nach 36 h ab) — Stand prüfen.

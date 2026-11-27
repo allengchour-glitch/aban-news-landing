@@ -1,0 +1,382 @@
+
+###### blackweek
+
+[aendern|sitzung|P1] Warenkorb-Hinweis zum Black-Week-Rabatt, der am 30.11. von selbst verschwindet (nur im Warenkorb)
+  GRUND: Der Beleg stimmt im Kern.
+- Im Live-Theme gid://shopify/OnlineStoreTheme/214565814663 (main_theme.gid(), eigene Abfrage themeFiles) kommen «Black» und «black-week» in snippets/cart-summary.liquid (22'700 Zeichen, Stand 21.11.) 0× vor. In templates/product.json ebenfalls 0×.
+- Die Zahlen des Vor-Agenten sind zu hoch. ShopifyQL, Mensch, Schweiz, -7d: 254 Sitzungen, 11 mit Warenkorb, 1 Kauf; Produkt-Einstiege 122 (nicht 176), Startseite 32 (nicht 39). ChatGPT: 7 T 125 Sitzungen, 9 Warenkörbe, 0 Käufe; 30 T 559 Sitzungen, 44 Warenkörbe, 4 Käufe.
+- Falsch ist «sieht die Aktion nicht»: WebFetch auf einer Produktseite zeigt den Banner «Black Week: 15 % Rabatt ab CHF 80 – automatisch im Warenkorb, b
+  UMSETZUNG: Durch die Sitzung, heute, nur snippets/cart-summary.liquid; templates/product.json nicht anfassen.
+1) Live-Datei über automation/main_theme.gid() holen und sichern nach theme_backup/snippets__cart-summary.liquid.vor-bw-hinweis-2711.
+2) Direkt nach dem schliessenden </div> des Blocks .lux-gratisversand (innerhalb {%- unless cart == empty -%}) einfügen:
+{%- assign lux_jetzt = 'now' | date: '%s' | plus: 0 -%}{%- if lux_jetzt < 1796079599 -%}{%- assign lux_bw_an = false -%}{%- for d in cart.cart_level_discount_applications -%}{%- if d.title contains 'Black Week' -%}{%- assign lux_bw_an = true -%}{%- endif -%}{%- endfor -%}{%- if lux_bw_an -%}<div class="cart-totals__item cart-primary-typography" style="font-size:0.92em;justify-content:center;text-align:center;"><span>🖤 Black-Week-Rabatt 15 % ist aktiv</span></div>{%- elsif cart.items_subtotal_price >= 4000 -%}{%- assign lux_bw_rest = 8000 | minus: cart.items_subtotal_price -%}<div class="cart-totals__item cart-primary-typography" style="font-size:0.92em;justify-content:center;text-align:center;"><span>🖤 Noch <strong>{{ lux_bw_rest | money }}</strong> bis 15 % Black-Week-Rabatt (automatisch, bis Mo 30.11.)</span></div>{%- endif -%}{%- endif -%}
+(1796079599 = Mo 30.11.2026 22:59:59 UTC, mit date -u geprüft. Die Zeile erscheint nur ab CHF 40 Warenwert, darunter bleibt der Gratisversand-Hinweis allein. Gerechnet wird mit dem Wert nach 
+
+[aendern|sitzung|P2] Black-Week-Seite umsortieren: zuerst Artikel, die den Rabatt allein erreichen (ohne neue Startseiten-Reihe)
+  GRUND: Beleg zur Kollektion korrekt (collectionByHandle black-week, eigene Abfrage): MANUAL, 60 aktiv, Median 34.90, 4 Produkte ≥ 80, 11 ≥ 60, 26 ≥ 40, 16 < 30, in allen 6 Kanälen publiziert. Platz 1–3: 26.90, 29.90, 25.90. Ab-80-Produkte auf den Plätzen 5 (81.90), 29 (81.90), 37 (94.90) und 52 (123.90). Kleiner Zahlenfehler: «Artikel 40–59.90 (26 Stück ab 40)» – die 26 enthalten die 11 ab 60. Im Band 40–59.90 liegen nur 15.
+
+Startseiten-Teil GESTRICHEN:
+- Die Begründung «Sektionslimit» ist veraltet. templates/index.json hat nur noch 2 Sektionen (luxe_home, luxe_reviews).
+- Eine neue Reihe braucht einen Code-Eingriff in sections/luxe-edit-home.liquid (87'641 Zeichen; lx_edit_groups ist dort fest im
+  UMSETZUNG: Durch die Sitzung:
+(1) Reihenfolge vorher sichern: Handles nach COLLECTION_DEFAULT nach dropship/black-week-2411/reihenfolge-vor-2711.json.
+(2) collectionReorderProducts auf der Kollektion black-week, in drei Gruppen:
+- a) die 4 Produkte mit Mindestpreis ≥ CHF 80, absteigend: Reisetasche Rindsleder 123.90, Schultertasche Crazy Horse 94.90, Retro-Aktentasche 81.90, Motorradlederstiefel 81.90;
+- b) Mindestpreis 40–79.90, absteigend (zwei Stück reichen);
+- c) alle übrigen in der bisherigen Reihenfolge.
+Den Auftrag (job) abfragen bis done, dann die ersten 8 Plätze zurücklesen.
+(3) descriptionHtml nur ergänzen, nicht ersetzen. Neuer erster Satz: «Die ersten vier Artikel erreichen den Rabatt allein, ab CHF 40 reichen zwei.» Der Satz zum Gratis-Versand «ab CHF 50 nach Rabatt» bleibt unverändert.
+(4) Keine Startseiten-Reihe, kein Pool, kein Eingriff in luxe-edit-home.liquid.
+(5) Ab 01.12. Text und Reihenfolge aus der Sicherung zurück, oder die Seite wie geplant mit dem Banner abbauen.
+
+[aendern|sitzung|P3] Gratisversand-Hinweis in den Reel-Bildtexten auf «ab CHF 50 nach Rabatt» bringen (Mail und Post für den letzten Tag gestrichen)
+  GRUND: Geprüft und angepasst:
+- Klaviyo: Es gibt nur die Kampagne 01M87W79M9T2DY0VNRP85PNETE, keine Erinnerung geplant. Ergebnis (get_campaign_report 26.–27.11.): 17 zugestellt, 2 einmalige Öffnungen, 0 Klicks, 0 Abmeldungen, 0 Spam. Die Listen Email List (Double-Opt-in) und Newsletter Subscribers (Single-Opt-in) sind rechtlich in Ordnung.
+- Eine zweite Mail an 17 Personen nach 0 Klicks bringt SCHÄTZUNG ~0 Käufe, kostet Betreiber-Aufmerksamkeit und birgt ein Abmelderisiko. GESTRICHEN.
+- Metricool (getScheduledPosts 27.–30.11.): Am 30.11. stehen nur die Pins 440688386 und 442297377. Die Posts vom 29.11. (442297277, 442297184) sagen schon «bis morgen, 30.11.». Social brachte 7 T in der Schweiz 2 Sitz
+  UMSETZUNG: Durch die Sitzung, nicht dringend:
+(1) In automation/reel/bild_reel.py:234 und automation/cj_video_reel_engine.mjs:424 «Gratis Versand ab CHF 50» ersetzen durch «Gratis Versand ab CHF 50 nach Rabatt». Nur die Vorlage für NEUE Einträge ändern; bestehende Queue-Bildtexte NICHT umschreiben. Die Vor-Jury cacht sha1(Datei)+Caption, ein neuer Bildtext löst sonst neue Jury-Aufrufe aus.
+(2) Die Selbsttests laufen lassen, die den Wortlaut enthalten: bild_reel_auswahl.py (preisVeraltet-Muster Z. 841) und social_vorlauf.py (Z. 1224). Den Laufzeit-Prozess /opt/node22/bin/node automation/cj_video_reel_engine.mjs in einem eigenen Bash-Aufruf beenden und über engine_keepalive.sh neu starten.
+(3) Offen lassen und nur melden: In die Videobilder eingebrannte Texte ohne Zusatz in automation/reel/overlay.py:90, automation/reel/schnitt.py:1820 und automation/reel/fotos_reel.py:89. Sie betreffen neu gerenderte Videos; laut Gedächtnis läuft ein Sammel-Lauf nur auf Anweisung.
+(4) Optional: IG 444123282 einmal neu planen, nachdem _posted_media.txt und die letzten 25 IG-Posts (igLiveHas) geprüft sind und das Produkt noch ACTIVE ist.
+Keine Klaviyo-Kampagne, kein Extra-Post für den letzten Tag.
+
+[streichen|betreiber|P4] Black-Week-Schwelle von CHF 80 auf CHF 60 senken
+  GRUND: Die Zahlen stimmen, die Folgerung nicht.
+- Gemessen: Rabatt DiscountAutomaticNode/2455044096391 ACTIVE, ab 80.0, 15 %, ORDER, ab 24.11. 22:30 bis 30.11. 22:59:59 UTC, asyncUsageCount 0.
+- Bestellungen seit 13.11.: #1042–#1049, keine ≥ 80. Abbrüche 78.90, 54.90, 51.73, 31.90, 23.90, 17.90, alle NOT_SUBSCRIBED. «2 von 14 Körben ≥ 60» stimmt.
+
+Warum streichen:
+(1) Kannibalisierung statt mehr Käufer. Von den zwei Körben ≥ 60 hat einer (#1042, Warenwert 67.60) ohnehin gekauft, mit 10 % Mengenrabatt. Bei Schwelle 60 hätte er nur 5 Punkte mehr Rabatt bekommen, ohne zusätzlichen Kauf. Die Rollschuhe (78.90) wurden am 18.11. abgebrochen, also vor dem Aktionsstart.
+(2) Seltene Körbe. Hochgerechnet auf
+  UMSETZUNG: Nicht umsetzen und dem Betreiber nicht vorlegen. Der Rabatt bleibt «15 % ab CHF 80» bis 30.11. 22:59:59 UTC (Entscheid 24.11.). Die Erkenntnis für die nächste Aktion ins Journal: Körbe ≥ CHF 60 sind selten (2 von 14 in 14 T). Eine Warenkorb-Schwelle kurbelt hier keine Käufe an, solange der Verkehr fehlt und die Preise am Boden liegen.
+
+[streichen|betreiber|P5] Shop-App: Black-Week-Kategorie im Shop Store und CJ-Zahllinks #1047–#1049
+  GRUND: Teil (2) ist SCHON ERLEDIGT. Der Beleg «In _cj_order_watch_state.json kein Eintrag» ist falsch, gesucht wurde nach «#1048» statt nach dem Schlüssel «LX1048». Gemessen:
+- LX1047 UNSHIPPED EQKPT8613518515YQ
+- LX1048 UNSHIPPED EQKPT8613534482YQ
+- LX1049 UNSHIPPED EQKPT8613539527YQ
+- automation/bestell_ampel.py: «bezahlt, wartet auf Versand» für alle fünf offenen Bestellungen
+- automation/cj_zahlung_offen.py: «nichts offen · Guthaben $0.00»
+Es gibt keinen Zahllink zu zahlen.
+
+Der Rest trägt nicht:
+- Bestätigt (orders, eigene Abfrage): Die 3 Shop-Bestellungen (#1047 15.90, #1048 28.90, #1049 27.90, je CHF 7 Versand) kamen laut Tags «Shop Cash offers acquired» und SHOP-APP-KAMPAGNE-2611.md über Ka
+  UMSETZUNG: Nicht umsetzen. Im Bericht an den Betreiber nur einen Satz: «CJ #1045–#1049 sind bezahlt und haben Sendungsnummern, kein Zahllink offen.» Der Entscheid «1047 A/B» bleibt dort, wo er steht (dropship/SHOP-APP-KAMPAGNE-2611.md Punkt 1).
+
+###### abbrecher
+
+[aendern|sitzung|P1] Abbruch-Mail 1 (VfffLv, Vorlage RfQt4V) konkret machen und den Kassen-Link prüfen
+  GRUND: Die Kernbelege stimmen. Klaviyo get_flow XEGbTB am 27.11.: Mail 1 hat additional_filters = null, transactional = false, Smart Sending an. Mail 2 SPNjDp geht nur an Abonnenten. get_email_template RfQt4V: zuletzt geändert am 10.10., ohne Produkt, ohne Bild, ohne Betrag; Zahlarten und «Antworte einfach» stehen schon drin. get_flow_report über 90 T: Mail 1 hatte 10 Empfänger, 5 Bounces, 5 Zustellungen, 3 Öffnungen, 0 Klicks, 0 Käufe; Mail 2 hatte 5 Empfänger, 2 Öffnungen, 0 Klicks. Shopify abandonedCheckouts seit 28.10.: 15 Kassen, davon 14 NOT_SUBSCRIBED.
+
+Vier Korrekturen:
+(a) Produktbilder sind BELEGT, nicht UNBELEGT. In den echten Abbruch-Ereignissen vom 26.11. 00:54 und 24.11. 17:20 (get_ev
+  UMSETZUNG: Nach dem Betreiber-OK für den Klaviyo-Schreibzugriff:
+
+(1) Sicherung: get_email_template RfQt4V (html) unter dropship/verkauf-2511/klaviyo-RfQt4V-vorher-2711.html ablegen. Rückweg: update_email_template mit dieser HTML.
+
+(2) In RfQt4V unter dem Begrüssungsabsatz eine Produktliste einfügen (höchstens 3 Positionen):
+{% for item in event.extra.line_items %}{% if forloop.counter <= 3 %}<img src="{{ item.product.images.0.src }}" width="72" alt="{{ item.title }}"> {{ item.title }}{% if item.quantity > 1 %} × {{ item.quantity }}{% endif %}{% endif %}{% endfor %}
+Einen Rückfall einbauen: Fehlt line_items, entfällt der Block.
+Unverändert bleiben: der Knopf auf {{ event.extra.checkout_url|default:'https://luxestyle.ch' }}, die Zahlarten-Zeile und «Fragen zur Grösse oder Lieferung? Antworte einfach».
+NICHT aufnehmen: Betrag, Lieferzeit-Zeile, Gratisversand-Zeile, Rabatt, Code, «reserviert», Verknappung, Black-Week-Hinweis.
+
+(3) Optional den Betreff in Aktion 120053545 über update_flow_action ändern (gleicher Weg wie am 25.11., alle übrigen Felder unverändert mitsenden): «Dein Warenkorb bei LuxeStyle: {{ event.Items.0|truncatechars:40 }}».
+
+(4) render_email_template mit dem Kontext der Ereignisse vom 26.11. (3 Positionen) und 24.11. (1 Position), je mit und ohne first_name. Prüfen: Bild sichtbar, Titel richtig, Knopf-href enthält /checkouts/ac/ und /recover.
+
+(5) create_template_preview_se
+
+[umsetzen|betreiber|P2] Klaviyo-Sendedomain send.luxestyle.ch bestätigen (DNS-Einträge fehlen)
+  GRUND: Bestätigt. get_sending_domains am 27.11.: ID 3438728, Status pending, angelegt und zuletzt geändert am 17.10., alle 5 Einträge verified = false. dns.google am 27.11.: send.luxestyle.ch, mtd1._domainkey.luxestyle.ch, mtd2._domainkey.luxestyle.ch und mtd1._domainkey.send.luxestyle.ch liefern alle NXDOMAIN. luxestyle.ch TXT enthält nur Zoho-SPF plus Zoho-, Google- und TikTok-Verifizierung. _dmarc.luxestyle.ch ist schon vorhanden («v=DMARC1; p=none», genau der Wert, den Klaviyo verlangt). Nameserver: registrar-servers.com, also Namecheap.
+
+Korrekturen:
+(a) Der Betreiber muss genau 4 Einträge anlegen: 3 CNAME und 1 TXT am Apex. _dmarc NICHT neu anlegen.
+(b) Die Hostnamen gelten relativ zu luxesty
+  UMSETZUNG: Betreiber, ca. 10 Minuten am Handy: Namecheap → Domain List → luxestyle.ch → Advanced DNS → «Add New Record», genau diese 4 Zeilen:
+1) CNAME, Host «send» → 3848818023763335087.klaviyodns.com
+2) CNAME, Host «mtd1._domainkey» → mtd1._domainkey.3848818023763335087.klaviyodns.com
+3) CNAME, Host «mtd2._domainkey» → mtd2._domainkey.3848818023763335087.klaviyodns.com
+4) TXT, Host «@» → klaviyo-site-verification=XWqMAD (als ZUSÄTZLICHE TXT-Zeile)
+Den bestehenden SPF-Eintrag «v=spf1 include:zohomail.eu ~all», die übrigen TXT-Zeilen und _dmarc nicht ändern und nichts doppelt anlegen.
+
+Danach die Sitzung (nur lesen, bis der Betreiber OK gibt):
+- DoH-Prüfung von send.luxestyle.ch (CNAME) und mtd1._domainkey.luxestyle.ch (CNAME).
+- Wenn beide antworten: create_sending_domain_verification_job für 3438728.
+- Nach «verified»: create_sending_domain_activation_job.
+- get_sending_domains nachlesen.
+- Eine Vorschau-Mail an info@luxestyle.ch schicken und im Header prüfen: DKIM = pass mit einer luxestyle.ch-Domain, DMARC = pass.
+- Zoho-Empfang kurz testen (eine Mail an info@luxestyle.ch kommt an).
+
+[aendern|sitzung|P3] Wegwerf-Adressen aus Abbruch-Mail 1 filtern (Zustellbarkeit)
+  GRUND: Der Beleg stimmt. get_flow XEGbTB: Der Profilfilter enthält nur «Placed Order = 0 seit Flow-Start», einen Filter gegen Wegwerf-Adressen gibt es nicht. get_flow_report über 90 T: Mail 1 hatte 5 Bounces bei 10 Empfängern, der Flow insgesamt eine Bounce-Rate von 0.3333.
+
+Korrekturen am Weg:
+(a) Nicht über update_flow mit dem Profilfilter des ganzen Flows, denn das verlangt die volle Flow-Definition. Stattdessen additional_filters von Mail 1 über update_flow_action ändern, also Aktion 120053545, derselbe Weg, der am 25.11. für Mail 2 funktioniert hat. Mail 2 braucht keinen Filter, sie geht nur an Abonnenten.
+(b) Die API kann das. Das Schema von update_flow_action erlaubt die Bedingung profile-pr
+  UMSETZUNG: Nach dem Betreiber-OK, ab 01.12.:
+
+(1) Den heutigen Stand mit get_flow XEGbTB (definition) unter dropship/verkauf-2511/klaviyo-xegbtb-vor-wegwerf.json sichern.
+
+(2) update_flow_action für Aktion 120053545 (Nachricht VfffLv). Alle Nachrichtenfelder unverändert mitsenden (from, subject, template_id RfQt4V, transactional false, smart_sending true, Status live). additional_filters.condition_groups bekommt je eine Gruppe pro Bedingung:
+- {profile-property, email, not-ends-with "@<domain>"} für jede Domain aus WEGWERF_DOMAIN in automation/checkout_abbruch_messen.py
+- eine Gruppe {profile-property, email, nregex "^mail[0-9]{6,}@"}
+
+(3) Trockentest vorher: art() aus checkout_abbruch_messen.py auf die 15 abandonedCheckouts seit 28.10. anwenden. Ergebnis muss sein: 0 echte Adressen ausgeschlossen.
+
+(4) get_flow nachlesen: Filter an Mail 1, Mail 1 live, Mail 2 unverändert.
+
+(5) Nach 30 T die bounce_rate von VfffLv im get_flow_report prüfen. Rückweg: additional_filters = null.
+
+[streichen|sitzung|P4] Warenkorb: günstige Ergänzungen bis zum Gratisversand und eine Vertrauenszeile
+  GRUND: Der Beleg ist zum Teil falsch.
+
+Live-Theme 214565814663: templates/cart.json enthält schon die Sektion product_list_NNFgcy (Kollektion bestseller, 4 Produkte) und lux_cart_trust mit «30 Tage Rückgaberecht». Die Zeile berücksichtigt Editor-Artikel und nennt die Zahlarten. «0 Treffer für recommend/Rückgabe» stimmt nur für den Drawer: cart_type = drawer, und snippets/header-actions.liquid rendert cart-summary ohne Trust-Zeile. Der Hinweis «noch CHF X bis zum Gratisversand» (5556 − Zwischensumme) ist schon im Drawer.
+
+Der Hebel setzt am falschen Schritt an. ShopifyQL CH, 7 T: 13 Warenkörbe → 10 Kassen → 2 Käufe; der grosse Verlust liegt nach dem Kassenstart. In 30 T: 67 → 36 → 11. ANALYSE.md vom
+  UMSETZUNG: Nichts umsetzen. Falls später gewünscht, als eigener Vorschlag nach der Black Week: die bestehende Zeile lux_cart_trust (30 Tage Rückgabe, mit Editor-Unterscheidung) mit Theme-Sicherung in den Drawer übernehmen und den Effekt mit ShopifyQL (Warenkorb → Kasse) messen. Keine Ergänzungsartikel.
+
+[streichen|betreiber|P5] Mehr Abbrecher erreichbar machen: Einwilligung in der Kasse besser sichtbar
+  GRUND: Die Zahlen stimmen. Shopify orders seit 28.10.: 18 Bestellungen, davon 3 SUBSCRIBED. abandonedCheckouts seit 28.10.: 15, davon 14 NOT_SUBSCRIBED.
+
+Die Checkbox gibt es schon und sie wirkt: #1038 willigte in der Kasse ein, und 1 Abbrecher ist SUBSCRIBED. Der Hebel ändert nur den Wortlaut. Ob ein anderer Text mehr Anmeldungen bringt, ist UNBELEGT, und bei rund 1 Abbruch mit E-Mail pro Woche ist es auch in 14 T nicht messbar. Den heutigen Wortlaut kann die Sitzung per API nicht lesen. «Erinnerungen» im Text ändert am Verhalten nichts. Die Wirkung liegt nach eigener Angabe bei rund 0 Käufen. Standard bei Zweifel: streichen.
+  UMSETZUNG: Nichts umsetzen. Kein Betreiber-Klick nötig. Die Anmeldung in der Kasse bleibt wie heute: eingeschaltet und nicht vorausgewählt.
+
+###### produktseiten
+
+[aendern|sitzung|P1] Nagel-Seiten: Hinweis zur UV/LED-Härtung, Lieferumfang, Link auf eine Nagellampe, Variantennamen bereinigen
+  GRUND: Beleg stimmt. ShopifyQL, Schweiz, 30 Tage, nur Menschen: Polygel-Set 2 Sitzungen → 2 Warenkörbe → 2 an der Kasse → 1 Kauf; Polygel-Kit 2 → 1 → 1 → 0, Ø 810 s. Abgebrochene Kasse vom 26.11. 01:08 über CHF 51.73: 2× UV Nagellack Set («6 Teile 07», «6pcs20») + Mobray «4Stil» (abandonedCheckouts). In descriptionHtml der 4 Produkte steht nirgends, ob man eine Lampe braucht oder ob eine dabei ist. Es gibt nur den Ratgeber-Link; beim Polygel-Set steht «UV-Gel». 22 aktive Nagellampen; die 80-W-Lampe (CHF 33.90) und die Mini-Lampe (16.90) gibt es.
+
+Drei Korrekturen:
+1. Am Abbruch ist der Versand belegt, die fehlende Lampen-Angabe nicht. 15.90 + 15.90 + 17.90 = 49.70, abzüglich 10 % ab 3 Stück = 44.73
+  UMSETZUNG: 1. CJ-Daten holen (product/query, pid bzw. Varianten aus den SKUs CJZJ240373…, CJBJZJZJ00782…, CJBJZJZJ00772…, Polygel-Set UUID 602BF0A2…). Prüfen, ob eine Lampe dabei ist und was der «Phototherapie-Stift» beim Mobray ist (Bild ansehen).
+
+2. Oben in descriptionHtml je Produkt EIN Satz, nur wenn belegt:
+- «Härtet unter UV/LED-Licht aus – eine Nagellampe ist nicht im Set», oder
+- «Ein Mini-Härtestift ist dabei».
+Ist es nicht belegt, neutral schreiben: «Zum Aushärten brauchst du UV/LED-Licht – prüfe den Lieferumfang unten».
+Dazu Textlinks auf /products/80w-uv-led-nagellampe-fur-gel-nagel-e624fb (CHF 33.90) und /products/uv-led-mini-nagellampe-fur-gel-manikure-623600 (CHF 16.90); vorher prüfen, dass beide ACTIVE und kaufbar sind.
+
+3. Polygel-Kit: Liste «Lieferumfang» aus den CJ-Daten ergänzen und erklären, was die Variante «Set» (CHF 29.90) gegenüber den Farben (22.90) enthält.
+
+4. Variantenwerte per productOptionUpdate (optionValuesToUpdate) umbenennen:
+- «6pcs18/19/20» → «6 Teile 18/19/20»
+- «1Stil…12Stil» → «Stil 1…12»
+Die SKUs bleiben; cj_order_engine.vid_fuer löst über die SKU auf.
+
+5. KEIN Metafeld complementary_products und keine Theme-Änderung.
+
+6. Versandtext nur «gratis ab CHF 50 nach Rabatt». Rechnung: Kit 22.90 + Lampe 33.90 = 56.80, abzüglich 5 % ab 2 Stück = 53.96, also über 50.
+
+7. Öffentlich prüfen per WebFetch oder Firecrawl (nicht per curl von unserer IP). Nachmes
+
+[aendern|sitzung|P2] Gewitterwolken-Licht: falsche Masse und Stromangabe berichtigen, Doppel-Bewertung ausblenden
+  GRUND: Beleg stimmt (Admin-API descriptionHtml):
+- Technische Daten: «Höhe 1000 m» und «Masse 1000 mm», der Text dagegen 60–70 × 35–40 cm.
+- «Stromversorgung: Batterie/Akku», der Text dagegen USB 5 V ohne Netzteil.
+- Im Judge.me-Widget zwei fast wortgleiche Bewertungen von «s***r» («Diese Wolke ist echt cool …», die zweite nur länger).
+- ShopifyQL, Schweiz, 30 Tage: 3 Sitzungen, Absprung 0 %, Ø 251,7 s, 0 Warenkörbe.
+
+Korrektur am Umsetzungsweg: Die Zeile «Stromversorgung» kommt NICHT aus einem Theme-Snippet. Sie steht in descriptionHtml im Block div.ls-produktdetails und wird von automation/cj_specs.mjs:171 erzeugt, das CJs Versandmerkmal BATTERY in «Stromversorgung: Batterie/Akku» übersetzt.
+
+«10
+  UMSETZUNG: 1. descriptionHtml, Tabelle «Technische Daten»: die Zeilen th «Höhe» / td «1000 m» und th «Masse» / td «1000 mm» ersetzen durch «Länge 60–70 cm» und «Breite 35–40 cm» (Werte aus dem eigenen Text).
+
+2. Im Block div.ls-produktdetails «Stromversorgung: Batterie/Akku» ersetzen durch «USB 5 V (Netzteil nicht enthalten)». Die Material-Zeile «Kunststoff, Metall» (Text: «aus Stoff») nur ändern, wenn die CJ-Daten es belegen.
+
+3. Doppel-Bewertung:
+- Die Judge.me-Bewertungen des Produkts 15450831520129 lesen.
+- Prüfen, dass beide s***r-Einträge eine Importer-Adresse tragen (IMPORT_ADRESSE in judgeme_fake_wache.py).
+- Nur die kürzere Kopie per PUT {"curated":"spam"} ausblenden, zurücklesen (published=false) und prüfen, dass der Zähler auf 5 sinkt.
+- Rückweg: {"curated":"ok"}.
+- Eine echte Kundenbewertung nie anfassen.
+
+4. Prüfen per WebFetch.
+
+5. NICHT heute, als eigene Klassenrunde: cj_specs.mjs:171 so ändern, dass BATTERY keine Stromversorgungs-Zeile mehr erzeugt, wenn der Text USB oder Netzteil nennt. Den Bestand (1'566) per Trockenlauf mit Ausgabe bereinigen und einen Wächter in fixer_keepalive eintragen.
+
+[aendern|sitzung|P3] Thermo-Strumpfhose: Auswahl mit 79 Einträgen in drei Felder aufteilen (Farbe / Stärke / Stückzahl)
+  GRUND: Der Befund stimmt:
+- Admin-API: EINE Option «Farbe» mit 79 Werten, 18 Preisstufen von CHF 14.90 bis 41.90; teils kosten 2 oder 3 Stück gleich viel wie 1 Stück (14.90).
+- Öffentliches HTML: Ausklappfeld select name="options[Farbe]", variant-option--dropdowns.
+- Beschreibung mit eigenem Absatz «Auswahl».
+- ShopifyQL, Schweiz, 30 Tage, nur Menschen: 14 Sitzungen, 2 Warenkörbe, 0 an der Kasse, Absprung 64 %, Ø 108 s.
+- Kein früherer Umbau im Gedächtnis.
+
+Der vorgeschlagene Weg ist aber technisch falsch:
+1. Shopify erlaubt höchstens 3 Optionen. Drei neue anlegen, solange «Farbe» noch existiert, gibt 4 → productOptionsCreate scheitert.
+2. Der Name «Farbe» ist schon vergeben.
+3. Die Farbliste kolli
+  UMSETZUNG: 1. Sicherung: alle 79 Varianten (id, sku, title, price, position, selectedOptions) nach dropship/thermo-strumpfhose-2711/varianten_vorher.json.
+
+2. Probelauf (nur Ausgabe): Jeder Titel wird zu einem Tripel.
+- **Farbe** (bestehende Option, Name bleibt): Schwarz hautfarben mit Füssen · Schwarz/transparent mit Fusssteg · Kaffee hautfarben mit Füssen · Kaffee hautfarben mit Fusssteg · Grau hautfarben mit Füssen · Grau hautfarben mit Fusssteg · Schwarz blickdicht mit Füssen · Set gemischt mit Füssen · Set gemischt mit Fusssteg · Set 6 · Set 7. «Set 6» und «Set 7» per CJ-Variantenbild benennen, sonst so lassen.
+- **Stärke**: 80 g (Frühling/Herbst) · 80 g Übergrösse · 220 g Fleece · 220 g Übergrösse · 300 g Fleece · 300 g Plüsch extra gross.
+- **Stückzahl**: 1 Stück · 2 Stück · 3 Stück · 5 Stück.
+Abbruch, wenn es nicht genau 79 eindeutige Tripel sind.
+
+3. Schreiben nach dem Ablauf von groesse_aus_farbe.py:
+- productOptionsCreate NUR für «Stärke» (Position 2) und «Stückzahl» (Position 3), variantStrategy LEAVE_AS_IS.
+- productVariantsBulkUpdate für alle 79 mit optionValues (optionId + name) für alle drei Optionen.
+- userErrors müssen 0 sein. KEIN productOptionsDelete, KEINE neue Option «Farbe».
+
+4. Zurücklesen gegen die Sicherung: 79 Varianten, 3 Optionen, gleiche IDs, SKUs und Preise. Position 1 bleibt «Schwarz hautfarben mit Füssen · 220 g Fleece · 1 Stück».
+
+5. Absatz «Auswahl» in d
+
+[aendern|betreiber|P4] Geschenkkarte als Weihnachtsausweg, weil das Lieferfenster der Asien-Ware bis 25.12. reicht (Betreiber-Entscheid)
+  GRUND: Beleg stimmt im Kern:
+- Es gibt heute keine Geschenkkarte (products query gift_card:true = 0; Vault-Notiz 07.10.: «Gutscheine ja» war eine falsche KI-Ableitung).
+- Lieferzeit Direktversand 10–20 Werktage: ab 27.11. gerechnet 11.–25.12., das obere Ende liegt nach Heiligabend.
+- Technisch ist alles da: templates/gift_card.liquid im Live-Theme (6'473 Zeichen), buy_buttons gift_card_form = true.
+
+Korrekturen:
+- Die Bewertungen «Lieferung hat ewig gedauert» sind importierte Lieferanten-Bewertungen, kein Beleg für unsere Lieferzeit.
+- Die 7-Tage-Wirkung ist zu hoch: In den nächsten 7 Tagen kommt Asien-Ware am unteren Ende noch vor Weihnachten an.
+- Dazu fehlen im Vorschlag zwei Risiken: Geschenkka
+  UMSETZUNG: Betreiber-Frage, eine Zeile: «Geschenkkarte verkaufen? Ja/Nein, Beträge (Vorschlag CHF 25 / 50 / 100), Gültigkeit (Vorschlag 2 Jahre)».
+
+Bei Ja macht die Sitzung:
+1. productCreate mit giftCard:true, Titel «LuxeStyle Geschenkkarte – sofort per E-Mail», 3 Varianten. In Onlineshop und Shop-App publizieren, die ID aus der Antwort nehmen.
+2. AGB-Abschnitt «Geschenkkarten» per shopPolicyUpdate: Gültigkeit, keine Barauszahlung, Einlösung nur auf luxestyle.ch, Versand per E-Mail.
+3. Das Lieferdatum-Snippet aus dem Live-Theme über automation/main_theme.py holen und sichern. Darunter eine Zeile, die nur erscheint, wenn das späteste Datum nach dem 24.12. liegt: «Für Weihnachten knapp? Die Geschenkkarte kommt sofort per E-Mail». Kein Lieferversprechen für die Ware.
+4. Bestellungen mit Geschenkkarten in der Betrugsanalyse beachten; bei hohem Risiko nicht automatisch ausliefern (Betreiber-Hinweis).
+5. Prüfen per WebFetch.
+
+[streichen|sitzung|P5] LED-Wasserwellen-Leuchte: günstige Kronen-Ausführung zur Standardwahl machen und «Ausführung» aufteilen
+  GRUND: Die Zahlen stimmen: Position 1 = «Stecker quadratisch, 1 Stück» CHF 21.90, Krone 1 Stück CHF 14.90 auf Position 3. Öffentliches HTML zeigt CHF 21.90. ShopifyQL, Schweiz, 30 Tage: 7 Sitzungen, 100 % Absprung, 0 Warenkörbe.
+
+Aber die Belege sprechen gegen den Hebel:
+1. Beide bisherigen Bestellungen des Produkts waren die quadratische Ausführung: #1026 (12.10., «square-2PCS») und #1028 (24.10., «square-1PC») (orders query product_id). Die heutige Standardwahl ist also die, die nachweislich verkauft. Die Krone ist laut Text nicht aufladbar.
+2. Die Krone hat die dünnste Marge (EK 10.42 bei 14.90). Mit der Mindest-Stückgewinn-Regel ab 30.11. steigt sie ohnehin auf etwa 18.90; der Abstand zum Ab-Pr
+  UMSETZUNG: Keine Umsetzung. Standardvariante und Optionen bleiben, wie sie sind. Die Zeile «Stromversorgung: Batterie/Akku» dieser Leuchte wird in der Klassenrunde zu cj_specs.mjs:171 mitbereinigt (siehe Hebel Gewitterwolken-Licht, Schritt 5).
+
+###### kanaele
+
+[aendern|sitzung|P1] Shop-App: echte CJ-Zustellungen als Fulfillment-Ereignis an Shopify melden (nur mit CJ-Zeitstempel)
+  GRUND: Der Kern stimmt, drei Angaben waren aber falsch oder unvollständig. GEMESSEN (orders.fulfillments, 27.11.): Nur #1038 (DHL) ist DELIVERED. Alle CJPacket-Sendungen haben 0 Ereignisse und deliveredAt=null. In automation/ gibt es kein fulfillmentEventCreate (grep). Shop-Kanal 7 T: 3 von 5 Bestellungen (#1047, #1048, #1049), das stimmt. KORREKTUR 1: Die 3 CLOSED-Fälle sind NICHT ungeklärt. CJ logistic/trackInfo zeigt für LX1023/1025/1026 «Delivered» am 26./27.10. Dazu kommen 4 ältere Bestellungen im 90-T-Fenster, die ebenfalls zugestellt sind: #1018, #1020, #1021 (erstattet) und #1022 (Kanal Shop). Belegbar sind also 17 Zustellungen; #1017 kam zurück. KORREKTUR 2: Shopify misst laut Help-Seite «
+  UMSETZUNG: 1) Probe an #1028: Zustell-Zeit aus CJ logistic/trackInfo lesen (routes, Eintrag «Event of delivery (inland): Delivered…», 2026-11-04 12:45:46). Die Zeitzone vorher prüfen: das CJ-Ereignis «Label created» gegen order.createdAt abgleichen; im Zweifel als UTC+8 lesen. Dann fulfillmentEventCreate(fulfillmentId=<#1028>, status:DELIVERED, happenedAt=<CJ-Zeit>, message:'Swiss Post 980617276803159575'). Zurücklesen: displayStatus DELIVERED, deliveredAt gesetzt. Zusätzlich order.events von #1028 lesen, ob Shopify eine Kundenmail «zugestellt» verschickt hat. 2) Je nach Ergebnis die übrigen 16 belegten Zustellungen nachtragen, immer mit der CJ-Routenzeit: #1018, 1020, 1021, 1022, 1023, 1025, 1026, 1029, 1030, 1032, 1034, 1035, 1036, 1037, 1039, 1041. Hat die Probe eine Mail ausgelöst, #1021 (erstattet, Beschwerde «Wrong item») auslassen. Für #1040 (Arrived Courier Facility), #1042, #1043 und #1044 IN_TRANSIT mit der Zeit des letzten Routen-Ereignisses melden. Nie etwas auf Verdacht melden, nie eine Erfüllung vor dem echten Versand. Achtung: #1045 und #1046 (24.11., bei CJ UNSHIPPED) überschreiten die 96 h am 28.11. gegen 06–07 UTC. Daran nichts schönen. 3) Dauerlösung in automation/cj_order_watch.py: für SHIPPED/DELIVERED-Aufträge einmal je Lauf trackInfo abfragen (bis 10 Nummern pro Aufruf, also wenige CJ-Punkte). Neue Routen-Ereignisse werden als IN_TRANSIT/OUT_FOR_DELIVERY/DELIVERED m
+
+[aendern|sitzung|P2] ChatGPT-Landeseiten: falsches 301-Ziel der Heizdecke reparieren, LED-Varianten verständlich benennen, Strumpfhosen-Werte nur umsortieren
+  GRUND: GEMESSEN (_chatgpt_landeseiten.json, 30 T): Strumpfhose 12 Sitzungen / 1 Warenkorb; LED 6/0; Heizdecke 6/0 mit Weiterleitung. (c) stimmt: Das Produkt ist DRAFT (cj-entfernt-2026-11-24). Der 301 führt auf /collections/kuschel-heizdecken (36 Produkte). Unter den ersten 8 ist keine Ärmel- oder Kapuzendecke, dafür eine Babydecke. Die «XXL Hoodie-Decke mit Taschen» ist ACTIVE, CHF 37.90, 18/18 Varianten kaufbar, im Onlineshop. KORREKTUR: tote_landeseiten.py legt Weiterleitungen nur an (urlRedirectCreate nach hat_weiterleitung()) und überschreibt keine bestehende. TITEL_ZIEL muss also nicht übersteuert werden. Die Hoodie-Decke ist nicht beheizt, also im Text nicht als Heizdecke ausgeben. (b) stimm
+  UMSETZUNG: (c) zuerst, 1 Aufruf: urlRedirectUpdate für /products/heizbare-kuscheldecke-mit-armeln-und-kapuze-606000 → /products/xxl-hoodie-decke-mit-taschen-fur-sie-ihn-059264. Zurücklesen (urlRedirects path:…). Die chatgpt_landeseiten_wache meldet TOT, falls das Ziel später gedraftet wird. (b) Die 12 Varianten «3 W-Set n-1 Stück» nach den Variantenbildern benennen: per Vision-Kontaktbogen lesen und gegen die CJ-Variantennamen (vid aus SKU CJYD188109…) abgleichen. Dann productOptionUpdate optionValuesToUpdate (IDs und SKUs bleiben). «Stecker Krone»/«Stecker quadratisch» umbenennen in «Krone (USB)»/«quadratisch (USB, aufladbar)». In der Beschreibung «Strom über USB, kein Netzstecker nötig» nur stehen lassen, wenn die CJ-Daten es bestätigen. (a) Strumpfhose: NICHT aufteilen. Mit productOptionsReorder die Werte ordnen: zuerst 1 Stück, nach Stärke 80 → 220 → 300 g, die Packungen am Ende. Vorher DRY mit Ausgabe, dann zurücklesen, Varianten-IDs vorher und nachher vergleichen (müssen gleich bleiben), am Schluss per WebFetch und Browser 390 px prüfen. Keine Preisänderung.
+
+[aendern|betreiber|P3] Betreiber, 2 Minuten: Shop-Reichweite, «Ineligible products», Store-Kategorien (Erinnerung, keine neue Liste)
+  GRUND: Der Vorschlag ist inhaltlich deckungsgleich mit den Punkten 2, 4 und 5 in dropship/SHOP-APP-KAMPAGNE-2611.md «Für dich» vom 26.11. Im Journal steht seit dem 26.11. dazu nur «1047 A», die anderen Punkte sind also offen. Belegt: Shop-Kanal 56'264 von 56'305 aktiven Produkten (productsCount publication_ids); 14 Meldungen «in Shop nicht auffindbar» (GOOGLE-FEEDBACK.md). Die Shop-App ist diese Woche der stärkste Kaufkanal (3/5). Nur der Betreiber kann den Reichweitenstatus und die Store-Gestaltung sehen bzw. setzen, eine API dafür gibt es nicht. Die Wirkung der Kategorien ist UNBELEGT. Neu und wichtig für Hebel 1: Shopify definiert das Liefersignal als «zugestellt innerhalb 10 Tagen nach Erfüllun
+  UMSETZUNG: Eine kurze Erinnerung an den Betreiber, keine neue Klickliste: «Shop → Advertising: Banner ja/nein? Wenn ja, ‹View improvements› als Screenshot. Shop → Catalog → ‹Ineligible products› als Screenshot. Shop → Store → Customize → Categories wie in SHOP-APP-KAMPAGNE-2611.md Punkt 4.» Ausdrücklich NICHT ändern: Budget CHF 100 und Ziel-ROAS 4. Keine Taktik mit mehr als 15 % Sonderpreis, «Ads on other platforms» nicht einschalten.
+
+[aendern|sitzung|P4] FAQ-Runde 3 für ChatGPT-Kollektionen ohne «Häufige Fragen»
+  GRUND: GEMESSEN: 29 Kollektionen mit ≥ 3 ChatGPT-Sitzungen, zusammen 110 Sitzungen und 13 Warenkörbe, wie im Vorschlag. Keine FAQ haben pc-gaming (320 Produkte, 142 Wörter), uhren-herren (743), glaetteisen-locken-foehn (530, 16 Wörter), edelstahl-titanarmbaender-vergoldet (19 Produkte, 28 Wörter), damen-jacken-kapuze (65), perlen-edelsteinarmbaender (207), lockenstaebe (225) und silberarmbaender (89, nur 3 Wörter). KORREKTUR: pc-gaming ist eine Smart-Kollektion, nicht MANUAL. Der FAQ-Effekt ist nicht ursächlich belegt (Auswahlverzerrung, wie der Vorschlag selbst sagt), und 4–5 Sitzungen je Seite in 30 T sind zu wenig, um etwas zu messen. Gegen jetzt spricht das Timing: Ab 30.11. 23 UTC hebt mindest
+  UMSETZUNG: Erst nach Abschluss des Mindest-Stückgewinn-Laufs starten (Messung: dessen Ledger fertig, frühestens 01./02.12.). Dann das Verfahren aus Runde 1/2 (PLAN.md, Entwurf + Skeptiker, Sicherung vorher-runde3.json) für die 8 genannten Kollektionen anwenden. Preise nur als «ab CHF …» aus Live-Daten. Material nur nennen, wenn es im Titel steht (Wortgrenzen, Falle «Leinen»/«kleinen»). Versand «gratis ab CHF 50 nach Rabatt». Lieferzeit wörtlich aus der Versandrichtlinie (CH 10–20 Werktage, CH-Lager 2–3, LI 15–45 Tage). Rückgabe 30 Tage, ausser selbst gestaltete Artikel. Bei Glätteisen/Lockenstab keine Wirk- oder Haargesundheitsversprechen. Die Blöcke in faq_preis_wache.py aufnehmen, dann IndexNow melden. Schutzblöcke und SEO-Felder nicht anfassen.
+
+[streichen|sitzung|P5] Google-Kanal: 31'073 freigebbare Produkte zurückholen / Schliesser reparieren
+  GRUND: Die Zahlen stimmen: 23'358 von 56'305 aktiven Produkten sind im Google-Kanal (productsCount publication_ids:302872297857). Das Log meldet «PUBLIZIERBAR 31,073», danach RemoteDisconnected. GEMESSEN (product.events): Der Ausschluss geschah sekundengleich, 2026-11-24T15:14:43Z bei verschiedenen Produkten, App «autopilot2», nachdem google_kanal_luecke sie am 23.11. um 22:38 aufgenommen hatte. Eine frühere Welle lief am 28.10. von 19 bis 21 UTC. Ein sekundengleicher Massenausschluss sieht nach einem bewussten Sammel-Schritt aus. Im Repo findet sich dafür kein Code (kein publishablesToRemove/publicationUpdate), und die bulkOperations-Abfrage ist leer. Der Täter ist also UNBELEGT. Ohne Täter droht 
+  UMSETZUNG: Kein Publizieren. Höchstens als Wartung ausserhalb des Kauf-Pushs, nach der Black Week: in google_kanal_luecke.py gql() bei RemoteDisconnected, URLError und IncompleteRead mit Pause wiederholen lassen. Das beendet die stündliche Fehlermeldung in der Ampel. Den Ausschluss vom 24.11. 15:14:43 klären: Sitzungs-Transkripte und Journal vom 24.11. nach einem Google-Massenausschluss durchsuchen. Erst danach entscheiden, ob überhaupt zurückgeholt wird.
+
+###### vertrauen
+
+[aendern|sitzung|P1] Produktseite Handy: Vertrauenszeile direkt unter den Warenkorb-Knopf, Weihnachtshinweis vor den Knopf (Lieferbox NICHT über die Variantenwahl ziehen)
+  GRUND: Der Beleg stimmt weitgehend. Das Ziel «erster Bildschirm» ist aber so nicht erreichbar.
+
+Geprüft:
+- ShopifyQL, CH, /products/, 30 T: mobil 632 → 22 → 12 → 3, Desktop 115 → 10 → 5 → 4. 7 T: 177 → 8 → 6 → 2. Stimmt.
+- «Einzige mit Verkauf in 7 T» ist falsch: /fr/products/mini-projektor-… hatte ebenfalls 1 Kauf.
+- block_order im Live-Theme 214565814663 stimmt. Er ist in product.json, product.viele-varianten.json und product.lxszene.json identisch.
+- Browser-Messung Rizinus (390×844): Preis y=721–747, Variantenwahl 961–1344, Lieferbox 1376–1529, Warenkorb-Knopf 1665–1717, Vertrauenszeile 2099, Klarna 2173.
+
+Drei Einwände gegen die vorgeschlagene Umsetzung:
+(1) Die klebende Kaufleiste (sticky-add
+  UMSETZUNG: 1. Live-Dateien über automation/main_theme.py gid() holen: templates/product.json, templates/product.viele-varianten.json und templates/product.lxszene.json.
+   - product.luxe-studio.json und den Editor NICHT anfassen.
+   - Jede Datei sichern als theme_backup/<datei>.vor-vertrauen-2711.
+2. In sections.main.blocks.product-details.block_order nur umstellen. Kein Inhalt ändern, kein neuer Block.
+   - «lux_anlass_hinweis» direkt hinter «lux_delivery» stellen, also vor «buy_buttons_eYQEYi».
+   - «lux_trust» und «lux_zahlungsarten» direkt hinter «buy_buttons_eYQEYi» stellen, also vor «lux_mengenrabatt».
+   - Neue Reihenfolge: … variant_picker_R3rGDr, lux_sizeguide, lux_delivery, lux_anlass_hinweis, buy_buttons_eYQEYi, lux_trust, lux_zahlungsarten, lux_mengenrabatt, lux_wish_pdp, accordion_xfeWHx …
+3. themeFilesUpsert ausführen, dann JSON prüfen und bytegleich zurücklesen. Den Kommentarkopf vor der ersten «{» erhalten.
+4. Am Handy (390 px) prüfen:
+   - Rizinus: Oberkante der Vertrauenszeile höchstens 60 px unter dem Warenkorb-Knopf (vorher ~380 px).
+   - Ein Asien-Produkt mit Tag weihnachten: der Hinweis «Lieferung vor Weihnachten … nicht garantiert» steht ÜBER dem Knopf.
+   - Ein Editor-Produkt zeigt weiter «Ersatz bei Druckfehlern».
+   - Variante wechseln: Datum und Pille wechseln mit.
+   - Eine /fr-Seite rendert.
+5. Nachmessen am 04.12.: CH /products/ mobil, Warenkorb- und Kassenqu
+
+[umsetzen|betreiber|P2] Stufe 3 CH-Lager freigeben: 578 Artikel ab Schweizer Lager zeigen «11.–25. Dez.»
+  GRUND: Beleg nachgemessen und bestätigt:
+- productsCount aktiv tag:ch-lager 1'589, davon mit profil-ch-lager 1'011, ohne 578.
+- Die 578: 435 «Spielzeug & Spiele», 50 Partydeko, 37 Kostüme. Median CHF 30.90, 399 ab CHF 25.
+- Live-Seite Plüsch Alligator: «Lieferung voraussichtlich 11. Dez. – 25. Dez.» und «🇨🇭 Ab Schweizer Lager». Die Variante liegt im General profile.
+- Versandrichtlinie: «Ab Schweizer Lager … meist 2–3 Werktage».
+- _ch_lager_profil_stufe.json: Stufe 2 seit 14.10.
+- spielzeug-ch-lager: von den ersten 250 Produkten tragen nur 24 profil-ch-lager. Die Kollektion «Spielzeug ab Schweizer Lager 🇨🇭» zeigt also fast nur Asien-Daten.
+- Black-Week- und Weihnachtssortiment: black-week 0/60, adv
+  UMSETZUNG: 1. Betreiber antwortet im Chat wörtlich «Stufe 3 ja». Damit nimmt er in Kauf: reine CH-Lager-Körbe unter CHF 50 werden versandkostenfrei (bis CHF 7 weniger je Bestellung).
+2. Danach die Sitzung:
+   - In dropship/_ch_lager_profil_stufe.json «stufe»: 3 und «seit»: Datum setzen.
+   - Vorschau: STUFE=3 python3 automation/ch_lager_profil.py (Soll/fehlt/falsch).
+   - Dann python3 automation/ch_lager_profil.py --scharf.
+3. Prüfen:
+   - --test (Korb-Matrix CH und LI per draftOrderCalculate) und automation/kassen_sentinel.py.
+   - Live: Plüsch Alligator zeigt ein kurzes Datum, und die Kasse nennt dasselbe Fenster.
+   - 3 Tage google_feedback_wache auf «shipping»/«Inaccurate» [CH] beobachten.
+4. Rückweg: python3 automation/ch_lager_profil.py --zurueck --scharf.
+
+[aendern|sitzung|P3] Nach Stufe 3: Geschenkkäufer automatisch zu «Spielzeug ab Schweizer Lager» führen (statt Asien-Hinweissatz in Kollektionen)
+  GRUND: Beleg nachgemessen: weihnacht 23 → 0, geschenk 27 → 2 → 1 → 0, advent 10 → 1 → 1 → 0 (CH, 30 T). Das ist sehr wenig Verkehr.
+
+Teil (a) streichen:
+- Jede Produktseite mit Tag weihnachten zeigt schon den ehrlichen Hinweis (shop.metafields.luxe.anlass_hinweis seit 26.11., ab 09.12. «Kommt erst nach Weihnachten an»).
+- Die Kollektionsseite zeigt oben nur den ERSTEN <p> der Beschreibung, gekürzt auf 24 Wörter (sections/lx-collection-welten.liquid). Bei black-week würde ein neuer erster Absatz die Black-Week-Erklärung verdrängen.
+- black-week nennt die Lieferzeit schon.
+- «Diese Artikel kommen aus Asien» wäre falsch für die 4 CH-Lager-Artikel in weihnachten-2026 und 1 in premium-geschenke.
+- Der S
+  UMSETZUNG: Nur wenn Stufe 3 (Hebel 2) gesetzt und geprüft ist:
+1. spielzeug-ch-lager messen: Die obersten 12 Produkte tragen profil-ch-lager. Ein Testkorb (draftOrderCalculate CH) mit einem davon liefert ein Datum vor dem 24.12. Sonst abbrechen.
+2. In data/anlass_kollektionen.json beim Eintrag weihnachten-2026 die link_kandidaten auf ["spielzeug-ch-lager", "weihnachten-2026"] setzen.
+3. Probelauf: python3 automation/anlass_lieferzeit_wache.py.
+4. Dann den scharfen Lauf wie im Aufseher. Prüfen: das Metafeld luxe.anlass_hinweis.link = /collections/spielzeug-ch-lager.
+5. Live auf einem Asien-Weihnachtsartikel prüfen: Der Link und «bestellt bis So, 20. Dez.» stehen sichtbar unter dem Hinweis.
+6. Optional und erst danach: In sections/header-group.json ls_announce_4 auf «🎁 Rechtzeitig zu Weihnachten: Spielzeug ab Schweizer Lager (Lieferdatum beim Artikel)» mit Link /collections/spielzeug-ch-lager setzen.
+   - Vorher die Live-Datei holen und sichern: theme_backup/sections__header-group.json.vor-weihnachtslager-2711.
+   - Rücklesen.
+   - Kein festes «2–3 Werktage» und kein Bestellschluss-Versprechen.
+   - Rückbau per send_later am 21.12.
+
+[aendern|sitzung|P4] Ankündigungsleiste: TWINT/Klarna nennen und direkt hinter Black Week stellen, Ausnahme für selbst gestaltete Artikel behalten; «Inkl. MwSt.» korrigieren
+  GRUND: Beleg nachgemessen:
+- header-group.json (Live-Theme, 24.11. 22:50): 6 Meldungen, Rotation speed 6. TWINT und Klarna stehen in keiner.
+- ls_announce_3 lautet heute «30 Tage Rückgabe (ausser selbst gestaltete Artikel) · Sichere & verschlüsselte Bezahlung».
+- Impressum: «Nicht MWST-pflichtig», Belp.
+- shop.taxesIncluded = true, Steuer der letzten 5 Bestellungen 0.0.
+
+Fehler im Vorschlag: Der neue Text streicht die Ausnahme «ausser selbst gestaltete Artikel». Die Leiste steht auch auf Editor-Seiten, deren Rückgabe ausgeschlossen ist (Rückgaberichtlinie). Das wäre eine falsche Pauschalzusage.
+
+MwSt:
+- In locales/de.json stehen 9 Schlüssel mit «Inkl. MwSt.» (Z.186–203 und 252), nicht nur einer.
+- 
+  UMSETZUNG: 1. Live sections/header-group.json über main_theme.gid() holen und sichern: theme_backup/sections__header-group.json.vor-vertrauen-2711.
+2. ls_announce_3 Text: «🇨🇭 Schweizer Shop · TWINT · Klarna (Rechnung) · 30 Tage Rückgabe (ausser selbst gestaltete Artikel)».
+3. In block_order direkt hinter ls_announce_bw stellen.
+4. ls_announce_1 unverändert lassen. Rücklesen.
+5. FR-Übersetzung des Blocks prüfen (translatableResources des Themes). Ist sie veraltet, die FR-Fassung mit derselben Ausnahme registrieren oder bewusst so lassen.
+6. locales/de.json:
+   - Live holen und sichern. Erst ab der ersten «{» parsen.
+   - In ALLEN «Inkl. MwSt.»-Werten den Teil «Inkl. MwSt.» durch «Preise in CHF.» ersetzen, den Rest des Satzes unverändert lassen.
+   - Nicht «Endpreis» schreiben.
+   - Rücklesen, dann /cart am Handy prüfen.
+7. Beim Black-Week-Rückbau am 30.11. die Reihenfolge erneut prüfen.
+
+[umsetzen|betreiber|P5] Trustpilot-Profil: Land auf Schweiz, Adresse, Kategorie, Beschreibung
+  GRUND: Per WebFetch am 27.11. bestätigt: trustpilot.com/review/luxestyle.ch zeigt «Contact info: United States», keine Adresse, keine Kategorie, keine Beschreibung, 0 Bewertungen, «Claimed profile».
+
+Die Sitzung kann es nicht selbst. Für das Login gilt laut KUNDEN-WEGE-2611.md Punkt 4: Captcha und AGB, das ist ein Betreiber-Klick.
+
+Korrektur: Der Text in «Punkt 3.2» ist die Microsoft-Store-Beschreibung (Punkt 3, Schritt 2). Sie sagt «sonst 7 bis 20 Werktage», die Versandrichtlinie sagt «Direktversand 10–20 Werktage». Hier anpassen.
+
+Wirkung ~0 in 7 T, nur Schutz bei Seriositätsprüfung. Daher letzte Priorität.
+  UMSETZUNG: Betreiber, ca. 5 Min., business.trustpilot.com → Einstellungen → Unternehmensdaten:
+1. Land «Schweiz», Adresse Hühnerhubelstrasse 37, 3123 Belp, E-Mail info@luxestyle.ch.
+2. Kategorie: Online-Shop (Bekleidung/Lifestyle).
+3. Beschreibung: «LuxeStyle aus Belp, Schweiz. Mode, Beauty, Technik und Wohnen. Lieferung nur in die Schweiz und nach Liechtenstein. Ab Schweizer Lager meist 2–3 Werktage, Direktversand ab Lieferantenlager 10–20 Werktage, nach Liechtenstein 15–45 Tage; das genaue Datum steht beim Artikel. 30 Tage Rückgabe, ausser selbst gestaltete Artikel. Kontakt info@luxestyle.ch.»
+4. Kein Trustpilot-Widget auf der Seite, solange es 0 Bewertungen gibt. Keine Einladungen ausserhalb des automatischen Dienstes (AFS über Klaviyo-BCC).

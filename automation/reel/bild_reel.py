@@ -231,7 +231,7 @@ def caption_fuer(d, preis, handle, preis_max=None):
     """Queue-Caption eines Bild-Reels. EINE Quelle für --freigeben und die Vor-Jury in bild_reel_auswahl.py: die Jury
     cacht sha1(Datei) + Caption, der Poster fragt mit der Queue-Caption — gleiche Caption = kein zweiter Gemini-Aufruf.
     13.10.2026: Preis über preis_anzeige() («ab CHF …» bei verschiedenen Variantenpreisen)."""
-    return (f"{d['title']}\n{preis_anzeige(preis, preis_max)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n"
+    return (f"{d['title']}\n{preis_anzeige(preis, preis_max)} · Gratis Versand ab CHF 50 nach Rabatt · Klarna & TWINT 🇨🇭\n"
             f"🔗 luxestyle.ch/products/{handle} (Link in Bio)")
 
 

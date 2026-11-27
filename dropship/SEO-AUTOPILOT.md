@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-11-27 10:42 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-11-27 10:44 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|

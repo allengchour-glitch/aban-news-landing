@@ -421,7 +421,7 @@ function sqAuftrag(liste) {
   gitPush([datei, SQ_MERK], `Reel-Motor: Quellvideos über Server (${liste.length})`);
 }
 function caption(hook, k, benefit) {
-  return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\n${preisAnzeige(k.price, k.preisMax)} · Gratis Versand ab CHF 50 · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
+  return `${hook} 👀\n«${kurzTitel(k.title)}»${benefit ? ` — ${benefit}.` : ''}\n\n${preisAnzeige(k.price, k.preisMax)} · Gratis Versand ab CHF 50 nach Rabatt · Klarna & TWINT 🇨🇭\n🔗 luxestyle.ch/products/${k.handle} (Link in Bio)`;
 }
 // 13.10.2026 (Prüfer R3/R2, Preis-Wahrheit): k.price kam aus variants(first:1) — das ist die ERSTE Variante, nicht die günstigste
 // (Kleid 20.90 bei Spanne 18.90–20.90, Handschuhe 14.90 bei 14.90–21.90). Jetzt Mindestpreis aus priceRangeV2 und «ab», wenn die
