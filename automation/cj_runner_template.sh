@@ -79,6 +79,11 @@ while true; do
     # Punktetopf leer -> weiterlaufen bringt nichts und erzeugt nur QPS-Drosselung.
     # Lange Pause, bis CJ das Tagesbudget zurücksetzt. (KEIN Strafschlaf wegen vermuteter
     # Punkteknappheit — hier steht die Ursache ausdrücklich in der Antwort.)
+    # 27.11.2026: Text-KI-Tageslimit (groq_text.kontingentFrei) — keine CJ-Punkte für Produkte verbrennen, die verworfen würden.
+    if tail -5 "$LOG" | grep -q "PAUSE: Text-KI"; then
+      echo "$(date +%T) Text-KI leer — Pause 15 Min (keine CJ-Abfragen)" >> "$LOG"
+      sleep 900
+    fi
     if tail -40 "$LOG" | grep -q "Insufficient API points"; then
       echo "$(date +%T) CJ-Tagesbudget erschöpft — Pause 30 Min" >> "$LOG"
       sleep 1800

@@ -11,6 +11,7 @@
 // erfindet aber Details («Aktivkohle, Keramik»). Deshalb 20b zuerst, compound-mini nur Auffangnetz.
 // Der Parser nimmt das JSON zwischen erster «{» und letzter «}» — Fences oder Vorspann sind egal.
 
+import fs from 'node:fs';
 import { floskelZaehler, VERBOTEN, beginntMitDies } from './cj_copy_prompt.mjs';
 // 26.11.2026: alle fünf Schlüssel (KEY4/KEY5 lagen ungenutzt im Env). Gemessen: je Schlüssel 8'000 Tokens/Minute und
 // ~1'000 Anfragen/Tag je Modell — 4 parallele Runner sprengten mit 3 Schlüsseln die Minutengrenze → «skip(gemini)», CJ-Punkte verloren.
@@ -42,14 +43,34 @@ export function jsonAusText(c) {
 }
 
 // Gibt das geparste JSON-Objekt zurueck (title/html), oder null wenn kein Modell antwortet.
+// 27.11.2026 (Workflow automation-und-kunden P4): Tageskontingent (TPD) leer → Merker, damit der Grind VOR der
+// CJ-Detailabfrage (10 Punkte) anhält statt ~280 Produkte/Tag mit «skip(gemini)» zu verwerfen. Datei, weil jede
+// Runner-Gruppe ein eigener node-Prozess ist. Gilt nicht mehr, sobald DeepSeek/Gemini seit dem Merker geliefert haben.
+const TPD_DATEI = '/tmp/groq_tpd_leer.json';
+let ersatzSeit = 0;
+function tpdMerken(sek) {
+  const bis = Date.now() + Math.max(sek || 0, 1800) * 1000;
+  try { fs.writeFileSync(TPD_DATEI, JSON.stringify({ bis, gesetzt: Date.now() })); } catch {}
+}
+export function kontingentFrei() {
+  let m; try { m = JSON.parse(fs.readFileSync(TPD_DATEI, 'utf8')); } catch { return true; }
+  if (!m || Date.now() >= m.bis) return true;
+  return ersatzSeit > (m.gesetzt || 0);
+}
 export async function groqText(prompt, { temperature = 0.5, nachbesserung = false, runde = 0 } = {}) {
   let warte = 0;   // 26.11.2026: höchste retry-after-Angabe aller 429 dieser Runde (Sekunden)
+  let versuche = 0, tpd = 0;
   for (const { model, body } of GROQ_MODELLE) for (const key of KEYS) {
     try {
+      versuche++;
       const r = await fetch('https://api.groq.com/openai/v1/chat/completions', { method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
         body: JSON.stringify({ model, temperature, messages: [{ role: 'user', content: prompt }], ...body }) });
-      if (r.status === 429) { warte = Math.max(warte, Number(r.headers.get('retry-after')) || 5); continue; }
+      if (r.status === 429) {
+        warte = Math.max(warte, Number(r.headers.get('retry-after')) || 5);
+        try { if (/tokens per day|\bTPD\b/i.test(await r.text())) tpd++; } catch {}
+        continue;
+      }
       const j = await r.json(); if (j.error) continue;
       const o = jsonAusText(j.choices?.[0]?.message?.content);
       if (o && o.title && o.html) {
@@ -68,6 +89,7 @@ export async function groqText(prompt, { temperature = 0.5, nachbesserung = fals
   }
   // 26.11.2026: Waren ALLE Versuche gedrosselt (Minutengrenze), einmal warten und neu versuchen statt das Produkt zu verwerfen —
   // ein verworfenes Produkt hat seine CJ-Punkte schon gekostet und kommt später erneut (doppelte Punkte).
+  if (versuche && tpd === versuche) { tpdMerken(warte); return null; }   // 27.11.: alle Modelle × Schlüssel Tageslimit — Warten hilft nicht
   if (warte && runde < 2) { await new Promise(res => setTimeout(res, Math.min(20, warte) * 1000)); return groqText(prompt, { temperature, nachbesserung, runde: runde + 1 }); }
   return null;
 }
@@ -130,7 +152,7 @@ async function mitNachbesserung(o, prompt, fn) {
 export async function textErzeugen(prompt) {
   const g = await groqText(prompt); if (g) { g._modell = 'groq'; return g; }   // bessert selbst nach
   if (!groqTotGemeldet) { groqTotGemeldet = true; console.log('  ⚠️ Groq liefert nichts (Schlüssel/Modell?) — Texte laufen über das Fallback (DeepSeek/Gemini, bezahlt)'); }
-  const d = await mitNachbesserung(await deepseekText(prompt), prompt, deepseekText); if (d) { d._modell = 'deepseek'; return d; }
-  const m = await mitNachbesserung(await geminiText(prompt), prompt, geminiText); if (m) { m._modell = 'gemini'; return m; }
+  const d = await mitNachbesserung(await deepseekText(prompt), prompt, deepseekText); if (d) { d._modell = 'deepseek'; ersatzSeit = Date.now(); return d; }
+  const m = await mitNachbesserung(await geminiText(prompt), prompt, geminiText); if (m) { m._modell = 'gemini'; ersatzSeit = Date.now(); return m; }
   return null;
 }

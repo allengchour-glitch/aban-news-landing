@@ -47,7 +47,7 @@ import { echoVomLieferanten } from './titel_sprache.mjs';
 import { technikWache } from './technik_plausibel.mjs';
 import { produktdetails } from './cj_specs.mjs';
 import { copyPrompt, messSicher, wirkSicher, wahlSicher, textPolieren, fallenSicher } from './cj_copy_prompt.mjs';
-import { textErzeugen } from './groq_text.mjs';
+import { textErzeugen, kontingentFrei } from './groq_text.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2026-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -698,9 +698,9 @@ let total=0;
 // CJ-Anfragen je Gruppe, 2'800 Logzeilen in zehn Minuten und ein Log, in dem der
 // eine echte Grund unter Wiederholungen verschwindet. Nur 16900500 bricht alles ab;
 // ein transienter Fehler laesst die naechste Kategorie weiter zu.
-let budgetLeer=false, catsOk=0, catsFehler=0, letzterFehler='';
+let budgetLeer=false, kiLeer=false, catsOk=0, catsFehler=0, letzterFehler='';   // kiLeer 27.11.: Groq-Tageslimit (groq_text.kontingentFrei)
 for(const [cat,label] of grp.cats){
- if(budgetLeer) break;
+ if(budgetLeer||kiLeer) break;
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
  // SEITEN-ZEIGER JE KATEGORIE (2026-08-10). Vorher begann jeder Lauf wieder bei Seite 1 und
  // paginierte bis MAXPAGE — also wurden dieselben, längst abgegrasten Seiten immer wieder
@@ -719,7 +719,9 @@ for(const [cat,label] of grp.cats){
  let startSeite=1;
  try{ const v=parseInt(fs.readFileSync(zFile,'utf8').trim(),10); if(v>0)startSeite=v; }catch{}
  let letzteSeite=startSeite, zeigerBehalten=false;
- for(let page=startSeite;page<startSeite+MAXPAGE && total<CAP && got<perCat;page++){
+ for(let page=startSeite;page<startSeite+MAXPAGE && total<CAP && got<perCat && !kiLeer;page++){
+  // 27.11.2026: Text-KI leer → keine CJ-Abfragen (jede verworfene Detailabfrage kostet 10 Punkte und kommt später doppelt)
+  if(!kontingentFrei()){ kiLeer=true; if(page===startSeite) zeigerBehalten=true; console.log('PAUSE: Text-KI leer — keine CJ-Abfrage'); break; }
   letzteSeite=page;
   const WH=(process.env.WAREHOUSE||'').trim(); // EU-Lager-Filter (z.B. DE) — User 2026-07-07 «cj sachen aus eu lager»
   const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}${BELIEBT?'&orderBy=listedNum':''}`); await sleep(700);
@@ -759,6 +761,7 @@ for(const [cat,label] of grp.cats){
    // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
    const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
    const FAST=process.env.FAST==='1';
+   if(!FAST && !kontingentFrei()){ kiLeer=true; zeigerBehalten=true; console.log('PAUSE: Text-KI leer — keine CJ-Abfrage'); break; }
    let d, imgs;
    if(FAST){ // GRENZE-ÜBERWINDEN: kein product/query → ~30× weniger CJ-Calls. Einzelbild aus Liste.
      d={}; imgs=(p.productImage&&/^https/.test(p.productImage))?[p.productImage]:[];
@@ -1260,6 +1263,7 @@ for(const [cat,label] of grp.cats){
 // fuer das leere Punktebudget schon eigens abgefangen wird, nur mit anderem Fehlercode.
 // Der Runner darf sich nicht auf eine Fehlerliste verlassen: Exit != 0 sagt ihm, dass
 // hier nichts quittiert werden darf.
+if(kiLeer){ console.log(`\nPAUSE: Text-KI-Tageslimit (Groq TPD) — ${total} angelegt, Rest bleibt offen.`); process.exit(4); }   // 27.11.: Runner schläft 15 min
 if(catsOk===0 && catsFehler>0){
   console.log(`\nABBRUCH: keine einzige Kategorie lesbar (${catsFehler} Fehler, zuletzt ${letzterFehler}) — Gruppe bleibt offen.`);
   process.exit(3);
