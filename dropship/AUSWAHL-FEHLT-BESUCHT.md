@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-26 21:22 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-27 05:47 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 164 · **25 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 15, teilweise: 6, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 139 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 163 · **24 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 15, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 139 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -10,7 +10,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Flanell-Sofabezug (`flanell-sofabezug-604200`) | 85 | 85 | 6.77–23.26 | 28.90 | Red-180x130cm , Red-180x150cm , Red-180x180cm , Red-180x200cm  |
 | Weihnachts-Geschenksäckli aus Baumwolle/Leinen (`weihnachts-geschenksackli-aus-baumwolle-leinen-638400`) | 78 | 78 | 2.63–3.19 | 14.90 | A-L, A-M, A-XL, B-L |
 | Halskette mit Initialen – Kupfer, Kreuzkette (`halskette-mit-initialen-kupfer-kreuzkette-609400`) | 78 | 53 | 3.84–3.84 | 16.90 | Gold-A-January, Gold-A-February, Gold-A-March, Gold-B-January |
-| Initialen-Halskette mit Zirkonia · Buchstaben-Anhänger (`initialanhanger-603600`) | 52 | 18 | 5.55–7.44 | 18.90 | Gold-A, Gold-B, Gold-C, Gold-D |
 | 7-teiliges Nagelverlängerungs-Set · 7 Stück (`7-teiliges-nagelverlangerungs-set-7-stuck-159936`) | 48 | 20 | 2.14–5.22 | 19.90 | PGP001, PGP002, PGP003, PGP004 |
 | Unisex Fitnessschuhe Atmungsaktiv Rutschfest (`unisex-fitnessschuhe-atmungsaktiv-rutschfest-950848`) | 42 | 13 | 6.91–6.91 | 18.90 | Candy Yellow-35to36, Candy Yellow-37to38, Candy Yellow-39to40, Candy Pink-35to36 |
 | 3D Glas Aroma Diffusor mit Farblicht (`3d-glas-aroma-diffusor-mit-farblicht-677613`) | 38 | 38 | 8.41–36.8 | 28.90 | A US, Special US, AU3pcs, Special AU |

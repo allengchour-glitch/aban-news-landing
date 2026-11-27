@@ -1,6 +1,6 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 25.11.2026 22:51 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 27.11.2026 05:48 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
@@ -9,6 +9,10 @@ auf diese Adressen; für sie ist die Seite ein 404.
 ## /products/bluetooth-tastatur-927234  — **DRAFT**
 K68 Kabellose Mechanische 60% Gaming-Tastatur, Grau-Rot  ·  **~390 Suchen/Monat** betroffen
 - «bluetooth tastatur» — Position 28, 390/Monat
+
+## /products/solar-outdoor-uberwachungskamera-mit-wlan-634300  — **DRAFT**
+Solar Outdoor Überwachungskamera mit WLAN  ·  **~320 Suchen/Monat** betroffen
+- «outdoor kamera» — Position 53, 320/Monat
 
 ## /products/hallux-valgus-korrektor-schiene-7238f6  — **DRAFT**
 Hallux Valgus Korrektor Schiene  ·  **~320 Suchen/Monat** betroffen
