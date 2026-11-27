@@ -358331,3 +358331,8 @@
 56115116769665	heben	16.90	17.90	13.66	2026-11-27	kurze-leder-boots-fur-jungen-48a77a
 56115116835201	heben	16.90	17.90	13.74	2026-11-27	kurze-leder-boots-fur-jungen-48a77a
 67633850089863	heben	16.90	17.90	13.51	2026-11-27	ventildiffusor-auto-duft-487232
+67716150395271	heben	16.90	24.90	19.25	2026-11-27	schultertasche-herren-aus-pu-leder-schwarz-042688
+67738905313671	heben	16.90	24.90	19.25	2026-11-27	schultertasche-herren-aus-pu-leder-schwarz-042688
+67716154163591	heben	16.90	17.90	13.61	2026-11-27	messenger-tasche-aus-pu-leder-schwarz-517760
+67738905084295	heben	16.90	17.90	13.61	2026-11-27	messenger-tasche-aus-pu-leder-schwarz-517760
+67738905117063	heben	16.90	17.90	13.61	2026-11-27	messenger-tasche-aus-pu-leder-schwarz-517760
