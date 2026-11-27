@@ -1,16 +1,13 @@
-# Titelprobe-Fein — Stand 2026-11-25 17:37 UTC
+# Titelprobe-Fein — Stand 2026-11-27 18:34 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 3 · gesetzt 3 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
 
-- 1 → Swimwear
-- 1 → Rings
-- 1 → Necklaces
 
 ## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (1)
 
 - Velours-Kolbenrock mit V-Ausschnitt
 
-## Ohne Treffer — bleibt grob (46)
+## Ohne Treffer — bleibt grob (47)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Damen- und Kind-Freizeitanzug mit Print  [G: Activewear]
@@ -27,6 +24,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 3 · gese
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
 - Blaues Denim für Herren  [G: Pants]
+- Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Türkisfarbener Boho-Handgelenk-Band  [G: Bracelets]
 - Langtrench mit Slim-Fit  [G: Coats & Jackets]
 - Mittellanger Damen-Trench mit Taschen  [G: Coats & Jackets]
@@ -44,7 +42,7 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 3 · gese
 - Abstrakter A-Linien-Maxi mit Batwing-Ärmeln  [G: Dresses]
 - Langrocke in Einfarbigem Stoff – Midi  [G: Skirts]
 - Retro-Stil Umhang Maillard  [G: Coats & Jackets]
-- Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
+- Eleganter Off-Shoulder-Maxi mit offenem Rücken  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
 - Einteiliger Rückenfreier Sommeranzug  [G: Jumpsuits & Rompers]
 - Knöchelgerissene Kurzbeine für Damen  [G: Pants]
