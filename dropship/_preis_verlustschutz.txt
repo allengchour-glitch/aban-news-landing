@@ -358058,3 +358058,6 @@
 56080615145857	heben	18.90	19.90	15.26	2026-11-26	lassige-leder-brusttasche-fur-herren-478720
 56086726443393	heben	18.90	19.90	15.49	2026-11-26	halterung-fur-ventilator-abluftschlauch-607400
 67652201087367	heben	18.90	19.90	15.49	2026-11-26	halterung-fur-ventilator-abluftschlauch-607400
+56086803874177	heben	18.90	19.90	15.35	2026-11-27	magnetisches-3-in-1-wireless-ladegerat-097088
+67652663181703	heben	18.90	19.90	15.35	2026-11-27	magnetisches-3-in-1-wireless-ladegerat-097088
+56094768103809	heben	17.90	21.90	16.90	2026-11-27	automatischer-haarstyler-mit-keramikheizung-21f2a9
