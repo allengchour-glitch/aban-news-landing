@@ -1,18 +1,19 @@
-# Preis-Verlustschutz — scharf 2026-11-27 17:28 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 17:35 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **8** · Varianten gehoben: **23** · gesperrt (Faktor > 2.0): 4
-- Median-Faktor der Hebungen: 1.07× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 8 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **9** · Varianten gehoben: **54** · gesperrt (Faktor > 2.0): 10
+- Median-Faktor der Hebungen: 1.01× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 9 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Powerbank Cartoon-Design, 10'000 mAh | 14.90 | 12.08 | **15.90** | 1.07× |
-| Nachtsicht HD-Netzwerk-Heimkamera | 14.90 | 21.24 | **26.90** | 1.81× |
-| Kimmy LED-Sneakers für Kinder | 14.90 | 11.90 | **15.90** | 1.07× |
-| Industrieller Abseil- und Rettungsschutz | 229.90 | 203.26 | **250.90** | 1.09× |
-| Armkraft-Trainingsstab | 235.90 | 191.50 | **236.90** | 1.00× |
-| GTSONIC Ultraschall-Reinigungsgerät für Brillen  | 35.90 | 37.15 | **46.90** | 1.31× |
-| USB Nagelfräser Übertragungsgerät | 283.90 | 280.39 | **345.90** | 1.22× |
-| Verstellbares Hantel-Set für das Heimtraining | 215.90 | 176.09 | **217.90** | 1.01× |
+| Aluminium-Koffer mit Rahmen (20-Zoll) | 162.90 | 132.25 | **163.90** | 1.01× |
+| Keramik-Schatzbecken mit Handmalerei | 179.90 | 146.75 | **181.90** | 1.01× |
+| Drahtloses Mikrofon Little Bee: Sender, Empfänge | 162.90 | 138.08 | **170.90** | 1.05× |
+| Bauchtrainer mit automatischem Rückzug | 176.90 | 143.70 | **177.90** | 1.01× |
+| Holzschmuckkasten | 188.90 | 153.27 | **189.90** | 1.01× |
+| Retro Deko-Kunstset für Eingang und Schlafzimmer | 93.90 | 90.83 | **112.90** | 1.20× |
+| Kaffeebecher aus Bone China – Geschenkset | 135.90 | 110.98 | **137.90** | 1.01× |
+| Multifunktionales Widerstandsband-Set mit Stange | 168.90 | 137.28 | **169.90** | 1.01× |
+| Damen-Kleid Moonlight Melody | 222.90 | 184.39 | **227.90** | 1.02× |
