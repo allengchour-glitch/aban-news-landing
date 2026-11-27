@@ -84,6 +84,7 @@
 - Gestrichen nach Gegenprüfung: BW-Schwelle 60, 2. BF-Mail, Warenkorb-Zusatzartikel, Heizdecke→Hoodie-Decke (nicht beheizt), Zustellereignisse (erst messen, ob ≤ 10 T). Betreiber offen: DNS 4 Einträge, «Stufe 3 ja», Geschenkkarte, Shop-App-Klicks, Trustpilot-Land. Doku `dropship/verkauf-2711/PUSH.md`.
 
 ## 2026-11-27 05:45 · 💄 #1047 Augencreme: Betreiber «1047 A» → CJ-Support gefragt
+- 27.11. 16:48: CJ-Ticket **T202611271548558321** («Problem mit nicht versandter Bestellung / Ausstehender Beschluss») vom Betreiber eröffnet (CJ-Mail verlangte Portal-Ticket). Nachkontrolle 28.11. 05:39 UTC (send_later trig_01C69mn4yyHzGpMT1wUD8i9j, Text mit Ticketnummer).
 - LX1047 (SD2611251301040644900) bezahlt 25.11., UNSHIPPED, Tracking EQKPT8613518515YQ. Mail an support@cjdropshipping.com (vom CJ-Konto-Gmail): ohne Marke → normal versenden; mit Paula's-Choice-Name/Logo → NICHT versenden, Ersatz ohne Marke oder Storno ins Wallet; ob PID 2607070621261615300 generell Markenware ist. Bestellnotiz gesetzt, Nachkontrolle 28.11. per send_later. Kommt «branded» → Produkt bleibt DRAFT, Kundin informieren (frischen Thread lesen), bei Storno Rückerstattung selbst auslösen.
 - Daneben: CJ-Ticket vom 21.11. zu SD2611172218050640600 («Products Discontinued», «Awaiting your response», lief nach 36 h ab) — Stand prüfen.
 
