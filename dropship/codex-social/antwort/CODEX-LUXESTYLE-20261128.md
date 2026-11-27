@@ -1,0 +1,76 @@
+# LuxeStyle · Abendabgleich 27./28.11.2026
+
+Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem übergebenen Branch weitergearbeitet. [Übergabe](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/docs/UEBERGABE-CODEX-2711.md)
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Identität | Shopify und Metricool im verbundenen Konto gelesen. | Shopify 94368563585, luxestyle.ch, CHF. Metricool 6227837, Europe/Zurich. Instagram, Threads und TikTok luxestyle.ch, Facebook 1049840534888592, Pinterest luxestyleCH, YouTube UCSfCEYjAsdOyYxyfTClXRZA. |
+| Social | Planer 27.11.–05.12. auf Status, Terminüberschneidungen und Wiederholungen der Medien-URLs und Texte geprüft. | 14 Publikationen vom 27.11. bestätigt. 11 künftige Bildobjekte mit 13 Kanalterminen. Terminüberschneidung auf Threads und ein Instagram-Fehler gemeldet. Kein neuer Termin oder Upload durch Codex. |
+| Cascade | Aktive Variante und Produktfoto abgeglichen, Vorschau vermessen und Aufnahme und Bildfolge für denselben Master präzisiert. | CHF 26.90. Shopify meldet Kaufbarkeit für die Variante. 2,125 Sekunden KI-Vorschau als Lichtreferenz. Vor Filmerstellung fehlen produktgetreue Takes und dokumentierte Nutzungsrechte. |
+| Google-Schaufenster | Bestehende Auswahlregeln und zwei dokumentierte Nachfrage-Produkte in Shopify stichprobenartig abgeglichen. | Bei beiden gilt ein Shopping-Ads-Ausschluss. Entwurf zur Vorrangregel unter bestehenden Sperren. |
+| Klaviyo und DNS | Placed-Order-Metrik gesucht und vier ursprünglich genehmigte DNS-Einträge öffentlich abgefragt. | Vier von vier DNS-Sollwerten bestätigt. Laut Übergabe ist die Sendedomain aktiv. Klaviyo-Connector verlangt Neuanmeldung. Flow-Status und Umsatz im aktuellen Konto unbekannt. |
+
+## Metricool
+
+| Datum | Bestehende Termine · Europe/Zurich | Lücken |
+| --- | --- | --- |
+| 28.11. | Threads 11:00 (zwei verschiedene Beiträge), Instagram und Facebook 17:00, TikTok 18:00, Pinterest 19:10 und 20:00. | YouTube |
+| 29.11. | Instagram und Facebook 17:00, TikTok 18:00, Pinterest 19:10. | Threads, YouTube |
+| 30.11. | Pinterest 19:10 und 20:00. | Instagram, Facebook, TikTok, Threads, YouTube |
+| 01.–05.12. | Im abgefragten Kalender keine Termine. | Alle sechs Kanäle |
+
+Die 11 künftigen Objekte sind Bildbeiträge mit `draft=false`, `autoPublish=true`. Bei Instagram ist Auto-Publish auch kanalbezogen aktiv. In den neun Tagen gab es pro Kanal keine identischen Medien-URLs nach Entfernen der Queryparameter und keine identischen nicht leeren Beitragstexte. Das Prüfintervall deckt die Planung bis einschliesslich 05.12. ab.
+
+- **Threads, 28.11., 11:00:** `439081423`, UUID `4369801234232984645`, und `442296598`, UUID `-7257587017558111869`. Zwei verschiedene Beiträge im selben Zeitslot. Vor einer Änderung durch den zuständigen Planer die Aktivität beider UUIDs erneut prüfen.
+- **Instagram, 27.11., 10:39:** `444123282`, UUID `2617033623294002916`, `ERROR` beim Abruf des Shopify-CDN-Bildes. Erst bei bestätigtem Medienabruf und neuer Prüfung der bestehenden UUID wieder für einen späteren Termin berücksichtigen.
+- **27.11. als `PUBLISHED` bestätigt:** Instagram 5, Facebook 3, TikTok 2, Pinterest 3, Threads 1. Beispiele um 17:00, 18:00 und 20:00. [Instagram](https://www.instagram.com/p/DgQEsKDCokn/) · [TikTok](https://www.tiktok.com/@luxestyle.ch/video/7712900274079239457) · [Pinterest](https://www.pinterest.es/pin/1111333645586765888)
+
+### Kennzahlen 21.–27.11.
+
+Teilsummen der gelieferten Tageswerte, mit Anzahl belegter Tage. Alle übrigen Tage sind unbekannt. Die Definitionen unterscheiden sich je Kanal. Die Kennzahlen erlauben keine Verkaufszuordnung.
+
+| Kanal | Reichweite oder Aufrufe | Interaktionen |
+| --- | --- | --- |
+| Instagram | 1’399 Aufrufe (6/7, IGEV05) | 5 Feed- und Reel-Interaktionen (4/7, IGEV38) |
+| Facebook | 838 Medienaufrufe (6/7, FBEV49) | 0 am 27.11. (1/7, FBEV34) |
+| TikTok | 3’770 Videoaufrufe (6/7, TKEV02) | 10 Video-Interaktionen (6/7, TKEV06) |
+| Threads | 8 Beitragsaufrufe (3/7, THEV06) | 0 am 27.11. (1/7, THEV05) |
+| Pinterest | 468 Impressionen (4/7, PIEV01) | 8 Interaktionen (4/7, PIEV04) |
+| YouTube | 408 Videoaufrufe (4/7, YTEV02) | 3 Likes, 0 Kommentare, 3 Shares (je 5/7, YTEV14/16/18) |
+
+YouTube meldete 0 gewonnene und 0 verlorene Abos am 21.–24.11. (YTEV05/06), die anderen drei Tage bleiben unbekannt. Wiedergabedauer ist in dieser Abfrage nicht belegt. Bei TikTok ist der grösste gelieferte Tageswert 1’208 Aufrufe am 23.11. Für Cascade wird im ersten Einzelbeitrag besonders der Verbleib nach dem Einstieg geprüft, sobald nach Veröffentlichung Daten vorliegen. Pinterest lieferte Werte nur bis 24.11.
+
+## Cascade · Produktionsentwurf für 18 Sekunden
+
+Modell 1, goldfarben, Shopify-Produkt 15431606829441, Variante 67870931517831, SKU CJLX293479401AZ. CHF 26.90. ACTIVE, `availableForSale=true`, Tracking aus, `CONTINUE`, Onlineshop-URL in Shopify aktiv. 16 Tags, kein Treffer nach aktuellem Kanalwächter inklusive `rueckhol`. Der unabhängige öffentliche Abruf war technisch nicht verifizierbar. [Produkt](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831) · [Exaktes Variantenbild, 750 × 750](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec5377d7-40ed-42d4-8e8b-07c4873e3d91.jpg?v=1790745331) · [Kanalwächter](https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/kanal_sperren.mjs)
+
+Die bestätigte dunkle Stoff- und Lichtstimmung aus der 2,125-Sekunden-Vorschau auf reale Aufnahmen übertragen. Bei Bildprüfung nach 0,70 Sekunden weichen die Verbindungsstücke und die Konturen der KI-Tropfen vom Originalfoto ab. Für den Dreh orientiert sich die Form am Originalfoto. Beide Creolen zentral etwa x338–775, y630–1225 auf 1080 × 1920 platzieren. Weiches Licht seitlich durch Diffusion bewegen, Kamera ruhig, dunkler Stoff vor warmem Taupe. Kein Kopf, Papierhalter oder Voiceover.
+
+| Schnitt | Bild und Text |
+| --- | --- |
+| 0–2 s | Hook A, beide Creolen mit warmem Lichtsaum · «Ein Akzent in Goldfarbe». Hook B, seitliche Makroaufnahme der Verbindung · «Cascade, ganz nah». Je Export nur ein Einstieg. |
+| 2–6 s | Weiches Streiflicht über das ruhende Paar führen. Beide Tropfen bleiben vollständig im Bild. |
+| 6–10 s | Makro über den seitlichen Verschluss, die Kugel und die tatsächlich sichtbare Verbindung zum Tropfen. |
+| 10–15 s | Ruhige seitliche Fahrt auf das gesamte Paar. Einblendung «Creolen Cascade · Modell 1» oberhalb des Motivs. |
+| 15–18 s | Paar im Querlicht halten. CTA «Cascade entdecken» unterhalb des Motivs. |
+
+Ziel 1080 × 1920, 30 fps, 540 Bilder, H.264-MP4. Die vorliegende Vorschau bleibt internes Anschauungsmaterial. Drei reale Takes mit Originalpaar und Nutzungsbeleg fehlen. Die vorhandene Pflichtmusik-Datei wurde auf Dateiebene geprüft. Die SoundFont-Herkunft bleibt offen. Für die weitere Planung gilt die dokumentierte Freigabe stummer Planer-Videos. [Produktionsreferenz](https://github.com/allengchour-glitch/aban-news-landing/blob/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/R319-EDLER-SCHMUCKMASTER-20261122.md) · [Arbeitsregeln](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/AGENTS.md)
+
+| Kanal | Entwurf | Platzierung |
+| --- | --- | --- |
+| Instagram Reels | Ein warmer Lichtreflex folgt der Tropfenform. Entdecke die goldfarbenen Creolen «Cascade» über den Link in Bio. | Bio-Ziel vor Einsatz bestätigen · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=instagram&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=instagram_cascade_modell1) |
+| TikTok | Von der Kugel bis zum Tropfen. «Cascade» im Detail. Link in Bio. | Bio-Ziel vor Einsatz bestätigen · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=tiktok&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=tiktok_cascade_modell1) |
+| YouTube Shorts | Titel: «Cascade» – goldfarbene Creolen im Detail. Beschreibung: Ein Blick auf das Paar, den Verschluss und die Tropfenform. | Produktlink im Kanalprofil. Zielgruppe allgemeines Schmuckpublikum (madeForKids=false als Entwurf) · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=youtube&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=youtube_cascade_modell1) |
+| Facebook | So sehen die goldfarbenen Creolen «Cascade» aus der Nähe aus. Entdecke Modell 1 im Shop. | Produktlink im Beitrag · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=facebook&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=facebook_cascade_modell1) |
+| Threads | Was fällt dir zuerst auf: die Kugel oder der Tropfen? Hier sind die goldfarbenen «Cascade»-Creolen im Detail. | Produktlink im Beitrag · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=threads&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=threads_cascade_modell1) |
+| Pinterest | Titel: Goldfarbene Creolen «Cascade» mit Tropfen. Beschreibung: Das Paar auf dunklem Stoff, mit Nahaufnahmen von Verschluss, Kugel und Tropfen. | Produktlink als Pin-Ziel. Passendes Konto-Board vor Einsatz bestätigen · [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=pinterest&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=pinterest_cascade_modell1) |
+
+Der Planer zeigt Boards aus bestehenden Pinterest-Beiträgen. Für Cascade ist kein passendes Konto-Board bestätigt. Für Instagram und TikTok muss das Bio-Ziel beim jeweiligen Profil vor Veröffentlichung aufgelöst werden.
+
+## Eine Verkaufsaktion zur Freigabe
+
+**Google-Schaufenster – Nachfrage als zusätzliches Signal für Stufe 0.** Die im Journal genannten 11 Fälle gegen den aktuellen Manifeststand und ihre Variantenzahl abgleichen. Nur grundsätzlich zulässige Varianten einbeziehen. Bestehende Shopping-Ads-Ausschlüsse, Bildsperren und das Limit von 78’000 Varianten beim Vergleich erhalten. Der Dry-Run soll exakt zeigen, welche Produkte hinzukämen und welche im Budget Platz machen müssten. Rangänderungen allein veröffentlichen keine Produkte, der geplante Workflow wählt ab.
+
+Zwei Gegenproben bestätigen den Bedarf für diese Prüfung: Die Adventskalender-Geschenkbox hat zwei Varianten und einen ausdrücklichen `Shopping_ads`-Ausschluss. Die Wasserwellen-Projektionsleuchte hat 18 Varianten, denselben Ausschluss und `google-bild-abgelehnt`. Für beide bleibt der Google-Kanal in der Stichprobe aus. [Nachfragebericht](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/NACHFRAGE-LIEBLING.md) · [Auswahlregeln](https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/gmc_schaufenster.mjs#L127) · [Adventskalender](https://luxestyle.ch/products/adventskalender-geschenkbox-603200) · [Projektionsleuchte](https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504)
+
+Die vier DNS-Sollwerte (`send`, `mtd1._domainkey`, `mtd2._domainkey`, `TXT @`) waren im öffentlichen DNS vorhanden. Die laufenden Abbruch-, Welcome/Capture- und Post-Purchase-Flows lassen sich beim Codex-Klaviyo-Zugang wegen `UNAUTHORIZED` nicht aktuell lesen. [Klaviyo-Domain in der Übergabe](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/docs/UEBERGABE-CODEX-2711.md#6-stand-heute-2711--was-erledigt-ist)
