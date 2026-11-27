@@ -358491,3 +358491,7 @@
 55889723785601	heben	15.90	23.90	18.31	2026-11-27	superhelle-led-taschenlampe-mit-fokus-723e6c
 55889723818369	heben	15.90	16.90	12.94	2026-11-27	superhelle-led-taschenlampe-mit-fokus-723e6c
 55889720508801	heben	15.90	21.90	17.32	2026-11-27	aromatherapie-duftol-fur-luftbefeuchter-640556
+55889910923649	heben	14.90	15.90	12.11	2026-11-27	led-halsband-fur-hunde-leopard-muster-1985e6
+55889910956417	heben	15.90	19.90	15.18	2026-11-27	led-halsband-fur-hunde-leopard-muster-1985e6
+55889958928769	heben	15.90	17.90	14.02	2026-11-27	makeup-spiegel-mit-4x-vergrosserung-und-led-e57258
+55898514260353	heben	15.90	17.90	13.56	2026-11-27	uv-led-lampe-9fd25c

@@ -650,3 +650,5 @@ slug:bildreel-multifunktionaler-vertikal-spiralschneider-58cc21
 pid:15508465025409
 slug:multifunktionaler-vertikal-spiralschneider-58cc21
 name:santafe
+pid:15524699767169
+slug:kubanische-gliederkette-mit-strass-45-cm
