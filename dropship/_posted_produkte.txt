@@ -652,3 +652,5 @@ slug:multifunktionaler-vertikal-spiralschneider-58cc21
 name:santafe
 pid:15524699767169
 slug:kubanische-gliederkette-mit-strass-45-cm
+slug:plusch-hai-50-cm-fga57713
+name:plüschhai50cm
