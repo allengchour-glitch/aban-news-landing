@@ -42,7 +42,7 @@ Quelle: Workflow `mehr-einkaeufe-push` (1 Messung, 5 Blickwinkel, 5 Skeptiker). 
 - Ab 01./02.12.: FAQ-Runde 3 für ChatGPT-Kollektionen.
 
 ## Für den Betreiber
-1. **Klaviyo-Sendedomain bestätigen** (Namecheap → luxestyle.ch → Advanced DNS → 4 neue Einträge):
+1. ✅ **ERLEDIGT 27.11. 18:45 UTC:** Betreiber trug die Einträge ein, DoH 5/5 sichtbar, Klaviyo-Verifizierung «verified» 5/5, Sendedomain `send.luxestyle.ch` (3438728) **aktiv** (ohne Warming, einzige Domain). — **Klaviyo-Sendedomain bestätigen** (Namecheap → luxestyle.ch → Advanced DNS → 4 neue Einträge):
    - CNAME `send` → `3848818023763335087.klaviyodns.com`
    - CNAME `mtd1._domainkey` → `mtd1._domainkey.3848818023763335087.klaviyodns.com`
    - CNAME `mtd2._domainkey` → `mtd2._domainkey.3848818023763335087.klaviyodns.com`
