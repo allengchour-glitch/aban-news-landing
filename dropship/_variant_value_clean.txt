@@ -4409,3 +4409,11 @@ gid://shopify/Product/16736598262151	Grösse	2
 gid://shopify/Product/16736677396871	Grösse	1
 gid://shopify/Product/16738265170311	Grösse	1
 gid://shopify/Product/16740218536327	Farbe	2
+gid://shopify/Product/16740938318215	Farbe	17
+gid://shopify/Product/16740946837895	Farbe	1
+gid://shopify/Product/16741007294855	Farbe	1
+gid://shopify/Product/16741019156871	Farbe	2
+gid://shopify/Product/16741643485575	Farbe	61
+gid://shopify/Product/16741856117127	Farbe	12
+gid://shopify/Product/16741859983751	Farbe	2
+gid://shopify/Product/16741862834567	Farbe	18

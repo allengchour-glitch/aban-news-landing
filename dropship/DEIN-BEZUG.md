@@ -1,4 +1,4 @@
-# «dein» am Satzanfang — Stand 2026-11-26 17:00 UTC
+# «dein» am Satzanfang — Stand 2026-11-27 17:06 UTC
 
 Werkzeug `automation/dein_bezug.py`, Regel `automation/data/dein_bezug_regel.json`, Quelle repariert in `kollektionstexte_du_form.um()` (`ihr_satzanfang`). Geändert: {}
 

@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 17:05 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 17:07 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **51'012**
-- Optionen mit englischen Werten (Kandidaten): 1'460
-- Optionen übersetzt: **0** · Werte übersetzt: **0**
+- Produkte gesehen: **56'396**
+- Optionen mit englischen Werten (Kandidaten): 1'549
+- Optionen übersetzt: **8** · Werte übersetzt: **114**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 4'166
+- Werte mit unbekanntem Wort (unverändert): 4'551
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 34
+- übersprungen «kleidungsstueck-im-wert»: 38
 - übersprungen «kollision-nach-uebersetzung»: 30
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -32,6 +32,8 @@
 - `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Schwarz, Kapuze | Marineblau, Kapuze | Rosenrot, Kapuze | Weiss, Kapuze | Bohnengrün, Kapuze
 - `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Haarband | Three Piece Set
 - `16614832112007` [Farbe] **Halloween Kostümkleid Set** — rock · Titel nennt Set: 8735 One Skirt | 8735, Einzelner Umhang | 8735 Skirt Cloak
+- `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top Skirt Blazer | Oberteil, Rock, Bluse, Ärmel | Schwarz, Rockstütze
+- `16740617421191` [Farbe] **Rotes Woll-Vestkleid für Frauen** — oberteil, rock, weste: Red vest skirt | Beige white top
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -95,5 +97,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 152, `powder` 107, `french` 84, `core` 75, `elegant` 71, `size` 69, `high` 66, `one` 64, `cherry` 57, `shell` 51, `diamond` 48, `four` 46, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `inner` 38, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `lotus` 33, `end` 33, `space` 33, `tc` 31, `carbon` 31, `li` 31, `of` 30, `blossom` 29, `opp` 28, `star` 28, `intergold` 28, `tea` 27, `plush` 27, `weiß` 26, `basic` 26, `gel` 26, `stickers` 26, `happy` 25, `gun` 24, `two` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `no` 21, `to` 21, `love` 21, `inside` 21, `light` 20, `deer` 20, `perforated` 20, `⟨satzbau:menge-vor-nomen⟩` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `2er` 20, `strawberry` 20, `oxford` 20, `three` 19, `rabbit` 19, `cool` 19, `line` 19
+`⟨satzbau:adjektiv-vor-nomen⟩` 164, `powder` 113, `inner` 92, `french` 84, `core` 78, `elegant` 74, `size` 70, `high` 70, `one` 64, `cherry` 57, `diamond` 51, `shell` 51, `four` 49, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `lotus` 39, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `carbon` 32, `tc` 31, `li` 31, `of` 30, `blossom` 29, `weiß` 29, `basic` 29, `opp` 28, `star` 28, `intergold` 28, `tea` 27, `plush` 27, `gel` 26, `stickers` 26, `two` 25, `to` 25, `happy` 25, `gun` 24, `you` 24, `three` 23, `⟨satzbau:praeposition⟩` 23, `light` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `crown` 22, `no` 21, `love` 21, `inside` 21, `rabbit` 20, `milk` 20, `deer` 20, `ice` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `2er` 20, `strawberry` 20
 
