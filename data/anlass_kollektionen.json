@@ -1,72 +1,76 @@
 {
-  "_zweck": "Anlass-Kollektionen für automation/anlass_lieferzeit_wache.py (12.10.2026). datum = Tag, an dem die Ware spätestens da sein muss. Neue Anlässe hier eintragen (Handle aus dem Shop, Datum JJJJ-MM-TT).",
-  "lieferung_werktage": {
-    "schnell": 4,
-    "langsam": 12,
-    "zusage_langsam_max": 21
+ "_zweck": "Anlass-Kollektionen für automation/anlass_lieferzeit_wache.py (12.10.2026). datum = Tag, an dem die Ware spätestens da sein muss. Neue Anlässe hier eintragen (Handle aus dem Shop, Datum JJJJ-MM-TT).",
+ "lieferung_werktage": {
+  "schnell": 4,
+  "langsam": 12,
+  "zusage_langsam_max": 21
+ },
+ "_lieferung_quelle": "schnell = Schweizer Lager, nur mit Versandprofil «CH-Lager» — Kasse: P1D + 1–2 Werktage, 12-Uhr-Schluss → 4 WT (seit 13.10.2026 17:00; davor P3D → 6 WT, und vorher 2 WT aus dem Produkttext «1–2 Werktage», die Kasse rechnet aber die Bearbeitung mit). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
+ "kaufbar_dauerhaft": [
+  "blitzversand-schweiz"
+ ],
+ "anlaesse": [
+  {
+   "handle": "halloween",
+   "anlass": "Halloween",
+   "datum": "2026-10-31",
+   "hinweis_tag": "halloween",
+   "kostuem_zuerst": true,
+   "link_kandidaten": [
+    "halloween",
+    "kostueme-ch-lager"
+   ],
+   "band": {
+    "block": "ls_announce_4",
+    "text": "🎃 Halloween-Kostüme ab Schweizer Lager – das Lieferdatum siehst du in der Kasse",
+    "text_datum": "🎃 Halloween-Kostüme ab Schweizer Lager: bis {schnell_bis_text} bestellt, in der Schweiz vor Halloween da",
+    "link": "/collections/halloween"
+   },
+   "satz": {
+    "kollektionen": [
+     "halloween",
+     "kostueme-ch-lager"
+    ],
+    "text": "🎃 Für Halloween: Kostüme ab Schweizer Lager kommen in der Schweiz am schnellsten an – das genaue Lieferdatum siehst du auf jeder Produktseite und in der Kasse.",
+    "text_datum": "🎃 Für Halloween: Bis {schnell_bis_text} bestellt, kommen Kostüme ab Schweizer Lager in der Schweiz vor Halloween an – das genaue Datum zeigt die Kasse.",
+    "ersetzt": "<p>⏱️ Last-Minute\\?.*?</p>"
+   }
   },
-  "_lieferung_quelle": "schnell = Schweizer Lager, nur mit Versandprofil «CH-Lager» — Kasse: P1D + 1–2 Werktage, 12-Uhr-Schluss → 4 WT (seit 13.10.2026 17:00; davor P3D → 6 WT, und vorher 2 WT aus dem Produkttext «1–2 Werktage», die Kasse rechnet aber die Bearbeitung mit). langsam = Direktversand CJ, KALIBRIERT 12.10. an der Wirklichkeit statt an der Zusage: CJ-Linie «CJPacket EQ Sensitive» 6–10 Tage (CJ-Angabe, #1025), Bearbeitung Median 2 / max 5 WT (kassen_lieferdatum_wache), gemessene Zustellungen 10–16 Kalendertage (n = 6, Gegenprüfung Workflow 12.10.) → 12 WT ≈ 16 KT. Erste Fassung (23 WT = Obergrenze der Zusage) stellte Halloween 4 Tage zu früh um.",
-  "kaufbar_dauerhaft": ["blitzversand-schweiz"],
-  "anlaesse": [
-    {
-      "handle": "halloween",
-      "anlass": "Halloween",
-      "datum": "2026-10-31",
-      "hinweis_tag": "halloween",
-      "kostuem_zuerst": true,
-      "link_kandidaten": [
-        "halloween",
-        "kostueme-ch-lager"
-      ],
-      "band": {
-        "block": "ls_announce_4",
-        "text": "🎃 Halloween-Kostüme ab Schweizer Lager – das Lieferdatum siehst du in der Kasse",
-        "text_datum": "🎃 Halloween-Kostüme ab Schweizer Lager: bis {schnell_bis_text} bestellt, in der Schweiz vor Halloween da",
-        "link": "/collections/halloween"
-      },
-      "satz": {
-        "kollektionen": [
-          "halloween",
-          "kostueme-ch-lager"
-        ],
-        "text": "🎃 Für Halloween: Kostüme ab Schweizer Lager kommen in der Schweiz am schnellsten an – das genaue Lieferdatum siehst du auf jeder Produktseite und in der Kasse.",
-        "text_datum": "🎃 Für Halloween: Bis {schnell_bis_text} bestellt, kommen Kostüme ab Schweizer Lager in der Schweiz vor Halloween an – das genaue Datum zeigt die Kasse.",
-        "ersetzt": "<p>⏱️ Last-Minute\\?.*?</p>"
-      }
-    },
-    {
-      "handle": "kostueme-ch-lager",
-      "anlass": "Halloween",
-      "datum": "2026-10-31",
-      "kostuem_zuerst": true
-    },
-    {
-      "handle": "adventskalender",
-      "anlass": "Advent",
-      "datum": "2026-12-01"
-    },
-    {
-      "handle": "weihnachten-2026",
-      "anlass": "Weihnachten",
-      "datum": "2026-12-24",
-      "hinweis_tag": "weihnachten",
-      "link_kandidaten": [
-        "weihnachten-2026"
-      ]
-    },
-    {
-      "handle": "weihnachtspyjama-familie",
-      "anlass": "Weihnachten",
-      "datum": "2026-12-24"
-    },
-    {
-      "handle": "weihnachtspullover",
-      "anlass": "Weihnachten",
-      "datum": "2026-12-24"
-    }
-  ],
-  "_zusage_quelle": "zusage_langsam_max = obere Grenze dessen, was die KASSE für Direktversand zeigt: P1D Bearbeitung + 19 WT Transit (versand_transit_wache, CJ 9–19) + 1 WT nach 12 Uhr = 21 WT. Ab dem Tag, an dem heute + 21 WT nach dem Anlass liegt, zeigt die Kasse ein Datum nach dem Anlass → Hinweis «nicht garantiert» an + Kollektion sortiert schnelle Ware nach oben (13.10.2026, Kauf-Strecke Klasse 3).",
-  "_kostuem_zuerst": "kostuem_zuerst (14.10.2026): innerhalb der schnellen Ware ganze Kostüme (Titel Kostüm + Auswahl Grösse, gemischt Kinder/Damen/Herren) vor Einheitsgrössen-Kostümen vor Zubehör vor Deko/Blut/Spielzeug (anlass_lieferzeit_wache.kostuem_klasse).",
-  "_hinweis": "hinweis_tag: Produkte mit diesem Tag OHNE Tag «profil-ch-lager» bekommen auf der Produktseite den Block lux_anlass_hinweis (templates/product.json). Daten im Shop-Metafeld luxe.anlass_hinweis (JSON, schreibt die Wache; ausserhalb des Fensters gelöscht). link_kandidaten: Kollektionen, auf die «Rechtzeitig: … ab Schweizer Lager →» zeigen darf — nur wenn ihre obersten 12 aktiven Artikel alle im Profil «CH-Lager» liegen (sonst nächster Kandidat, sonst kein Link).",
-  "_band_satz": "band/satz (14.10.2026): im Endspurt [Hinweis ab, schnell_bis] setzt anlass_lieferzeit_wache den Bandblock (Text+Link) und einen markierten Absatz <p data-lux-anlass=…> in die Kollektionen; danach kommt der alte Stand aus dropship/_anlass_band.tsv / _anlass_satz.tsv zurück. text_datum ({schnell_bis_text}) erst, wenn dropship/_fortura_probe_ok.json {\"ok\": true} trägt (erste echte Fortura-Bestellung zugestellt); bis dahin text ohne Datum."
+  {
+   "handle": "kostueme-ch-lager",
+   "anlass": "Halloween",
+   "datum": "2026-10-31",
+   "kostuem_zuerst": true
+  },
+  {
+   "handle": "adventskalender",
+   "anlass": "Advent",
+   "datum": "2026-12-01"
+  },
+  {
+   "handle": "weihnachten-2026",
+   "anlass": "Weihnachten",
+   "datum": "2026-12-24",
+   "hinweis_tag": "weihnachten",
+   "link_kandidaten": [
+    "spielzeug-ch-lager",
+    "weihnachten-2026"
+   ],
+   "_link_27_11": "Stufe 3 CH-Lager seit 27.11. (Betreiber «2 ja»): spielzeug-ch-lager 468 Produkte, die ersten 12 alle mit profil-ch-lager (Kasse 1–2 T) → Asien-Weihnachtsartikel verlinken zuerst dorthin."
+  },
+  {
+   "handle": "weihnachtspyjama-familie",
+   "anlass": "Weihnachten",
+   "datum": "2026-12-24"
+  },
+  {
+   "handle": "weihnachtspullover",
+   "anlass": "Weihnachten",
+   "datum": "2026-12-24"
+  }
+ ],
+ "_zusage_quelle": "zusage_langsam_max = obere Grenze dessen, was die KASSE für Direktversand zeigt: P1D Bearbeitung + 19 WT Transit (versand_transit_wache, CJ 9–19) + 1 WT nach 12 Uhr = 21 WT. Ab dem Tag, an dem heute + 21 WT nach dem Anlass liegt, zeigt die Kasse ein Datum nach dem Anlass → Hinweis «nicht garantiert» an + Kollektion sortiert schnelle Ware nach oben (13.10.2026, Kauf-Strecke Klasse 3).",
+ "_kostuem_zuerst": "kostuem_zuerst (14.10.2026): innerhalb der schnellen Ware ganze Kostüme (Titel Kostüm + Auswahl Grösse, gemischt Kinder/Damen/Herren) vor Einheitsgrössen-Kostümen vor Zubehör vor Deko/Blut/Spielzeug (anlass_lieferzeit_wache.kostuem_klasse).",
+ "_hinweis": "hinweis_tag: Produkte mit diesem Tag OHNE Tag «profil-ch-lager» bekommen auf der Produktseite den Block lux_anlass_hinweis (templates/product.json). Daten im Shop-Metafeld luxe.anlass_hinweis (JSON, schreibt die Wache; ausserhalb des Fensters gelöscht). link_kandidaten: Kollektionen, auf die «Rechtzeitig: … ab Schweizer Lager →» zeigen darf — nur wenn ihre obersten 12 aktiven Artikel alle im Profil «CH-Lager» liegen (sonst nächster Kandidat, sonst kein Link).",
+ "_band_satz": "band/satz (14.10.2026): im Endspurt [Hinweis ab, schnell_bis] setzt anlass_lieferzeit_wache den Bandblock (Text+Link) und einen markierten Absatz <p data-lux-anlass=…> in die Kollektionen; danach kommt der alte Stand aus dropship/_anlass_band.tsv / _anlass_satz.tsv zurück. text_datum ({schnell_bis_text}) erst, wenn dropship/_fortura_probe_ok.json {\"ok\": true} trägt (erste echte Fortura-Bestellung zugestellt); bis dahin text ohne Datum."
 }

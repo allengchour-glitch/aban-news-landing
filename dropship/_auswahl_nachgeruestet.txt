@@ -3980,3 +3980,4 @@
 16741916541319	Farbe:5:5	2026-11-27	u-formiges-reisekissen-63441f
 16741873516935	Grösse:7:7	2026-11-27	roter-vorhang-fur-schlafzimmer-40-verdunkelung-8c3560
 16741863457159	Farbe:2:2	2026-11-27	kosmetik-box-mit-staubschutz-0a43ae
+16741863260551	Farbe:2:2	2026-11-27	nackenmassagekissen-aus-weichem-schaumstoff-6cc6d2

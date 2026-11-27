@@ -62,6 +62,11 @@
 
 
 
+## 2026-11-27 12:45 · ✅ Betreiber «1 2 3 ja eins nach dem andern, bin noch ned am pc»
+- **2 = Stufe 3 CH-Lager LIVE** (`_ch_lager_profil_stufe.json` stufe 3, seit 27.11.): +591 Varianten, 578 Produkte neu mit `profil-ch-lager`, fehlt 0; Korb-Matrix 8/8, Kassen-Sentinel 0 Befunde. Weihnachts-Hinweis auf Asien-Ware verlinkt jetzt zuerst `/collections/spielzeug-ch-lager` (data/anlass_kollektionen.json, Metafeld luxe.anlass_hinweis zurückgelesen, «bis So, 20. Dez.»).
+- **3 = Geschenkkarte VORBEREITET, nicht live:** productSet giftCard → «Gift card products can only be created after they have been activated» → Betreiber-Klick Admin → Produkte → Geschenkkarten aktivieren; Ablaufdatum = Shop-Einstellung (API nur lesend, heute null = verfällt nicht). Danach `SCHARF=1 python3 automation/geschenkkarte_anlegen.py` (Produkt CHF 25/50/100, Bild luxestyle-geschenkkarte.jpg, Onlineshop+Shop, Tag nicht-google-bewerben, AGB-Abschnitt liest die Gültigkeit selbst). Preis-Skripte überspringen Produkte ohne unitCost.
+- **1 = Klaviyo-DNS** wartet auf den Betreiber am PC (4 Einträge in PUSH.md).
+
 ## 2026-11-27 11:00 · 🛒 «push für mehr einkäufe» — Workflow + 6 Umsetzungen
 - Messung: CH 7 T 318 → 13 → 10 → 2; Shop-App-Käufe fehlen im Sitzungs-Trichter (5 in 30 T); 758 China-Bot-Sitzungen am 27.11. verzerren Gesamtzahlen → immer `WHERE session_country = 'Switzerland'`. Black-Week-Rabatt 0× genutzt (Ø-Korb 31.80). BF-Mail 17 Empfänger / 0 Klicks. Abbruch-Mail 1: 5/10 Bounces, Klaviyo-Sendedomain send.luxestyle.ch seit 17.10. «pending» (DNS fehlt, Betreiber).
 - Umgesetzt: Black-Week-Seite ≥80 zuerst; Warenkorb-Hinweis bis 30.11. (`bw_warenkorb_hinweis_2711.py`); PDP Vertrauen/Zahlarten direkt unter Kaufknopf (`pdp_vertrauen_reihenfolge_2711.py`); Leiste TWINT/Klarna + «Inkl. MwSt.» → «Preise in CHF.» (nicht MWST-pflichtig, `vertrauen_leiste_mwst_2711.py`); Abbruch-Mail RfQt4V mit Produktbildern (Klaviyo-Event: `event.extra.line_items[].product.images.0.src`, `|slice:":3"` funktioniert); Reel-Texte «nach Rabatt».
