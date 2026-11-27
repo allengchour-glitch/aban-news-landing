@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-25T20:59:57Z",
+ "stand": "2026-11-27T18:32:15Z",
  "scharf": true,
  "leer_gefunden": 0,
  "duenn": 6,
@@ -11,10 +11,10 @@
  "fehler": [],
  "veroeffentlicht_48h": {
   "apps": {
-   "autopilot2": 35
+   "autopilot2": 15
   },
-  "von": "2026-11-24T16:39:09Z",
-  "bis": "2026-11-25T15:58:16Z",
-  "gesamt": 35
+  "von": "2026-11-25T15:58:15Z",
+  "bis": "2026-11-26T22:00:25Z",
+  "gesamt": 15
  }
 }
