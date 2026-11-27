@@ -9,6 +9,7 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | Cascade | Aktive Variante und Produktfoto abgeglichen, Vorschau vermessen und Aufnahme und Bildfolge für denselben Master präzisiert. | CHF 26.90. Shopify meldet Kaufbarkeit für die Variante. 2,125 Sekunden KI-Vorschau als Lichtreferenz. Vor Filmerstellung fehlen produktgetreue Takes und dokumentierte Nutzungsrechte. |
 | Google-Schaufenster | Bestehende Auswahlregeln und zwei dokumentierte Nachfrage-Produkte in Shopify stichprobenartig abgeglichen. | Bei beiden gilt ein Shopping-Ads-Ausschluss. Entwurf zur Vorrangregel unter bestehenden Sperren. |
 | Klaviyo und DNS | Placed-Order-Metrik gesucht und vier ursprünglich genehmigte DNS-Einträge öffentlich abgefragt. | Vier von vier DNS-Sollwerten bestätigt. Laut Übergabe ist die Sendedomain aktiv. Klaviyo-Connector verlangt Neuanmeldung. Flow-Status und Umsatz im aktuellen Konto unbekannt. |
+| Nachfrage-Pilot | 18 markierte Produkte mit Shopify, dem aktuellen Manifest und dem archivierten Plan abgeglichen. | 11 ausserhalb des Kanals, davon 7 mit Anzeigen-Ausschluss. Drei Standardprodukte mit 53 Varianten zur Freigabe vorbereitet. |
 
 ## Metricool
 
@@ -74,3 +75,27 @@ Der Planer zeigt Boards aus bestehenden Pinterest-Beiträgen. Für Cascade ist k
 Zwei Gegenproben bestätigen den Bedarf für diese Prüfung: Die Adventskalender-Geschenkbox hat zwei Varianten und einen ausdrücklichen `Shopping_ads`-Ausschluss. Die Wasserwellen-Projektionsleuchte hat 18 Varianten, denselben Ausschluss und `google-bild-abgelehnt`. Für beide bleibt der Google-Kanal in der Stichprobe aus. [Nachfragebericht](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/NACHFRAGE-LIEBLING.md) · [Auswahlregeln](https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/gmc_schaufenster.mjs#L127) · [Adventskalender](https://luxestyle.ch/products/adventskalender-geschenkbox-603200) · [Projektionsleuchte](https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504)
 
 Die vier DNS-Sollwerte (`send`, `mtd1._domainkey`, `mtd2._domainkey`, `TXT @`) waren im öffentlichen DNS vorhanden. Die laufenden Abbruch-, Welcome/Capture- und Post-Purchase-Flows lassen sich beim Codex-Klaviyo-Zugang wegen `UNAUTHORIZED` nicht aktuell lesen. [Klaviyo-Domain in der Übergabe](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/docs/UEBERGABE-CODEX-2711.md#6-stand-heute-2711--was-erledigt-ist)
+
+## Nachfrage-Pilot für Google · Abgleich 28.11.2026
+
+Um 00:15 Uhr Europe/Zurich wurden die 18 markierten Handles aus dem Nachfragebericht in drei kleinen Shopify-Admin-Abfragen gelesen. Alle 18 sind `ACTIVE` mit aktuellem `nachfrage-liebling`-Tag. Sieben sind bereits im Shopify-Google-Kanal veröffentlicht. Die übrigen elf haben im aktuellen Manifest zuletzt den Eintrag `ab-versucht`. Hier bedeutet «im Google-Kanal» der Status der Shopify-Publikation `302872297857`. Der Anzeigen- oder Free-Listings-Status in Merchant Center folgt daraus nicht. [Nachfragebericht](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/NACHFRAGE-LIEBLING.md) (Manifeststand `6b7cd63fc4a6`) · [Aktuelles Manifest auf main](https://github.com/allengchour-glitch/aban-news-landing/blob/main/dropship/gmc_schaufenster_manifest.jsonl)
+
+| Produkt ausserhalb des Google-Kanals | Shopify-ID | Varianten | Prüfergebnis |
+| --- | --- | ---: | --- |
+| [LED Wasserwellen Projektionsleuchte](https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504) | `15450836566401` | 18 | google-bild-abgelehnt und `Shopping_ads` |
+| [Kurze Kapuzenjacke mit Fellkragen](https://luxestyle.ch/products/kurze-kapuzenjacke-mit-fellkragen-626300) | `16652034769287` | 12 | Pilotkandidat |
+| [Polygel-Set mit 3 Farben und Dual Tips](https://luxestyle.ch/products/polygel-set-mit-3-farben-und-dual-tips-5bb219) | `15495230423425` | 1 | `Shopping_ads` |
+| [T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv](https://luxestyle.ch/products/shirt-zum-selbstgestalten) | `15427283157377` | 15 | POD separat prüfen |
+| [Adventskalender Geschenkbox](https://luxestyle.ch/products/adventskalender-geschenkbox-603200) | `16603866694023` | 2 | `Shopping_ads` |
+| [PolyGel Nagelverlängerungs-Kit](https://luxestyle.ch/products/polygel-nagelverlangerungs-kit-caefd5) | `15495081722241` | 6 | `Shopping_ads` |
+| [Bondi Blue Katzenpullover für Katzen](https://luxestyle.ch/products/bondi-blue-petpullover-fur-katzen-760576) | `16652425560455` | 10 | `Shopping_ads` |
+| [Scheinwerfer-Vernebler-Becher](https://luxestyle.ch/products/scheinwerfer-vernebler-becher-a1978c) | `15496509522305` | 1 | `Shopping_ads` |
+| [Leinenhemd Langarm – Lässig & Bequem](https://luxestyle.ch/products/leinenhemd-langarm-lassig-bequem-621700) | `15448715723137` | 30 | Pilotkandidat |
+| [Dreifach LED-Makeup-Spiegel mit USB-Ladefunktion](https://luxestyle.ch/products/dreifach-led-makeup-spiegel-mit-usb-ladefunkti-605600) | `15500457247105` | 11 | Pilotkandidat |
+| [Y2K Harajuku Hoodie mit Nieten](https://luxestyle.ch/products/y2k-harajuku-hoodie-mit-nieten-629700) | `15449150292353` | 3 | `Shopping_ads` |
+
+**Vorschlag zur Freigabe:** Nur Kapuzenjacke, Leinenhemd und LED-Makeup-Spiegel in den begrenzten Stufe-0-Pilot aufnehmen (53 Varianten). Der Probeplan führt das personalisierbare T-Shirt separat (15 Varianten). Die sieben Produkte mit `Shopping_ads`-Ausschluss (41 Varianten) bleiben ausserhalb des Pilots. Direkte Freischaltung hängt zusätzlich vom aktuellen Gesamtplan ab.
+
+**Gegenprobe am gespeicherten Plan.** Das geprüfte Actions-Artefakt vom 27.11., 15:16 Uhr Schweiz, führt das Polygel-Set mit 3 Farben trotz `Shopping_ads`-Ausschluss bereits als Stufe 0 in `aufnehmen`. Der aktive Code prüft `bewaehrt()` vor dem Ausschlussfeld. Für den Pilot deshalb den Ausschluss vor der neuen Nachfrage-Regel prüfen und eine feste Liste der drei freigegebenen Handles verwenden. Die bestehende Ausnahme bleibt ausserhalb des Pilotumfangs. [Actions-Lauf und Planartefakt](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824) · [Reihenfolge der Stufen](https://github.com/allengchour-glitch/aban-news-landing/blob/main/automation/lib/gmc_schaufenster.mjs#L127)
+
+Der letzte belegte Vollplan lag bei 77’995 von 78’000 Varianten einschliesslich seiner Aufnahmen. Keines der drei Pilotprodukte stand darin auf der Aufnahmeliste. Unter genau diesem Planstand wären mindestens 48 anderweitig eingeplante Varianten zu ersetzen. Der tatsächliche Lauf hat nur abgewählt und zuletzt 76’949 Varianten auf Google gemessen. Die heutige Kapazität und die konkret zu ersetzenden Produkte bleiben bis zum frischen Vollplan offen. Dieser Abgleich umfasst Shopify-Feedfelder und den gespeicherten Plan. Es gab keine Shop- oder Feed-Änderung.
