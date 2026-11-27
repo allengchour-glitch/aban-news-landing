@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-26T06:55Z",
+ "stand": "2026-11-27T09:54Z",
  "ziele": 1563,
  "waisen": 552,
  "liste": [
@@ -279,11 +279,6 @@
    "aktiv": 93
   },
   {
-   "handle": "drohnen-mit-kamera-4k",
-   "titel": "Drohnen mit Kamera",
-   "aktiv": 93
-  },
-  {
    "handle": "pfannen-woks-bratpfannen",
    "titel": "Bratpfannen",
    "aktiv": 93
@@ -296,6 +291,11 @@
   {
    "handle": "freizeit-mode",
    "titel": "Moderucksäcke & Stil-Rucksäcke",
+   "aktiv": 92
+  },
+  {
+   "handle": "drohnen-mit-kamera-4k",
+   "titel": "Drohnen mit Kamera",
    "aktiv": 92
   },
   {
@@ -1164,11 +1164,6 @@
    "aktiv": 35
   },
   {
-   "handle": "damen-dessous-shapewear",
-   "titel": "Shapewear",
-   "aktiv": 34
-  },
-  {
    "handle": "damen-hoodies-fleece",
    "titel": "Fleecehoodies & Plüsch-Hoodies",
    "aktiv": 34
@@ -1207,6 +1202,11 @@
    "handle": "bettwaesche-sets",
    "titel": "Bettwäsche-Sets",
    "aktiv": 34
+  },
+  {
+   "handle": "damen-dessous-shapewear",
+   "titel": "Shapewear",
+   "aktiv": 33
   },
   {
    "handle": "damen-blusen-spitze",
@@ -2099,11 +2099,6 @@
    "aktiv": 20
   },
   {
-   "handle": "akkus-18650-lithium",
-   "titel": "Lithium-Akkus & 18650",
-   "aktiv": 20
-  },
-  {
    "handle": "auto-organizer-ruecksitz",
    "titel": "Rücksitzorganizer & Sitzlücken-Organizer",
    "aktiv": 20
@@ -2224,6 +2219,11 @@
    "aktiv": 19
   },
   {
+   "handle": "akkus-18650-lithium",
+   "titel": "Lithium-Akkus & 18650",
+   "aktiv": 19
+  },
+  {
    "handle": "baby-decken-nester-tuecher",
    "titel": "Decken, Nester & Tücher",
    "aktiv": 19
@@ -2262,11 +2262,6 @@
    "handle": "startseite-pool-schuhe",
    "titel": "Startseite Pool Schuhe",
    "aktiv": 19
-  },
-  {
-   "handle": "damen-sport-sets",
-   "titel": "Sets, Anzüge & Jumpsuits",
-   "aktiv": 18
   },
   {
    "handle": "herren-t-shirts-tanktops",
@@ -2367,6 +2362,11 @@
    "handle": "startseite-pool-sport",
    "titel": "Startseite Pool Sport",
    "aktiv": 18
+  },
+  {
+   "handle": "damen-sport-sets",
+   "titel": "Sets, Anzüge & Jumpsuits",
+   "aktiv": 17
   },
   {
    "handle": "damen-sport-tops",
@@ -2496,11 +2496,6 @@
   {
    "handle": "siebe-muehlen-oelspender",
    "titel": "Öl- & Essigspender, Mörser",
-   "aktiv": 17
-  },
-  {
-   "handle": "wasserkocher-kaffee-wasserkocher",
-   "titel": "Wasserkocher & Warmhalten",
    "aktiv": 17
   },
   {
@@ -2636,6 +2631,11 @@
   {
    "handle": "toepfe-kochgeschirr-schmoertoepfe",
    "titel": "Schmor- & Gusseisentöpfe",
+   "aktiv": 16
+  },
+  {
+   "handle": "wasserkocher-kaffee-wasserkocher",
+   "titel": "Wasserkocher & Warmhalten",
    "aktiv": 16
   },
   {
