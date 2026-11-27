@@ -3981,3 +3981,6 @@
 16741873516935	Grösse:7:7	2026-11-27	roter-vorhang-fur-schlafzimmer-40-verdunkelung-8c3560
 16741863457159	Farbe:2:2	2026-11-27	kosmetik-box-mit-staubschutz-0a43ae
 16741863260551	Farbe:2:2	2026-11-27	nackenmassagekissen-aus-weichem-schaumstoff-6cc6d2
+16741854937479	Modell:2:2	2026-11-27	halloween-lava-stein-schadel-lampe-612400
+16741854871943	Farbe:14:14	2026-11-27	samtkissen-mit-3d-pp-vliesfullung-afa356
+16741854151047	Farbe:2:2	2026-11-27	elektrischer-3-kopf-rasierer-nass-trocken-usb-610300

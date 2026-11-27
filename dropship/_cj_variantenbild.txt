@@ -9522,3 +9522,7 @@ gid://shopify/Product/15485613965697	zugeordnet	36	Herren Outdoor Flip-Flops fü
 gid://shopify/Product/15485614129537	zugeordnet	54	Stylische minimalistische Herren Pantoletten
 gid://shopify/Product/15485689561473	zugeordnet	50	Figurflatterndes Sommerkleid
 gid://shopify/Product/15485689758081	bild-urls-tot
+gid://shopify/Product/15485689954689	zugeordnet	6	Damen Bluse mit Puffärmeln und Schleife
+gid://shopify/Product/15485690085761	zugeordnet	10	V-Ausschnitt Häkelspitze Langarm-Top
+gid://shopify/Product/15485690216833	zugeordnet	25	Langarm V-Neck Top Slim-Fit
+gid://shopify/Product/15485690347905	zugeordnet	25	Waffle-Strick Langarmshirt mit Rückenknöpfen
