@@ -1,4 +1,4 @@
-# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-11-27T12:40Z
+# Anlass-Kollektionen: rechtzeitige Ware oben — Stand 2026-11-27T12:47Z
 
 Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektionen.json` (Schweizer Lager 4 WT, Direktversand 12 WT kalibriert, Kassen-Zusage bis 21 WT). Schnell = Profil «CH-Lager». Geändert wird nur die Reihenfolge, dazu das Metafeld für den Hinweis.
 
@@ -16,6 +16,4 @@ Regel: `automation/anlass_lieferzeit_wache.py`, Tabelle `data/anlass_kollektione
 | weihnachtspullover | 2026-12-24 | ausverkauft unter den obersten 24: 0 (kaufbar insgesamt 43) | — |
 | blitzversand-schweiz | dauerhaft | kaufbare Ware schon vorn (ausverkauft oben 24: 0) | MANUAL |
 
-Hinweis-Metafeld `luxe.anlass_hinweis`: ⚠️ NICHT aktuell · Block im Theme: ja · Zubehör-Zeichen: +0 −0 (Soll 352)
-
-⚠️ Metafeld luxe.anlass_hinweis nicht aktuell — SCHARF=1 schreibt es
+Hinweis-Metafeld `luxe.anlass_hinweis`: aktuell · Block im Theme: ja · Zubehör-Zeichen: +0 −0 (Soll 352)

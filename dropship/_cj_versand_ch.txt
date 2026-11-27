@@ -1718,3 +1718,4 @@ gid://shopify/Product/16612707795335	ok	Intelligenter Haustierfütterer mit Kame
 gid://shopify/Product/16613787664775	nicht-versendbar	USB-Aufladebatterie 1200 mAh
 gid://shopify/Product/16612779917703	ok	Zeichenprojektor mit verstellbarem Standfuss
 gid://shopify/Product/16638858461575	nicht-versendbar	Wasserdichte tragbare Batteriebox aus Kunststoff
+gid://shopify/Product/15443502104961	ok	Smartwatch «SmartOne» · Fitness & Anrufe
