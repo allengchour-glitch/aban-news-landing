@@ -1694,3 +1694,8 @@ gid://shopify/Product/16612741022087	ok	Verstellbare Haustierkamera mit automati
 gid://shopify/Product/15499899830657	ok	Faltbarer Drohnenflieger
 gid://shopify/Product/15448881004929	ok	Fitzap3 Anti-Ermüdungs-Smartwatch
 gid://shopify/Product/15481692160385	ok	Mini-Beamer 720p
+gid://shopify/Product/15523938894209	ok	YG220 Projektor 1080P
+gid://shopify/Product/15447628710273	ok	Föhn-Bürste mit Konstanttemperatur
+gid://shopify/Product/15443495846273	ok	LED-Projektor «Ambiente» · Stimmungslicht
+gid://shopify/Product/15479416914305	ok	Smartwatch mit Kamera und Telefonfunktion
+gid://shopify/Product/15522210972033	ok	Full HD Smart Mini Beamer mit Handy-Konnektivität
