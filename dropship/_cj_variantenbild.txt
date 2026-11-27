@@ -9601,3 +9601,5 @@ gid://shopify/Product/15494643646849	zugeordnet	40	Resort-Kleid aus Polyesterfas
 gid://shopify/Product/15494689227137	zugeordnet	16	Sommerkleid mit Blumenprint
 gid://shopify/Product/15494689915265	zugeordnet	95	Elegantes Baumwollseidenkleid mit Taschen
 gid://shopify/Product/15494690242945	zugeordnet	16	Besticktes V-Ausschnitt Leinenkleid
+gid://shopify/Product/15498596155777	zugeordnet	30	Kinder-Outdoorsandalen mit Klettverschluss
+gid://shopify/Product/15498596745601	zugeordnet	24	Leichte Mesh-Sneakers für Kinder
