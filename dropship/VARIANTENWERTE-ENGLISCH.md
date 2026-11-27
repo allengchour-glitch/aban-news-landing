@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-27 14:43 UTC, Stand 2026-11-27 16:04 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **20'417**
-- Optionen mit englischen Werten (Kandidaten): 832
+- Produkte gesehen: **22'842**
+- Optionen mit englischen Werten (Kandidaten): 890
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 2'629
+- Werte mit unbekanntem Wort (unverändert): 2'739
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 25
-- übersprungen «kleidungsstueck-im-wert»: 15
+- übersprungen «kollision-nach-uebersetzung»: 26
+- übersprungen «kleidungsstueck-im-wert»: 17
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -24,6 +24,7 @@
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil · Titel nennt Set: Herren Oberteil | Herren Shorts | Damen Shirt | Damen Stil Rock | Grün Cheongsam Anzug
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
 - `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Lange Ärmel | Vest | Off shoulder
+- `15489629618561` [Ausführung] **Herren Kapuzen-Mantel, dick wattiert** — weste: Conventional | Hooded | Vest
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -54,6 +55,7 @@
 - `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: US8 → US 8; US9 → US 9; US9.5 → US 9.5; US10.5 → US 10.5; US11.5 → US 11.5
+- `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -82,5 +84,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 114, `powder` 88, `french` 84, `high` 48, `shell` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 40, `chain` 39, `cherry` 37, `elegant` 35, `one` 33, `space` 33, `tc` 31, `intergold` 28, `four` 27, `opp` 26, `end` 26, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `of` 21, `carbon` 21, `blossom` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `line` 19, `lamp` 19, `holder` 19, `full` 18, `lotus` 18, `titanium` 18, `size` 17, `⟨satzbau:praeposition⟩` 17, `degrees` 17, `color` 16, `waist` 16, `to` 16, `love` 16, `the` 16, `rain` 16, `pin` 15, `rabbit` 15, `ice` 15, `strawberry` 15, `speed` 15, `hard` 15, `disk` 15, `light` 14, `no` 14, `basic` 14, `three` 13, `milk` 13
+`⟨satzbau:adjektiv-vor-nomen⟩` 117, `powder` 89, `french` 84, `high` 51, `shell` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `one` 44, `diamond` 40, `chain` 39, `cherry` 37, `elegant` 36, `space` 33, `tc` 31, `end` 29, `four` 28, `intergold` 28, `opp` 26, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `of` 21, `carbon` 21, `blossom` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `line` 19, `lamp` 19, `holder` 19, `full` 18, `lotus` 18, `to` 18, `titanium` 18, `basic` 18, `rabbit` 17, `size` 17, `⟨satzbau:praeposition⟩` 17, `two` 17, `degrees` 17, `no` 17, `color` 16, `waist` 16, `light` 16, `love` 16, `the` 16, `rain` 16, `three` 15, `pin` 15, `ice` 15, `sunflower` 15, `strawberry` 15, `speed` 15, `hard` 15
 

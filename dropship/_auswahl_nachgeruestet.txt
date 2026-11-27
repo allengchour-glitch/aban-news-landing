@@ -3990,3 +3990,5 @@
 16742225019271	Grösse:3:3	2026-11-27	mehrstockiger-spielzeugregal-fur-kinder-603800
 16742224691591	Typ:3:3	2026-11-27	led-flammenlicht-im-kohle-design-d27694
 16742220464519	Farbe:5:5	2026-11-27	kleine-nachtlampe-mit-atemmodus-623400
+16742220235143	Typ:3:3	2026-11-27	tischlampe-moderne-einfachheit-695680
+16742100271495	Farbe:5:5	2026-11-27	sportliche-schultertasche-aus-oxford-stoff-784576

@@ -444,3 +444,4 @@ gid://shopify/Product/16740888445319	sonnenuntergangslampe-10-cm-schwarz-602600	
 gid://shopify/Product/16741400379783	automatischer-lockenstab-mit-usb-ladefunktion-e43244	Automatischer Lockenstab mit USB-Ladefunktion
 gid://shopify/Product/16741400478087	tierische-3d-lichtlampe-nachtlicht-mit-farbige-329216	Tierische 3D-Lichtlampe – Nachtlicht mit farbigem Glas
 gid://shopify/Product/16741622579591	massagekissen-fur-gesicht-und-nacken-85793b	Massagekissen für Gesicht und Nacken
+gid://shopify/Product/16741763187079	diy-resin-nachtlicht-mit-bluetooth-lautspreche-978688	DIY-Resin-Nachtlicht mit Bluetooth-Lautsprecher
