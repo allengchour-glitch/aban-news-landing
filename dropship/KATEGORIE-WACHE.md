@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-27T10:31Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-27T12:19Z
 
-Aktive gescannt: 50 · ohne Kategorie: 50 · heute gesetzt: 49 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 17 · ohne Kategorie: 17 · heute gesetzt: 16 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- magnetisches-nachttischlicht-mit-dimmbarer-led-f1e3ef · Beleuchtung → Home & Garden > Lighting
-- weiche-einsteigerschuhe-fur-babys-0-12-monate-614700 · Kinderschuhe → Apparel & Accessories > Shoes
-- kurzliche-kurbis-nachtlampe-aus-silikon-990080 · Beleuchtung → Home & Garden > Lighting
-- kabelloses-glattebursten-set-mit-4500-mah-akku-611900 · Beauty-Tools → Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools
-- avocado-mini-spruhbefeuchter-mit-nachtlicht-391296 · Beleuchtung → Home & Garden > Lighting
+- u-formiges-reisekissen-63441f · Wohnen & Deko → Home & Garden > Decor
+- kuchenregal-fur-die-arbeitsplatte-6e176d · Aufbewahrung & Organizer → Home & Garden > Kitchen & Dining
+- kleine-canvas-umhangetasche-20e925 · Taschen → Luggage & Bags
+- wandlampe-aisle-balkon-6-w-aluminium-67b823 · Beleuchtung → Home & Garden > Lighting
+- multifunktionales-schwangerschaftskissen-aus-r-999552 · Wohnen & Deko → Home & Garden > Decor
 
