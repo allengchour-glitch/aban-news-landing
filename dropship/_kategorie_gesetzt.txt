@@ -54841,3 +54841,9 @@ led-nachtlicht-mit-bewegungssensor-742921	hg-13	Beleuchtung	2026-11-27T08:33Z
 led-glas-tischlampe-mit-rgb-licht-332032	hg-13	Beleuchtung	2026-11-27T08:33Z
 led-dreieck-tischlampe-mit-kabellosem-laden-e10ecf	hg-13	Beleuchtung	2026-11-27T08:33Z
 kristallkugel-luminous-galaxy-3d-laser-gravur-892736	hg-13	Beleuchtung	2026-11-27T08:33Z
+led-wandschleier-neon-alien-licht-704896	hg-13	Beleuchtung	2026-11-27T09:34Z
+feather-lampe-3367d3	hg-13	Beleuchtung	2026-11-27T09:34Z
+diy-resin-nachtlicht-mit-bluetooth-lautspreche-978688	hg-13	Beleuchtung	2026-11-27T09:34Z
+led-schreibtischlampe-mit-kabellosem-ladegerat-5feb35	hg-13	Beleuchtung	2026-11-27T09:34Z
+led-blumenbaum-lampe-kleines-rosenlicht-4db977	hg-13	Beleuchtung	2026-11-27T09:34Z
+holz-led-leselampe-1d19c8	hg-13	Beleuchtung	2026-11-27T09:34Z
