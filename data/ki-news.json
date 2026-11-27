@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-26T13:51:03Z",
+ "stand": "2026-11-27T13:47:41Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,84 +18,84 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "75 % weniger HR-Tickets: Wie IBM KI im Personalwesen einsetzt",
-   "u": "https://t3n.de/news/ki-im-personalwesen-ibm-askhr-1775483/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-26T13:30:52Z",
-   "s": "IBM kommt heute mit drei Viertel weniger HR-Tickets aus als 2016. Bevor alle Personalanfragen in einem KI-Chat landen konnten, musste der Konzern aufräumen und klären, was die KI überhaupt darf.weiter…",
-   "sprache": "de"
-  },
-  {
-   "t": "The Download: Better bionic hands and AI’s natural-gas boom",
-   "u": "https://www.technologyreview.com/2026/11/26/1149934/the-download-better-bionic-hands-ai-natural-gas-boom/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-26T13:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The next generation of bionic hands is here—and they can feel …",
-   "sprache": "en"
-  },
-  {
-   "t": "Software Testing: Wer jedes Problem der KI übergibt, verlernt das Denken",
-   "u": "https://www.heise.de/blog/Software-Testing-Wer-jedes-Problem-der-KI-uebergibt-verlernt-das-Denken-11538597.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Verbraucherzentrale mahnt OpenAI und Anthropic ab",
+   "u": "https://www.heise.de/news/Verbraucherzentrale-mahnt-OpenAI-und-Anthropic-ab-11540670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-26T12:54:00Z",
-   "s": "Richard Seidl spricht mit Gerald Hüther darüber, wie KI uns das Denken abgewöhnen kann und warum ein scheinbar perfekter Text leblos wirkt.",
+   "d": "2026-11-27T12:13:00Z",
+   "s": "Die Verbraucherzentrale Niedersachsen wirft OpenAI und Anthropic unzulässige Preisänderungsklauseln und intransparente Tarife vor.",
    "sprache": "de"
   },
   {
-   "t": "Riemannsche Vermutung: Claude kürzt KI-Beweis um mehr als 99 Prozent",
-   "u": "https://www.heise.de/news/Riemannsche-Vermutung-Claude-kuerzt-KI-Beweis-um-mehr-als-99-Prozent-11539145.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-26T12:50:00Z",
-   "s": "Claude hat den eigenen Beweis der Riemannschen Vermutung drastisch verschlankt. Die mathematische Fachwelt arbeitet weiterhin daran, ihn zu verstehen.",
+   "t": "Ökonomie: Forscher sieht 97-prozentige Wahrscheinlichkeit für KI-Blase",
+   "u": "https://www.golem.de/news/oekonomie-forscher-sieht-97-prozentige-wahrscheinlichkeit-fuer-ki-blase-2611-215732.html",
+   "q": "Golem",
+   "d": "2026-11-27T11:50:02Z",
+   "s": "Finanzblasen werden oft vorhergesagt. Ein Forscher will aus diesem Rauschen die reale Wahrscheinlichkeit schätzen können - und ist bei KI besorgt. (Wirtschaft, Nvidia)",
    "sprache": "de"
   },
   {
-   "t": "Alarm nach globalem IT-Ausfall: Microsoft ruft intern Code Red aus",
-   "u": "https://t3n.de/news/microsoft-code-red-it-ausfall-1775106/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Bewusstseins-Debatte über Anthropics KI: Warum dieser Philosoph einem Trugschluss aufsitzt",
+   "u": "https://t3n.de/news/bewusstseins-debatte-ueber-anthropics-ki-warum-dieser-philosoph-einem-trugschluss-aufsitzt-1775582/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-26T11:55:00Z",
-   "s": "Ein rund 24 Stunden dauernder weltweiter Ausfall von zentralen Diensten wie Outlook, Teams oder Copilot hat bei Microsoft die Alarmglocken schrillen lassen. Der Softwarekonzern löste Code Red aus und …",
+   "d": "2026-11-27T11:30:55Z",
+   "s": "Es ist eigentlich ein Drahtseilakt, den Anthropic vollführt: Das KI-Unternehmen warnt Investoren vor Sprachmodellen mit Bewusstsein, treibt diese Entwicklung abweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon",
-   "u": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+   "t": "Astra und Sol: Nach OpenAI-Panne werden Nutzungslimits schneller erreicht",
+   "u": "https://www.golem.de/news/astra-und-sol-nach-openai-panne-werden-nutzungslimits-schneller-erreicht-2611-215737.html",
+   "q": "Golem",
+   "d": "2026-11-27T11:20:02Z",
+   "s": "Die Modelle GPT-6.2 Astra und Sol wurden seit ihrer Einführung durch OpenAI falsch abgerechnet. (KI, Wirtschaft)",
+   "sprache": "de"
+  },
+  {
+   "t": "heise-Angebot: IT-Psychologie im Change-Management – wie Technologie Verhalten prägt",
+   "u": "https://www.heise.de/news/IT-Psychologie-im-Change-Management-wie-Technologie-Verhalten-praegt-11530860.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-27T11:00:00Z",
+   "s": "KI-Einführung, Security und Technostress bringen klassisches Change-Management an Grenzen. Ab dem 11.02.27 lernen Teilnehmende im Classroom, damit umzugehen.",
+   "sprache": "de"
+  },
+  {
+   "t": "ChatGPT: Neue Regeln für Nutzungslimits ab Dezember",
+   "u": "https://t3n.de/news/chatgpt-nutzungslimit-neue-regeln-dezember-1775437/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-27T10:55:00Z",
+   "s": "OpenAI startet mit dem Rollout der gemeinsamen Oberfläche für Chat und Work – zunächst nur für einen kleinen Teil der Nutzer. Doch die profitieren nicht nur. Für manche könnte sich gar einen Nachteil …",
+   "sprache": "de"
+  },
+  {
+   "t": "Taking Trainium3 to the Track: Generating Videos with LTX-2.5",
+   "u": "https://huggingface.co/blog/video-trainium3",
    "q": "Hugging Face",
-   "d": "2026-11-26T11:37:17Z",
+   "d": "2026-11-27T00:00:00Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "N hoch 9/4: OpenAI will Untergrenze für Matrixmultiplikation gefunden haben",
-   "u": "https://www.golem.de/news/n-hoch-9-4-openai-will-untergrenze-fuer-matrixmultiplikation-gefunden-haben-2611-215683.html",
-   "q": "Golem",
-   "d": "2026-11-26T10:27:01Z",
-   "s": "Wie viele Multiplikationen braucht eine Matrixmultiplikation? OpenAIs KI soll die runde, praktisch nur für Mathematiker relevante Antwort gefunden haben. (Innovation & Forschung, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Auch in Deutschland: 22 Organisationen über Check-Point-Server gehackt",
-   "u": "https://www.golem.de/news/auch-in-deutschland-22-organisationen-ueber-check-point-server-gehackt-2611-215682.html",
-   "q": "Golem",
-   "d": "2026-11-26T10:14:01Z",
-   "s": "Angreifer haben es auf Check-Point-Server abgesehen. Durch teils seit Monaten bekannte Sicherheitslücken konnten sie in mehrere IT-Umgebungen eindringen. (Sicherheitslücke, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
-   "u": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
-   "q": "Hugging Face",
-   "d": "2026-11-26T05:05:36Z",
-   "s": "",
-   "sprache": "en"
-  },
-  {
-   "t": "S&P considers Nvidia credit downgrade over governance and ‘key man’ risks",
-   "u": "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/",
+   "t": "Nvidia hits pause on chip shipments to Southeast Asia",
+   "u": "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
    "q": "TechCrunch AI",
-   "d": "2026-11-25T22:44:32Z",
-   "s": "The credit rating agency may lower Nvidia's credit rating to AA-, the fourth-highest rating.",
+   "d": "2026-11-26T20:03:54Z",
+   "s": "Nvidia has told manufacturing partners to pause server shipments to Malaysia, Singapore, Thailand and Indonesia as the U.S. tightens its push to keep AI chips out of China.",
    "sprache": "en"
+  },
+  {
+   "t": "Grand Theft Auto VI proves why efficiency isn’t a virtue",
+   "u": "https://techcrunch.com/2026/11/26/as-anthropic-ipos-grand-theft-auto-vi-proves-why-efficiency-isnt-a-virtue/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-26T16:00:00Z",
+   "s": "On the same day that Anthropic entered the public market, a painstakingly human video game became one of most successful entertainment launches of all time.",
+   "sprache": "en"
+  },
+  {
+   "t": "KI in der Migrationsverwaltung: Automatisiert ins Risiko",
+   "u": "https://netzpolitik.org/2026/ki-in-der-migrationsverwaltung-automatisiert-ins-risiko/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-26T15:21:42Z",
+   "s": "KI soll tief in die Migrationsverwaltung verwoben werden. – CC-BY 4.0: Hanna Barakat & Archival Images of AI + AIxDESIGNDeutschland soll in Zukunft mit KI Asylbescheide, Visumsanträge und Aufenthaltsg…",
+   "sprache": "de"
   }
  ]
 }
