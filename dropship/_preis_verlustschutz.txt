@@ -358533,3 +358533,10 @@
 56075663540609	heben	15.90	16.90	12.95	2026-11-27	diy-powerbank-kit-fur-16x-18650-akkus-685824
 56052974322049	heben	14.90	16.90	12.91	2026-11-27	usb-beheizbare-wasserdichte-wildleder-fingerha-615700
 56052974354817	heben	14.90	16.90	13.39	2026-11-27	usb-beheizbare-wasserdichte-wildleder-fingerha-615700
+55878345916801	heben	14.90	15.90	11.98	2026-11-27	interaktive-elektrische-induktionsschlange-575296
+55878365905281	heben	14.90	15.90	12.10	2026-11-27	led-fahrradlicht-mit-usb-ladefunktion-604000
+56099774726529	heben	14.90	15.90	12.52	2026-11-27	atherisches-ol-set-orange-minze-eukalyptus-115290
+56115728220545	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
+67657137848711	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
+67657137881479	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
+67657137914247	heben	14.90	15.90	12.19	2026-11-27	elektrischer-fusselrasierer-fur-kleidung-350272
