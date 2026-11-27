@@ -358396,3 +358396,5 @@
 56008105001345	heben	16.90	17.90	13.54	2026-11-27	switch2-controller-ladestation-615800
 56063733105025	heben	16.90	17.90	13.53	2026-11-27	bluetooth-over-ear-kopfhorer-mit-langer-akkula-636900
 56087386390913	heben	16.90	27.90	21.68	2026-11-27	rosen-massage-und-aromaol-602300
+56094406902145	heben	15.90	20.90	16.11	2026-11-27	elektrischer-teigtaschenformer-mit-doppelkopf-620224
+56094462869889	heben	15.90	20.90	16.02	2026-11-27	kompakte-powerbank-mit-digitalanzeige-933504
