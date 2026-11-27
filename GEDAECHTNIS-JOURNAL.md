@@ -62,6 +62,10 @@
 
 
 
+## 2026-11-27 05:45 · 💄 #1047 Augencreme: Betreiber «1047 A» → CJ-Support gefragt
+- LX1047 (SD2611251301040644900) bezahlt 25.11., UNSHIPPED, Tracking EQKPT8613518515YQ. Mail an support@cjdropshipping.com (vom CJ-Konto-Gmail): ohne Marke → normal versenden; mit Paula's-Choice-Name/Logo → NICHT versenden, Ersatz ohne Marke oder Storno ins Wallet; ob PID 2607070621261615300 generell Markenware ist. Bestellnotiz gesetzt, Nachkontrolle 28.11. per send_later. Kommt «branded» → Produkt bleibt DRAFT, Kundin informieren (frischen Thread lesen), bei Storno Rückerstattung selbst auslösen.
+- Daneben: CJ-Ticket vom 21.11. zu SD2611172218050640600 («Products Discontinued», «Awaiting your response», lief nach 36 h ab) — Stand prüfen.
+
 ## 2026-11-26 23:30 · 🛍️ «shop campagne aufpimpen und shop app» + Grind-Anteil trotz Vorrang
 - **Shop-App = Kanal Nr. 2** (4 Kampagnen-Bestellungen #1037/#1040/#1047/#1048, alles Neukunden, ROAS 5.5, CAC 6.48, kein Rabatt — Shop Cash). Reichweite hängt an 6 Signalen über 90 T, nicht am Budget (genutzt ~13 % von CHF 100). Schwach: Erfüllung ≤ 96 h 58 %, Zustellung gemeldet 1/26 (Tracking-Firma «CJPacket» ist Shopify unbekannt). Doku + Betreiber-Klicks: `dropship/SHOP-APP-KAMPAGNE-2611.md`.
 - **Gesperrt (DRAFT):** Lederbearbeitungs-Set (Messer nur im BILD, Titel ohne Klingenwort → Klingenregel um «Ledermesser» + Leder-Sets mit Schneiden/Trimmen erweitert, Test 84/84), Doppler/Fetal + Atmungsübungsgerät (Medizinregel erweitert, Selbsttest ok), Rohrreiniger (NaOH, Gefahrgut), **Augencreme = Paula's-Choice-Markenfoto** (CJ-Bilder zeigen «RESIST Anti-Aging Eye Gel»; #1047 bei CJ bezahlt → Betreiber-Entscheid A/B). Lehre: **vor dem Nachladen von CJ-Bildern den Kontaktbogen ansehen** — der Markenname steht oft nur im Bild, nie im CJ-Titel.
