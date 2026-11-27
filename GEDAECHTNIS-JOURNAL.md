@@ -62,6 +62,11 @@
 
 
 
+## 2026-11-27 16:10 · 🎁 Geschenkkarte LIVE (luxestyle.ch/products/luxestyle-gutschein)
+- Betreiber-Agent aktivierte Geschenkkarten → Shopify legte «LuxeStyle-Gutschein» an (10/25/50/100/200, alle Kanäle). `SCHARF=1 geschenkkarte_anlegen.py` setzte Titel/Bild/Text/SEO + 25/50/100; AGB-Abschnitt «Geschenkkarten» (Ablauf heute = Shop-Einstellung null → «verfallen nicht»; setzt der Betreiber 2 Jahre, Skript erneut laufen lassen). Kanäle: nur Onlineshop, Shop, POS, Inbox, Headless (Google/TikTok/Meta/Pinterest abgemeldet).
+- **Falle:** productSet legt neue Varianten mit tracked=true/DENY/0 an → Seite «Ausverkauft» (Firecrawl gemessen). Fix: inventoryPolicy CONTINUE + tracked false (im Skript nachgezogen). Lehre: nach productSet IMMER `availableForSale` lesen.
+- Weihnachts-Hinweis (lux_anlass_hinweis in 3 Produkt-Templates): nie auf der Geschenkkarte (`closest.product.gift_card?`), dazu Link «Oder die Geschenkkarte – kommt sofort per E-Mail» (`anlass_hinweis_geschenkkarte_2711.py`).
+
 ## 2026-11-27 13:30 · 🧹 «mach für mich alles, bin ned zuhause» — Produktseiten aus dem Kauf-Workflow
 - Gewitterwolken-Licht: Tabelle «Höhe 1000 m / Masse 1000 mm» → Länge 60–70 cm / Breite 35–40 cm; «Stromversorgung: Batterie/Akku» → «USB 5 V (Netzteil nicht enthalten)» (Klasse: `cj_specs.mjs:171` übersetzt CJ-Versandmerkmal BATTERY in Stromversorgung — Bestand ~1'566, Klassenrunde offen). Doppelte Import-Bewertung 1287641784 (kürzere Kopie) per curated=spam ausgeblendet (`dropship/_judgeme_ausgeblendet_doppel.tsv`).
 - Nagel (UV-Lack-Set, Mobray, Polygel-Kit, Polygel-Set): Satz «Härtet unter UV/LED-Licht – Lampe nicht im Set» + Links 80-W- und Mini-Lampe. CJ «phototherapy pen» = Gel-PINSEL, kein Licht → Mobray-Text «Phototherapie-Stift» → «Gel-Pinsel». Mobray-Varianten «2Stil» → «Stil 2» (productOptionUpdate, SKUs unverändert).

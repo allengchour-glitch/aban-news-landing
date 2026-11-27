@@ -9596,3 +9596,4 @@ gid://shopify/Product/15493829296513	zugeordnet	12	Strickhemd für Herren mit Re
 gid://shopify/Product/15494642925953	zugeordnet	8	Vielseitiges Herbst-/Winterkleid
 gid://shopify/Product/15494642991489	zugeordnet	40	Sommerlicher A-Linien Minirock
 gid://shopify/Product/15494643515777	zugeordnet	55	Florales Strandkleid für den Sommer
+gid://shopify/Product/16740818878855	zugeordnet	25	Ärmelloses Deep-V Kleid mit Schlitz

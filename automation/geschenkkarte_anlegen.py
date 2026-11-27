@@ -54,7 +54,7 @@ def main():
            "seo": {"title": "Geschenkkarte – sofort per E-Mail | LuxeStyle CH",
                    "description": "LuxeStyle Geschenkkarte über CHF 25, 50 oder 100, sofort per E-Mail. Einlösbar auf luxestyle.ch, Restguthaben bleibt erhalten."},
            "productOptions": [{"name": "Betrag", "values": [{"name": f"CHF {b}"} for b in BETRAEGE]}],
-           "variants": [{"optionValues": [{"optionName": "Betrag", "name": f"CHF {b}"}], "price": f"{b}.00"} for b in BETRAEGE],
+           "variants": [{"optionValues": [{"optionName": "Betrag", "name": f"CHF {b}"}], "price": f"{b}.00", "inventoryPolicy": "CONTINUE", "inventoryItem": {"tracked": False}} for b in BETRAEGE],
            "files": [{"originalSource": BILD, "alt": "LuxeStyle Geschenkkarte", "contentType": "IMAGE"}]}
     if vorh:
         inp["id"] = vorh[0]["id"]
