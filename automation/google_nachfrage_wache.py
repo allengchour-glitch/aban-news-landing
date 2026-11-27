@@ -58,6 +58,14 @@ def jaccard(a, b):
     return len(a & b) / len(a | b) if a and b else 0.0
 
 
+try:   # 27.11.2026: Schaufenster-Manifest (origin/main); nicht lesbar → None (Grund bleibt «unbekannt»)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from google_sperrliste import schaufenster_ids as _sf
+    SCHAUF = _sf()
+except Exception:  # noqa: BLE001
+    SCHAUF = None
+
+
 def grund(tags, sku=""):
     s = " ".join(tags or []).lower() + " " + (sku or "").lower()
     for rx, urteil, behebbar in GRUENDE:
@@ -144,6 +152,9 @@ def main():
         urteil, behebbar = grund(p["tags"] if p else [], ((p or {}).get("variants") or {}).get("nodes", [{}])[0].get("sku", "") if p else "")
         if not p:
             urteil, behebbar = "Handle existiert nicht mehr", True
+        elif urteil.startswith("Grund unbekannt") and SCHAUF is not None and p.get("id", "").rsplit("/", 1)[-1] in SCHAUF:
+            # 27.11.2026: vom GMC-Schaufenster (origin/main) bewusst abgewählt — Rückkehr nur über PHASE=aufnehmen (Betreiber-Entscheid Stufe 0)
+            urteil, behebbar = "Schaufenster (Merchant-Quote)", False
         if ersatz:
             zahl["ersatz"] += 1
         else:
