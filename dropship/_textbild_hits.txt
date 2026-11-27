@@ -19040,3 +19040,18 @@ gid://shopify/Product/16741616615815	999->0	Bonsai-Nachtlicht mit Touch-Schalter
 gid://shopify/Product/16741617238407	999->1	Fighting Stick Gaming-Controller PG-9136
 gid://shopify/Product/16741619433863	999->3	3D Mondtischlampe mit Fernbedienung
 gid://shopify/Product/16741630706055	999->0	Ionen-Haartrockner mit Glätteisen und Lockenstab
+gid://shopify/Product/16741643485575	45->0	Lauflernschuhe aus Baumwolle
+gid://shopify/Product/16741762204039	15->0	LED Dreieck Tischlampe mit kabellosem Laden
+gid://shopify/Product/16741763187079	13->0	DIY-Resin-Nachtlicht mit Bluetooth-Lautsprecher
+gid://shopify/Product/16741841535367	9->0	Magnetisches Nachttischlicht mit dimmbarer LED
+gid://shopify/Product/16741845074311	27->0	Kabelloses Glättebürsten-Set mit 4500 mAh Akku
+gid://shopify/Product/16741845926279	63->1	Eisen-Kristall Nachttischlampe – Gold
+gid://shopify/Product/16741846090119	9->0	LED Modellierlicht Stern Mond Apfel Weihnachtsdeko
+gid://shopify/Product/16741846253959	11->0	Geister-Silikon Nachttischlampe mit Touch-Bedienung
+gid://shopify/Product/16741847236999	15->0	Faltbarer Mini-Ventilator mit Octopus-Design
+gid://shopify/Product/16741847400839	40->1	Personalisierte Nachtlampe aus Acryl 20 cm
+gid://shopify/Product/16741855527303	52->0	Leder-Sandale für Babys, 6–12 Monate
+gid://shopify/Product/16741859983751	15->2	Lauflernschuhe aus Kunstleder mit Klettverschluss
+gid://shopify/Product/16741862539655	39->0	Lauflernschuhe mit Klettverschluss
+gid://shopify/Product/16741872992647	25->3	Nachttischlampe modern 30×12×7 cm
+gid://shopify/Product/16741873516935	9->0	Roter Vorhang für Schlafzimmer – 40 % Verdunkelung
