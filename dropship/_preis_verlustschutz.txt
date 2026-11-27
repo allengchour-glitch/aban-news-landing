@@ -358388,3 +358388,10 @@
 68305159717255	heben	16.90	17.90	13.62	2026-11-27	actionkamera-fur-outdoor-abenteuer-620200
 68301273006471	heben	16.90	17.90	13.62	2026-11-27	led-neon-buchstabenleuchte-mehrfarbig-614500
 68302133494151	heben	16.90	17.90	13.65	2026-11-27	schuhpolitur-set-mit-burste-und-kunstlederpflege-614700
+55965765108097	heben	16.90	17.90	14.24	2026-11-27	runder-12v-kuhlventilator-mit-drehzahlregler-617300
+55939555983745	heben	16.90	17.90	13.73	2026-11-27	kleiner-nachtlicht-luftbefeuchter-mit-spray-046592
+55976011923841	heben	16.90	17.90	13.69	2026-11-27	led-stirnlampe-wasserdicht-flugzeug-stil-636100
+56000933429633	heben	16.90	17.90	13.59	2026-11-27	smartwatch-gt-mit-gesundheitsfunktionen-616500
+56007439057281	heben	16.90	17.90	13.47	2026-11-27	ultradunne-powerbank-20000-mah-615000
+56008105001345	heben	16.90	17.90	13.54	2026-11-27	switch2-controller-ladestation-615800
+56063733105025	heben	16.90	17.90	13.53	2026-11-27	bluetooth-over-ear-kopfhorer-mit-langer-akkula-636900
