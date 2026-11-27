@@ -9526,3 +9526,5 @@ gid://shopify/Product/15485689954689	zugeordnet	6	Damen Bluse mit Puffärmeln un
 gid://shopify/Product/15485690085761	zugeordnet	10	V-Ausschnitt Häkelspitze Langarm-Top
 gid://shopify/Product/15485690216833	zugeordnet	25	Langarm V-Neck Top Slim-Fit
 gid://shopify/Product/15485690347905	zugeordnet	25	Waffle-Strick Langarmshirt mit Rückenknöpfen
+gid://shopify/Product/15485690478977	zugeordnet	30	Samt-Bluse mit Schnürung und Ballonärmeln
+gid://shopify/Product/15485692051841	zugeordnet	12	Herren Sport T-Shirt Langarm – Sommer
