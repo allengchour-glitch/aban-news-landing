@@ -62,6 +62,10 @@
 
 
 
+## 2026-11-27 16:55 · ✉️ «mache auch mails»
+- Postfach info@luxestyle.ch (4 T): kein Kunde wartet (Lieferanten-Werbung, Beautypass = Creator-Plattform → Hausregel nein, nicht beantwortet).
+- Klaviyo-Kampagne 01M8EY3RVD7FZB4G514QKN86WR «Black Week Endspurt + Geschenkkarte» (Vorlage U9cUHE, HTML `dropship/verkauf-2711/mail-bw-endspurt-2911.html`) an Listen SfdmHY + T2VHfu, **geplant So 29.11. 17:00 UTC (18:00 CH)** — Betreiber «Ja, So 18:00» (schedule_campaign_message verlangt die Bestätigung im Chat). Inhalt: 15 % ab CHF 80 bis Mo 23:59, 4 Ab-80-Artikel, Geschenkkarte, Spielzeug ab CH-Lager.
+
 ## 2026-11-27 16:10 · 🎁 Geschenkkarte LIVE (luxestyle.ch/products/luxestyle-gutschein)
 - Betreiber-Agent aktivierte Geschenkkarten → Shopify legte «LuxeStyle-Gutschein» an (10/25/50/100/200, alle Kanäle). `SCHARF=1 geschenkkarte_anlegen.py` setzte Titel/Bild/Text/SEO + 25/50/100; AGB-Abschnitt «Geschenkkarten» (Ablauf heute = Shop-Einstellung null → «verfallen nicht»; setzt der Betreiber 2 Jahre, Skript erneut laufen lassen). Kanäle: nur Onlineshop, Shop, POS, Inbox, Headless (Google/TikTok/Meta/Pinterest abgemeldet).
 - **Falle:** productSet legt neue Varianten mit tracked=true/DENY/0 an → Seite «Ausverkauft» (Firecrawl gemessen). Fix: inventoryPolicy CONTINUE + tracked false (im Skript nachgezogen). Lehre: nach productSet IMMER `availableForSale` lesen.
