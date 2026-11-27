@@ -3968,3 +3968,6 @@
 16741399134599	Farbe:3:3	2026-11-27	bluetooth-subwoofer-mit-touch-lichtlampe-824896
 16741018665351	Farbe:4:4	2026-11-27	ultraschall-gesichtswascher-mit-rotlicht-599616
 16741014929799	Modell:2:2	2026-11-27	elektrisches-gesichtsreinigungsgerat-2bd2d4
+16742092112263	Farbe:2:2	2026-11-27	leder-messengerbag-aus-rindsleder-336896
+16742092046727	Farbe:2:2+ki	2026-11-27	led-wandlampe-aus-milchigem-acryl-warmweiss-1e3bae
+16742088638855	Farbe:2:2	2026-11-27	canvas-rucksack-31x17x42-cm-bf18f6

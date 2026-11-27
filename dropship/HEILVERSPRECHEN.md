@@ -1,16 +1,10 @@
-# Heilversprechen in Produkttexten — Stand 2026-11-26T16:33:14Z
+# Heilversprechen in Produkttexten — Stand 2026-11-27T12:36:36Z
 
-Geprüft: 11449 (Filter: `status:active updated_at:>2026-11-25T16:01:46Z`) · entschärft: 0 · offen: 5 · Schreibfehler: 0
+Geprüft: 5933 (Filter: `status:active updated_at:>2026-11-26T16:33:14Z`) · entschärft: 0 · offen: 2 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
-- **Elektrischer Kopfhaut-Massagekamm mit Rotlicht** (`elektrischer-kopfhaut-massagekamm-mit-rotlicht-601400`)
-  - …cht ist eine Zusatzfunktion. Versprechen zu Haarpflege oder Haarwachstum machen wir bewusst nicht. Wenn du zum ersten Mal ein Gerät…
-- **Leichter Schutzring für Hunde und Katzen** (`leichter-schutzring-fur-hunde-und-katzen-587712`)
-  - …Ruhe und Spielzeit ungestört zu geniessen und verhindert so Depressionen und psychische Probleme. 🛡️ Sorglos shoppen: ✅ Gep…
-- **Hunde- und Katzenhalskrause** (`hunde-und-katzenhalskrause-21151e`)
-  - …oder Hautstellen beleckt, beknabbert oder bekrallt, was den Heilungsprozess beschleunigt und Infektionen vorbeugt. Das Design als «Scha…
-- **Jade-Rollerset für Gesicht** (`jade-rollerset-fur-gesicht-15e51f`)
-  - …Jade-Roller mit zwei Köpfen, die zum Aufklimmen, Festigen, Entgiften und Scrapen der Gesichtshaut verwendet werden. Der Roller…
+- **Antihaft-Vierloch-Omelettpfanne** (`antihaft-vierloch-omelettpfanne-622500`)
+  - …von 19 cm und ist mit einer Antihaftbeschichtung aus Weizen-Heilsteinen versehen. Sie ist in den Farben Blaugrau, Milchweiss und Sc…
 - **Lehrmodell rheumatischer Handflächenläsionen** (`lehrmodell-rheumatischer-handflachenlasionen-602900`)
   - …TITEL: Lehrmodell rheumatischer Handflächenläsionen…
