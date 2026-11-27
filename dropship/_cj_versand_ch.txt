@@ -1711,3 +1711,8 @@ gid://shopify/Product/15485799334273	ok	Kompakte 3L Kamera-Hüfttasche
 gid://shopify/Product/16613760139655	ok	Smartwatch Business Casual wasserdicht
 gid://shopify/Product/16733438476679	ok	Kabellose Tischlampe mit Aufladestation
 gid://shopify/Product/15449454903681	ok	Handheld-Gimbal mit 4K-Kamera
+gid://shopify/Product/15499809980801	nicht-versendbar	Ersatzbatterie für Scooter
+gid://shopify/Product/16612785619335	ok	Bluetooth Lautsprecher mit Doppelhorn und RGB-Beleuchtung
+gid://shopify/Product/15449487606145	ok	Kabellose Baby-Uberwachungskamera
+gid://shopify/Product/16612707795335	ok	Intelligenter Haustierfütterer mit Kamera
+gid://shopify/Product/16613787664775	nicht-versendbar	USB-Aufladebatterie 1200 mAh
