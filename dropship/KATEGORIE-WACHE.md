@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-27T17:39Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-27T18:43Z
 
-Aktive gescannt: 12 · ohne Kategorie: 12 · heute gesetzt: 11 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 6 · ohne Kategorie: 6 · heute gesetzt: 5 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- kleine-kristallkugel-nachtlampe-6-cm-623100 · Beleuchtung → Home & Garden > Lighting
-- 3d-gamepad-nachtlicht-mit-touch-und-fernbedien-5175e3 · Beleuchtung → Home & Garden > Lighting
-- induktions-nachtlicht-mit-pir-sensor-bb768d · Beleuchtung → Home & Garden > Lighting
-- led-tierform-nachtlicht-mit-bewegungssensor-02bd38 · Beleuchtung → Home & Garden > Lighting
-- rgb-symphony-tischlampe-nachtlicht-028288 · Beleuchtung → Home & Garden > Lighting
+- spitzenkleid-mit-spitzkragen-und-glockenarmeln-051072 · Damenmode → Apparel & Accessories > Clothing
+- gestreiftes-seersucker-hemd-fur-herren-622400 · Herrenmode → Apparel & Accessories > Clothing
+- kurzarmliges-button-down-hemd-slim-fit-600900 · Herrenmode → Apparel & Accessories > Clothing
+- kordjacke-mit-knopfverschluss-612700 · Herrenmode → Apparel & Accessories > Clothing
+- chiffon-kleid-mit-kurzarm-und-v-ausschnitt-609500 · Damenmode → Apparel & Accessories > Clothing
 

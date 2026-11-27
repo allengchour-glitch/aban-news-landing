@@ -54996,3 +54996,8 @@ punktmuster-kleid-aus-polyester-a7b8e8	aa-1	Damenmode	2026-11-27T17:39Z
 swing-kleid-mit-gurtel-fur-partys-053952	aa-1	Damenmode	2026-11-27T17:39Z
 schlank-geschnittener-maxikleid-mit-schlitz-801664	aa-1	Damenmode	2026-11-27T17:39Z
 wellenpunkt-kurzarmkleid-mit-kragen-bb72af	aa-1	Damenmode	2026-11-27T17:39Z
+spitzenkleid-mit-spitzkragen-und-glockenarmeln-051072	aa-1	Damenmode	2026-11-27T18:43Z
+gestreiftes-seersucker-hemd-fur-herren-622400	aa-1	Herrenmode	2026-11-27T18:43Z
+kurzarmliges-button-down-hemd-slim-fit-600900	aa-1	Herrenmode	2026-11-27T18:43Z
+kordjacke-mit-knopfverschluss-612700	aa-1	Herrenmode	2026-11-27T18:43Z
+chiffon-kleid-mit-kurzarm-und-v-ausschnitt-609500	aa-1	Damenmode	2026-11-27T18:43Z
