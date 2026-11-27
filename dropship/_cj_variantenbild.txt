@@ -9556,3 +9556,12 @@ gid://shopify/Product/15485876732289	zugeordnet	28	Wasserdichte Freizeit-Sneaker
 gid://shopify/Product/15485880140161	zugeordnet	30	Polyesterkleid · Damen
 gid://shopify/Product/15485881581953	zugeordnet	30	Waffelstrick Hoodie mit V-Ausschnitt
 gid://shopify/Product/15485881713025	zugeordnet	24	Sweatshirt mit Spitze und Flügel-Stickerei
+gid://shopify/Product/15485881844097	zugeordnet	40	Samtiger Pullover
+gid://shopify/Product/15485882106241	zugeordnet	8	Sweatshirt im neuen chinesischen Stil
+gid://shopify/Product/15485882302849	zugeordnet	63	Vielseitiges Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15485947806081	zugeordnet	10	Herren Windbreaker
+gid://shopify/Product/15485948002689	zugeordnet	6	Taktische Weste · Herren
+gid://shopify/Product/15485948133761	zugeordnet	28	Herren-Trenchcoat
+gid://shopify/Product/15485948330369	zugeordnet	15	Herren-Jackett
+gid://shopify/Product/15485948428673	zugeordnet	40	Outdoor-Weste für Herren
+gid://shopify/Product/15486082220417	zugeordnet	6	Bauchbetonendes Top
