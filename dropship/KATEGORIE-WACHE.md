@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-27T06:44Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-27T08:33Z
 
-Aktive gescannt: 58 · ohne Kategorie: 58 · heute gesetzt: 57 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
+Aktive gescannt: 10 · ohne Kategorie: 10 · heute gesetzt: 9 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -11,9 +11,9 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- silikon-nachtlicht-mit-schaf-design-683648 · Beleuchtung → Home & Garden > Lighting
-- 3d-mondlicht-galaxie-nachtlicht-668288 · Beleuchtung → Home & Garden > Lighting
-- dunkelblaue-enten-nachtlampe-aus-abs-5cb236 · Beleuchtung → Home & Garden > Lighting
-- led-hologramm-projektor-mit-fernbedienung-449728 · Beleuchtung → Home & Garden > Lighting
-- puppy-nachtlicht-fa515c · Beleuchtung → Home & Garden > Lighting
+- led-nachtlicht-buchlampe-mit-usb-ladefunktion-03840f · Beleuchtung → Home & Garden > Lighting
+- magnetische-levitation-mondlampe-touch-bedienu-161280 · Beleuchtung → Home & Garden > Lighting
+- dimmbare-bambus-tischleuchte-795328 · Beleuchtung → Home & Garden > Lighting
+- portabler-haarglatter-lockenstab-50-w-603100 · Beauty-Tools → Health & Beauty > Personal Care > Cosmetics > Cosmetic Tools
+- aromalampe-mit-3d-feuwerkwerkseffekt-350848 · Beleuchtung → Home & Garden > Lighting
 
