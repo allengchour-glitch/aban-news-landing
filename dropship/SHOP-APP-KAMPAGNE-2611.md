@@ -23,7 +23,7 @@ Quelle: Workflow `shop-campaign-app-pimpen` (3 Recherchen, 3 Gegenprüfungen). R
    - Weg A: In CJ fragen, ob die Tube ohne Marke kommt.
    - Weg B: Bestellung stornieren und erstatten.
    - Sag «1047 A» oder «1047 B», dann erledige ich den Rest.
-2. **Reichweiten-Status ansehen (1 Minute):** Admin → Vertriebskanäle → Shop → Advertising.
+2. ✅ **Abgelesen 27.11. (Betreiber-Screenshot, Shop → «Werbung»): KEIN Banner «Anzeigenreichweite stark eingeschränkt».** Autopilot-Kampagne aktiv seit 03.10. (54 T): Ausgaben gesamt CHF 33.92, Umsatz CHF 177.50, ROAS 5.23; 7 T: 3 Bestellungen, Ø CHF 31.23; Tagesbudget 24 (heute 0 verbraucht), Ziel-CAC 8, Zielbestellwert 16, 3 Kanäle (Shop, Produkt-Netzwerk, andere). **Entscheid gemäss Tor: Zustell-Melder (fulfillmentEventCreate DELIVERED) bleibt AUS.** Bremse der Reichweite ist der Ziel-CAC 8, nicht das Budget — Anheben nur mit Betreiber-Ja. (Alt: Admin → Vertriebskanäle → Shop → Advertising; deutsch «Shop ⌄ → Werbung».)
    - Kein Banner: Status «Good», nichts zu tun.
    - Banner «Your ad reach is significantly limited»: auf «View improvements» klicken und mir die 6 Werte als Screenshot schicken.
 3. ~~CJ-Zahllinks am selben Tag zahlen = stärkster Hebel~~ **Korrigiert 27.11.: Zahlung ist kein Engpass (22/25 LX-Aufträge ≤ 1 h nach Anlage bezahlt). Engpass ist die CJ-Lagerzeit (7 von 11 Verspätungen: #1021, #1029, #1034, #1038, #1039, #1042, #1044).** Sync-Verzug (#1041) ist seit 27.11. behoben (Fulfill-Sync über die ganze CJ-Liste). Die Lagerzeit wird ab jetzt nur gemessen (`dropship/_cj_versandoptionen.tsv`), Urteile erst bei n ≥ 20 je Lager.
