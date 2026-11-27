@@ -1,55 +1,61 @@
-# Hype-Recherche (automatisch, 2026-11-26 06:44 UTC)
+# Hype-Recherche (automatisch, 2026-11-27 06:12 UTC)
 
-Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 5.4 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
+Werkzeug: `automation/hype_recherche.py` → `tools/recherche.py` (openai/gpt-oss-120b, 5.3 s). Alles aus dem Netz ist **QUELLE**; die Spalte «aktiv im Shop» ist **GEMESSEN** (`productsCount title:*wort* status:active`). THEMEN in `hype_kuratieren.py` ändert nur die Verbesserungsrunde.
 
 Gegenprobe: «Ladestation» findet 124 aktive (Verfahren sieht Treffer).
 
 | Thema (Quelle) | Suchwörter (aktiv je Wort) | aktiv gesamt | schon in THEMEN | heikel |
 |---|---|---:|:-:|:-:|
-| 3-in-1 Curly Half Wig | Halbkrönchen 0 · Zopfset 0 · Haaraccessoire 0 | 0 |  |  |
-| Dish Drying Rack | Spülbrett 0 · Geschirrtrockner 0 · Spülsieb 0 | 0 | ja |  |
-| Shapewear Bodysuit | Body 161 · Figurschmuck 0 · Unterwäsche 13 | 174 |  |  |
-| Rosemary & Rice Water Hair Treatment | Haarpflege 16 · Rosenwasser 1 · Haartrockner 26 | 43 |  |  |
-| Solar Copper-Wire Fairy Lights | Solarleuchte 0 · Lichterkette 7 · Glühkabel 0 | 7 | ja |  |
-| 3D-gedrucktes Fidget-Toy | Fidget 2 · Spieltier 0 · Stressball 0 | 2 |  | ⚠️ |
-| Smart Neon LED-Strip Light | LED-Leiste 0 · Neonlicht 1 · Farbwechsel 51 | 52 |  |  |
-| Portable Magnetic Phone Fan | Handyventilator 0 · Magnetventilator 0 · Mini-Fan 1 | 1 |  |  |
-| Portable Electric Screwdriver | Einschrauber 0 · Mini-Schraubendreher 1 | 1 |  |  |
-| 3D-gedruckter Under-Desk Cup Holder | Tischhalter 1 · Tassenhalter 2 · Schreibtischorganizer 0 | 3 |  |  |
+| Shapewear-Bodysuits | Shapewear 18 · Bodysuit 15 | 33 | ja |  |
+| Dish-drying-racks (Mehrstufig) | Geschirr 106 · Trockner 13 | 119 | ja |  |
+| Fleece-ge-littete Tights | Fleece 274 · Tights 6 | 280 | ja |  |
+| Meat-shredder (Twist-Spalter) | Fleisch 21 · Spalter 0 | 21 |  |  |
+| Food-storage-Container-Sets | Speicher 15 · Container 6 | 21 |  |  |
+| Reinigung-Caddy-Bag | Reinigungs 88 · Caddy 1 | 89 | ja |  |
+| Küchen-Utensilien-Set (Silikon, 44-Teile) | Küchen 163 · Utensilien 5 | 168 | ja |  |
+| Fidget-Toy (Rechargeable-Sound) | Fidget 2 · Spielzeug 195 | 197 | ja | ⚠️ |
+| Haustier-Feeder & Wasser-Dispenser | Haustier 554 · Feeder 5 | 559 | ja |  |
+| Faja-Bodysuit (Tummy-Control) | Faja 3 | 3 |  |  |
+| Silikon-Küchen-Utensilien-Set (19‑Teile) | Silikon 460 | 460 | ja |  |
+| Wearable-Cleaning-Caddy-Tote (Schulter‑Tragetasche) | Tote 95 | 95 |  |  |
+| Comfrt Textiles and soft furnishings | Textilien 5 · Dekor 119 | 124 |  |  |
 
-**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Shapewear Bodysuit (174), Rosemary & Rice Water Hair Treatment (43), Smart Neon LED-Strip Light (52), Portable Magnetic Phone Fan (1), Portable Electric Screwdriver (1), 3D-gedruckter Under-Desk Cup Holder (3)
+**Kandidaten für die Startseite (Ware da, neu, nicht heikel):** Meat-shredder (Twist-Spalter) (21), Food-storage-Container-Sets (21), Faja-Bodysuit (Tummy-Control) (3), Wearable-Cleaning-Caddy-Tote (Schulter‑Tragetasche) (95), Comfrt Textiles and soft furnishings (124)
 
 Vor dem Übernehmen: Kanarienvögel prüfen (Wortgrenzen, «IPL» in «Lipliner»), Ablehnungsklassen aus QUELLE.
 
 ## Antwort der Recherche
 
-**Viral-Produktarten auf TikTok / TikTok Shop (November 2026)**  
+**TikTok-Shop / „TikTok made me buy it“ – virale Dropshipping-Produktarten (November 2026)**  
 
-| # | Produktart (keine Marke, kein Lebensmittel) | Quelle (URL) | Datum der Quelle* |
-|---|----------------------------------------------|--------------|-------------------|
-| 1 | 3-in-1 Curly Half Wig (Haarschmuck) | https://sourcingground.com/trending/2026-w46 | 9 Nov 2026 |
-| 2 | Dish Drying Rack (Spülbrett) | https://sourcingground.com/trending/2026-w46 | 9 Nov 2026 |
-| 3 | Shapewear Bodysuit (Körperformend) | https://sourcingground.com/trending/2026-w46 | 9 Nov 2026 |
-| 4 | Rosemary & Rice Water Hair Treatment (Haarpflege) | https://sourcingground.com/trending/2026-w46 | 9 Nov 2026 |
-| 5 | Solar Copper-Wire Fairy Lights (Solar-LED-Lichterkette) | https://sourcingground.com/trending/2026-w46 | 9 Nov 2026 |
-| 6 | 3D-gedrucktes Fidget-Toy | https://sourcingground.com/trending/2026-w48 | 23 Nov 2026 |
-| 7 | Smart Neon LED-Strip Light (Farbwechsel-LED-Leiste) | https://sourcingground.com/trending/2026-w48 | 23 Nov 2026 |
-| 8 | Portable Magnetic Phone Fan (Handy-Ventilator) | https://sourcingground.com/trending/2026-w48 | 23 Nov 2026 |
-| 9 | Portable Electric Screwdriver (Mini-Schraubendreher) | https://sourcingground.com/trending/2026-w48 | 23 Nov 2026 |
-|10| 3D-gedruckter Under-Desk Cup Holder (Tisch-Organizer) | https://sourcingground.com/trending/2026-w48 | 23 Nov 2026 |
+| Rang (nach verkauften Einheiten) | Produktart (unbranded) | Warum viral (Kurz-Info) | Quelle & Datum |
+|---|---|---|---|
+| 1 | Shapewear-Bodysuits | Hohe Nachfrage, > 200 k Verkäufe, Preis ≈  $75 | https://www.nolyn.ai/case-studies/trending-dropshipping-products (01 Nov 2026) |
+| 2 | Dish-drying-racks (Mehrstufig) | Praktische Küchen-Organisation, > 64 k Verkäufe | idem |
+| 3 | Fleece-ge-littete Tights | Saisonale Kalt-Wetter-Mode, > 38 k Verkäufe | idem |
+| 4 | Meat-shredder (Twist-Spalter) | Koch-Gadget-Trend, > 29 k Verkäufe | idem |
+| 5 | Food-storage-Container-Sets | Haus-organisation, > 1 k Verkäufe | idem |
+| 6 | Reinigung-Caddy-Bag | Mobil-Cleaning-Accessoire, > 900 Verkäufe | idem |
+| 7 | Küchen-Utensilien-Set (Silikon, 44-Teile) | All-in-One-Gadget, > 800 Verkäufe | idem |
+| 8 | Fidget-Toy (Rechargeable-Sound) | Stress-Relief-Trend, > 500 Verkäufe | idem |
+| 9 | Haustier-Feeder & Wasser-Dispenser | Tier-pflege-Boom, > 500 Verkäufe | idem |
+|10| Faja-Bodysuit (Tummy-Control) | Fitness-/Body-Shaping, > 500 Verkäufe | idem |
+|11| Silikon-Küchen-Utensilien-Set (19 Teile) | Preis-/Preis-Leistungs-Trend, > 300 Verkäufe | idem |
+|12| Wearable-Cleaning-Caddy-Tote (Schulter-Tragetasche) | Portables Reinigungs-Kit, > 200 Verkäufe | idem |
 
-\* Die Artikel sind wöchentliche Trend-Reports von **SourcingGround** und geben das Veröffentlichungsdatum im Titel bzw. in der URL (Woche 46 = 9-Nov-2026, Woche 48 = 23-Nov-2026).  
+**Zusätzliche Hinweis aus einem Trend-Report (TikTok-Shop-Umsatz-Top-Seller)**  
+Der TikTok-Trend-Report vom 26. November 2026 listet als umsatzstärkstes Produkt „Comfrt Textiles and soft furnishings“ (≈ $4,1 M 30-Tage-Umsatz) – ein Heim-Dekor-Gegenstand, der ebenfalls als Dropshipping-Artikel geeignet ist (Datum 26.11.2026).
 
-Diese zehn Produktarten wurden in den letzten 14 Tagen (Stand 26-Nov-2026) als stark wachsend auf TikTok Shop und in Dropshipping-Trend-Listen identifiziert. Weitere Marken- oder Lebensmittel-Artikel wurden bewusst weggelassen.
+*Alle Angaben stammen aus den genannten Quellen; keine Marken- oder Lebensmittel-Produkte wurden genannt.*
 
 ## Quellen
 
-- https://sourcingground.com/trending/2026-w46
-- https://sourcingground.com/trending/2026-w48
-- https://www.nolyn.ai
+- https://www.nolyn.ai/case-studies/trending-dropshipping-products
+- https://tokconnect.com/trends/november-2026/
 - https://shopinbos.com
 - https://dodropshipping.com
 - https://deviantly.ai
-- https://www.sellthetrend.com
-- https://ugc.live
-- https://tokconnect.com
+- https://sourcingground.com
+- https://cruva.com
+- https://transclipper.ai
+- https://nichehunter.com

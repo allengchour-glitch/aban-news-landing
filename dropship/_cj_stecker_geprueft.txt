@@ -1195,3 +1195,8 @@
 16733921378695	kein-stecker-merkmal	2026-11-24	Deckenleuchte Minimalistisch Nordisch Warmweiss
 16734027612551	kein-stecker-merkmal	2026-11-24	Mid-Century Modern Deckenleuchte Creme
 16737959641479	kein-stecker-merkmal	2026-11-25	Kabelloser Staubsauger mit UV-Sterilisation & Aromatherapie
+16741400379783	eu-variante-belegt	2026-11-27	Automatischer Lockenstab mit USB-Ladefunktion
+16741630706055	unklar-eu-vorhanden:EU/US	2026-11-27	Ionen-Haartrockner mit Glätteisen und Lockenstab
+16741631492487	unklar-eu-vorhanden:EU/UK/US	2026-11-27	Multifunktionaler Infrarot-Haarlockenstab
+16741635752327	unklar-eu-vorhanden:EU/UK/US	2026-11-27	Keramik-Glätteisen mit 4 Temperaturstufen und drehbarem Grif
+16741636833671	unklar-eu-vorhanden:EU/UK/US	2026-11-27	Heissluft-Stylingkamm mit Negativionen

@@ -1,3 +1,13 @@
+# Netzstecker unklar — Stand 2026-11-27
+
+CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
+
+- `16741630706055` Ionen-Haartrockner mit Glätteisen und Lockenstab — CJ EU/US · unsere SKU `CJ-2610270358071607300` · EU-SKU `CJJF352041703CX`
+- `16741631492487` Multifunktionaler Infrarot-Haarlockenstab — CJ EU/UK/US · unsere SKU `CJ-2610111000411609600` · EU-SKU `CJJF324480701AZ`
+- `16741635752327` Keramik-Glätteisen mit 4 Temperaturstufen und drehbarem Grif — CJ EU/UK/US · unsere SKU `CJ-2610121358491609500` · EU-SKU `CJJF324942703CX`
+- `16741636833671` Heissluft-Stylingkamm mit Negativionen — CJ EU/UK/US · unsere SKU `CJ-2610130532061633100` · EU-SKU `CJJF325167805EV`
+
+---
 # Netzstecker unklar — Stand 2026-11-23
 
 CJ fuehrt diese Geraete in mehreren Steckerversionen; unser Shop hat EINE Variante, deren SKU nicht die EU-Version ist. Welche Version CJ schickt, ist damit nicht belegt. Entscheidung: Variante auf die EU-SKU umstellen (Betreiber) oder DRAFT.
@@ -26,4 +36,5 @@ Ledger `dropship/_cj_stecker_eu_varianten.txt`):
 Preise: heutiger Preis für alle Varianten bis 15 % über der günstigsten EU-Variante, teurere proportional
 (auf .90), nie darunter. Lager wie zuvor (CJ-Ware, keine Bestandsführung). Bilder je Farbe kommen nach dem
 Grow-Plan (~21.10., Dateispeicher). Jede Variante wurde nach dem Schreiben am Objekt zurückgelesen.
+
 

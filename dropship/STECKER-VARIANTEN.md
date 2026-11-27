@@ -1,9 +1,9 @@
-# Netzstecker je Variante — Stand 2026-11-25
+# Netzstecker je Variante — Stand 2026-11-27
 
 Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). Klasse: aktive Produkte mit ≥ 2 Varianten, von denen mindestens eine einen fremden Stecker (US/UK/AU/CN/JP …) traegt.
 
-- Produkte in der Klasse: **73** · Urteile: {'ok-gesperrt': 68, 'sperren': 4, 'reiseadapter-ausgenommen': 1}
-- in diesem Lauf gesperrt: **22** Varianten · gedraftet: **0** · Fehler: 0
+- Produkte in der Klasse: **73** · Urteile: {'ok-gesperrt': 72, 'reiseadapter-ausgenommen': 1}
+- in diesem Lauf gesperrt: **0** Varianten · gedraftet: **0** · Fehler: 0
 - Varianten OHNE Steckerkennung werden nie angefasst (welche Version CJ schickt, ist nicht belegt).
 - Rueckweg je Produkt: `python3 automation/cj_stecker_pruefen.py --rueckweg <pid>` (Ledger `dropship/_cj_stecker_varianten.tsv`).
 
@@ -46,6 +46,9 @@ Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). 
 | `16615812432263` LED-Lichterkette Stern & Mond für Weihnachten | ok-gesperrt | 2 | US:4 | 4 |
 | `16617706226055` LED-Tischlampe modern und schlicht | ok-gesperrt | 0 | CN:1 | 3 |
 | `16638319722887` Terrarium-Licht mit Metall-Clip | ok-gesperrt | 0 | CN:1 | 1 |
+| `16733173973383` Aromatherapie-Lampe mit Duftkerzenmelter | ok-gesperrt | 12 | CN:12 | 0 |
+| `16733847880071` Kabelloses Nachtschein mit Körpererkennung | ok-gesperrt | 1 | CN:1 | 1 |
+| `16734483153287` Dimmbares höhenverstellbares Nachtlicht mit Timer | ok-gesperrt | 8 | CN:8 | 0 |
 | `15449425379713` Ultraschall-Luftbefeuchter mit Aromatherapie | ok-gesperrt | 6 | CN:1 | 1 |
 | `15449431048577` Mini-Dampfbügel für unterwegs | ok-gesperrt | 7 | CN:5 | 0 |
 | `15450830668161` NEX 2-in-1 Fellpfleger: Föhn & Bürste für Haustier | ok-gesperrt | 3 | CN:2 | 1 |
@@ -58,6 +61,7 @@ Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). 
 | `15454915789185` Automatischer Haarewickler 32mm für faule | ok-gesperrt | 2 | CN:2 | 0 |
 | `15455794266497` Wasserdichte Fahrradlampe für Nachtfahrten | ok-gesperrt | 6 | AU:6,UK:6,US:6 | 0 |
 | `15478568550785` Multifunktionaler 7-in-1 High-Speed Haartrockner | ok-gesperrt | 4 | AU:4 | 0 |
+| `15479397482881` 45W GaN Ladegerät für Tablets, Smartphones & Lapto | ok-gesperrt | 1 | UK:1 | 0 |
 | `15479419142529` 65W Fast Charge Telescopic Type-C Line Charger | ok-gesperrt | 1 | CN:1 | 0 |
 | `15480284709249` Mini HD Heimprojektor | ok-gesperrt | 3 | AU:3 | 5 |
 | `15481680691585` P330 Mini Beamer – Heimkino für unterwegs | ok-gesperrt | 2 | AU:2 | 0 |
@@ -78,7 +82,3 @@ Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). 
 | `15495214072193` Dual-Port USB-C Schnellladeadapter 20W | ok-gesperrt | 1 | AU:1,UK:1,US:1 | 0 |
 | `15495319388545` Haar-Volumen-Heizclip | ok-gesperrt | 2 | CN:2 | 0 |
 | `15495321584001` Smart Travel Charger mit Schnellladefunktion | reiseadapter-ausgenommen | 2 | AU:2,UK:2,US:2 | 2 |
-| `16733173973383` Aromatherapie-Lampe mit Duftkerzenmelter | sperren | 12 | CN:12 | 0 |
-| `16733847880071` Kabelloses Nachtschein mit Körpererkennung | sperren | 1 | CN:1 | 1 |
-| `16734483153287` Dimmbares höhenverstellbares Nachtlicht mit Timer | sperren | 8 | CN:8 | 0 |
-| `15479397482881` 45W GaN Ladegerät für Tablets, Smartphones & Lapto | sperren | 1 | UK:1 | 0 |

@@ -1686,3 +1686,11 @@ gid://shopify/Product/16740820386183	nicht-versendbar	Holz Monitorständer mit 2
 gid://shopify/Product/16740938482055	ok	Bonsai-Blumentopf aus Purpursand, mittel
 gid://shopify/Product/16740940153223	ok	Edelstahl-Gemüse- und Obstschneider
 gid://shopify/Product/16740779295111	ok	Aufbewahrungsbox mit Reissverschluss und Deckel
+gid://shopify/Product/16741622219143	ok	U-Form Schwangerschaftsschlafkissen
+gid://shopify/Product/16740939170183	ok	Keramik Bonsai-Blumentopf 26 cm
+gid://shopify/Product/16740956897671	ok	Plasmaring-Lampe 4 Zoll, ≤360 V
+gid://shopify/Product/15447875355009	ok	Dimmbarer Kosmetikspiegel mit Akku
+gid://shopify/Product/16612741022087	ok	Verstellbare Haustierkamera mit automatischer Futterstation
+gid://shopify/Product/15499899830657	ok	Faltbarer Drohnenflieger
+gid://shopify/Product/15448881004929	ok	Fitzap3 Anti-Ermüdungs-Smartwatch
+gid://shopify/Product/15481692160385	ok	Mini-Beamer 720p
