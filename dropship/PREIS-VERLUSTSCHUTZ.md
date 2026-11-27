@@ -1,4 +1,4 @@
-# Preis-Verlustschutz — scharf 2026-11-27 10:16 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 10:23 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
@@ -8,5 +8,5 @@ Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Frach
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Schultertasche Herren aus PU-Leder, schwarz | 16.90 | 19.25 | **24.90** | 1.47× |
-| Umhängetasche aus PU-Leder, schwarz | 16.90 | 13.61 | **17.90** | 1.06× |
+| Musikalische Taschenuhr – individuell | 16.90 | 13.61 | **17.90** | 1.06× |
+| Punk Leder-Schal mit Knopf – silber, schwarz, br | 16.90 | 13.54 | **17.90** | 1.06× |

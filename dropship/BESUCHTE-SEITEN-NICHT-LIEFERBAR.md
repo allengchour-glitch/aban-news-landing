@@ -28,3 +28,4 @@ Quelle: `automation/besuchte_seiten_lieferbar.py`. DRAFT erst nach zwei unabhän
 | `geschenkbox-mit-decke-und-wellness-produkten-605100` | ⏳ erstes NEIN (2026-11-23) — Draft beim nächsten NEIN (≥ 12 h später) | KEINE Versandoption (Gewicht 250.0 g) · 2. Messung bestaetigt | `CJ-2509070245391605100` |
 | `fleecegefutterte-kapuzenjacke-fur-den-alltag-602200` | ⏳ erstes NEIN (2026-11-23) — Draft beim nächsten NEIN (≥ 12 h später) | vom Lieferanten ausgelistet | `CJ-CJPK327797501AZ` |
 | `geschenkbox-mit-decke-und-wellness-produkten-605100` | ✅ DRAFT gesetzt 2026-11-24 (zweites NEIN) | KEINE Versandoption (Gewicht 250.0 g) · 2. Messung bestaetigt | `CJ-2509070245391605100` |
+| `multifunktionale-sport-smartwatch-mit-dual-kam-615900` | ⏳ erstes NEIN (2026-11-27) — Draft beim nächsten NEIN (≥ 12 h später) | vom Lieferanten ausgelistet | `CJ-2409050327311615900` |
