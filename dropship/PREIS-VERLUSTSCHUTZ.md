@@ -1,11 +1,10 @@
-# Preis-Verlustschutz — scharf 2026-11-27 15:43 UTC
+# Preis-Verlustschutz — scharf 2026-11-27 15:50 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **1** · Varianten gehoben: **2** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.13× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 1 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **0** · Varianten gehoben: **0** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 0.00× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 0 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| USB-beheizbare, wasserdichte Wildleder-Fingerhan | 14.90 | 12.91 | **16.90** | 1.13× |
