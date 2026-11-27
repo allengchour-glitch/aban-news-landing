@@ -203,3 +203,9 @@ gid://shopify/Product/16734413554055	2026-11-26	Wohnen & Dekoration
 gid://shopify/Product/16736598360455	2026-11-26	Kinder & Baby
 gid://shopify/Product/16738188329351	2026-11-26	Spielzeug & Plüsch
 gid://shopify/Product/16656644702599	2026-11-26	Taschen & Rucksäcke
+gid://shopify/Product/16740942512519	2026-11-27	Damen-Mode
+gid://shopify/Product/16741014569351	2026-11-27	Schuhe
+gid://shopify/Product/16741020664199	2026-11-27	Beauty & Pflege
+gid://shopify/Product/16741622219143	2026-11-27	Wohnen & Dekoration
+gid://shopify/Product/16740628988295	2026-11-27	Küche & Kochen
+gid://shopify/Product/15503122825601	2026-11-27	Handy-Zubehör
