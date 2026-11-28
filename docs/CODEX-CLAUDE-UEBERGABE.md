@@ -2,6 +2,8 @@
 
 ## KI-Studio: verspätete Lizenzantwort überschreibt keine neuere Prüfung ·28.11.2026
 
+PR mit aktuellen Prüf- und Bereitstellungsbelegen: [#3276](https://github.com/allengchour-glitch/aban-news-landing/pull/3276).
+
 Eigener codex/studio-lizenzfolge-2811 vom frisch mit GitHub abgeglichenen mainffaeca13. Regeln, aktuelle Übergaben und offene PRs gelesen; keine früheren Kauf-/Lieferkorrekturen wiederholt. Öffentlich frisch gelesene js/ki-studio.js war bytegleich mit dem unveränderten Original. Neue reproduzierte Überschneidung: gespeicherter alter Schlüssel wird beim Laden still geprüft; währenddessen kann der Benutzer einen neuen Schlüssel prüfen. Dessen erfolgreiche Antwort schaltet frei, doch eine später eintreffende alte Ablehnung sperrt wieder. Eine alte Monatsfreigabe kann stattdessen neuen Jahresschlüssel und Bonus überschreiben; das alte finally gibt auch den Knopf einer noch laufenden neueren Prüfung frei. Ausschließlich synthetische Schlüssel/Antworten, keine echte Lizenz oder Zahlung abgefragt.
 
 Der bestehende Client zählt gestartete nichtleere Prüfversuche und übernimmt Erfolg, Ablehnung, Fehlertext sowie Knopfzustand nur vom jüngsten Versuch. Alte Antworten können Schlüssel, Tarif oder Freigabe nicht verändern. Jeder Aufruf bereinigt weiterhin seinen eigenen Timer;15-Sekundenfrist, manuelle Wiederaufnahme und bestehende Backend-Freigabe bleiben erhalten. Auch zwei über Enter gestartete Prüfungen sind abgedeckt. Keine zusätzliche automatische Anfrage oder Wiederholung. Gemeinsame Backend-Lizenzzuordnung und bereits dokumentierte Fremdvarianten-Grenze wurden nicht geändert; Cockpit-/Studio-Angebote und Preise bleiben getrennt wie zuvor.
