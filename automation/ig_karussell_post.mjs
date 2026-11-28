@@ -22,6 +22,7 @@
 import { mitFolgen, fbText as fbTextLib } from './lib/fb_text.mjs';   // 07.10.: FB ohne https-Link (Reichweite)
 import { publishAt } from './lib/publish_at.mjs';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import { socialPause, pauseSchluessel } from './lib/social_pause.mjs';   // 13.10.: Anlass-Social-Sperre (Halloween-CJ 15.10.–01.11.)
 const _socialPause = pauseSchluessel();
 const FORMATE = (() => { try { return JSON.parse(fs.readFileSync(new URL('./data/kanal_formate.json', import.meta.url), 'utf8')); } catch { return {}; } })();
@@ -36,7 +37,8 @@ const TOK = process.env.META_ACCESS_TOKEN || (fs.existsSync('/tmp/meta_page_toke
 const DRY = process.env.DRY === '1';
 const CSV = 'social/ig_karussell.csv';
 const BRANCH = 'claude/luxestyle-status-tztnn1';
-const RAW = `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/${BRANCH}/`;
+const RAW_BASIS = 'https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/';
+const RAW = `${RAW_BASIS}${BRANCH}/`;
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const STOK = (process.env.SHOPIFY_ADMIN_TOKEN || (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '')).trim();
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
@@ -127,6 +129,7 @@ const nochBereit = (r, bilder) => {
   const frisch = queueLesen(CSV), si = frisch[0].map(h => h.trim()).indexOf('status');
   const z = frisch.slice(1).find(x => x[0] === r[0]);
   if (!z || (z[si] || '').trim() !== 'ready') return `Status jetzt «${z ? (z[si] || '').trim() : 'Zeile weg'}»`;
+  if (['caption', 'ordner', 'slides', 'produkte', 'modus'].some(k => get(z, k) !== get(r, k))) return 'Kandidat inzwischen geändert';
   if (bilder.some(b => postSeen(b))) return 'Bild inzwischen im gemeinsamen Ledger';
   return '';
 };
@@ -157,7 +160,7 @@ async function gql(q, v) {
   for (let a = 0; a < 3; a++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/2026-01/graphql.json`, { method: 'POST', headers: { 'X-Shopify-Access-Token': STOK, 'Content-Type': 'application/json' }, body: JSON.stringify({ query: q, variables: v }) });
-      const d = await r.json(); if (d && d.data) return d.data;
+      const d = await r.json(); if (r.ok && d?.data && !d.errors?.length) return d.data;
     } catch {}
     await schlaf(2000 * (a + 1));
   }
@@ -169,26 +172,107 @@ async function produktLive(handle) {
     for (let a = 0; a < 3; a++) {
       try {
         const r = await fetch(`https://${SHOP}/api/2025-07/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: `query($h:String!){ product(handle:$h){ availableForSale onlineStoreUrl title priceRange{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`, variables: { h: handle } }) });
+          body: JSON.stringify({ query: `query($h:String!){ product(handle:$h){ availableForSale onlineStoreUrl title priceRange{ minVariantPrice{ amount currencyCode } maxVariantPrice{ amount currencyCode } } } }`, variables: { h: handle } }) });
         const d = await r.json();
-        if (d && d.data) {
+        if (r.ok && d?.data && !d.errors?.length) {
           const p = d.data.product;
           if (!p) return { ok: false, grund: 'Storefront API: nicht veroeffentlicht (ohne Token kein Urteil)' };
           return { ok: !!p.availableForSale && !!p.onlineStoreUrl, grund: `Storefront API ${p.availableForSale ? 'kaufbar' : 'nicht verfuegbar'} (ohne Token)`, title: p.title, url: p.onlineStoreUrl || '',
-                   min: parseFloat(p.priceRange.minVariantPrice.amount), max: parseFloat(p.priceRange.maxVariantPrice.amount) };
+                   spanne: chfSpanne(p.priceRange) };
         }
       } catch {}
       await schlaf(2000 * (a + 1));
     }
     return { ok: false, grund: 'kein Shop-Token, Storefront API nicht erreichbar' };
   }
-  const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title priceRangeV2{ minVariantPrice{ amount } maxVariantPrice{ amount } } } }`, { h: handle });
+  const d = await gql(`query($h:String!){ productByHandle(handle:$h){ status onlineStoreUrl title priceRangeV2{ minVariantPrice{ amount currencyCode } maxVariantPrice{ amount currencyCode } } } }`, { h: handle });
   if (!d) return { ok: false, grund: 'Shopify nicht erreichbar' };
   const p = d.productByHandle; if (!p) return { ok: false, grund: 'Produkt existiert nicht mehr' };
-  const min = parseFloat(p.priceRangeV2?.minVariantPrice?.amount || 'NaN'), max = parseFloat(p.priceRangeV2?.maxVariantPrice?.amount || 'NaN');
-  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title, url: p.onlineStoreUrl || '', min, max };
+  return { ok: p.status === 'ACTIVE' && !!p.onlineStoreUrl, grund: `status ${p.status}, onlineStoreUrl ${p.onlineStoreUrl ? 'ja' : 'nein'}`, title: p.title, url: p.onlineStoreUrl || '', spanne: chfSpanne(p.priceRangeV2) };
 }
-const http = u => { try { return execFileSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '--max-time', '30', u], { encoding: 'utf8' }).trim(); } catch { return 'curl'; } };
+function chfSpanne(bereich) {
+  function rappen(geld) {
+    if (geld?.currencyCode !== 'CHF' || typeof geld.amount !== 'string' || !/^[0-9]+(?:\.[0-9]{1,2}0*)?$/.test(geld.amount)) return NaN;
+    const [franken, rest = ''] = geld.amount.split('.');
+    const wert = Number(franken) * 100 + Number(rest.slice(0, 2).padEnd(2, '0'));
+    return Number.isSafeInteger(wert) && wert > 0 ? wert : NaN;
+  }
+  const min = rappen(bereich?.minVariantPrice), max = rappen(bereich?.maxVariantPrice);
+  return min <= max ? { min, max } : null;
+}
+
+function preisZeile(spanne) {
+  const betrag = rappen => (rappen / 100).toFixed(2);
+  const tief = betrag(spanne.min);
+  if (spanne.min === spanne.max) return 'CHF ' + tief.replace(/\.00$/, '.–');
+  return `CHF ${tief}–${betrag(spanne.max)} je nach Variante`;
+}
+
+function preisePassen(text, modus, produkte) {
+  const zeilen = text.trim().split(/\r?\n/);
+  const passt = (zeile, p) => zeile?.replace(/(CHF [0-9]+)\.00$/, '$1.–').endsWith(' · ' + preisZeile(p.spanne));
+  if (modus === 'produkt') return produkte.length === 1 && passt(zeilen[0], produkte[0]);
+  const liste = zeilen.filter(z => /^\d+\. /.test(z));
+  // Der Generator verspricht «unter CHF …» für das ganze Set, inklusive teureren Varianten.
+  const grenze = /\bunter CHF (\d+)(?=\s|$)/.exec(zeilen[0]);
+  return modus === 'top' && !!grenze && liste.length === produkte.length &&
+    produkte.every((p, i) => liste[i].startsWith(`${i + 1}. `) && passt(liste[i], p) && p.spanne.max < Number(grenze[1]) * 100);
+}
+
+const sha256 = inhalt => createHash('sha256').update(inhalt).digest('hex');
+// Die sieben vor der Umstellung wartenden Sets wurden am 28.11. am Erstellungscommit geprüft:
+// Bildfolge und caption.txt wurden gemeinsam durch denselben Preis-Generator erzeugt.
+// Schlüssel = vollständiger Git-Verzeichnisbaum. Der Wert bindet die Ware in der Originalreihenfolge.
+const ALTE_PREISBELEGE = new Map([
+  ['a5401d05584d914b8cd6218970e124bf7003b046', 'smartes-katzen-spielzeug-mit-sound-600300 kottensack-fur-wohnzimmer-623000 nachtlicht-aus-holz-fur-warme-atmosphare-602400 kabelloser-mini-staubsauger-furs-auto-f2796b yoga-massagerolle-390720'],  // af16e42c0036
+  ['cd2e7c5fb46b035104f1ea41314bc8252eda39b7', 'mini-waffeleisen-fur-zuhause-445824'],  // e188640578e3
+  ['56c36363a332740724c49419912ecbb0fc5e7fd8', 'strickmutze-fur-herbst-winter-852481'],  // e188640578e3
+  ['32f9e2dd54e64aced259ae35bb2380eb1646a977', 'kristallspitzen-set-8-teilig-holzbox'],  // a11f4b9d7ee2
+  ['a7c0bc9be38041819b32c0c8f19bfa492309a1ab', 'led-teelichter-flackernd-batteriebetrieben-594688'],  // a11f4b9d7ee2
+  ['263448c1bb6bd37594df6600970c1035369593b0', 'funkmikrofon-set-mit-echo-und-klangregelung-736192'],  // 926e68de315e
+  ['145c5213beccdff29c022465b35ede8aa15e4097', 'gusseisen-teekessel-diamond-1000ml-622400'],  // 8295fc76b50b
+]);
+
+function altpreisbeleg(ordner, n, handles) {
+  const git = args => execFileSync('git', args, { stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 16 * 1024 * 1024 });
+  const stand = git(['rev-parse', 'HEAD']).toString().trim();
+  const baum = git(['rev-parse', stand + ':' + ordner]).toString().trim();
+  if (ALTE_PREISBELEGE.get(baum) !== handles.join(' ')) return null;
+  const anzahl = git(['ls-tree', '--name-only', baum]).toString().split('\n').filter(name => /^[0-9]{2}\.jpg$/.test(name)).length;
+  if (n !== anzahl || n < 2) return null;
+  const datei = name => git(['show', stand + ':' + ordner + '/' + name]);
+  const slides = Array.from({ length: n }, (_, i) => sha256(datei(String(i + 1).padStart(2, '0') + '.jpg')));
+  return { caption: datei('caption.txt').toString('utf8'), slides, alt: true };
+}
+
+function preisbeleg(ordner, n, handles) {
+  try {
+    if (!fs.existsSync(ordner + '/preisbeleg.json')) return altpreisbeleg(ordner, n, handles);
+    const beleg = JSON.parse(fs.readFileSync(`${ordner}/preisbeleg.json`, 'utf8'));
+    const inhalt = fs.readFileSync(`${ordner}/caption.txt`);
+    if (JSON.stringify(beleg.produkte) !== JSON.stringify(handles)) return null;
+    if (sha256(inhalt) !== beleg.caption || n < 2 || beleg.slides?.length !== n) return null;
+    if (!beleg.slides.every(hash => /^[0-9a-f]{64}$/.test(hash))) return null;
+    return { caption: inhalt.toString('utf8'), slides: beleg.slides };
+  } catch { return null; }
+}
+
+async function bildstand(ordner, hashes) {
+  // Der Anbieter erhält genau die geprüften Bytes unter einer unveränderlichen Commit-URL.
+  // Die bisherige Branch-URL bleibt für den Abgleich im Veröffentlichungsregister erhalten.
+  let stand;
+  try { stand = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); }
+  catch { return { fehler: 'Git-Stand unbekannt' }; }
+  const urls = hashes.map((_, i) => `${RAW_BASIS}${stand}/${ordner}/${String(i + 1).padStart(2, '0')}.jpg`);
+  for (const [i, url] of urls.entries()) {
+    try {
+      const r = await fetch(url, { signal: AbortSignal.timeout(30000) });
+      if (!r.ok) return { fehler: `HTTP ${r.status}`, nachPushPruefen: r.status === 404 };
+      if (sha256(Buffer.from(await r.arrayBuffer())) !== hashes[i]) return { fehler: `SHA-256 auf Slide ${i + 1} abweichend`, nachPushPruefen: true };
+    } catch { return { fehler: 'Bildabruf fehlgeschlagen' }; }
+  }
+  return { urls };
+}
 function pushen(pfade, msg) {
   // 23.09.2026: über git_sichern.sh (Merge statt Rebase+Autostash — Autostash verschluckte Quittungen laufender Poster).
   try { execFileSync('bash', ['automation/git_sichern.sh', msg.replace(/'/g, ''), ...pfade], { stdio: 'ignore', timeout: 300000 }); return true; } catch { return false; }
@@ -207,7 +291,7 @@ async function igLiveHas(caption) {
   console.error('⚠️ IG-Live-Abgleich nicht erreichbar → nur lokale Wachen.'); return false;
 }
 
-let cand = null, bilder = [], caption = '', handles = [], shopUrl = '';
+let cand = null, bilder = [], quellen = [], caption = '', handles = [], shopUrl = '';
 for (const r of bereit) {
   const slug = get(r, 'slug'), ordner = get(r, 'ordner'), n = parseInt(get(r, 'slides') || '0', 10);
   handles = get(r, 'produkte').split(/\s+/).filter(Boolean);
@@ -218,42 +302,51 @@ for (const r of bereit) {
   // 23.09. Neunte Schicht: Set (Produkt UND Top, je Ware) derselben Warengruppe wie ein Post der letzten 72 h → warten (bleibt ready)
   { const fk = [...familienDesSets(r, caption, handles).values()].map(t => familieKuerzlich(t)).find(Boolean);
     if (fk) { console.log(`   ⏸️ Warengruppe «${fk.familie}» vor ${fk.vorStunden} h gepostet → bleibt ready: ${slug}`); continue; } }
-  // Produkt live? (Produkt-Sets: der Slug ist das Handle)
-  shopUrl = '';                                  // Top-Sets (mehrere Produkte): FB verlinkt die Startseite
-  if (get(r, 'modus') === 'produkt') {
-    const pl = await produktLive(slug);
-    shopUrl = pl.url || '';
-    if (!pl.ok) { console.log(`   ⛔ ${slug}: ${pl.grund}`); if (!DRY && /existiert nicht|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(pl.grund)) { setzen(r, 'status', 'produkt-nicht-aktiv'); writeLedger(); } continue; }
-  }
-  // 24.09.2026: Preis in Slides/Caption ist eingebrannt. Der Preisschutz hob heute 23'121 Varianten — 4 wartende Sets warben
-  // danach mit dem ALTEN (tieferen) Preis (Organizer 28.90 statt 55.90). Jeder CHF-Preis der Caption muss im Live-Preisband
-  // liegen (Produkt-Set); bei Top-Sets darf kein Produkt teurer sein als der höchste genannte Preis.
-  { const rein = caption.replace(/(?:versand|lieferung|gratis|kostenlos)[^.\n]{0,25}?CHF\s?\d+(?:[.,]\d{2})?/gi, ' ');
-    const preise = [...rein.matchAll(/CHF\s?(\d+[.,]\d{2})\b/g)].map(m => parseFloat(m[1]));
-    let veraltet = '';
-    if (preise.length && get(r, 'modus') === 'produkt') {
-      const pl = await produktLive(slug);
-      const aus = preise.filter(x => !(x >= pl.min - 0.005 && x <= pl.max + 0.005));
-      if (aus.length && Number.isFinite(pl.min)) veraltet = `Caption ${aus.join('/')} ≠ live ${pl.min.toFixed(2)}–${pl.max.toFixed(2)}`;
-    } else if (preise.length) {
-      const hoechst = Math.max(...preise);
-      for (const h of handles) { const pl = await produktLive(h); if (Number.isFinite(pl.min) && pl.min > hoechst + 0.005) { veraltet = `${h} live ab ${pl.min.toFixed(2)} > Caption-Höchstpreis ${hoechst.toFixed(2)}`; break; } }
+  const modus = get(r, 'modus');
+  if (!handles.length || (modus === 'produkt' && (handles.length !== 1 || handles[0] !== slug))) continue;
+  const beleg = preisbeleg(ordner, n, handles);
+  if (!beleg) { console.log(`   ${slug}: Bild-/Preisbeleg fehlt oder ist ungültig → übersprungen`); continue; }
+  const produkte = [];
+  for (const handle of handles) produkte.push(await produktLive(handle));
+  shopUrl = modus === 'produkt' ? produkte[0].url || '' : '';
+  const gesperrt = produkte.find(p => !p.ok);
+  if (gesperrt) {
+    console.log(`   ${slug}: ${gesperrt.grund}`);
+    if (!DRY && modus === 'produkt' && /existiert nicht|status DRAFT|status ARCHIVED|onlineStoreUrl nein/.test(gesperrt.grund)) {
+      setzen(r, 'status', 'produkt-nicht-aktiv'); writeLedger();
     }
-    if (veraltet) { console.log(`   ⛔ ${slug}: Preis veraltet (${veraltet}) → preis-veraltet`); if (!DRY) { setzen(r, 'status', 'preis-veraltet'); writeLedger(); } continue; } }
-  // Bilder erreichbar? sonst pushen und erneut pruefen
-  bilder = Array.from({ length: n }, (_, i) => `${RAW}${ordner}/${String(i + 1).padStart(2, '0')}.jpg`);
-  let codes = bilder.map(http);
-  if (codes.some(c => c !== '200') && fs.existsSync(ordner)) {
-    console.log(`   Bilder noch nicht gepusht (${codes.join(',')}) → Push`);
-    if (!DRY) { pushen([ordner, CSV], `IG-Karussell-Slides ${slug} [skip ci]`); await schlaf(8000); codes = bilder.map(http); }
+    continue;
   }
-  if (codes.some(c => c !== '200')) { console.log(`   ⛔ ${slug}: Bilder antworten ${codes.join(',')} → uebersprungen`); continue; }
+  if (produkte.some(p => !p.spanne)) { console.log(`   ${slug}: CHF-Preisspanne unbekannt → übersprungen`); continue; }
+  // Keine zusätzlichen Preisbehauptungen aus einer separat geänderten Queue übernehmen.
+  const preiszeilen = text => text.split(/\r?\n/).filter(z => /\bCHF\b/.test(z))
+    .map(z => z.trim().replace(/(CHF [0-9]+)\.00$/g, '$1.–')).join('\n');
+  if (preiszeilen(beleg.caption) !== preiszeilen(caption)) {
+    console.log(slug + ': Preiszeilen in Bildquelle und Queue verschieden → übersprungen'); continue;
+  }
+  if (!preisePassen(caption, modus, produkte) || (beleg.alt && produkte.some(p => p.spanne.min !== p.spanne.max))) {
+    console.log(`   ${slug}: Render- oder Queue-Preis weicht vom Shop ab → preis-veraltet`);
+    if (!DRY) { setzen(r, 'status', 'preis-veraltet'); writeLedger(); }
+    continue;
+  }
+  bilder = Array.from({ length: n }, (_, i) => `${RAW}${ordner}/${String(i + 1).padStart(2, '0')}.jpg`);
+  let stand = await bildstand(ordner, beleg.slides);
+  if (stand.nachPushPruefen && !beleg.alt && !DRY && beleg.slides.every((hash, i) => {
+    const datei = ordner + '/' + String(i + 1).padStart(2, '0') + '.jpg';
+    return fs.existsSync(datei) && sha256(fs.readFileSync(datei)) === hash;
+  }) && pushen([ordner, CSV], `IG-Karussell-Slides ${slug} [skip ci]`)) {
+    await schlaf(8000);
+    stand = await bildstand(ordner, beleg.slides);
+  }
+  if (!stand.urls) { console.log(`   ${slug}: ${stand.fehler} → Bilder übersprungen`); continue; }
+  quellen = stand.urls;
   // 30.09.2026 Betreiber «immer sie markieren und auch andere orte»: Model-Material nur mit @tatjanalarsinamoira (post_guard.modelSperre)
   { const ms = modelSperre(bilder, caption); if (ms) { console.log(`   ⛔ ${slug}: ${ms}`); continue; } }
   if (bilder.some(b => postSeen(b))) { console.log(`   ⛔ ${slug}: Bild schon gepostet (gemeinsamer Ledger)`); if (!DRY) { setzen(r, 'status', 'posted-dup-skip'); writeLedger(); } continue; }
   // 28.09.2026 Gemini-Vision-Jury auf die Titelfolie (das Bild, das der Feed zeigt) — «jede post ein meisterwerk».
-  { const lokal = fs.existsSync(`${ordner}/01.jpg`) ? `${ordner}/01.jpg` : bilder[0];
-    const j = juryPruefen(lokal, caption, 'karussell');
+  { const lokal = `${ordner}/01.jpg`;
+    const cover = fs.existsSync(lokal) && sha256(fs.readFileSync(lokal)) === beleg.slides[0] ? lokal : quellen[0];
+    const j = juryPruefen(cover, caption, 'karussell');
     if (j.status === 4) { console.log(`   ⛔ ${slug}: Gemini-Jury ${j.info} → jury-skip`); if (!DRY) { setzen(r, 'status', 'jury-skip'); writeLedger(); } continue; }
     if (j.status !== 0) { console.log(`   ⚠️ ${slug}: Gemini-Jury ohne Urteil (${j.info}) → bleibt ready`); continue; }
     console.log(`   ✅ Gemini-Jury: ${j.info}`); }
@@ -273,7 +366,7 @@ if (VIA_MC) {
   setzen(cand, 'status', 'posting'); setzen(cand, 'posted_at', new Date().toISOString()); writeLedger();
   let igPid = '';
   try {
-    const media = []; for (const b of bilder) { media.push(await mcNorm(b)); await schlaf(500); }
+    const media = []; for (const b of quellen) { media.push(await mcNorm(b)); await schlaf(500); }
     igPid = await mcPlan(media, caption, 'instagram');
     for (const b of bilder) postMark(b);                       // Ledger SOFORT nach IG
     for (const h of handles) produktMerken(caption, h);
@@ -304,7 +397,7 @@ setzen(cand, 'status', 'posting'); setzen(cand, 'posted_at', new Date().toISOStr
 let igId = null;
 try {
   const kinder = [];
-  for (const b of bilder) { const j = await g(`${IG_ID}/media`, { image_url: b, is_carousel_item: 'true' }); kinder.push(j.id); await schlaf(1200); }
+  for (const b of quellen) { const j = await g(`${IG_ID}/media`, { image_url: b, is_carousel_item: 'true' }); kinder.push(j.id); await schlaf(1200); }
   const c = await g(`${IG_ID}/media`, { media_type: 'CAROUSEL', children: kinder.join(','), caption });
   for (let i = 0; i < 12 && !igId; i++) {
     await schlaf(5000);
@@ -325,7 +418,7 @@ try {
 try {
   const ident = await fbSeitenIdentitaet(TOK, FB_ID); if (!ident.ok) throw new Error(`FB-Seitenwache: ${ident.grund}`);
   const fbIds = [];
-  for (const b of bilder) { const f = await g(`${FB_ID}/photos`, { url: b, published: 'false' }); fbIds.push(f.id); await schlaf(800); }
+  for (const b of quellen) { const f = await g(`${FB_ID}/photos`, { url: b, published: 'false' }); fbIds.push(f.id); await schlaf(800); }
   const feld = {}; fbIds.forEach((id, i) => { feld[`attached_media[${i}]`] = JSON.stringify({ media_fbid: id }); });
   const fb = await g(`${FB_ID}/feed`, { message: fbCaption, ...feld });   // FB: klickbarer Produktlink
   setzen(cand, 'status', 'posted-ig-fb'); setzen(cand, 'post_url', `ig:${igId} fb:${fb.id}`); writeLedger();

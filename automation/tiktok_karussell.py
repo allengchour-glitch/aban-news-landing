@@ -41,6 +41,8 @@ ENV: MODUS (produkt|top, Default produkt) · QUELLE (Kollektions-Handle, Default
 """
 
 import csv
+import hashlib
+from decimal import Decimal
 import json
 import os
 import re
@@ -177,7 +179,7 @@ def gql(q, v=None):
     # gewartet wird so lange, wie throttleStatus sagt; nach jeder Antwort die Eimer-Etikette.
     versuche, drossel, grund = 0, 0, "kein Versuch"
     while versuche < 8:
-        r = subprocess.run(["curl", "-s", "--max-time", "60",
+        r = subprocess.run(["curl", "-s", "--fail-with-body", "--max-time", "60",
                             f"https://{SHOP}/admin/api/2026-01/graphql.json",
                             "-H", "X-Shopify-Access-Token: " + TOK,
                             "-H", "Content-Type: application/json",
@@ -194,7 +196,7 @@ def gql(q, v=None):
             rate = float(t.get("restoreRate") or 0)
             time.sleep(min(30.0, fehlt / rate + 1.0) if (fehlt > 0 and rate > 0) else 12.0)
             continue
-        if d.get("data") is not None:
+        if r.returncode == 0 and not d.get("errors") and d.get("data") is not None:
             nachlauf(d)
             return d
         versuche += 1; grund = fehler[:200]
@@ -216,7 +218,7 @@ def hole(handle):
         products(first:60, after:$c){
           pageInfo{hasNextPage endCursor}
           nodes{ id title handle status tags
-            priceRangeV2{minVariantPrice{amount}}
+            priceRangeV2{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}}
             media(first:12){nodes{... on MediaImage{image{url width height}}}}
           }}}}"""
     aus, cur = [], None
@@ -282,10 +284,8 @@ def geeignet(p, mindest_bilder):
         return False
     if LIZENZ_FIGUR.search(p.get("title") or ""):
         return False
-    try:
-        if float(p["priceRangeV2"]["minVariantPrice"]["amount"]) < MIN_PREIS:
-            return False
-    except Exception:
+    spanne = preisbereich(p)
+    if spanne is None or spanne[0] < MIN_PREIS:
         return False
     # 24.09.2026: Kleine Bilder (MIN_KANTE_NOTFALL) duerfen nur AUFFUELLEN — mindestens ein Bild ab MIN_KANTE muss
     # da sein, sonst waere der Hook-Slide ein hochgezogenes 600er-Bild.
@@ -516,8 +516,35 @@ def slide_cta(titelzeile):
     return img
 
 
+def preisbereich(produkt):
+    # Shopify priceRangeV2 enthält Verkaufspreise aller Varianten, keine Vergleichspreise.
+    bereich = produkt.get("priceRangeV2")
+    if not isinstance(bereich, dict):
+        return None
+    werte = []
+    for feld in ("minVariantPrice", "maxVariantPrice"):
+        geld = bereich.get(feld)
+        if not isinstance(geld, dict):
+            return None
+        betrag = geld.get("amount")
+        if geld.get("currencyCode") != "CHF" or not isinstance(betrag, str):
+            return None
+        if not re.fullmatch(r"[0-9]+(?:\.[0-9]{1,2}0*)?", betrag):
+            return None
+        werte.append(Decimal(betrag))
+    return tuple(werte) if 0 < werte[0] <= werte[1] else None
+
+
 def chf(p):
     return "CHF " + f"{float(p):.2f}".replace(".00", ".–")
+
+
+def preistext(produkt, mit_variantenhinweis=False):
+    tief, hoch = preisbereich(produkt)
+    if tief == hoch:
+        return f"CHF {tief:.2f}".replace(".00", ".–")
+    zusatz = " je nach Variante" if mit_variantenhinweis else ""
+    return f"CHF {tief:.2f}–{hoch:.2f}{zusatz}"
 
 
 def laden_zeile(tags=None):
@@ -582,6 +609,17 @@ def schreibe(slug, bilder_liste, caption, produkte):
         pfade.append(os.path.relpath(p, ROOT))
     with open(os.path.join(ordner, "caption.txt"), "w") as fh:
         fh.write(caption + "\n")
+    if FORMAT == "ig":
+        # Bindet die vom Renderer verwendete Caption an alle fertigen JPGs, in Slide-Reihenfolge.
+        # Der Poster kann damit alte Bilder auch nach einer Änderung der Queue erkennen.
+        def dateihash(name):
+            with open(os.path.join(ordner, name), "rb") as datei:
+                return hashlib.sha256(datei.read()).hexdigest()
+
+        beleg = {"produkte": produkte, "caption": dateihash("caption.txt"),
+                 "slides": [dateihash(os.path.basename(pfad)) for pfad in pfade]}
+        with open(os.path.join(ordner, "preisbeleg.json"), "w") as fh:
+            json.dump(beleg, fh)
     if NEU_BAUEN:
         # Bestehende ready-Zeile desselben Slugs ERSETZEN (Slides/Caption), keine zweite Zeile (der Poster nimmt die
         # erste ready-Zeile; eine zweite waere ein Doppelpost), keine neuen Ledger-Zeilen (Handle steht schon drin).
@@ -685,7 +723,7 @@ def bau_produkt(p, benutzt):
         tmp.append(z)
     if len(tmp) < 3:
         return None
-    preis = chf(p["priceRangeV2"]["minVariantPrice"]["amount"])
+    preis = preistext(p)
     titel = p["title"]
     gesamt = len(tmp) + 1
     slides = [slide_hook(tmp[0], KICKER, preis, titel, 1, gesamt)]
@@ -693,7 +731,7 @@ def bau_produkt(p, benutzt):
         slides.append(slide_produkt(z, titel, preis, i, gesamt))
     slides.append(slide_cta(titel))
     slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower()).strip("-")  # NIE kuerzen: Slug==Handle ist die Vertragsbasis der Live-Pruefung
-    cap = (f"{CAPTION_VORSPANN}{titel} · {preis}\n"
+    cap = (f"{CAPTION_VORSPANN}{titel} · {preistext(p, mit_variantenhinweis=True)}\n"
            f"{laden_zeile(p.get('tags') or [])}\n"
            f"{cta_text()}\n\n{hashtags(p.get('tags') or [], p.get('title'))}")
     return slug, slides, cap, [p["handle"]]
@@ -714,7 +752,7 @@ def bau_top(kandidaten):
                     break
     if len(tmp) < 3:
         return None
-    hoechst = max(float(p["priceRangeV2"]["minVariantPrice"]["amount"]) for p, _ in tmp)
+    hoechst = max(preisbereich(p)[1] for p, _ in tmp)
     grenze = int((int(hoechst) // 10 + 1) * 10)   # naechste Zehnerstufe, bleibt wahr
     gesamt = len(tmp) + 2
     hook = f"{len(tmp)} {TOP_WORT} unter CHF {grenze}"
@@ -722,12 +760,12 @@ def bau_top(kandidaten):
                          f"{TOP_WORT} unter CHF {grenze}", 1, gesamt)]
     for i, (p, z) in enumerate(tmp, 2):
         slides.append(slide_produkt(
-            z, p["title"], chf(p["priceRangeV2"]["minVariantPrice"]["amount"]),
+            z, p["title"], preistext(p),
             i, gesamt, zeile=f"Nr. {i - 1}"))
     slides.append(slide_cta(hook))
     tage = os.environ.get("SLUGZEIT", "")
     slug = re.sub(r"[^a-z0-9]+", "-", f"top-{len(tmp)}-unter-{grenze}-{tage}").strip("-")
-    liste = "\n".join(f"{i}. {p['title']} · {chf(p['priceRangeV2']['minVariantPrice']['amount'])}"
+    liste = "\n".join(f"{i}. {p['title']} · {preistext(p, mit_variantenhinweis=True)}"
                       for i, (p, _) in enumerate(tmp, 1))
     alle_tags = [t for p, _ in tmp for t in (p.get("tags") or [])]
     cap = (f"{CAPTION_VORSPANN}{hook} 🇨🇭\n\n{liste}\n\n"
@@ -746,12 +784,12 @@ def main():
     frei = [p for p in prod if geeignet(p, mind) and p["handle"] not in benutzt]
     print(f"{len(prod)} in «{QUELLE}» | geeignet und noch nie beworben: {len(frei)}")
     if MAX_PREIS:
-        frei = [p for p in frei if float(p["priceRangeV2"]["minVariantPrice"]["amount"]) <= MAX_PREIS]
+        frei = [p for p in frei if preisbereich(p)[1] <= Decimal(str(MAX_PREIS))]
         print(f"   MAX_PREIS {MAX_PREIS:.2f}: {len(frei)} bleiben")
     if NUR_HANDLES:
         # Vorgabe in Reihenfolge; was die Wachen nicht passiert, wird genannt (nicht erzwungen).
         if NEU_BAUEN:   # beim Neurendern ist «schon beworben» kein Ausschluss — genau diese Handles sind gemeint
-            frei = [p for p in prod if geeignet(p, mind) and (not MAX_PREIS or float(p["priceRangeV2"]["minVariantPrice"]["amount"]) <= MAX_PREIS)]
+            frei = [p for p in prod if geeignet(p, mind) and (not MAX_PREIS or preisbereich(p)[1] <= Decimal(str(MAX_PREIS)))]
         nach = {p["handle"]: p for p in frei}
         fehlt = [h for h in NUR_HANDLES if h not in nach]
         for h in fehlt:
@@ -765,7 +803,7 @@ def main():
         return
     if DRY:
         for p in frei[:12]:
-            print("   +", p["title"], chf(p["priceRangeV2"]["minVariantPrice"]["amount"]),
+            print("   +", p["title"], preistext(p),
                   f"({len(bilder(p))} taugliche Bilder)")
         print(f"FERTIG (DRY): {len(frei)} Kandidaten, nichts geschrieben")
         return
