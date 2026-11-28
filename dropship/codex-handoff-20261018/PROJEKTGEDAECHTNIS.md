@@ -1,3 +1,13 @@
+# R326 · Tasse, T-Shirt und Druckvorschau · 28.11.2026
+
+Der öffentliche Gestaltungsleitfaden führt auf Deutsch und Französisch direkt zur Samsung-Hülle und benennt die Schweizer Gratisversandgrenze ab CHF 50 nach Rabatt. Die französische Anleitung erklärt die drei deutschen Schaltflächen der Druckvorschau. Für Tasse und weisses T-Shirt sind die französischen Produkt- und Suchtexte sowie die geprüften Variantenpreise im mobilen Shop bestätigt.
+
+In der unveröffentlichten Shopify-Vorschau öffnete die Leitfaden-Tasse den Druckdialog auf Deutsch und Französisch. Der französische Knopf lautete «Vérifier le bon à tirer». Im veröffentlichten Editor erschienen die Bedienelemente weiterhin auf Deutsch. Die Übernahme der geprüften Vorschaufassung ins Live-Theme und die redaktionelle Korrektur der französischen Versandrichtlinie stehen aus. [Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau)
+
+[LUXESTYLE_R326_20261128_TASSE_SHIRT_DRUCKVORSCHAU]
+
+---
+
 # R325 · Shopify-Vorschau für den Gestalterkatalog · 28.11.2026
 
 Der Gestalterkatalog ist auf dem unveröffentlichten Shopify-Theme «LuxeStyle – Printful Fix 08.11.2026» mobil geprüft. «coque» fand drei Hüllen, «tasse» eine Tasse. Alle zwölf dynamischen und alle 18 statischen Links der französischen Ansicht behielten die Sprache. Der Klick auf die transparente Samsung-Hülle öffnete die französische Variante.

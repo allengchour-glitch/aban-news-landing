@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 325,
-  "updatedAt": "2026-11-28T18:35:30Z",
+  "revision": 326,
+  "updatedAt": "2026-11-28T19:04:30Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51117,6 +51117,14 @@
       "sources": [
         "https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335"
       ]
+    },
+    {
+      "revision": 326,
+      "at": "2026-11-28T19:04:30Z",
+      "summary": "Der öffentliche Gestaltungsleitfaden führt auf Deutsch und Französisch direkt zur Samsung-Hülle und benennt die Schweizer Gratisversandgrenze ab CHF 50 nach Rabatt. Die französische Anleitung erklärt die drei deutschen Schaltflächen der Druckvorschau. Für Tasse und weisses T-Shirt sind die französischen Produkt- und Suchtexte sowie die geprüften Variantenpreise im mobilen Shop bestätigt. In der unveröffentlichten Shopify-Vorschau öffnete die Leitfaden-Tasse den Druckdialog auf Deutsch und Französisch. Der französische Knopf lautete «Vérifier le bon à tirer». Im veröffentlichten Editor erschienen die Bedienelemente weiterhin auf Deutsch.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau"
+      ]
     }
   ],
   "salesGoal": {
@@ -83582,5 +83590,82 @@
     "mainSourceChanged": false,
     "report": "https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335",
     "nextStep": "Die Übernahme dieser geprüften Katalogfassung ins Live-Theme steht aus. Die 157 französischen Editor-Bedientexte liegen weiterhin als geprüfter Quellpatch im Repository."
+  },
+  "run326": {
+    "taskId": "personalizer-fullscreen-20261029",
+    "guidePageId": "698444710273",
+    "shippingProfileId": "132124180865",
+    "countries": [
+      "CH",
+      "LI"
+    ],
+    "chFreeThresholdAfterDiscountCHF": "50.00",
+    "liRateCHF": "14.90",
+    "frenchShippingPolicy": "proposal_only",
+    "mugProductId": "15422823465345",
+    "guideMugVariantId": "55777979629953",
+    "mugSizePricesCHF": {
+      "325ml": "22.90",
+      "444ml": "25.90"
+    },
+    "frenchMugFields": 4,
+    "shirtProductId": "15422857642369",
+    "shirtVariant2XL": "55778084127105",
+    "shirtSizePricesCHF": {
+      "S": "24.90",
+      "2XL": "26.90"
+    },
+    "printfulSources": [
+      "11576",
+      "12652"
+    ],
+    "mainCatalogCoque": 0,
+    "nativeFrenchPodMatch": {
+      "query": "coque samsung galaxy",
+      "results": 11,
+      "matchingProducts": 1
+    },
+    "editorPreview": {
+      "themeId": "213482963335",
+      "role": "UNPUBLISHED",
+      "variant325ml": "55777979629953",
+      "sha256Delivered": "1aeae200e1d53cb1ffa2d9f8c9b8b2da6a2791c541d00beafe9ae04187b5b06f",
+      "buttonFR": "Vérifier le bon à tirer",
+      "mobileLocales": [
+        "de",
+        "fr"
+      ],
+      "editorInstances": 1,
+      "loaderInstances": 1,
+      "actualOrderSubmitted": false,
+      "publicEditor": "German",
+      "test642Commit": "0aee4cbee81908c0096412582af48aaa64c05a99",
+      "printfulVariant444ml": "4830",
+      "pngSize444ml": [
+        2700,
+        1140
+      ],
+      "pngSize325ml": [
+        2700,
+        1050
+      ],
+      "touchReturnChecked": "2026-11-28T20:02:00+01:00",
+      "previewThemeNewFiles": 3,
+      "unreferencedIntermediateFiles": 1,
+      "cleanupStatus": "targeted_delete_blocked",
+      "previewUrl": "https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten?variant=55777979629953&view=luxe-pod-fr-test-2811&preview_theme_id=213482963335&pb=0#lspod-start"
+    },
+    "pinterest": {
+      "metricoolId": "442295588",
+      "uuid": "-2369369075505934881",
+      "status": "PUBLISHED",
+      "verifiedAt": "2026-11-28T20:03:20+01:00",
+      "platformId": "1111333645586847152",
+      "url": "https://www.pinterest.es/pin/1111333645586847152",
+      "dailyDeliveries": 15,
+      "dailyPinterest": 2
+    },
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau",
+    "nextStep": "Die Übernahme der geprüften Vorschaufassung ins Live-Theme und die redaktionelle Korrektur der französischen Versandrichtlinie stehen aus."
   }
 }

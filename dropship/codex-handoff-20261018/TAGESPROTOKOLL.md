@@ -3983,3 +3983,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Arbeitsbeleg](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335)
 
 [LUXESTYLE_R325_20261128_GESTALTER_VORSCHAU]
+
+### R326 · Tasse, T-Shirt und Druckvorschau
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Gestaltungsleitfaden | Auf Seite `698444710273` den direkten Samsung-Link ergänzt und die Schweizer Versandangabe präzisiert. Die französische Anleitung erklärt «Druckvorschau prüfen», «Weiter gestalten» und «Druckvorschau bestätigen und in den Warenkorb». | Beide Leitfäden und die verlinkten Ziele antworteten mit HTTP 200. Die Änderungen wurden auch im Shopify-Admin zurückgelesen. |
+| Versand | Für die Samsung-Hülle und die Leitfaden-Tasse, Variante `55777979629953`, das Versandprofil `132124180865` und den aktiven Markt geprüft. | Schweiz ab CHF 50 nach Rabatt gratis, Liechtenstein CHF 14.90. Für die französische Versandrichtlinie, die bisher nur die Schweiz nennt, liegt ein redaktioneller Vorschlag vor. |
+| Tasse | Bei Produkt `15422823465345` vier französische Felder einschliesslich Produkttitel, Suchtexten und «Contenance» berichtigt. | Der mobile Wechsel von 325 ml für CHF 22.90 auf 444 ml für CHF 25.90 aktualisierte die gewählte Variante auf Deutsch und Französisch. |
+| T-Shirt | Für das weisse Gildan 5000 die deutsche Baumwollangabe anhand der Printful-Quellen 11576 und 12652 korrigiert. Französischen Titel, Suchfelder und «Taille» ergänzt. | Das weisse T-Shirt `15422857642369` wechselte auf Deutsch und Französisch von S für CHF 24.90 auf 2XL für CHF 26.90. Die gewählte 2XL-Variante war `55778084127105`. |
+| Katalogsuche | Die Suche im veröffentlichten Gestalterkatalog mit der nativen Shopify-Suche verglichen. | Der Gestalterkatalog fand für «coque» weiterhin keinen Treffer. Die native Suche nach «coque samsung galaxy» zeigte die französische Gestalter-Hülle unter elf Treffern. |
+| Tasseneditor auf dem Handy | Auf dem unveröffentlichten Shopify-Theme `213482963335` die 325-ml-Leitfaden-Tasse bis zum deutschen und französischen Druckdialog geöffnet. | Ein Editor und ein Loader, durchgehend Variante `55777979629953`. Französisch zeigt «Vérifier le bon à tirer». Das ausgelieferte JavaScript hatte SHA-256 `1aeae200e1d53cb1ffa2d9f8c9b8b2da6a2791c541d00beafe9ae04187b5b06f`. Der Live-Editor zeigt deutsche Texte. |
+| Druckdateien und Editor 6.4.2 | Den direkten 444-ml-Einstieg und den Wechsel von 325 auf 444 ml gegen die echten PNG-Druckdateien geprüft. Die Quellfassung 6.4.2 lokal mit Text, Bild und Sticker sowie simulierter Ausverkauft-Sperre geprüft. | Bei 444 ml passend zur Printful-Variante 4830 zweimal 2700 × 1140 Pixel, bei 325 ml 2700 × 1050 Pixel. Die lokalen Tests umfassten Geometrie, Pixel und gespeicherte Bestellwerte. Prüfstand im Commit `0aee4cbee81908c0096412582af48aaa64c05a99`. Es wurde keine Bestellung ausgelöst. |
+| Shopify-Vorschau | In der deutsch- und französischsprachigen Druckvorschau die Rückkehr per Fingertipp in den Editor geprüft. | Um 20:02 Uhr in beiden Sprachen bestätigt. Drei neue Dateien im Vorschautheme. Eine unreferenzierte Zwischenfassung ist dort noch vorhanden, weil der Shopify-Connector die gezielte Löschung blockierte. [Französische Tassen-Vorschau](https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten?variant=55777979629953&view=luxe-pod-fr-test-2811&preview_theme_id=213482963335&pb=0#lspod-start) |
+| Pinterest | Den fälligen bestehenden Girlanden-Pin gezielt zurückgelesen. | Am 28.11. um 20:03:20 Uhr Zürich zeigte Metricool `PUBLISHED`, Objekt `442295588`, UUID `-2369369075505934881`, Plattform-ID `1111333645586847152`. Damit sind heute 15 Kanalauslieferungen bestätigt, davon zwei auf Pinterest. [Veröffentlichter Pin](https://www.pinterest.es/pin/1111333645586847152) |
+
+[Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau)
+
+[LUXESTYLE_R326_20261128_TASSE_SHIRT_DRUCKVORSCHAU]
