@@ -300,3 +300,35 @@ HYPD bietet mit Free Forever ein ausgewähltes Konto über alle unterstützten P
 ### Übermittlung an Shopping Total bestätigt
 
 Am 28.11.2026 belegte der Inhaber die erfolgreiche Einreichung mit einem Screenshot. Shopping Total zeigt «Das Formular wurde erfolgreich übermittelt. Vielen Dank!» und weist auf die Prüfung vor der Veröffentlichung hin. Eine öffentliche Profiladresse ist bislang nicht belegt.
+
+
+## Merchant Center und Produkt-SEO · 28.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Kostenlose Google-Einträge in der Schweiz | 10 abgelehnte Angebote im verbundenen Merchant-Konto 5797470070 anhand von `FREE_LISTINGS` und Land CH abgeglichen. | In dieser Stichprobe 7 Bildmeldungen (`image_unwanted_overlays`) und 3 Zielseitenfehler (`landing_page_error`). Die Kapazitätsmeldung für 25’048 Shopping-Anzeigen ist separat. |
+| Öl-Sprühflasche | 6 beanstandete Varianten des Shopify-Produkts 15450848723329 und 21 Galeriebilder geprüft. Die gelbe Einzelvariante 55889898307969 und ihr farbrichtiges, beschriftetes CJ-Original verglichen. | Den sechs Varianten fehlt je ein eigenes Bild in Shopify. Das einzige reine Produktfoto aus der Galerie gehört zu Beige, 1 Stück, und ist dieser Variante bereits zugeordnet. Offen sind ein passendes unverändertes Lieferantenfoto oder das belegte Bearbeitungsrecht und bei den Sets der richtige Packungsinhalt. Googles aktuelle Bild-URL für Gelb ist offen. [Produkt](https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320?variant=55889898307969) |
+| Fehlerhafte Google-Zielseiten | Handschuhe 15447921066369, Ohrringe 15449118179713 und grüner Ring 15449477677441 mit Shopify abgeglichen. | Alle drei sind Entwürfe ohne öffentliche Produktseite. Bei Ohrringen und Ring findet Shopify die gemeldete Variante ebenfalls nicht. Die Bereinigung der veralteten Angebote in der einliefernden Datenquelle ist offen. |
+| Deutsche Suchtexte | Beim Reise-Schmuckkästchen 16654353695111 SEO-Titel und Meta-Beschreibung auf die belegten Stickmotive abgestimmt. Beim Wintermantel 16652033491335 den mehrdeutigen ersten Absatz durch belegte Angaben zu Schnitt, Farben und Grössen ersetzt. | Beide Änderungen in Shopify und auf den öffentlichen Varianten-URLs zurückgelesen. Der Google-Status von «Kolibri» für kostenlose Einträge in der Schweiz bleibt unbekannt. [Reise-Schmuckkästchen](https://luxestyle.ch/products/reise-schmuckkastchen-610400?variant=67843310649735) · [Wintermantel](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911) |
+| Französische Suchtexte | Beim Totenkopfring 16654379024775, Reise-Schmuckkästchen 16654353695111 und Wintermantel 16652033491335 je drei fehlende französische Felder für Produktname, SEO-Titel und Meta-Beschreibung ergänzt. | Alle neun Werte im Admin und im H1, Seitentitel und Beschreibungs-Metatag der drei öffentlichen Seiten bestätigt. [Boîte à bijoux de voyage](https://luxestyle.ch/fr/products/reise-schmuckkastchen-610400) · [Manteau d’hiver doublé](https://luxestyle.ch/fr/products/gefutterter-wintermantel-mit-fellkragen-606600) · [Bague gothique à tête de mort](https://luxestyle.ch/fr/products/titanstahlring-mit-totenkopf-624100?variant=67790731837831) |
+| LED-Gesichtsmaske | Titel, Beschreibung, Suchtexte und fünf Bildbeschreibungen auf Deutsch korrigiert. Zwei Bilder mit unbelegten Hautwirkungen und ein Video einer abweichenden Ausführung aus der Produktgalerie gelöst. Name, Beschreibung und beide SEO-Felder auf Französisch ergänzt. | Die drei verbliebenen Fotos zeigen die angebotene Ausführung. Die drei gelösten Dateien sind weiterhin als READY gespeichert. Der neue sachliche URL-Pfad ist mit Shopify-Weiterleitung 2145429094791 verbunden. Beide Sprachseiten und beide alten Links öffentlich geprüft. Googles erneute Bildprüfung ist offen. [Deutsch](https://luxestyle.ch/products/wiederaufladbare-led-gesichtsmaske-309696) · [Français](https://luxestyle.ch/fr/products/wiederaufladbare-led-gesichtsmaske-309696) |
+| Merchant-Prüfskript | Im bestehenden Scanner eine falsche Erfolgsmeldung bei abgewiesener Auslistung nachgestellt und korrigiert. | Acht lokale Prüffälle bestanden. Die Korrektur liegt auf dem Arbeitsbranch. Ein produktiver Scannerlauf wurde nicht ausgelöst. [Commit](https://github.com/allengchour-glitch/aban-news-landing/commit/1e56ada8ddb2e0668310f4bf975df10887c129ff) |
+| Campaign Autopilot und Sidekick | Screenshot des Inhabers ausgewertet. | Sidekick meldet insgesamt 50 gespeicherte SEO-Titel. Die Liste der Produkt-IDs ist im Screenshot und in der verfügbaren Schnittstelle nicht ausgewiesen. Der Autopilot zeigt CHF 162 Monatsbudget, CHF 34 ausgegeben, CHF 128 verbleibend, CHF 10 Akquisitionskostenlimit und Ziel-ROAS 4×. Budget und Kanäle wurden in dieser Arbeit nicht geändert. |
+| Produkteditor | Eine öffentliche Seite und das zugehörige Editorbild geprüft. | «Poster zum Selbstgestalten» und Editorbild antworteten mit HTTP 200. Für den vollständigen lokalen Wächterlauf über alle 464 markierten Produkte fehlt die lokale Anbindung. [Poster](https://luxestyle.ch/products/poster-zum-selbstgestalten) |
+
+Für die Prüfung veralteter Zielseiten sind die gemeldeten Angebote `shopify_ZZ_15447921066369_56052967211393`, `shopify_ZZ_15449118179713_55879464386945`, `shopify_ZZ_15449477677441_55882200711553`. Erst den aktuellen Datensatz pro Sprache, Feed-Label, Quelle und Ziel prüfen. Für die drei Shopify-Entwürfe gibt es keine gleichwertige bestätigte Ersatzseite.
+
+### Offene Produktfotos für die Öl-Sprühflasche
+
+Die sechs tatsächlichen Shopify-SKUs sind unten der jeweiligen Ausführung zugeordnet. Für die Bildkorrektur fehlen unveränderte, zur kommerziellen Listung nutzbare Originale ohne Werbetext oder eine ausdrückliche Erlaubnis zur Freistellung. Ein Zweierpack braucht einen korrekten Beleg für Farbe und Menge. [CJ-Produktfoto für Gelb, ein Stück](https://cf.cjdropshipping.com/quick/product/52f7c15b-7418-4c09-be09-8f103267541d.jpg) · [CJ-Listungshinweise](https://cjdropshipping.com/help-center?navType=faq&pageNum=7)
+
+| Ausführung | Shopify-SKU |
+| --- | --- |
+| Gelb 470 ml-1 Stück | `CJ-CJYD199961002BY` |
+| Grün 470 ml-1 Stück | `CJ-CJYD199961003CX` |
+| Schwarz 470 ml-1 Stück | `CJ-CJYD199961004DW` |
+| Beige 470 ml-2 Stück | `CJ-CJYD199961007GT` |
+| Schwarz 470 ml-2 Stück | `CJ-CJYD199961005EV` |
+| Grün 470 ml-2 Stück | `CJ-CJYD199961006FU` |
+
+Vorbereitete Lieferantenanfrage, bislang unversendet: «Bitte stellen Sie uns die Originalfotos für die sechs genannten Ausführungen ohne Texte, Masslinien oder Bildmontage zur Verfügung. Bei den Zweierpacks soll die abgebildete Menge dem Lieferumfang entsprechen. Bitte bestätigen Sie die Nutzungsrechte für unseren Onlineshop und kostenlose Google-Produkteinträge sowie gegebenenfalls die Freistellung auf weissem Grund.»
