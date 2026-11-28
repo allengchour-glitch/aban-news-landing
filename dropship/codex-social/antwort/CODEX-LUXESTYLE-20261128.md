@@ -11,6 +11,7 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | Klaviyo und DNS | Placed-Order-Metrik gesucht und vier ursprünglich genehmigte DNS-Einträge öffentlich abgefragt. | Vier von vier DNS-Sollwerten bestätigt. Laut Übergabe ist die Sendedomain aktiv. Klaviyo-Connector verlangt Neuanmeldung. Flow-Status und Umsatz im aktuellen Konto unbekannt. |
 | Nachfrage-Pilot | 18 markierte Produkte mit Shopify, dem aktuellen Manifest und dem archivierten Plan abgeglichen. | 11 ausserhalb des Kanals, davon 7 mit Anzeigen-Ausschluss. Drei Standardprodukte mit 53 Varianten zur Freigabe vorbereitet. |
 | Pilot-Budget | Letzten Workflow-Stand, aktuelle Aufnahmegrenzen und die gemeinsame Google-Sperrliste geprüft. | 11 lokale Kontrollfälle bestanden. Frischer Gesamtstand für Aufnahme weiterhin offen. |
+| ChatGPT-Suche | CH-Einstiegsseiten ausgewertet und die Prüfung von Weiterleitungszielen auf dem Branch korrigiert. | Fell- und Plüschjacken mit 10 Sitzungen und einem abgeschlossenen Checkout. Ein genaueres Weiterleitungsziel als Shop-Entwurf. |
 
 ## Metricool
 
@@ -110,3 +111,20 @@ Um 00:39 Uhr Europe/Zurich den letzten Lauf auf `main` nachgelesen. Der jüngste
 **Ausgearbeitete Freigabebedingung:** Aktuelle Auswahl und Sperrquelle für exakt die drei Produkt-IDs aus dem Pilot prüfen. Alle drei stehen im zuvor geprüften Shopify-Stand ausserhalb des Google-Kanals, haben das Nachfrage-Tag und ergeben 53 Varianten. Der Abgleich dieser Produktdaten mit der gemeinsamen Google-Sperrliste und dem Merchant-Ledger ergab keinen Treffer. Der konservative Gesamtstand der auf Google liegenden und unklar zugeordneten Varianten darf vor einer Aufnahme von 53 Varianten höchstens 77’947 betragen. Unbekannte Variantenzahlen, neu gesetzte Sperren oder andere Aufnahmeziele sperren den Pilot. Den globalen Auswahlplan mit Pilotvorrang mitprüfen, da der bestehende Zeitplan die Produkte sonst wieder abwählen kann. [Gemeinsame Sperrliste](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/automation/google_sperrliste.py) · [Merchant-Ledger](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/_merchant_issue_done.txt)
 
 **Lokal geprüft:** 11 Fälle mit Grenzwert, Überschreitung, fehlendem Bestand, Doppel-ID, bereits veröffentlichtem Produkt, abweichender Variantenzahl, Anzeigen-Ausschluss, Ledger-Sperre und Sperrtag. Die Änderung bleibt ein Freigabeentwurf. Der heutige Gesamtbestand, der komplette Auswahl-Diff und der Produktionslauf sind offen.
+
+## ChatGPT-Suche · gezielte Weiterarbeit 28.11.2026
+
+ShopifyQL, 29.10.–27.11., menschliche Sitzungen aus der Schweiz mit `utm_source=chatgpt.com`. Begrenzte Abfrage der zwölf häufigsten Landeseiten. Diese zwölf Zeilen zeigen zusammen 94 Sitzungen, 11 mit Warenkorb, 7 mit erreichtem und 2 mit abgeschlossenem Checkout. Das sind Sitzungskennzahlen des Ausschnitts. Die letzten Tage und URL-Werte können durch Shopify nachträglich ergänzt werden.
+
+| Landeseite | Sitzungen | Warenkorb | Kasse erreicht | Kasse abgeschlossen |
+| --- | ---: | ---: | ---: | ---: |
+| [Felljacken & Plüschjacken](https://luxestyle.ch/collections/damen-jacken-kunstfell) | 10 | 4 | 3 | 1 |
+| [Punk- und Gothicschmuck](https://luxestyle.ch/collections/punk-gothic-schmuck) | 8 | 2 | 1 | 0 |
+| [Alte heizbare Kuscheldecke](https://luxestyle.ch/products/heizbare-kuscheldecke-mit-armeln-und-kapuze-606000) | 5 | 0 | 0 | 0 |
+| [Alte Wellness-Geschenkbox](https://luxestyle.ch/products/geschenkbox-mit-decke-und-wellness-produkten-605100) | 4 | 0 | 0 | 0 |
+
+Die Fell- und Plüschjacken-Kollektion war in Shopify Online Store veröffentlicht (35 Produkte). Fünf häufige Fragen und Antworten sind bereits im Beschreibungstext. Der öffentliche Suchtreffer ist vorhanden. Die Antworttexte bleiben als Grundlage erhalten. `robots.txt` lieferte HTTP 200. Die Regeln erlauben den vier geprüften Kollektionspfaden den Zugriff für OAI-SearchBot. Die tatsächlichen Bot-Abrufe wurden hier nicht gemessen. [Fell- und Plüschjacken](https://luxestyle.ch/collections/damen-jacken-kunstfell) · [Robots-Datei](https://luxestyle.ch/robots.txt) · [OpenAI-Regeln für die Suche](https://help.openai.com/en/articles/9237897-searching-the-web-with-chatgpt)
+
+**Umgesetzt auf dem Branch:** Die vorhandene Landeseiten-Prüfung liest jetzt bei Weiterleitungen auch den Veröffentlichungsstand des ersten Produkt- oder Kollektionsziels. Im alten Code erschienen ein Draft-Zielprodukt und eine versteckte, gefüllte Kollektion in den Gegenproben als normale Weiterleitung. Beide werden jetzt gemeldet. 20 Selbsttests und die lokalen Integrations-Gegenproben bestanden. Die produktive Ausführung bleibt ungeprüft. [Geprüfter Code](https://github.com/allengchour-glitch/aban-news-landing/blob/c3601e175edb5586e26bedbc5b935f575998b83a/automation/chatgpt_landeseiten_wache.py)
+
+**Ein Shop-Entwurf zur Freigabe:** Weiterleitung `gid://shopify/UrlRedirect/2135651320199` für die alte Wellness-Geschenkbox vom Ziel `/collections/premium-geschenke` (400 Produkte) auf `/collections/sets-bundles` (154, Online Store veröffentlicht) umstellen. Die Zielkollektion nennt ausdrücklich Geschenkboxen und Pflegesets. Die engere Kollektion `wellness-bundles` ist im Online Store unveröffentlicht. Der andere ältere Link zur Kuscheldecke führt bereits zur passenden veröffentlichten Kollektion mit 36 Artikeln. Shopify-Weiterleitungen wurden in diesem Lauf gelesen. [Geschenk-Sets & Bundles](https://luxestyle.ch/collections/sets-bundles) · [Kuscheldecken & Heizdecken](https://luxestyle.ch/collections/kuschel-heizdecken)
