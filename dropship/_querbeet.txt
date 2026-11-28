@@ -209,3 +209,9 @@ gid://shopify/Product/16741020664199	2026-11-27	Beauty & Pflege
 gid://shopify/Product/16741622219143	2026-11-27	Wohnen & Dekoration
 gid://shopify/Product/16740628988295	2026-11-27	Küche & Kochen
 gid://shopify/Product/15503122825601	2026-11-27	Handy-Zubehör
+gid://shopify/Product/16742842073479	2026-11-28	Damen-Mode
+gid://shopify/Product/16743498318215	2026-11-28	Herren-Mode
+gid://shopify/Product/16742660833671	2026-11-28	Wohnen & Dekoration
+gid://shopify/Product/16654359626119	2026-11-28	Küche & Kochen
+gid://shopify/Product/16741637357959	2026-11-28	Elektronik & Technik
+gid://shopify/Product/16638445453703	2026-11-28	Sport, Fitness & Outdoor
