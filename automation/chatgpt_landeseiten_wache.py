@@ -7,20 +7,22 @@ ChatGPT den alten Link weiter: Die Landeseite der ChatGPT-Bestellung #1029 («He
 1 Kauf in 60 T) wurde am 24.11. gedraftet und leitete auf «Kissen & Wohntextilien» (1'649 Produkte) — niemand hat es bemerkt.
 
 ABLAUF: ShopifyQL (Admin-API shopifyqlQuery) → Landeseiten der letzten 30 Tage mit utm_source='chatgpt.com' → je Seite
-Admin-Zustand: Produkt ACTIVE und im Onlineshop? Kollektion vorhanden und nicht leer? Sonst Weiterleitung (urlRedirects) und
-Grösse des Ziels. Befunde: TOT (keine Weiterleitung), BREIT (Weiterleitung auf eine Kollektion mit > BREIT_MAX Produkten oder
-auf die Startseite), LEER (Kollektion ohne Produkte). Schreibt NUR am Ende: dropship/_chatgpt_landeseiten.json +
+Admin-Zustand: Produkt ACTIVE und im Onlineshop? Kollektion veröffentlicht und nicht leer? Sonst die erste Weiterleitung
+und ihr Shopify-Ziel prüfen. Befunde: TOT (keine Weiterleitung), ZIEL-NICHT-LIVE (Produkt oder Kollektion am ersten Ziel
+nicht veröffentlicht), BREIT (zu grosse Kollektion oder Startseite), LEER (leere Kollektion). Schreibt NUR am Ende: dropship/_chatgpt_landeseiten.json +
 dropship/CHATGPT-LANDESEITEN.md; die Ampel (betreiber_ampel.chatgpt_landeseiten) liest den Stand. Ändert nichts im Shop.
 
   python3 automation/chatgpt_landeseiten_wache.py              # messen, Stand + Bericht schreiben
   python3 automation/chatgpt_landeseiten_wache.py --selbsttest  # Urteilslogik ohne Netz (mit Gegenproben)
 """
 import datetime, json, os, re, subprocess, sys, time
+from urllib.parse import urlsplit
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STAND = os.environ.get("CLW_STAND") or os.path.join(ROOT, "dropship", "_chatgpt_landeseiten.json")
 BERICHT = os.environ.get("CLW_BERICHT") or os.path.join(ROOT, "dropship", "CHATGPT-LANDESEITEN.md")
 SHOP = "au3j0y-hq.myshopify.com"
+SHOP_HOSTS = {"luxestyle.ch", "www.luxestyle.ch", SHOP}
 TOK = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or (open("/tmp/cj_shop_token.txt").read() if os.path.exists("/tmp/cj_shop_token.txt") else "")).strip()
 TAGE = int(os.environ.get("TAGE", "30"))
 BREIT_MAX = int(os.environ.get("BREIT_MAX", "1000"))
@@ -62,25 +64,48 @@ def typ_von(p):
     return "start" if p == "/" else "andere"
 
 
+def zielpfad(ziel):
+    """Relatives oder eigenes Shop-Ziel. Fremde oder ungültige Ziele bleiben ungeprüft."""
+    try:
+        url = urlsplit(ziel)
+        if url.netloc and (url.hostname not in SHOP_HOSTS or url.username is not None):
+            return None
+    except ValueError:
+        return None
+    if url.scheme not in ("", "http", "https") or not url.path.startswith("/"):
+        return None
+    return normalisiere(url.path)[0]
+
+
 def urteil(s):
-    """s = {typ, aktiv, im_shop, anzahl, weiter_ziel, ziel_anzahl} → (zustand, befund|None). Rein, ohne Netz.
-    zustand: ok | weiter | tot | leer | nicht_geprueft. befund: TOT | BREIT | LEER | None."""
+    """Gibt (zustand, befund|None) für den Shop-Zustand und ein geprüftes erstes Redirect-Ziel zurück."""
     if s["typ"] not in ("products", "collections"):
         return "nicht_geprueft", None
     if s["typ"] == "products" and s.get("aktiv") and s.get("im_shop"):
         return "ok", None
     if s["typ"] == "collections" and s.get("aktiv"):
-        return ("leer", "LEER") if not s.get("anzahl") else ("ok", None)
+        anzahl = s.get("anzahl")
+        if anzahl is None:
+            return "nicht_geprueft", None
+        return ("leer", "LEER") if anzahl == 0 else ("ok", None)
     ziel = s.get("weiter_ziel")
     if not ziel:
         return "tot", "TOT"
-    ziel_p, _ = normalisiere(ziel)
+    ziel_p = zielpfad(ziel)
     if ziel_p == "/":
         return "weiter", "BREIT"
-    if typ_von(ziel_p) == "collections" and (s.get("ziel_anzahl") or 0) > BREIT_MAX:
-        return "weiter", "BREIT"
-    if typ_von(ziel_p) == "collections" and s.get("ziel_anzahl") == 0:
-        return "weiter", "LEER"
+    if not ziel_p or s.get("ziel_live") is None:
+        return "nicht_geprueft", None
+    if not s["ziel_live"]:
+        return "weiter", "ZIEL-NICHT-LIVE"
+    if typ_von(ziel_p) == "collections":
+        anzahl = s.get("ziel_anzahl")
+        if anzahl is None:
+            return "nicht_geprueft", None
+        if anzahl > BREIT_MAX:
+            return "weiter", "BREIT"
+        if anzahl == 0:
+            return "weiter", "LEER"
     return "weiter", None
 
 
@@ -108,26 +133,37 @@ def online_store_id():
     raise RuntimeError("Publication «Online Store» nicht gefunden")
 
 
-def zustand_holen(e, pub):
-    t = typ_von(e["pfad"]); h = e["pfad"].split("/")[-1]
+def shop_zustand(pfad, pub):
+    t = typ_von(pfad)
+    h = pfad.split("/")[-1]
     s = {"typ": t}
     if t == "products":
         p = gql('query($h:String!,$p:ID!){productByHandle(handle:$h){status publishedOnPublication(publicationId:$p)}}', {"h": h, "p": pub})["productByHandle"]
         s["aktiv"] = bool(p and p["status"] == "ACTIVE"); s["im_shop"] = bool(p and p["publishedOnPublication"])
     elif t == "collections":
         c = gql('query($h:String!,$p:ID!){collectionByHandle(handle:$h){productsCount{count} publishedOnPublication(publicationId:$p)}}', {"h": h, "p": pub})["collectionByHandle"]
-        s["aktiv"] = bool(c and c["publishedOnPublication"]); s["anzahl"] = (c or {}).get("productsCount", {}).get("count", 0)
-    else:
+        s["aktiv"] = bool(c and c["publishedOnPublication"]); s["anzahl"] = ((c or {}).get("productsCount") or {}).get("count")
+    return s
+
+
+def zustand_holen(e, pub):
+    pfad = e["pfad"]
+    s = shop_zustand(pfad, pub)
+    if s["typ"] not in ("products", "collections"):
         return s
-    if not (s.get("aktiv") and (t == "collections" or s.get("im_shop"))):
-        w = gql('query($q:String!){urlRedirects(first:5,query:$q){nodes{path target}}}', {"q": "path:" + e["pfad"]})["urlRedirects"]["nodes"]
-        w = [x for x in w if x["path"].rstrip("/") == e["pfad"]]
-        if w:
-            s["weiter_ziel"] = w[0]["target"]
-            zp, _ = normalisiere(w[0]["target"])
-            if typ_von(zp) == "collections":
-                c = gql('query($h:String!){collectionByHandle(handle:$h){productsCount{count}}}', {"h": zp.split("/")[-1]})["collectionByHandle"]
-                s["ziel_anzahl"] = (c or {}).get("productsCount", {}).get("count", 0) if c else 0
+    if s.get("aktiv") and (s["typ"] == "collections" or s.get("im_shop")):
+        return s
+
+    redirects = gql('query($q:String!){urlRedirects(first:5,query:$q){nodes{path target}}}', {"q": "path:" + pfad})["urlRedirects"]["nodes"]
+    redirect = next((x for x in redirects if x["path"].rstrip("/") == pfad), None)
+    if not redirect:
+        return s
+    s["weiter_ziel"] = redirect["target"]
+    ziel = zielpfad(redirect["target"])
+    if ziel and typ_von(ziel) in ("products", "collections"):
+        z = shop_zustand(ziel, pub)
+        s["ziel_live"] = bool(z.get("aktiv") and (z["typ"] == "collections" or z.get("im_shop")))
+        s["ziel_anzahl"] = z.get("anzahl")
     return s
 
 
@@ -149,7 +185,7 @@ def main():
     json.dump(stand, open(STAND, "w"), ensure_ascii=False, indent=1)
     z = [f"# ChatGPT-Landeseiten (Stand {jetzt}, letzte {TAGE} Tage)", "",
          f"{stand['sitzungen']} Sitzungen mit utm_source=chatgpt.com auf {len(seiten)} Seiten, {stand['warenkorb']} mit Warenkorb.",
-         f"Befunde: {len(befunde)} (TOT = keine Weiterleitung, BREIT = Weiterleitung auf > {BREIT_MAX} Produkte oder Startseite, LEER = leere Kollektion).", "",
+         f"Befunde: {len(befunde)} (TOT = keine Weiterleitung, ZIEL-NICHT-LIVE = erstes Shopify-Ziel nicht veröffentlicht, BREIT = Weiterleitung auf > {BREIT_MAX} Produkte oder Startseite, LEER = leere Kollektion).", "",
          "| Seite | Sitzungen | Warenkorb | Zustand | Ziel |", "|---|---|---|---|---|"]
     for e in seiten[:80]:
         z.append(f"| `{e['pfad']}` | {e['sitzungen']} | {e['warenkorb']} | {e['zustand']}{' ⚠️ ' + e['befund'] if e['befund'] else ''} | {e.get('weiter_ziel') or ''} |")
@@ -170,10 +206,23 @@ def selbsttest():
     pr("aktives Produkt im Shop = ok", urteil({"typ": "products", "aktiv": True, "im_shop": True}) == ("ok", None))
     pr("aktives Produkt NICHT im Onlineshop, ohne Weiterleitung = TOT", urteil({"typ": "products", "aktiv": True, "im_shop": False}) == ("tot", "TOT"))
     pr("Draft ohne Weiterleitung = TOT", urteil({"typ": "products", "aktiv": False}) == ("tot", "TOT"))
-    pr("#1029-Fall: Draft → Kollektion 1'649 = BREIT", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/collections/kissen-wohntextilien", "ziel_anzahl": 1649}) == ("weiter", "BREIT"))
-    pr("Gegenprobe: Draft → Kollektion 36 = ok-Weiterleitung", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/collections/kuschel-heizdecken", "ziel_anzahl": 36}) == ("weiter", None))
+    pr("#1029-Fall: Draft → Kollektion 1'649 = BREIT", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/collections/kissen-wohntextilien", "ziel_live": True, "ziel_anzahl": 1649}) == ("weiter", "BREIT"))
+    pr("Gegenprobe: Draft → Kollektion 36 = ok-Weiterleitung", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/collections/kuschel-heizdecken", "ziel_live": True, "ziel_anzahl": 36}) == ("weiter", None))
     pr("Draft → Startseite = BREIT", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/"}) == ("weiter", "BREIT"))
-    pr("Draft → Produkt = ok-Weiterleitung", urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/products/ersatz"}) == ("weiter", None))
+    pr("Draft → veröffentlichtes Produkt = ok-Weiterleitung",
+       urteil({"typ": "products", "aktiv": False, "weiter_ziel": "/products/ersatz", "ziel_live": True}) == ("weiter", None))
+    pr("Draft → Draft-Produkt = ZIEL-NICHT-LIVE",
+       urteil({"typ": "products", "weiter_ziel": "/products/ersatz", "ziel_live": False}) == ("weiter", "ZIEL-NICHT-LIVE"))
+    pr("Draft → unveröffentlichte gefüllte Kollektion = ZIEL-NICHT-LIVE",
+       urteil({"typ": "products", "weiter_ziel": "/collections/ersatz", "ziel_live": False, "ziel_anzahl": 36}) == ("weiter", "ZIEL-NICHT-LIVE"))
+    pr("Draft → veröffentlicht, aber leere Kollektion = LEER",
+       urteil({"typ": "products", "weiter_ziel": "/collections/ersatz", "ziel_live": True, "ziel_anzahl": 0}) == ("weiter", "LEER"))
+    pr("Unbestätigtes Ziel bleibt ungeprüft",
+       urteil({"typ": "products", "weiter_ziel": "/products/ersatz"}) == ("nicht_geprueft", None))
+    pr("Eigener absoluter Link wird als interner Pfad gelesen",
+       zielpfad("https://luxestyle.ch/fr/products/x?variant=5") == "/products/x")
+    pr("Fremder absoluter Link bleibt ungeprüft",
+       zielpfad("https://example.org/products/x") is None)
     pr("Kollektion leer = LEER", urteil({"typ": "collections", "aktiv": True, "anzahl": 0}) == ("leer", "LEER"))
     pr("Kollektion gefüllt = ok", urteil({"typ": "collections", "aktiv": True, "anzahl": 12}) == ("ok", None))
     pr("Kollektion weg, ohne Weiterleitung = TOT", urteil({"typ": "collections", "aktiv": False}) == ("tot", "TOT"))
