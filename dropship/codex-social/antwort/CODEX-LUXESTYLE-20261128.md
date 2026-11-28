@@ -28,6 +28,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Kostenlose Kundengewinnung | Schweizer Shopverzeichnis und Referenzbesuche geprüft, Eintrag für LuxeStyle CH formuliert und Google-Kanaldaten der Variante «Kolibri» abgeglichen. | Shopping Total bietet einen kostenlosen Eintrag mit redaktioneller Prüfung. Entwurf vorbereitet. Google-Freigabe für kostenlose Einträge unbekannt. |
 
+| Shopping Total | Freigegebenes Profil durch acht Formularschritte geführt, Shoplogo hochgeladen und einmal abgesendet. | Das Formular beanstandet die fehlende hCaptcha-Bestätigung. Eingang bei der Redaktion ausstehend. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -286,3 +288,11 @@ Die Shopify-Referenzabfrage vom 29.10. bis 27.11.2026 lieferte keine Zeile für 
 **Google, Variante Kolibri.** Shopify weist für Produkt `16654353695111` beim Kanal Google & YouTube `false`, für Variante `67843310649735` dagegen `true` aus. Das Produkt-Metafeld `mm-google-shopping.excluded_destination` nennt `Shopping_ads`. Für kostenlose Einträge in der Schweiz fehlt der verbindliche Status aus Merchant Center. Beide HYPD-Zugänge melden keine ausgewählte Merchant-Property. Windsor findet Konto `5797470070` (LuxeStyle CH), sein Free-Tarif sperrt den Datenabruf bei der bestehenden Zahl verbundener Konten. [Shopify-Variante](https://admin.shopify.com/store/au3j0y-hq/products/16654353695111/variants/67843310649735) · [Merchant-Konto für HYPD auswählen](https://app.hypd.ai/sources?select=merchant-center&utm_source=mcp&utm_content=none_selected)
 
 Die separate, finale Search-Console-Stichprobe für die Schweizer Websuche vom 29.10. bis 25.11. zeigte für die exakte Produktadresse keine Zeile zum Suchergebnisformat. Bei Produktpfaden mit den geprüften Schmuckbox-Begriffen wurden fünf Impressionen und null Klicks für `PRODUCT_SNIPPETS` gemeldet. Der Merchant-Freigabestatus bleibt davon unabhängig.
+
+### Freigabe und Einreichungsversuch bei Shopping Total
+
+Der Inhaber hat den kostenlosen Verzeichniseintrag freigegeben. Die acht Formularschritte wurden mit «LuxeStyle CH», der Sparte «Bijouterie & Geschenke», den öffentlichen Geschäftskontaktdaten aus dem Impressum, `https://luxestyle.ch/` und dem oben wiedergegebenen Kurztext ausgefüllt. Für Besucher war der Shoplink eingeschaltet. Die optionalen Kontaktwege per E-Mail-Formular und Telefon waren ausgeschaltet. Das optionale Produktfeed-Feld blieb leer. Der Logo-Upload war erfolgreich. [Logo für das Formular, PNG](https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500) · [Geschäftskontakt](https://luxestyle.ch/policies/legal-notice)
+
+Einmal auf «Absenden» geklickt. In Schritt 8 meldete Shopping Total «The captcha is missing from this form». Eine persönliche hCaptcha-Bestätigung und die Eingangsbestätigung der Redaktion stehen aus. Das Formular im eigenen Browser kann die Eingabe der Daten erneut verlangen. [Offizielles Formular](https://shoppingtotal.ch/shop-oder-onlineshop-eintragen/onlineshop-eintragen/)
+
+HYPD bietet mit Free Forever ein ausgewähltes Konto über alle unterstützten Plattformen hinweg kostenlos an. Starter umfasst bis zu drei Konten für EUR 19.99 netto pro Monat bei monatlicher Abrechnung. Der persönliche Tarif und eine allfällige bestehende Rechnung sind nicht einsehbar. Für den Verzeichniseintrag braucht es kein HYPD-Abo. [Tarife](https://feedback.hypd.ai/en/help/articles/3876895-hypd-plans-and-pricing-overview) · [HYPD-Preisseite](https://www.hypd.ai/pricing)
