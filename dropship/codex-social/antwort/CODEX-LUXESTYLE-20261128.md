@@ -24,6 +24,12 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Versandstatus #1047 | Shopify-Bestellung und Produkt geprüft. CJPacket zu der im CJ-Fall genannten Nummer abgefragt. | Shopify `UNFULFILLED`, Produkt `DRAFT`. CJPacket zeigt nur ein erstelltes Etikett. |
 
+| Schweizer Kundensuche | Google-Suchanfragen und Zielseiten gezielt ausgewertet, den Google-Abruf der Pyjama-Kollektion geprüft und die kaufbare Schmuckbox-Variante direkt aufgerufen. | Messbare Nachfrage für Familienpyjamas und Schmuckboxen. Eine französische Textkorrektur für den Totenkopfring ist zur Freigabe vorbereitet. |
+
+| Kostenlose Kundengewinnung | Schweizer Shopverzeichnis und Referenzbesuche geprüft, Eintrag für LuxeStyle CH formuliert und Google-Kanaldaten der Variante «Kolibri» abgeglichen. | Shopping Total bietet einen kostenlosen Eintrag mit redaktioneller Prüfung. Entwurf vorbereitet. Google-Freigabe für kostenlose Einträge unbekannt. |
+
+| Shopping Total | Profil vorbereitet und anschliessend die vom Inhaber übermittelte Bestätigung geprüft. | Formular erfolgreich übermittelt. Redaktionelle Freischaltung offen. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -240,3 +246,109 @@ CJPacket zeigte bei der Prüfung «Processing» und «Label created. Warehouse i
 Text für die bestehende Ticketnummer `T202611271548558321`, als Entwurf.
 
 > Could you confirm whether order LX1047 / SD2611251301040644900 is on hold and whether tracking EQKPT8613518515YQ has a first carrier scan? Please attach current photos of the exact item and outer packaging so we can verify the branding before dispatch.
+
+## Kundensuche in der Schweiz · Google und ChatGPT
+
+Über die zweite verbundene Search-Console-Integration in HYPD Paid Ads & Analytics ist die Property `https://luxestyle.ch/` jetzt lesbar. Der frühere Befund zur fehlenden Auswahl betraf die separat geprüfte HYPD-Integration. Quelle sind finale Daten für die Google-Websuche, Land Schweiz, vom 29.10. bis 25.11.2026. [Google Search Console](https://search.google.com/search-console/performance/search-analytics?resource_id=https%3A%2F%2Fluxestyle.ch%2F)
+
+| Kaufabsicht | Genaue Messung | Geprüfter Kaufweg |
+| --- | --- | --- |
+| Weihnachtspyjamas für Familien und Paare | Kollektionsseite insgesamt 170 Impressionen und 0 Klicks. Davon «partner weihnachtspyjama» 30 Impressionen bei Ø Position 26,3. Eine separate Produktseite erhielt für «weihnachts pyjama familie» 1 Klick bei 1 Impression. | Kollektion und Produkt erreichbar. Für das geprüfte Produkt zeigte der Shop aktuell den 14.–28. Dezember als voraussichtliches Lieferfenster. [Kollektion](https://luxestyle.ch/collections/weihnachtspyjama-familie) · [Modell](https://luxestyle.ch/products/weihnachts-pyjama-sets-fur-die-ganze-familie-613100) |
+| Schmuckbox | Für die Suchanfrage «schmuckbox» auf der Schmuckaufbewahrungsseite 2 Klicks bei 13 Impressionen. | Reise-Schmuckkästchen «Kolibri», CHF 16.90, in Shopify kaufbar. Öffentliche Auswahl und Warenkorb-Schaltfläche bestätigt. [Kategorie](https://luxestyle.ch/collections/schmuckaufbewahrung) · [Variante](https://luxestyle.ch/products/reise-schmuckkastchen-610400?variant=67843310649735) |
+| Lederbänder | Für «lederbänder» auf der Lederarmband-Kollektion 3 Klicks bei 8 Impressionen. Der Suchbegriff kann auch Bastelmaterial meinen. | [Zielseite für fertige Armbänder](https://luxestyle.ch/collections/lederarmbaender) |
+
+Google bestätigt die Pyjama-Kollektion als indexiert und als eigene kanonische URL. Letzter erfolgreicher Abruf am 01.11., letzter Shopify-Änderungszeitpunkt der Kollektion am 26.11. Die Wirkung der aktuellen Seitenfassung ist damit offen. [URL-Prüfung](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=8fFwklmR8SKhVmNFAqsBBw&utm_medium=link&utm_source=api)
+
+**Französischsprachige Schweiz · ein Entwurf für die Produktsuche.** Die öffentlich aufgerufene französische Seite des Totenkopfrings zeigt den deutschen Produktnamen und Suchtext. Shopify liefert für dieses Produkt weder französischen Titel noch französischen SEO-Titel oder französische Meta-Beschreibung. Der Ring «No 6» kostet CHF 16.90 und wurde als kaufbar bestätigt. Für die geprüften französischen Suchbegriffe gab Google in diesem Zeitraum keine sichtbare Schweizer Zeile aus. Die Gothic-Kollektion hatte separat 8 Schweizer Sitzungen aus ChatGPT, 2 mit Warenkorb und 1 mit erreichtem Checkout. Die Sprache dieser Sitzungen ist unbekannt. [Französische Produktseite](https://luxestyle.ch/fr/products/titanstahlring-mit-totenkopf-624100?variant=67790731837831)
+
+| Französisches Feld für Produkt 16654379024775 | Text zur Freigabe |
+| --- | --- |
+| Produktname | Bague gothique à tête de mort |
+| SEO-Titel | Bague gothique à tête de mort \| LuxeStyle |
+| Meta-Beschreibung | Une bague à tête de mort pour compléter une tenue gothique. Choisissez votre taille et consultez le délai de livraison en Suisse sur la fiche produit. |
+
+Für einen neuen Pinterest-Pin fehlt eine konkret freigegebene Bilddatei mit belegtem Social-Nutzungsrecht. Der bestehende Social-Plan erhielt durch diese Recherche keinen neuen Beitrag. Die Auswertung erfasst Suchklicks und Onlineshop-Sitzungen. Eine neue Bestellung wurde dabei nicht nachgewiesen.
+
+## Kostenloser Verzeichniseintrag für LuxeStyle CH
+
+**Shopping Total, Sparte «Bijouterie & Geschenke».** Das offizielle Anmeldeformular nennt einen kostenlosen Eintrag ohne Konto. Die Redaktion prüft jede Anmeldung. Unter den 39 Shops der Rubrik «Bijouterie & Geschenke» und den 18 der Rubrik «Uhren & Schmuck» fand sich kein Eintrag für LuxeStyle. Auch bei der exakten Suche nach Name und Domain gab es keinen Treffer. Anmeldungen im Prüfverfahren sind öffentlich nicht einsehbar. Die erste Formularseite verlangt den Shopnamen. Weitere Pflichtfelder sind vor dem Absenden dieses ersten Schritts unbekannt. [Anmeldeformular](https://shoppingtotal.ch/shop-oder-onlineshop-eintragen/onlineshop-eintragen/) · [Bijouterie & Geschenke](https://shoppingtotal.ch/onlineshops/sparte/bijouterie-geschenke/) · [Zweite Seite](https://shoppingtotal.ch/onlineshops/sparte/bijouterie-geschenke/page/2/) · [Uhren & Schmuck](https://shoppingtotal.ch/onlineshops/sparte/uhren-schmuck/)
+
+| Angabe | Vorbereiteter Eintrag |
+| --- | --- |
+| Name | LuxeStyle CH |
+| Shopadresse | https://luxestyle.ch/ |
+| Sparte | Bijouterie & Geschenke |
+| Standort | Belp, Schweiz |
+| Kurzbeschreibung | LuxeStyle CH ist ein Onlineshop aus Belp. Im Sortiment finden sich Schmuck, Reise-Schmuckkästchen und Organizer für Ringe, Ketten und Ohrringe. Der Shop liefert in die Schweiz und nach Liechtenstein. |
+
+Stand bei dieser Prüfung ist Entwurf. Für die Texte wurden das öffentliche Impressum, die Versandrichtlinie und das Schmucksortiment herangezogen. [Impressum](https://luxestyle.ch/policies/legal-notice) · [Versand](https://luxestyle.ch/policies/shipping-policy) · [Sortiment](https://luxestyle.ch/collections/schmuckaufbewahrung)
+
+Die Shopify-Referenzabfrage vom 29.10. bis 27.11.2026 lieferte keine Zeile für menschliche Sitzungen aus der Schweiz mit `referrer_domain = 'shoppingtotal.ch'`. Nach einer bestätigten Veröffentlichung lassen sich über denselben Filter vermittelte Besuche und Warenkörbe prüfen.
+
+**Google, Variante Kolibri.** Shopify weist für Produkt `16654353695111` beim Kanal Google & YouTube `false`, für Variante `67843310649735` dagegen `true` aus. Das Produkt-Metafeld `mm-google-shopping.excluded_destination` nennt `Shopping_ads`. Für kostenlose Einträge in der Schweiz fehlt der verbindliche Status aus Merchant Center. Beide HYPD-Zugänge melden keine ausgewählte Merchant-Property. Windsor findet Konto `5797470070` (LuxeStyle CH), sein Free-Tarif sperrt den Datenabruf bei der bestehenden Zahl verbundener Konten. [Shopify-Variante](https://admin.shopify.com/store/au3j0y-hq/products/16654353695111/variants/67843310649735) · [Merchant-Konto für HYPD auswählen](https://app.hypd.ai/sources?select=merchant-center&utm_source=mcp&utm_content=none_selected)
+
+Die separate, finale Search-Console-Stichprobe für die Schweizer Websuche vom 29.10. bis 25.11. zeigte für die exakte Produktadresse keine Zeile zum Suchergebnisformat. Bei Produktpfaden mit den geprüften Schmuckbox-Begriffen wurden fünf Impressionen und null Klicks für `PRODUCT_SNIPPETS` gemeldet. Der Merchant-Freigabestatus bleibt davon unabhängig.
+
+### Freigabe und Einreichungsversuch bei Shopping Total
+
+Der Inhaber hat den kostenlosen Verzeichniseintrag freigegeben. Die acht Formularschritte wurden mit «LuxeStyle CH», der Sparte «Bijouterie & Geschenke», den öffentlichen Geschäftskontaktdaten aus dem Impressum, `https://luxestyle.ch/` und dem oben wiedergegebenen Kurztext ausgefüllt. Für Besucher war der Shoplink eingeschaltet. Die optionalen Kontaktwege per E-Mail-Formular und Telefon waren ausgeschaltet. Das optionale Produktfeed-Feld blieb leer. Der Logo-Upload war erfolgreich. [Logo für das Formular, PNG](https://luxestyle.ch/cdn/shop/files/luxestyle-ch-logo.png?v=1781123787&width=500) · [Geschäftskontakt](https://luxestyle.ch/policies/legal-notice)
+
+Einmal auf «Absenden» geklickt. In Schritt 8 meldete Shopping Total «The captcha is missing from this form». Eine persönliche hCaptcha-Bestätigung und die Eingangsbestätigung der Redaktion stehen aus. Das Formular im eigenen Browser kann die Eingabe der Daten erneut verlangen. [Offizielles Formular](https://shoppingtotal.ch/shop-oder-onlineshop-eintragen/onlineshop-eintragen/)
+
+HYPD bietet mit Free Forever ein ausgewähltes Konto über alle unterstützten Plattformen hinweg kostenlos an. Starter umfasst bis zu drei Konten für EUR 19.99 netto pro Monat bei monatlicher Abrechnung. Der persönliche Tarif und eine allfällige bestehende Rechnung sind nicht einsehbar. Für den Verzeichniseintrag braucht es kein HYPD-Abo. [Tarife](https://feedback.hypd.ai/en/help/articles/3876895-hypd-plans-and-pricing-overview) · [HYPD-Preisseite](https://www.hypd.ai/pricing)
+
+### Übermittlung an Shopping Total bestätigt
+
+Am 28.11.2026 belegte der Inhaber die erfolgreiche Einreichung mit einem Screenshot. Shopping Total zeigt «Das Formular wurde erfolgreich übermittelt. Vielen Dank!» und weist auf die Prüfung vor der Veröffentlichung hin. Eine öffentliche Profiladresse ist bislang nicht belegt.
+
+
+## Merchant Center und Produkt-SEO · 28.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Kostenlose Google-Einträge in der Schweiz | 10 abgelehnte Angebote im verbundenen Merchant-Konto 5797470070 anhand von `FREE_LISTINGS` und Land CH abgeglichen. | In dieser Stichprobe 7 Bildmeldungen (`image_unwanted_overlays`) und 3 Zielseitenfehler (`landing_page_error`). Die Kapazitätsmeldung für 25’048 Shopping-Anzeigen ist separat. |
+| Öl-Sprühflasche | 6 beanstandete Varianten des Shopify-Produkts 15450848723329 und 21 Galeriebilder geprüft. Die gelbe Einzelvariante 55889898307969 und ihr farbrichtiges, beschriftetes CJ-Original verglichen. | Den sechs Varianten fehlt je ein eigenes Bild in Shopify. Das einzige reine Produktfoto aus der Galerie gehört zu Beige, 1 Stück, und ist dieser Variante bereits zugeordnet. Offen sind ein passendes unverändertes Lieferantenfoto oder das belegte Bearbeitungsrecht und bei den Sets der richtige Packungsinhalt. Googles aktuelle Bild-URL für Gelb ist offen. [Produkt](https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320?variant=55889898307969) |
+| Fehlerhafte Google-Zielseiten | Handschuhe 15447921066369, Ohrringe 15449118179713 und grüner Ring 15449477677441 mit Shopify abgeglichen. | Alle drei sind Entwürfe ohne öffentliche Produktseite. Bei Ohrringen und Ring findet Shopify die gemeldete Variante ebenfalls nicht. Die Bereinigung der veralteten Angebote in der einliefernden Datenquelle ist offen. |
+| Deutsche Suchtexte | Beim Reise-Schmuckkästchen 16654353695111 SEO-Titel und Meta-Beschreibung auf die belegten Stickmotive abgestimmt. Beim Wintermantel 16652033491335 den mehrdeutigen ersten Absatz durch belegte Angaben zu Schnitt, Farben und Grössen ersetzt. | Beide Änderungen in Shopify und auf den öffentlichen Varianten-URLs zurückgelesen. Der Google-Status von «Kolibri» für kostenlose Einträge in der Schweiz bleibt unbekannt. [Reise-Schmuckkästchen](https://luxestyle.ch/products/reise-schmuckkastchen-610400?variant=67843310649735) · [Wintermantel](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911) |
+| Französische Suchtexte | Beim Totenkopfring 16654379024775, Reise-Schmuckkästchen 16654353695111 und Wintermantel 16652033491335 je drei fehlende französische Felder für Produktname, SEO-Titel und Meta-Beschreibung ergänzt. | Alle neun Werte im Admin und im H1, Seitentitel und Beschreibungs-Metatag der drei öffentlichen Seiten bestätigt. [Boîte à bijoux de voyage](https://luxestyle.ch/fr/products/reise-schmuckkastchen-610400) · [Manteau d’hiver doublé](https://luxestyle.ch/fr/products/gefutterter-wintermantel-mit-fellkragen-606600) · [Bague gothique à tête de mort](https://luxestyle.ch/fr/products/titanstahlring-mit-totenkopf-624100?variant=67790731837831) |
+| LED-Gesichtsmaske | Titel, Beschreibung, Suchtexte und fünf Bildbeschreibungen auf Deutsch korrigiert. Zwei Bilder mit unbelegten Hautwirkungen und ein Video einer abweichenden Ausführung aus der Produktgalerie gelöst. Name, Beschreibung und beide SEO-Felder auf Französisch ergänzt. | Die drei verbliebenen Fotos zeigen die angebotene Ausführung. Die drei gelösten Dateien sind weiterhin als READY gespeichert. Der neue sachliche URL-Pfad ist mit Shopify-Weiterleitung 2145429094791 verbunden. Beide Sprachseiten und beide alten Links öffentlich geprüft. Googles erneute Bildprüfung ist offen. [Deutsch](https://luxestyle.ch/products/wiederaufladbare-led-gesichtsmaske-309696) · [Français](https://luxestyle.ch/fr/products/wiederaufladbare-led-gesichtsmaske-309696) |
+| Merchant-Prüfskript | Im bestehenden Scanner eine falsche Erfolgsmeldung bei abgewiesener Auslistung nachgestellt und korrigiert. | Acht lokale Prüffälle bestanden. Die Korrektur liegt auf dem Arbeitsbranch. Ein produktiver Scannerlauf wurde nicht ausgelöst. [Commit](https://github.com/allengchour-glitch/aban-news-landing/commit/1e56ada8ddb2e0668310f4bf975df10887c129ff) |
+| Campaign Autopilot und Sidekick | Screenshot des Inhabers ausgewertet. | Sidekick meldet insgesamt 50 gespeicherte SEO-Titel. Die Liste der Produkt-IDs ist im Screenshot und in der verfügbaren Schnittstelle nicht ausgewiesen. Der Autopilot zeigt CHF 162 Monatsbudget, CHF 34 ausgegeben, CHF 128 verbleibend, CHF 10 Akquisitionskostenlimit und Ziel-ROAS 4×. Budget und Kanäle wurden in dieser Arbeit nicht geändert. |
+| Produkteditor | Eine öffentliche Seite und das zugehörige Editorbild geprüft. | «Poster zum Selbstgestalten» und Editorbild antworteten mit HTTP 200. Für den vollständigen lokalen Wächterlauf über alle 464 markierten Produkte fehlt die lokale Anbindung. [Poster](https://luxestyle.ch/products/poster-zum-selbstgestalten) |
+
+Für die Prüfung veralteter Zielseiten sind die gemeldeten Angebote `shopify_ZZ_15447921066369_56052967211393`, `shopify_ZZ_15449118179713_55879464386945`, `shopify_ZZ_15449477677441_55882200711553`. Erst den aktuellen Datensatz pro Sprache, Feed-Label, Quelle und Ziel prüfen. Für die drei Shopify-Entwürfe gibt es keine gleichwertige bestätigte Ersatzseite.
+
+### Offene Produktfotos für die Öl-Sprühflasche
+
+Die sechs tatsächlichen Shopify-SKUs sind unten der jeweiligen Ausführung zugeordnet. Für die Bildkorrektur fehlen unveränderte, zur kommerziellen Listung nutzbare Originale ohne Werbetext oder eine ausdrückliche Erlaubnis zur Freistellung. Ein Zweierpack braucht einen korrekten Beleg für Farbe und Menge. [CJ-Produktfoto für Gelb, ein Stück](https://cf.cjdropshipping.com/quick/product/52f7c15b-7418-4c09-be09-8f103267541d.jpg) · [CJ-Listungshinweise](https://cjdropshipping.com/help-center?navType=faq&pageNum=7)
+
+| Ausführung | Shopify-SKU |
+| --- | --- |
+| Gelb 470 ml-1 Stück | `CJ-CJYD199961002BY` |
+| Grün 470 ml-1 Stück | `CJ-CJYD199961003CX` |
+| Schwarz 470 ml-1 Stück | `CJ-CJYD199961004DW` |
+| Beige 470 ml-2 Stück | `CJ-CJYD199961007GT` |
+| Schwarz 470 ml-2 Stück | `CJ-CJYD199961005EV` |
+| Grün 470 ml-2 Stück | `CJ-CJYD199961006FU` |
+
+Vorbereitete Lieferantenanfrage, bislang unversendet: «Bitte stellen Sie uns die Originalfotos für die sechs genannten Ausführungen ohne Texte, Masslinien oder Bildmontage zur Verfügung. Bei den Zweierpacks soll die abgebildete Menge dem Lieferumfang entsprechen. Bitte bestätigen Sie die Nutzungsrechte für unseren Onlineshop und kostenlose Google-Produkteinträge sowie gegebenenfalls die Freistellung auf weissem Grund.»
+
+
+## Französischer Kaufweg und weitere Google-Angebote · 28.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Produktbeschreibungen | Beim Reise-Schmuckkästchen (16654353695111), Wintermantel (16652033491335) und Totenkopfring (16654379024775) je den noch deutschen Haupttext der veröffentlichten französischen Produktseite ersetzt. Die Texte verwenden belegte Produktmerkmale und geprüfte französische Kollektions- und Richtlinienseiten. | Drei zusätzliche französische Beschreibungen in Shopify und auf den öffentlichen Produktseiten bestätigt. Die zuvor gespeicherten französischen Titel und Metadaten sind separat belegt. [Schmuckkästchen](https://luxestyle.ch/fr/products/reise-schmuckkastchen-610400) · [Wintermantel](https://luxestyle.ch/fr/products/gefutterter-wintermantel-mit-fellkragen-606600) · [Totenkopfring](https://luxestyle.ch/fr/products/titanstahlring-mit-totenkopf-624100) |
+| Schmuckaufbewahrung | Französische Kaufberatung, SEO-Titel und Meta-Beschreibung der Kollektion 755392577927 ergänzt. Das erste Produktraster beider Sprachen geprüft. | Alle drei Texte im Admin und im öffentlichen französischen HTML bestätigt. Das Reise-Schmuckkästchen steht als drittes von je 24 Produkten direkt in der ersten Ansicht. [Deutsch](https://luxestyle.ch/collections/schmuckaufbewahrung) · [Französisch](https://luxestyle.ch/fr/collections/schmuckaufbewahrung) |
+| Google-Bilder | Eine zusätzliche Seite mit zehn weiteren, voneinander verschiedenen Angeboten für die Schweiz gelesen. | Bei Gelb im Zweierpack sowie den Sets 1 bis 9 meldet Google `image_unwanted_overlays` für `FREE_LISTINGS`. Zusammen mit der vorangegangenen Stichprobe sind 16 verschiedene Varianten der Öl-Sprühflasche betroffen. |
+| Lieferantenfotos | Die 16 Varianten mit Shopify-SKUs abgeglichen. Einen separaten E-Mail-Entwurf für den bekannten CJ-Supportkontakt in Gmail erstellt und anhand der Empfängeradresse, der 16 SKUs und des Entwurfsstatus zurückgelesen. | Der Entwurf bittet um vorhandene kostenfreie Fotos, genaue Set-Inhalte und Nutzungsrechte. Nach Freigabe durch den Inhaber am 28.11. um 13:26 Uhr (Europe/Zurich) von info@luxestyle.ch an support@cjdropshipping.com gesendet. Gmail bestätigte `SENT` für die Nachricht `1a2221f816bbb696`. Die Antwort von CJ steht aus. [Versandbeleg](https://mail.google.com/mail/#sent/1a2221f816bbb696) |
+| Veraltete Google-Angebote | Die drei identifizierten Shopify-Entwürfe in den vorhandenen Erledigt-Registern und im bestehenden Reparaturprogramm geprüft. | Dort ist keine der drei Bereinigungen dokumentiert. Der gezielte Zugriff auf Googles einliefernde Datenquelle über Windsor scheitert am Kontolimit des Gratisplans. |
+| Produkteditor-Prüfung | Am unveränderten Prüfprogramm nachgestellt, dass ein abgelehnter Shopify-Zugriff oder ein Abbruch zwischen zwei Seiten fälschlich als Erfolg endete. | Auf dem Arbeitsbranch korrigiert. 17 lokale Prüffälle bestanden. Eine vollständige produktive Prüfung der 464 Produkte steht aus. [Commit](https://github.com/allengchour-glitch/aban-news-landing/commit/31a3ba43f294a3ad684523bef13dc65997c837ac) |
+
+
+## Bestehenden Zeitplan mit der Übergabe verbunden
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Automatische Weiterarbeit | Den Besitzerbranch im bestehenden Auftrag «LuxeStyle Metricool steuern» verankert und die offenen Schritte in der Übergabe ergänzt. | Auftrag `6ad336cc3a388191bc05642ef858af99` ist aktiv. Wortlaut, Branch-Verweis, ursprüngliche Aufgaben und Zeitplan wurden zurückgelesen. Täglich 08, 14 und 19 Uhr Europe/Zurich, mit flexibler Startzeit. Nächster geplanter Lauf beim Abgleich: 28.11. um 14 Uhr. [Übergabe](../../../docs/UEBERGABE-CODEX-2711.md) |
+| Lieferantenantwort | Den bestehenden CJ-Mailverlauf gelesen und separat nach einer eingegangenen Antwort zum Produkt gesucht. | Die Anfrage ist gesendet. Beim Abgleich lag noch keine passende Antwort vor. Vorhandene Ausführungen werden einzeln weiterbearbeitet, sobald Fotos, Lieferumfang und Nutzungsrechte feststehen. |
