@@ -22,6 +22,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | CJ-Support | Mailverlauf zu LX1047 gelesen und den bestehenden Ticketzugang geprüft. | CJ-Mail verweist auf den Supportbereich. Der Ticketstand ist wegen der CJ-Menschprüfung unbekannt. |
 
+| Versandstatus #1047 | Shopify-Bestellung und Produkt geprüft. CJPacket zu der im CJ-Fall genannten Nummer abgefragt. | Shopify `UNFULFILLED`, Produkt `DRAFT`. CJPacket zeigt nur ein erstelltes Etikett. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -228,3 +230,13 @@ Die Gegenprobe des konkreten HTML-Diffs lässt den Text nach dem ersten Absatz b
 Laut Projektjournal wurde das Ticket `T202611271548558321` für CJ-Auftrag `SD2611251301040644900` am 27.11. um 16:48 Uhr Zürich eröffnet. Der Termin am 28.11. um 06:39 Uhr Zürich war als Nachkontrolle vorgesehen. Die jüngste Mail im geprüften Verlauf kam am 27.11.2026 um 13:32 Uhr Zürich. CJ verweist auf den Supportbereich. Die Frage zur Markenkennzeichnung der Augencreme und der Versandstatus bleiben in der Mail offen. [CJ-Mail](https://mail.google.com/mail/#all/1a21b832510ebb07) · [Ticketbeleg im Projektjournal](https://github.com/allengchour-glitch/aban-news-landing/blob/dc8a8ee3f8b1e49f256386e10532525e897b9799/GEDAECHTNIS-JOURNAL.md#L114-L116)
 
 Der Browser wurde auf «Human verification» umgeleitet. Die Ticketantwort und der aktuelle Status sind unbekannt. [CJ-Supportbereich](https://cjdropshipping.com/mine/ticket)
+
+### Versandgegenprobe LX1047 · 08:23 Uhr Zürich
+
+Shopify-Bestellung `19183838396807` ist `UNFULFILLED`. Das System enthält keine Sendung oder Trackingnummer für die Bestellung. Der Fulfillment-Auftrag ist `OPEN`. Die einzige Produktposition `15453766877569` steht auf `DRAFT`. Der CJ-seitige Haltestatus bleibt unbekannt. [Shopify-Bestellung](https://admin.shopify.com/store/au3j0y-hq/orders/19183838396807)
+
+CJPacket zeigte bei der Prüfung «Processing» und «Label created. Warehouse is processing this order.» Das belegt die Etiketterstellung. Eine Paketübergabe an den Frachtführer ist dabei nicht bestätigt. Im geprüften Mailverlauf traf keine weitere CJ-Antwort ein. [CJPacket](https://www.cjpacket.com/?trackingNumber=EQKPT8613518515YQ)
+
+Text für die bestehende Ticketnummer `T202611271548558321`, als Entwurf.
+
+> Could you confirm whether order LX1047 / SD2611251301040644900 is on hold and whether tracking EQKPT8613518515YQ has a first carrier scan? Please attach current photos of the exact item and outer packaging so we can verify the branding before dispatch.
