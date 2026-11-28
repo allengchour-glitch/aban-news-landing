@@ -12,6 +12,7 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | Nachfrage-Pilot | 18 markierte Produkte mit Shopify, dem aktuellen Manifest und dem archivierten Plan abgeglichen. | 11 ausserhalb des Kanals, davon 7 mit Anzeigen-Ausschluss. Drei Standardprodukte mit 53 Varianten zur Freigabe vorbereitet. |
 | Pilot-Budget | Letzten Workflow-Stand, aktuelle Aufnahmegrenzen und die gemeinsame Google-Sperrliste geprüft. | 11 lokale Kontrollfälle bestanden. Frischer Gesamtstand für Aufnahme weiterhin offen. |
 | ChatGPT-Suche | CH-Einstiegsseiten ausgewertet und die Prüfung von Weiterleitungszielen auf dem Branch korrigiert. | Fell- und Plüschjacken mit 10 Sitzungen und einem abgeschlossenen Checkout. Ein genaueres Weiterleitungsziel als Shop-Entwurf. |
+| ChatGPT-Suche live | Bestehende Weiterleitung der alten Wellness-Geschenkbox aktualisiert und zurückgelesen. | Öffentlicher Aufruf landet auf Geschenk-Sets & Bundles (HTTP 200). |
 
 ## Metricool
 
@@ -128,3 +129,9 @@ Die Fell- und Plüschjacken-Kollektion war in Shopify Online Store veröffentlic
 **Umgesetzt auf dem Branch:** Die vorhandene Landeseiten-Prüfung liest jetzt bei Weiterleitungen auch den Veröffentlichungsstand des ersten Produkt- oder Kollektionsziels. Im alten Code erschienen ein Draft-Zielprodukt und eine versteckte, gefüllte Kollektion in den Gegenproben als normale Weiterleitung. Beide werden jetzt gemeldet. 20 Selbsttests und die lokalen Integrations-Gegenproben bestanden. Die produktive Ausführung bleibt ungeprüft. [Geprüfter Code](https://github.com/allengchour-glitch/aban-news-landing/blob/c3601e175edb5586e26bedbc5b935f575998b83a/automation/chatgpt_landeseiten_wache.py)
 
 **Ein Shop-Entwurf zur Freigabe:** Weiterleitung `gid://shopify/UrlRedirect/2135651320199` für die alte Wellness-Geschenkbox vom Ziel `/collections/premium-geschenke` (400 Produkte) auf `/collections/sets-bundles` (154, Online Store veröffentlicht) umstellen. Die Zielkollektion nennt ausdrücklich Geschenkboxen und Pflegesets. Die engere Kollektion `wellness-bundles` ist im Online Store unveröffentlicht. Der andere ältere Link zur Kuscheldecke führt bereits zur passenden veröffentlichten Kollektion mit 36 Artikeln. Shopify-Weiterleitungen wurden in diesem Lauf gelesen. [Geschenk-Sets & Bundles](https://luxestyle.ch/collections/sets-bundles) · [Kuscheldecken & Heizdecken](https://luxestyle.ch/collections/kuschel-heizdecken)
+
+### Freigabe umgesetzt am 28.11.2026
+
+Auf «push alles» die einzelne, zuvor geprüfte Shopify-Weiterleitung `gid://shopify/UrlRedirect/2135651320199` aktualisiert. Alter Zielpfad `/collections/premium-geschenke`, neuer Zielpfad `/collections/sets-bundles`. Shopify meldete keine Fehler. ID, Quellpfad und neues Ziel anschliessend über Admin zurückgelesen. Im frischen öffentlichen Aufruf öffnet der alte Link die veröffentlichte Zielkollektion mit HTTP 200 und dem Titel «Geschenk-Sets & Bundles kaufen». Das ist ein Auslieferungsbeleg für die Weiterleitung. Auswirkungen auf Suchtraffic sind noch nicht messbar. [Alter Link zur Gegenprobe](https://luxestyle.ch/products/geschenkbox-mit-decke-und-wellness-produkten-605100) · [Öffentliches Ziel](https://luxestyle.ch/collections/sets-bundles)
+
+Der Google-Pilot wartet auf eine neue belegte Kapazitätsrechnung. Der jüngste Schaufenster-Lauf war weiterhin `46014333824` vom 27.11. Der Shopify-Admin für Shop Campaigns zeigte erneut die Anmeldeseite. Google-Kanal und Autopilot erhielten keine Änderung. [Schaufenster-Lauf](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824)
