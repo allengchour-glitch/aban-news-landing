@@ -84,16 +84,24 @@ test('Fertigdesign und auskommentierter Editor zählen nicht als geprüfter Edit
 });
 
 // Echte CLI mit simuliertem Shopify. Weder Token-Datei noch Netzwerk werden geöffnet.
-function pruefeCli(html) {
+function pruefeCli(html, args = [], produkte = {}) {
   const mock = `import fs from 'node:fs'; import {syncBuiltinESMExports} from 'node:module';
     const read = fs.readFileSync; fs.readFileSync = (p,...args) => p === '/tmp/cj_shop_token.txt' ? 'probe' : read(p,...args); syncBuiltinESMExports();
-    globalThis.fetch = async url => {
+    const produkte = ${JSON.stringify(produkte)}, abgerufen = new Set();
+    globalThis.fetch = async (url, opt) => {
       if(url === ${JSON.stringify(kartenUrl)}) return Response.json(${JSON.stringify(karte)});
       if(!String(url).endsWith('/graphql.json')) throw Error('unerwarteter Abruf');
+      const {query, variables} = JSON.parse(opt.body);
+      if (variables.id) {
+        if (!query.includes('product(id:$id)') || abgerufen.has(variables.id)) throw Error('Falsche oder doppelte Einzelabfrage');
+        abgerufen.add(variables.id);
+        return Response.json({ data:{product:produkte[variables.id] ?? null} });
+      }
+      if (${args.length} || !query.includes('tag:printful_personalized_product status:active')) throw Error('Unerwartete Katalogsuche');
       return Response.json({ data:{ products:{pageInfo:{hasNextPage:false},edges:[{node:{handle:'probe',descriptionHtml:${JSON.stringify(html)}}}]} }});
     };`;
   const cli = fileURLToPath(new URL('./pod_editor_qa.mjs', import.meta.url));
-  return spawnSync(process.execPath,['--import','data:text/javascript,'+encodeURIComponent(mock),cli],{encoding:'utf8',env:{}});
+  return spawnSync(process.execPath,['--import','data:text/javascript,'+encodeURIComponent(mock),cli,...args],{encoding:'utf8',env:{}});
 }
 
 test('CLI meldet null erfasste Editor-Produkte mit Fehlerstatus', () => {
@@ -108,4 +116,36 @@ test('CLI zählt V6-Produkte und nennt das Produkt bei fehlender Pflichtkarte', 
   const fehler = pruefeCli(block(pflicht));
   assert.equal(fehler.status, 1);
   assert.match(fehler.stdout, /probe: V6-karte: Pflichtkarte fehlt/);
+});
+
+test('CLI prüft explizite aktive IDs auch ohne Tag und vereinigt Zahlen und GIDs', () => {
+  const gut = { id: 'gid://shopify/Product/123', status: 'ACTIVE', handle: 'ohne-tag', descriptionHtml: block(mitUrl) };
+  const leer = { ...gut, id: 'gid://shopify/Product/456', handle: 'ohne-editor', descriptionHtml: '<p>Fertig</p>' };
+  const produkte = { [gut.id]: gut, [leer.id]: leer };
+  const r = pruefeCli('', ['--produkt-id', '123', '--produkt-id', gut.id], produkte);
+  assert.equal(r.status, 0, r.stderr);
+  assert.match(r.stdout, /1 Editor-Produkte geprüft.*0 Befunde/);
+  const beide = pruefeCli('', ['--produkt-id', '123', '--produkt-id', '456'], produkte);
+  assert.equal(beide.status, 1);
+  assert.match(beide.stdout, /ohne-editor: Kein Editor erkannt/);
+});
+
+test('CLI bricht bei falschen, fehlenden oder inaktiven Produkt-IDs ohne Katalogsuche ab', () => {
+  const id = 'gid://shopify/Product/123';
+  for (const eingabe of ['0', '12.3', '18446744073709551616', 'gid://shopify/ProductVariant/123']) {
+    const r = pruefeCli('', ['--produkt-id', eingabe]);
+    assert.equal(r.status, 1);
+    assert.match(r.stderr, /Ungültige Shopify-Produkt-ID/);
+  }
+  const muster = { id, status: 'ACTIVE', handle: 'probe', descriptionHtml: block(mitUrl) };
+  const faelle = [
+    [null, /Produkt fehlt/],
+    [{ ...muster, id: 'gid://shopify/Product/999' }, /Produkt fehlt/],
+    [{ ...muster, status: 'DRAFT' }, /nicht aktiv/],
+  ];
+  for (const [produkt, meldung] of faelle) {
+    const r = pruefeCli('', ['--produkt-id', '123'], { [id]: produkt });
+    assert.equal(r.status, 1);
+    assert.match(r.stderr, meldung);
+  }
 });
