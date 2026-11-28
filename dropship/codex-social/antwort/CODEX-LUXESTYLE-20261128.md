@@ -536,3 +536,84 @@ Der vorhandene 19-Uhr-Lauf kann die tatsächliche Auslieferung des 17-Uhr-Beitra
 | Geschenkideen | Auf Kollektion `687793897857` die allgemeine Sortimentsliste im Suchtext ersetzt. Einstieg, Seitentitel und Suchbeschreibung führen auf Deutsch und Französisch nach Anlass, Person und Budget zur passenden Auswahl. | Beide öffentlichen Seiten bestätigen die neuen Texte, die jeweilige kanonische Adresse und den bestehenden Variantenlink zum Plüschpanda. [DE](https://luxestyle.ch/collections/premium-geschenke) · [FR](https://luxestyle.ch/fr/collections/premium-geschenke) |
 | Geschenke bis CHF 30 | Kollektion `754049941895` zeigte in der französischen Fassung deutschen Seitentitel, Suchbeschreibung und Kaufberatung. Diese Felder lokalisiert und die deutsche Fassung überarbeitet. Die beiden Sprachseiten verlinken direkt zur hellen Schmetterlingstasse `67681398522247` (CHF 19.90) und zum goldfarbenen Armband in 19 cm `67789671170439` (CHF 21.90). | Beide geprüften Varianten gehören zur Kollektion. Die vier Produktpfade öffnen die richtige Ausführung. Die Preise stehen beim Produkt. Der Kategorietext erklärt die Variantenwahl. [DE](https://luxestyle.ch/collections/%F0%9F%8E%81-geschenke-bis-chf-30) · [FR](https://luxestyle.ch/fr/collections/%F0%9F%8E%81-geschenke-bis-chf-30) |
 | Familienpyjamas | Auf Kollektion `754046468487` den wiederholten deutschen Suchbegriff durch «Weihnachtspyjamas im Partnerlook für Familien» ersetzt. Beide Suchbeschreibungen erklären am Body-Pyjama, dass die Grösse einzeln gewählt wird und der Preis pro Pyjama gilt. | Drei Suchfelder geändert, den bereits passenden französischen Titel am neuen Quelldigest bestätigt. Alle sechs Kollektionsadressen antworteten mit HTTP 200 und zeigten die vorgesehenen Seitentitel. Google-Rankings und Klicks nach der Änderung sind noch unbekannt. [DE](https://luxestyle.ch/collections/weihnachtspyjama-familie) · [FR](https://luxestyle.ch/fr/collections/weihnachtspyjama-familie) |
+
+## Abendlauf 28.11.2026
+
+### Konsolidierter Tagesstand
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Social | Die fälligen Auslieferungen bestehender Beiträge einzeln nachgesehen. Die letzte vollständige Planung wurde um 18:57 Uhr Zürich bis einschliesslich 5. Dezember geprüft. | 13 kanalbezogene Veröffentlichungen heute: 7 Instagram, 3 Facebook, 2 Threads, 1 TikTok. Die Girlande von 18 Uhr ist jetzt auch bei TikTok publiziert. In diesem Abendlauf kein neuer Beitrag. [TikTok](https://www.tiktok.com/@luxestyle.ch/video/7713270302779641127) |
+| Google Merchant und CJ | Analyse der Grundpreisdaten des Glitzer-Sprays aus dem Nachmittagslauf übernommen. Abends drei veraltete Angebote einzeln zur Primärquelle und zur öffentlichen Fehlseite zurückverfolgt. Die heutige CJ-Antwort zur Öl-Sprühflasche geprüft. | Google lässt das Glitzer-Spray in CH und LI für kostenlose Einträge zu. Die drei anderen Angebote sind in beiden Ländern wegen `landing_page_error` abgelehnt. CJ verweist auf die Produktseite. Für die 16 Ausführungen fehlen weiterhin die angefragten Originale, Set-Zuordnungen und Werberechte. [CJ-Antwort](https://mail.google.com/mail/#all/1a2224dda4f98f83) |
+| Suche und Bio-Links | Passende Kaufwege für Schweizer Suchanfragen geprüft. Das Wichtel-Set und den Kamera-Rucksack anhand veröffentlichter Beiträge im Bio-Regal nachgeführt, die Girlande mit ihren Varianten abgeglichen. Die Einreichungsbestätigung bei Shopping Total geprüft. | Die Geschenkauswahl führt zu konkreten Varianten. Der kostenlose Verzeichniseintrag ist eingereicht, eine öffentliche Profiladresse ist offen. [Bio-Kaufwege](#kostenlose-kaufwege-aus-social-und-suche--1524-uhr-zürich) |
+| Lieferanten-Support | Beim separaten CJ-Ticket zur Augencreme den Mailverlauf, das Versandlabel und den Shopify-Status geprüft. | Ein Label war angelegt. Die Übergabe an den Frachtführer und der CJ-Haltestatus blieben offen. Die Prüfung löste keine Kundenansprache oder Bestellung aus. [Morgendliche Gegenprobe](#versandgegenprobe-lx1047--0823-uhr-zürich) |
+| Geschenkideen und SEO | Die Geschenkberatung und Auswahlwege auf Deutsch und Französisch überarbeitet. Drei Kollektionen heute im öffentlichen Shop nachgelesen. | Alle sechs Sprachseiten zeigten die geprüften Suchtexte. Die Budgetseite öffnet die gewählte Schmetterlingstasse bzw. das Armband. Der Geschenkefinder führt zum Plüschpanda aus Schweizer Lager. Die Google-Übernahme und neue Käufe sind unbekannt. [SEO-Beleg](#suchtexte-für-geschenkideen-kleine-budgets-und-familienpyjamas) |
+| Zwei Pyjamas | Am Abend den vermeintlichen Grössennachweis am Weihnachtsmann-/Rentierpyjama, die drei Produktfotos sowie beide Kaufwege geprüft. Den deutschen Text korrigiert und die fehlenden französischen Texte ergänzt. Beim verlinkten Partnerlook-Modell die komplette Grössenwahl übersetzt. | Die Angabe «Grösse M» war keiner Lieferantenvariante zugeordnet. Jetzt sieht man die offene Grösse und Menge auf beiden Sprachseiten. Der verlinkte Artikel hat 25 französische Ausführungen und erklärt den Einzelpreis. Vier reguläre Sprach-/Produktpfade und die Baby-Ausführung geprüft. [Weihnachtspyjama](https://luxestyle.ch/products/familien-pyjama-mit-weihnachts-print-607200?variant=68324508139911) · [Modell mit Grössenwahl](https://luxestyle.ch/fr/products/weihnachts-pyjama-im-partnerlook-764352?variant=55873727627649) |
+| Geschenkkarte | Tagsüber Produkttexte und 114 lokale Prüfungen abgeschlossen. Am Abend Admin- und Bearbeitungsfassung desselben Themes und beide öffentlichen Seiten mit CHF 25 verglichen. | Weiterhin 82’929 gegenüber 82’556 Bytes beim Produkt-Template. Beide öffentlichen Sprachseiten zeigen fälschlich CHF 7 Paketversand für den digitalen Gutschein. Alle drei Gutscheinwerte haben `requiresShipping=false`. Die öffentliche Theme-Korrektur ist offen. [Vorschau und Prüfsummen](../../geschenkkarte-2811/BEFUND.md) |
+| Cascade Modell 1 | Materialeingang, Shopify-Medien, Variantenfoto, Kaufbarkeit und die sechs Kanalziele geprüft. Den Makroschnitt auf den sichtbaren Verbindungsring ausgerichtet. | Der private Eingang war leer. Shopify hat weiterhin die vier bekannten Fotos und das Video mit eingeblendetem Preis. Für den neuen Film fehlen drei Originalaufnahmen und kommerzielle Bearbeitungs-/Werberechte. [Materialeingang](https://drive.google.com/drive/folders/167WUXHi_ssPCjPhc1mImngI0bJXuinzs) |
+| Kennzahlen, Klaviyo und DNS | Den Tagesbericht für 21.–27.11. wiederverwendet. Vier DNS-Werte öffentlich bestätigt. | Die Klaviyo-Anmeldung scheiterte bereits beim Abruf der Bestellmetrik. Die aktuellen Welcome-, Checkout- und Warenkorbergebnisse bleiben unbekannt. In diesem Lauf wurden keine Umsatzwerte in CHF oder USD zusammengeführt. [Kanalwerte und Tagesabdeckung](#kennzahlen-212711) |
+
+### Planung und drei bestehende Kartenetui-Termine
+
+Shopify bestätigte `luxestyle.ch`, CHF und Europe/Zurich. Metricool-Marke `6227837` meldete Europe/Zurich, Instagram/Threads/TikTok `luxestyle.ch`, Facebook `1049840534888592`, Pinterest `luxestyleCH` und YouTube `UCSfCEYjAsdOyYxyfTClXRZA`.
+
+| Tag Zürich | Aktueller Stand bei der Kalenderlesung um 18:57 | Offene Kanäle |
+|---|---|---|
+| 28.11. | Instagram, Facebook, Threads und TikTok publiziert. Pinterest 19:10 und 20:00 terminiert. | YouTube |
+| 29.11. | 17:00 Instagram/Facebook, 18:00 TikTok, 19:10 Pinterest. Die ersten drei Kanaltermine betreffen das Kartenetui. | Threads und YouTube |
+| 30.11. | Pinterest 19:10 und 20:00. Der spätere Termin betrifft das Kartenetui. | Instagram, Facebook, TikTok, Threads und YouTube |
+| 01., 02., 03., 04. und 05.12. | An jedem der fünf Tage fehlt ein aktiver Termin. | Alle sechs Kanäle |
+
+Acht künftige Kanaltermine in sieben Objekten bei der Lesung. Alle mit `draft=false` und `autoPublish=true`. Die separaten TikTok-/Pinterest-Schalter wurden vom Connector nicht ausgegeben. Unter den künftigen Objekten im Fenster fand sich pro Kanal kein identischer Mediensatz und keine Slotkollision. Heute liefen bei Threads um 11:00 und bei Instagram um 15:23 jeweils unterschiedliche Beiträge gleichzeitig. Die gesichteten Warteschlangen und Freigabebelege enthielten für die Lücken kein zusätzliches Medium mit belegter Produktzuordnung, passenden Werberechten und Inhaltsfreigabe.
+
+**Vor dem ersten Kartenetui-Termin am 29.11. um 17 Uhr prüfen:** Shopify-Produkt `15473085514113` ist aktiv. Alle fünf Farben kosten CHF 15.90. Der aktuelle Tag `rueckhol-0907` sperrt neue Social-Ausspielungen. Drei bereits bestätigte Objekte wurden zur Entscheidung der zuständigen Planerfreigabe mit ihrem bestehenden Status dokumentiert.
+
+| Kanal / Termin | Metricool-ID | Stabile UUID |
+|---|---:|---|
+| IG und Facebook, 29.11. 17:00 | 442297277 | `-269455241548050534` |
+| TikTok, 29.11. 18:00 | 442297184 | `-9215954918513619180` |
+| Pinterest, 30.11. 20:00 | 442297377 | `-3377774544048468147` |
+
+Beim bestehenden Wichtel-Pin von 29.11. um 19:10 (`440688313`, UUID `-1741094466247049192`) gilt «unter CHF 20» nur für einzelne Ausführungen auf der Zielseite. Der Pin verwendet laut Post ein KI-Symbolbild. Die Kollektionsbeschreibung auf der Zielseite führt bereits zu geprüften Ausführungen. Bestehende Termine, Tags und Bilder wurden im Abendcheck nicht geändert.
+
+### Beleg zu den beiden öffentlichen Pyjama-Kaufwegen
+
+Produkt `16739024634247`, Variante `68324508139911`, CHF 24.90: `ACTIVE`, ohne Bestandsverfolgung, `CONTINUE`, im Shop kaufbar. Die einzige Option lautet `Default Title`. Die SKU `CJ-2611190730161607200` verweist auf ein Lieferantenprodukt. Der aktuelle Importer erzeugt dieses Format absichtlich aus der Produkt-ID. Die Variante hat weder ein eigenes Foto noch ein Metafeld mit einer Lieferanten-Varianten-ID. Die drei Galeriefotos belegen das dunkle Motiv mit Weihnachtsmann, Rentier und roten Bündchen. Grösse und Anzahl Pyjamas im Angebot sind offen. In der ersten öffentlichen Gegenprobe blendete das Theme die Grösseninformation im technischen Detailblock aus. Der Text wurde in den sichtbaren Beschreibungsteil verschoben. Die zweite Gegenprobe fand den ausdrücklichen Hinweis und den sprachrichtigen Variantenlink im Hauptinhalt von DE und FR. [Importlogik](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/automation/cj_sku_import.mjs#L451-L457) · [Französische Kaufseite](https://luxestyle.ch/fr/products/familien-pyjama-mit-weihnachts-print-607200?variant=68324508139911)
+
+Partnerlook-Produkt `15447971430785`: vier französische Produkt-/Suchfelder, der Optionsname «Modèle et taille» sowie 25 Ausführungsbezeichnungen in Shopify und im Shop bestätigt. Papa S kostet CHF 16.90 (Variante `55873727627649`), Baby 60 CHF 14.90. Beim Einteiler für Babys und beim Zweiteiler ist der Preis für die gewählte Person ausgewiesen. Die deutsche Preisklarstellung blieb erhalten. Die Änderungen betreffen Produkttexte und deren Übersetzungen. Ein katalogweiter Editor-Test war in diesem begrenzten Lauf nicht möglich.
+
+### Content-Entwurf zur Abnahme
+
+`luxe_cascade_creolen_20261122`, Shopify-Variante `67870931517831`, Modell 1, CHF 26.90. Die Variante war in DE und FR kaufbar, Tracking aus, `CONTINUE`. 16 aktuelle Tags ohne Social-Sperrtreffer. Das gebundene 750 × 750 grosse Bild zeigt Kugel, Ring und Tropfen. [Originales Variantenfoto](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec5377d7-40ed-42d4-8e8b-07c4873e3d91.jpg?v=1790745331)
+
+**Ein 18-Sekunden-Film, zwei mögliche Einstiege.** A beginnt mit der Frage «Wo sitzt der kleine Ring?». B beginnt ohne Frage mit «Das Paar im Seitenlicht.» Für den Schnitt wird einer der beiden Texte gewählt. Warmes Taupe und Creme, weiches Seitenlicht, kontrollierter Weissabgleich. 1080 × 1920, 30 fps. Die polierte Kugel spiegelt die Kamera. Vor dem ersten Take die Reflexion prüfen und die Öffnung des Verbindungsrings vollständig ins Bild nehmen.
+
+| Schnittzeit | Handlung und Texteinblendung |
+|---|---|
+| 0–6 s | Das Paar hängt ruhig. Ein weicher Lichtreflex zieht über beide Kugeln. Den gewählten Einstieg in den ersten zwei Sekunden einblenden. |
+| 6–10 s | Makro auf den kleinen Ring zwischen Kugel und Tropfen. Der Fokus folgt der Verbindung. Das Bild beantwortet die Frage aus Einstieg A. |
+| 10–15 s | Ruhige seitliche Kamerafahrt zurück aufs Paar. Einblendung «Creolen Cascade». |
+| 15–18 s | Zur gleichen Gesamtansicht wie zu Beginn schneiden und halten. «Cascade entdecken» mit Abstand zu den Bedienelementen der Plattform. |
+
+Die drei Originaltakes benötigen mindestens 11, 8 und 7 Sekunden. Kein Voiceover. Die geprüfte Datei `automation/music/luxe-premium.wav` stimmt mit SHA-256 `a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688` überein. Die Produktionscredits liegen vor. Die Rechtegegenprobe für das verwendete Samplematerial ist offen. Der historische lokale Kristallclip war am benannten Pfad nicht vorhanden. Für Cascade liegt noch kein neuer gerenderter Master vor. [Bestehende Schnittliste](CASCADE-MODELL-1-SCHNITTPLAN-20261128.edl)
+
+| Kanal | Textentwurf nach Filmabnahme | Produktziel |
+|---|---|---|
+| Instagram | «Siehst du den kleinen Ring zwischen Kugel und Tropfen? Such auf luxestyle.ch nach ‹Creolen Cascade›.» | [Ziel für einen späteren Profillink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=instagram&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=instagram_cascade_modell1) |
+| TikTok | «Schau auf die Verbindung, wenn die Kamera näher kommt. Du findest Modell 1 im Shop unter ‹Creolen Cascade›.» | [Ziel für einen späteren Profillink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=tiktok&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=tiktok_cascade_modell1) |
+| YouTube Shorts | Titel «Wie hängt der Tropfen an der Cascade-Creole?» · Beschreibung «Modell 1 aus der Nähe. Such auf luxestyle.ch nach ‹Creolen Cascade›.» | [Ziel für einen geprüften Profillink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=youtube&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=youtube_cascade_modell1) |
+| Facebook | «Das Paar im Seitenlicht, dann der kleine Ring im Detail. Hier findest du die goldfarbenen Cascade-Creolen in Modell 1.» | [Produkt](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=facebook&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=facebook_cascade_modell1) |
+| Threads | «Was ist dir zuerst aufgefallen, die runde Kugel oder der längliche Tropfen?» | [Produkt](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=threads&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=threads_cascade_modell1) |
+| Pinterest | Titel «Goldfarbene Creolen mit Tropfenanhänger – Cascade» · Beschreibung «Modell 1 im Detail. Zwischen Kugel und Tropfen sitzt ein kleiner Ring.» | [Pin-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=pinterest&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=pinterest_cascade_modell1) |
+
+Die Bio-Kurzlinks für Instagram und TikTok führen zur Kollektion `756379189639`. Sie enthält Cascade beim Abendcheck nicht. Die exakte Suche nach «Creolen Cascade» funktioniert. Das Pinterest-Schmuckboard `1111333714239531707` ist nativ bestätigt. Für YouTube ist allgemeines Schmuckpublikum vorgesehen. Die Einstellung `madeForKids=false` muss am konkreten Beitrag bestätigt werden. [Schmuckboard](https://www.pinterest.com/luxestylech/schmuck-accessoires/)
+
+### Eine Verkaufsaktion zur Freigabe
+
+Die drei folgenden veralteten Einträge in der tatsächlich einliefernden Primärquelle `accounts/5797470070/dataSources/10667445201` einzeln zurückziehen und nach der nächsten Verarbeitung prüfen, ob sie erneut eingereicht werden. Deutsch, Feed-Label `CHF_99383214465`. Google führt alle drei für kostenlose Einträge in CH und LI als abgelehnt. Jede exakt eingereichte Adresse lieferte öffentlich HTTP 404. Die Shopify-Produkte sind Entwürfe ohne öffentliche Produktseite. Bei Ohrringen und Ring ist auch die gemeldete Variante entfernt.
+
+- Handschuhe: `shopify_ZZ_15447921066369_56052967211393`
+- Ohrringe: `shopify_ZZ_15449118179713_55879464386945`
+- Ring: `shopify_ZZ_15449477677441_55882200711553`
+
+Der Abgleich ist erledigt. Die Bereinigung liegt bei der zuständigen Merchant-Rolle. Im Abendlauf erfolgte kein Schreibzugriff auf die Datenquelle. [Merchant-Diagnose](https://merchants.google.com/mc/products/diagnostics?a=5797470070)
