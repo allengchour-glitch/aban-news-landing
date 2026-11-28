@@ -28,7 +28,7 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Kostenlose Kundengewinnung | Schweizer Shopverzeichnis und Referenzbesuche geprüft, Eintrag für LuxeStyle CH formuliert und Google-Kanaldaten der Variante «Kolibri» abgeglichen. | Shopping Total bietet einen kostenlosen Eintrag mit redaktioneller Prüfung. Entwurf vorbereitet. Google-Freigabe für kostenlose Einträge unbekannt. |
 
-| Shopping Total | Freigegebenes Profil durch acht Formularschritte geführt, Shoplogo hochgeladen und einmal abgesendet. | Das Formular beanstandet die fehlende hCaptcha-Bestätigung. Eingang bei der Redaktion ausstehend. |
+| Shopping Total | Profil vorbereitet und anschliessend die vom Inhaber übermittelte Bestätigung geprüft. | Formular erfolgreich übermittelt. Redaktionelle Freischaltung offen. |
 
 ## Metricool
 
@@ -296,3 +296,7 @@ Der Inhaber hat den kostenlosen Verzeichniseintrag freigegeben. Die acht Formula
 Einmal auf «Absenden» geklickt. In Schritt 8 meldete Shopping Total «The captcha is missing from this form». Eine persönliche hCaptcha-Bestätigung und die Eingangsbestätigung der Redaktion stehen aus. Das Formular im eigenen Browser kann die Eingabe der Daten erneut verlangen. [Offizielles Formular](https://shoppingtotal.ch/shop-oder-onlineshop-eintragen/onlineshop-eintragen/)
 
 HYPD bietet mit Free Forever ein ausgewähltes Konto über alle unterstützten Plattformen hinweg kostenlos an. Starter umfasst bis zu drei Konten für EUR 19.99 netto pro Monat bei monatlicher Abrechnung. Der persönliche Tarif und eine allfällige bestehende Rechnung sind nicht einsehbar. Für den Verzeichniseintrag braucht es kein HYPD-Abo. [Tarife](https://feedback.hypd.ai/en/help/articles/3876895-hypd-plans-and-pricing-overview) · [HYPD-Preisseite](https://www.hypd.ai/pricing)
+
+### Übermittlung an Shopping Total bestätigt
+
+Am 28.11.2026 belegte der Inhaber die erfolgreiche Einreichung mit einem Screenshot. Shopping Total zeigt «Das Formular wurde erfolgreich übermittelt. Vielen Dank!» und weist auf die Prüfung vor der Veröffentlichung hin. Eine öffentliche Profiladresse ist bislang nicht belegt.
