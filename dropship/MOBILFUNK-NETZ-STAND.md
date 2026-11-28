@@ -381,3 +381,10 @@
 | Urteil | Beleg | Produkt |
 |---|---|---|
 | unklar-sim | SIM ohne Netz | [Auto-Montierbarer 5G GPS-Tracker mit Aufnahmefunktion](https://luxestyle.ch/products/auto-montierbarer-5g-gps-tracker-mit-aufnahmef-634300) |
+
+## Lauf 2026-11-28 00:38 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| bluetooth | Bluetooth | [Smart-Sportuhr mit GPS und Herzfrequenz](https://luxestyle.ch/products/smart-sportuhr-mit-gps-und-herzfrequenz-635100) |
+| unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
