@@ -3924,3 +3924,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Geschenktermin und laufende Auslieferung](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung)
 
 [LUXESTYLE_R321_20261128_GESCHENKTERMIN]
+
+### R322 · Abendlauf um 19 Uhr Zürich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Kaufweg für Familienpyjamas | Drei Fotos und die Einzelauswahl bei Produkt `16739024634247`, Variante `68324508139911`, mit dem Versprechen einer Grössenwahl verglichen. Kauftext und Auswahlhilfe auf DE und FR korrigiert. Beim verlinkten Partnerlook `15447971430785` vier Produktfelder, Optionsname und 25 Variantenwerte auf Französisch ergänzt. | Beim Einzelangebot zu CHF 24.90 ist die falsche Grössenzusage entfernt. Die öffentlichen DE-/FR-Formulare wählen die richtige Variante. Im Partnerlook sind Papa S für CHF 16.90 und Baby 60 für CHF 14.90 in der französischen Auswahl bestätigt. |
+| Metricool | Heutige Auslieferungen je Kanal und die Planung bis und mit 5.12. geprüft. | 13 Auslieferungen bestehender Beiträge: 7 Instagram, 3 Facebook, 2 Threads und 1 TikTok, darunter die [TikTok-Girlande](https://www.tiktok.com/@luxestyle.ch/video/7713270302779641127). Acht weitere Kanaltermine sind bis 30.11. erfasst. Vom 1. bis 5.12. sind die sechs Kanäle offen. |
+| Kartenetui | Die drei bestehenden Metricool-Objekte für den 29./30.11. zum Produkt `15473085514113` mit dem aktuellen Tag `rueckhol-0907` verglichen und im Abendbeleg für die Freigabestelle erfasst. | Betroffen sind Instagram/Facebook, TikTok und Pinterest. Im Abendlauf wurde kein Beitrag angelegt, verändert oder aktiviert. |
+| SEO im Tagesverlauf | Die bereits am Nachmittag erfolgten Änderungen an Geschenkideen, Geschenken bis CHF 30 und Familienpyjamas im Tagesstand zusammengeführt. | Die drei Kollektionen wurden auf sechs öffentlichen Sprachpfaden geprüft. Neue Suchrankings und Klicks nach der Textänderung bleiben unbekannt. |
+| Cascade | Privaten Materialeingang, Variantenfoto, beide Produktseiten und Shopify-Medien abgeglichen. Den Ring zwischen Kugel und Tropfen in der Makroeinstellung und den Kanaltexten aufgegriffen. | Modell 1, Variante `67870931517831`, ist zu CHF 26.90 kaufbar. Es fehlen die drei geeigneten Originalaufnahmen und die kommerziellen Schnitt- und Werberechte. Der bestehende Schnittplan ist der Arbeitsstand. |
+| CJ · Öl-Sprühflasche | Neue Lieferantenantwort zur bestehenden Bildanfrage ausgewertet. | CJ verweist auf Bilder der Artikelseite. Für die 16 angefragten Ausführungen fehlen weiterhin Originaldateien, bestätigte Set-Inhalte und Nutzungsrechte. |
+| Google Merchant | Drei dokumentierte Angebote samt Quelle und öffentlichem Produktziel einzeln geprüft. | Quelle `10667445201` führt die Angebote für Handschuhe, Ohrringe und Ring mit fehlerhaften Zielseiten. Alle drei Ziele antworteten mit HTTP 404. Die Shopify-Produkte sind Entwürfe. Die Gratis-Einträge für CH und LI sind abgelehnt. |
+| Gutschein | Produkt- und Theme-Fassungen sowie den Versandhinweis in beiden Sprachfassungen gegengeprüft. | Für den digitalen Gutschein zeigt der Shop weiterhin CHF 7 Paketversand aus Asien. Shopify-Admin und Bearbeitungsansicht liefern unterschiedliche Template-Fassungen. Die öffentliche Theme-Korrektur ist offen. |
+| Kennzahlen und Klaviyo | Den Tagesbeleg für 21.–27.11. verwendet. Aktuelle technische Gegenproben getrennt erfasst. | Fehlende Kanaltage bleiben unbekannt. Klaviyo verlangt für den Flowreport eine neue Anmeldung. Die vier genehmigten DNS-Werte sind öffentlich bestätigt. |
+
+[Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
+
+[LUXESTYLE_R322_20261128_19H]

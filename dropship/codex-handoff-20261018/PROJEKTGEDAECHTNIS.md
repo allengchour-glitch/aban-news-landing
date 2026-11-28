@@ -1,3 +1,13 @@
+# R322 · Abendlauf LuxeStyle · 28.11.2026
+
+Für den Familienpyjama mit Einzelauswahl sind die Kauftexte auf Deutsch und Französisch korrigiert. Bei der verlinkten Partnerlook-Auswahl sind alle 25 französischen Variantenbezeichnungen eingetragen. Metricool bestätigte am 28.11. dreizehn Auslieferungen bestehender Beiträge. Bis 30.11. sind acht weitere Kanaltermine erfasst. Für 1.–5.12. blieben alle sechs Kanäle ohne aktiven Termin.
+
+Die drei veralteten Merchant-Angebote einzeln in Quelle 10667445201 zur Bereinigung vorlegen. Für 1.–5.12. geeignete Beiträge und für Cascade neue Originalaufnahmen und Rechtebelege prüfen. Die anstehende Ausspielung des Kartenetuis bedarf wegen des aktuellen Sperrtags einer Prüfung durch die Freigabestelle. [Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
+
+[LUXESTYLE_R322_20261128_19H]
+
+---
+
 # R321 · Geschenktermin und laufende Auslieferung · 28.11.2026
 
 Die Haupt-Geschenkkollektion führt auf Deutsch und Französisch zur geprüften Panda-Variante aus dem Schweizer Lager. Die drei Gutscheinwerte sind digital. Um 17:12 Uhr Zürich waren die Girlandenbeiträge auf Instagram und Facebook veröffentlicht. Instagram wechselte von `PUBLISHING` um 17:05 Uhr zu `PUBLISHED` um 17:12 Uhr Zürich. [Instagram](https://www.instagram.com/p/DgSpF06DTWY/) · [Facebook](https://facebook.com/122108214291350792/posts/122156414337350792). Die Auslieferungsprüfung ist abgeschlossen.

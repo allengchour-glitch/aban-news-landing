@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 321,
-  "updatedAt": "2026-11-28T16:13:50Z",
+  "revision": 322,
+  "updatedAt": "2026-11-28T18:03:46Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51085,6 +51085,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung"
       ]
+    },
+    {
+      "revision": 322,
+      "at": "2026-11-28T18:03:46Z",
+      "summary": "Für den Familienpyjama mit Einzelauswahl sind die Kauftexte auf Deutsch und Französisch korrigiert. Bei der verlinkten Partnerlook-Auswahl sind alle 25 französischen Variantenbezeichnungen eingetragen. Metricool bestätigte am 28.11. dreizehn Auslieferungen bestehender Beiträge. Bis 30.11. sind acht weitere Kanaltermine erfasst. Für 1.–5.12. blieben alle sechs Kanäle ohne aktiven Termin.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026"
+      ]
     }
   ],
   "salesGoal": {
@@ -83372,5 +83380,46 @@
       "deliveryCheckComplete": true
     },
     "nextStep": "Den mobilen Versandhinweis beim Gutschein nach der Theme-Korrektur öffentlich prüfen."
+  },
+  "run322": {
+    "masterId": "luxe_cascade_creolen_20261122",
+    "variantId": "67870931517831",
+    "merchantTaskId": "merchant-oil-overlay-15450848723329",
+    "merchantSource": "10667445201",
+    "klaviyoReportStatus": "AUTH_BLOCKED",
+    "otherDailyAnalytics": "REUSED",
+    "shopProduct": "16739024634247",
+    "singleVariant": "68324508139911",
+    "linkedProduct": "15447971430785",
+    "frenchTranslationFields": 30,
+    "metricool": {
+      "brandId": "6227837",
+      "published": 13,
+      "byNetwork": {
+        "instagram": 7,
+        "facebook": 3,
+        "threads": 2,
+        "tiktok": 1
+      },
+      "futureNetworkSlots": 8,
+      "lastPlannedDate": "2026-11-30",
+      "dateGapsAllNetworks": [
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-05"
+      ],
+      "cardHolderProduct": "15473085514113",
+      "cardHolderTag": "rueckhol-0907",
+      "affectedObjects": 3,
+      "plannerWrites": 0
+    },
+    "cjReplyId": "1a2224dda4f98f83",
+    "cjReplyAt": "2026-11-28T14:16:45+01:00",
+    "giftCardDisplay": "OPEN_PUBLIC_SHIPPING_NOTICE",
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026",
+    "status": "partially_complete",
+    "nextStep": "Die drei veralteten Merchant-Angebote einzeln in Quelle 10667445201 zur Bereinigung vorlegen. Für 1.–5.12. geeignete Beiträge und für Cascade neue Originalaufnahmen und Rechtebelege prüfen. Die anstehende Ausspielung des Kartenetuis bedarf wegen des aktuellen Sperrtags einer Prüfung durch die Freigabestelle."
   }
 }
