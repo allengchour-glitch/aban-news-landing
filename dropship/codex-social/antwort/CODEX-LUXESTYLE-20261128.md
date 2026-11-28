@@ -649,3 +649,40 @@ Die französische Startseite öffnet den Gestaltungskatalog mit `?view=luxe-gest
 Die aktive Aufgabe liest die aktualisierte Übergabe. Der nächste reguläre Lauf ist am 29. November um 08.00 Uhr Europe/Zurich eingetragen.
 
 **Nachkontrolle auf Shopify:** Die Referenzdateien im bestehenden unveröffentlichten Printful-Theme 213482963335 stimmten mit den vier geprüften Dateien des Hauptthemes überein. Die beiden korrigierten Dateien und die 42 katalogbezogenen FR-Texte sind in dieser Vorschau gespeichert und zurückgelesen. Bei 390 × 844 Pixeln blieb die Samsung-Variante beim Klick aus der Suche französisch, «coque» ergab drei Modelle. Die öffentliche Hauptansicht verwendet weiterhin den bisherigen Suchcode. [Shopify-Vorschau öffnen](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335)
+
+## Tasse, T-Shirt und französische Druckvorschau
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gestaltungsratgeber | Den direkten Kaufweg zur Samsung-Hülle in DE und FR ergänzt und den pauschalen Hinweis zum Gratisversand berichtigt. Die drei deutschen Schaltflächen aus der aktuell ausgelieferten Tassen-Druckvorschau im französischen Ratgeber erklärt. | Beide öffentlichen Ratgeber und beide Produktziele antworteten mit HTTP 200 in der vorgesehenen Sprache. Der Standardversand ab CHF 50 nach Rabatten ist im Text ausdrücklich auf die Schweiz bezogen. [DE](https://luxestyle.ch/pages/selbst-gestalten) · [FR](https://luxestyle.ch/fr/pages/selbst-gestalten) |
+| Keramiktasse aus dem Ratgeber | Beim Produkt 15422823465345 französischen Produkttitel, Suchtitel, Suchbeschreibung und die Auswahl «Contenance» gepflegt. Das Produktfoto zeigt eine weisse Tasse mit Henkel. | Auf DE und FR wechselten Preis, URL und Warenkorbformular mobil von 325 ml (CHF 22.90) auf 444 ml (CHF 25.90). Die dritte Ausführung mit 591 ml war für CHF 23.90 kaufbar. Der Produkteditor wurde mit der richtigen Karte geladen. Der anders benannte Becher im Spezialkatalog ist ein eigener Artikel. [Französische Tassenvariante](https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten?variant=55777979629953) |
+| Weisses Unisex-T-Shirt | Anhand des tatsächlich angebundenen weissen Modells Gildan 5000 die widersprüchliche Materialangabe auf 100 % Baumwolle korrigiert. Französischen Produkttitel, Suchfelder und die Auswahl «Taille» ergänzt. | Vier DE-/FR-Variantenlinks geprüft. Beim mobilen Wechsel von S (CHF 24.90) auf 2XL (CHF 26.90) übernahmen URL und Formular dieselbe Variante. Alle acht Varianten sind erhalten. [T-Shirt in 2XL](https://luxestyle.ch/fr/products/klassisches-unisex-t-shirt-selbst-gestalten?variant=55778084127105) · [Herstellerdaten zur weissen Ausführung](https://api.printful.com/products/variant/11576) |
+| Suche | Den Kaufweg auf dem Haupttheme mit der bisherigen Katalogvorschau und der normalen Shopsuche verglichen. | Im öffentlichen Spezialkatalog lieferte «coque» weiter keinen Treffer. Die normale französische Shopsuche zeigte die personalisierbare Samsung-Hülle für «coque samsung galaxy» an erster Stelle unter elf Ergebnissen. Der Ratgeber verlinkt jetzt direkt auf diesen Artikel. [Öffentliche Suche](https://luxestyle.ch/fr/search?q=coque+samsung+galaxy&type=product) |
+
+### Französische Versandrichtlinie zur Entscheidung
+
+Die französische Versandrichtlinie nennt ausschliesslich Schweizer Lieferadressen. Die deutsche Richtlinie und Shopifys aktiver Markt führen die Schweiz und Liechtenstein. Beim Standardprofil 132124180865 der geprüften Keramiktasse und Samsung-Hülle sind CHF 14.90 für Liechtenstein sowie für die Schweiz CHF 7.00 und eine Gratisoption ab CHF 50 aktiv. Der vorgeschlagene Abgleich betrifft die Absätze zum Liefergebiet, zu zulässigen Adressen und zum Standardversand. Für die separat abweichende Expresslieferzeit fehlt ein operativer Nachweis. [Versand DE](https://luxestyle.ch/policies/shipping-policy) · [Versand FR](https://luxestyle.ch/fr/policies/shipping-policy)
+
+Formulierung zur Freigabe für die betroffenen Sätze: «Nous livrons en Suisse et au Liechtenstein. Veuillez indiquer une adresse de livraison dans l’un de ces deux pays. En Suisse, la livraison standard est offerte dès CHF 50, réductions déduites. Au Liechtenstein, la livraison standard coûte CHF 14.90 par commande.» Die Richtlinie wurde bei diesem Abgleich nur gelesen.
+
+**Druckgrösse der Tasse.** Der 444-ml-Direktlink und der mobile Wechsel von 325 auf 444 ml führten im öffentlichen Editor zur letzten Druckvorschau für 444 ml. Die gerenderte Druckdatei hatte in beiden Fällen 2700 × 1140 Pixel. Vor dem Wechsel hatte sie bei 325 ml 2700 × 1050 Pixel. Die Produktkarte nahm für die grössere Tasse die Printful-Variante 4830 und die Druckdatei 44. Produkt-URL und Warenkorbformular zeigten dieselbe Shopify-Variante 55777979662721. Die Prüfung endete vor der Übermittlung des Entwurfs. [444-ml-Kaufweg](https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten?variant=55777979662721)
+
+### Echte Shopify-Vorschau für die französische Tasse
+
+Die eigene Produktvorlage läuft im unveröffentlichten Theme 213482963335 mit der vorhandenen Produktseite und Variante 55777979629953. Für die Tasse (325 ml, CHF 22.90) wurde die im Shop verwendete Editorversion 6.4.0 auf Französisch erprobt. Um 20.02 Uhr Zürich öffnete die Texteingabe «Lune» im echten mobilen Shopify-Formular die Druckfreigabe mit zwei Bildern. Die Bestätigung blieb bis zur Prüfung gesperrt. «Continuer à personnaliser» führte per Fingertipp zur Bearbeitung zurück. Auch die deutsche Kontrollansicht funktionierte per Touch. Beide Seiten luden genau einen Editor. Es wurde keine Bestellung aufgegeben. [Mobile französische Vorschau](https://luxestyle.ch/fr/products/keramik-tasse-selbst-gestalten?variant=55777979629953&view=luxe-pod-fr-test-2811&preview_theme_id=213482963335&pb=0#lspod-start)
+
+| Datei im Vorschautheme | Zurückgelesene Shopify-Prüfsumme (MD5) |
+|---|---|
+| `templates/product.luxe-pod-fr-test-2811.json` | `df1c09522faf6daadd718048ebb19316` |
+| `layout/luxe-pod-fr-test-2811.liquid` | `3c87c47251048feca09c8aa25ece2ebe` |
+| `assets/lspod-fr-review-640-e41d0e6c.js` | `2f941ef27f0101cdb469076351d8973e` |
+
+Der SHA-256 der korrigierten JS-Quelle ist `e41d0e6cebae111588f06332d8d8c2f7509412b2a0b8c88ac8fe34464f803cb3`. Die Integritätsangabe im HTML passt zu den von Shopify tatsächlich ausgelieferten, minifizierten Bytes der versionierten Asset-Adresse (`1aeae200e1d53cb1ffa2d9f8c9b8b2da6a2791c541d00beafe9ae04187b5b06f`). Eine frühere unreferenzierte Vorschau-Datei `assets/lspod-fr-review-640-60bcc4fb.js` liegt noch im Entwurf. Der Shopify-Connector blockierte ihre Löschung. Ihr Code wird vom Besitzerlink nicht geladen.
+
+### Separater Abgleich mit Editorversion 6.4.2
+
+Der Besitzerbranch enthält einen reproduzierbaren Port auf 6.4.2. Die Sprachsteuerung ist für Französisch und fr-CH, Deutsch und Englisch geprüft. In der mobilen und der Desktop-Probe blieben die gespeicherten Werte für Text, Bild, Sticker und `_pod_karte` erhalten. Die erzeugte Druckdatei und die Produktbildpixel stimmten für das geprüfte Motiv mit der Ausgangsfassung überein. Eine eigens simulierte ausverkaufte Variante zeigte die französische Meldung und sperrte den Kaufweg. Für die in Shopify vorgeführte 6.4.0 ist der kleine zusätzliche Kompatibilitätspatch ebenfalls abgelegt. Die normalen DE-/FR-Kaufseiten laden weiterhin die bisherige 6.4.0. [Prüfpaket und Versionsvergleich](https://github.com/allengchour-glitch/aban-news-landing/blob/0aee4cbee81908c0096412582af48aaa64c05a99/dropship/codex-social/antwort/pod-v640-fr/README.md)
+
+### Auslieferung des 20-Uhr-Pins
+
+Der bereits terminierte Pinterest-Beitrag zur Weihnachtsgirlande, Metricool-ID `442295588`, UUID `-2369369075505934881`, wechselte von `PENDING` um 20.00 Uhr über `PUBLISHING` um 20.02 Uhr zu `PUBLISHED` um 20.03.20 Uhr Zürich. Pinterest gab die Plattform-ID `1111333645586847152` zurück. Für den 28. November sind damit 15 Kanalauslieferungen belegt, darunter zwei auf Pinterest. [Veröffentlichter Pin](https://www.pinterest.es/pin/1111333645586847152)
