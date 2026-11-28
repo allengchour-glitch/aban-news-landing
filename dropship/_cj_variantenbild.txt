@@ -9603,3 +9603,5 @@ gid://shopify/Product/15494689915265	zugeordnet	95	Elegantes Baumwollseidenkleid
 gid://shopify/Product/15494690242945	zugeordnet	16	Besticktes V-Ausschnitt Leinenkleid
 gid://shopify/Product/15498596155777	zugeordnet	30	Kinder-Outdoorsandalen mit Klettverschluss
 gid://shopify/Product/15498596745601	zugeordnet	24	Leichte Mesh-Sneakers für Kinder
+gid://shopify/Product/15486082285953	zugeordnet	18	Damen-Bluse mit V-Ausschnitt
+gid://shopify/Product/15486082351489	zugeordnet	42	Weites Langarmshirt
