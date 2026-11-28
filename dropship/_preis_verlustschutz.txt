@@ -362045,3 +362045,7 @@
 67675231977863	heben	52.90	74.90	59.76	2026-11-28	schwarze-high-heel-boots-mit-ruckenschnalle-392512
 67675232010631	heben	52.90	74.90	60.08	2026-11-28	schwarze-high-heel-boots-mit-ruckenschnalle-392512
 67675232043399	heben	55.90	76.90	62.02	2026-11-28	schwarze-high-heel-boots-mit-ruckenschnalle-392512
+67801701843335	heben	55.90	56.90	45.16	2026-11-28	inline-skate-set-fur-kids-604500
+67801701941639	heben	55.90	56.90	45.16	2026-11-28	inline-skate-set-fur-kids-604500
+67801702039943	heben	55.90	56.90	45.16	2026-11-28	inline-skate-set-fur-kids-604500
+67801702138247	heben	55.90	56.90	45.16	2026-11-28	inline-skate-set-fur-kids-604500
