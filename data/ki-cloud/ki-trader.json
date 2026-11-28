@@ -420,6 +420,34 @@
     "btc": 60494.7109375,
     "eth": 1687.7418212890625
    }
+  },
+  {
+   "stand": "2026-11-27",
+   "zeit": "2026-11-28T13:05:48+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 714,
+   "kosten_usd": 0.021369,
+   "stufe": "opus",
+   "eskaliert": {
+    "von": "claude-haiku-5-5",
+    "grund": "Haiku nur 0.55 sicher bei Bitcoin"
+   },
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Klarer Abwärtstrend: 30 T. -26 %, Kurs rund 19 % unter dem 50-Tage-Schnitt. Seit einer Woche seitwärts zwischen 58'800 und 61'200, das ist eine Konsolidierung ohne Umkehrsignal. Angst&Gier 12 und MVRV 1.13 sprechen gegen einen grösseren Short, weil das Risiko eines Rebounds hoch ist. Ich halte die kleine Short-Position unverändert, so fallen keine Gebühren an und das Funding fliesst leicht zu mir.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist schwächer als BTC: 30 T. -29.5 %, 22.8 % unter dem 50-Tage-Schnitt. Gleichzeitig ist ein MVRV von 0.83 historisch nahe einer Kapitulationszone, und die Schwankung liegt bei 67 %/Jahr. Trend und Bewertung zeigen in verschiedene Richtungen, daher bleibe ich flach und zahle keine Gebühren.",
+    "sicherheit": 0.25
+   },
+   "kommentar": "Der Abwärtstrend ist intakt, aber die extreme Angst und die tiefen Bewertungen machen das Short-Risiko gross. Ich behalte die Positionen unverändert: BTC minimal short, ETH flach. Ein Ausbruch unter 58'800 bzw. 1'619 würde den Short stützen, eine Rückeroberung von 64'000 bzw. 1'830 würde ihn in Frage stellen.",
+   "kurse": {
+    "btc": 59866.37109375,
+    "eth": 1661.083251953125
+   }
   }
  ]
 }
