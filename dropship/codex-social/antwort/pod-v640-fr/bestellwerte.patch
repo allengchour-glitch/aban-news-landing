@@ -1,0 +1,14 @@
+--- a/pod/v6/lspod-designer-v6-6.4.0.js
++++ b/pod/v6/lspod-designer-v6-6.4.0.js
+@@ -2176,8 +2176,10 @@
+     // ── Warenkorb-Eigenschaften ─────────────────────────────────────────────────────────────────
+     var druckUrls = {};   // Platzierungs-ID → Cloudinary-Adresse der Druckdatei (erst nach «In den Warenkorb»)
+     function beschreibung(id) {
++      // Die vorhandenen Produktintegrationen erhalten die bisherigen Eigenschaftswerte.
++      var bestellTexte = FR ? TEXTE.de : T;
+       return st.ebenen[id].map(function (e) {
+-        return e.type === 'text' ? T.layerText + ': "' + (e.text || '').replace(/\n/g, ' / ') + '"' : e.type === 'sticker' ? T.layerSticker + ': ' + e.name : T.layerImage;
++        return e.type === 'text' ? bestellTexte.layerText + ': "' + (e.text || '').replace(/\n/g, ' / ') + '"' : e.type === 'sticker' ? bestellTexte.layerSticker + ': ' + e.name : bestellTexte.layerImage;
+       }).join(' \xB7 ');
+     }
+     /** Kennung für die Auftragsabwicklung (beginnt mit «_», wird dem Kunden nicht angezeigt): Modell, Variante, genutzte Platzierungen, Aufpreis.
