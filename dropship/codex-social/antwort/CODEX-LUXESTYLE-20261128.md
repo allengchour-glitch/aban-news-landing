@@ -24,6 +24,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Versandstatus #1047 | Shopify-Bestellung und Produkt geprüft. CJPacket zu der im CJ-Fall genannten Nummer abgefragt. | Shopify `UNFULFILLED`, Produkt `DRAFT`. CJPacket zeigt nur ein erstelltes Etikett. |
 
+| Schweizer Kundensuche | Google-Suchanfragen und Zielseiten gezielt ausgewertet, den Google-Abruf der Pyjama-Kollektion geprüft und die kaufbare Schmuckbox-Variante direkt aufgerufen. | Messbare Nachfrage für Familienpyjamas und Schmuckboxen. Eine französische Textkorrektur für den Totenkopfring ist zur Freigabe vorbereitet. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -240,3 +242,25 @@ CJPacket zeigte bei der Prüfung «Processing» und «Label created. Warehouse i
 Text für die bestehende Ticketnummer `T202611271548558321`, als Entwurf.
 
 > Could you confirm whether order LX1047 / SD2611251301040644900 is on hold and whether tracking EQKPT8613518515YQ has a first carrier scan? Please attach current photos of the exact item and outer packaging so we can verify the branding before dispatch.
+
+## Kundensuche in der Schweiz · Google und ChatGPT
+
+Über die zweite verbundene Search-Console-Integration in HYPD Paid Ads & Analytics ist die Property `https://luxestyle.ch/` jetzt lesbar. Der frühere Befund zur fehlenden Auswahl betraf die separat geprüfte HYPD-Integration. Quelle sind finale Daten für die Google-Websuche, Land Schweiz, vom 29.10. bis 25.11.2026. [Google Search Console](https://search.google.com/search-console/performance/search-analytics?resource_id=https%3A%2F%2Fluxestyle.ch%2F)
+
+| Kaufabsicht | Genaue Messung | Geprüfter Kaufweg |
+| --- | --- | --- |
+| Weihnachtspyjamas für Familien und Paare | Kollektionsseite insgesamt 170 Impressionen und 0 Klicks. Davon «partner weihnachtspyjama» 30 Impressionen bei Ø Position 26,3. Eine separate Produktseite erhielt für «weihnachts pyjama familie» 1 Klick bei 1 Impression. | Kollektion und Produkt erreichbar. Für das geprüfte Produkt zeigte der Shop aktuell den 14.–28. Dezember als voraussichtliches Lieferfenster. [Kollektion](https://luxestyle.ch/collections/weihnachtspyjama-familie) · [Modell](https://luxestyle.ch/products/weihnachts-pyjama-sets-fur-die-ganze-familie-613100) |
+| Schmuckbox | Für die Suchanfrage «schmuckbox» auf der Schmuckaufbewahrungsseite 2 Klicks bei 13 Impressionen. | Reise-Schmuckkästchen «Kolibri», CHF 16.90, in Shopify kaufbar. Öffentliche Auswahl und Warenkorb-Schaltfläche bestätigt. [Kategorie](https://luxestyle.ch/collections/schmuckaufbewahrung) · [Variante](https://luxestyle.ch/products/reise-schmuckkastchen-610400?variant=67843310649735) |
+| Lederbänder | Für «lederbänder» auf der Lederarmband-Kollektion 3 Klicks bei 8 Impressionen. Der Suchbegriff kann auch Bastelmaterial meinen. | [Zielseite für fertige Armbänder](https://luxestyle.ch/collections/lederarmbaender) |
+
+Google bestätigt die Pyjama-Kollektion als indexiert und als eigene kanonische URL. Letzter erfolgreicher Abruf am 01.11., letzter Shopify-Änderungszeitpunkt der Kollektion am 26.11. Die Wirkung der aktuellen Seitenfassung ist damit offen. [URL-Prüfung](https://search.google.com/search-console/inspect?resource_id=https://luxestyle.ch/&id=8fFwklmR8SKhVmNFAqsBBw&utm_medium=link&utm_source=api)
+
+**Französischsprachige Schweiz · ein Entwurf für die Produktsuche.** Die öffentlich aufgerufene französische Seite des Totenkopfrings zeigt den deutschen Produktnamen und Suchtext. Shopify liefert für dieses Produkt weder französischen Titel noch französischen SEO-Titel oder französische Meta-Beschreibung. Der Ring «No 6» kostet CHF 16.90 und wurde als kaufbar bestätigt. Für die geprüften französischen Suchbegriffe gab Google in diesem Zeitraum keine sichtbare Schweizer Zeile aus. Die Gothic-Kollektion hatte separat 8 Schweizer Sitzungen aus ChatGPT, 2 mit Warenkorb und 1 mit erreichtem Checkout. Die Sprache dieser Sitzungen ist unbekannt. [Französische Produktseite](https://luxestyle.ch/fr/products/titanstahlring-mit-totenkopf-624100?variant=67790731837831)
+
+| Französisches Feld für Produkt 16654379024775 | Text zur Freigabe |
+| --- | --- |
+| Produktname | Bague gothique à tête de mort |
+| SEO-Titel | Bague gothique à tête de mort \| LuxeStyle |
+| Meta-Beschreibung | Une bague à tête de mort pour compléter une tenue gothique. Choisissez votre taille et consultez le délai de livraison en Suisse sur la fiche produit. |
+
+Für einen neuen Pinterest-Pin fehlt eine konkret freigegebene Bilddatei mit belegtem Social-Nutzungsrecht. Der bestehende Social-Plan erhielt durch diese Recherche keinen neuen Beitrag. Die Auswertung erfasst Suchklicks und Onlineshop-Sitzungen. Eine neue Bestellung wurde dabei nicht nachgewiesen.
