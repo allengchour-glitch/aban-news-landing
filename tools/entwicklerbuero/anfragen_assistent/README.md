@@ -7,7 +7,7 @@ python3 assistent.py demo.csv /tmp/anfragen-demo --firma "Beispielbetrieb (Demo)
 python3 -m unittest discover -s . -p 'test_*.py'
 ```
 
-Der Ausgabeordner muss neu sein. Die CSV braucht `id,betreff,nachricht`; Kennungen müssen eindeutig sein. Ausgabe: `uebersicht.csv`, einzelne Entwürfe und `bericht.json`. Die Beispieldaten sind erfunden.
+Der Ausgabeordner muss neu sein. Die CSV braucht `id,betreff,nachricht`; Kennungen und Spaltennamen müssen eindeutig sein. Doppelte Spaltennamen werden vor der Verarbeitung abgewiesen, damit kein Anfragewert still verloren geht. Eindeutige Zusatzspalten bleiben zulässig. Ausgabe: `uebersicht.csv`, einzelne Entwürfe und `bericht.json`. Die Beispieldaten sind erfunden.
 
 ## Was ein Kunde bekommt
 
@@ -58,7 +58,7 @@ Der Import erzeugt keine Gmail-Entwürfe, ändert keine Labels, markiert nichts 
 python3 kommentar_antworter.py demo-kommentare.csv /tmp/kommentar-demo --wissen demo-faq.json
 ```
 
-Eingabe: CSV mit `id,plattform,text`, eindeutige Kennungen, höchstens 5000 Kommentare. Plattformwerte: instagram, facebook, tiktok, youtube, linkedin, pinterest, threads, andere. Ausgabe: eine lokale Prüfseite `index.html`, `antwortentwuerfe.csv` und ein Bericht mit null veröffentlichten Antworten. Die Plattformspalte ist nur eine Zuordnung; keine Plattform-API ist verbunden.
+Eingabe: CSV mit `id,plattform,text`, eindeutige Kennungen und Spaltennamen, höchstens 5000 Kommentare. Doppelte Spaltennamen werden vor der Verarbeitung abgewiesen; der vorhandene Arbeitsverlauf bleibt erhalten. Eindeutige Zusatzspalten bleiben zulässig. Plattformwerte: instagram, facebook, tiktok, youtube, linkedin, pinterest, threads, andere. Ausgabe: eine lokale Prüfseite `index.html`, `antwortentwuerfe.csv` und ein Bericht mit null veröffentlichten Antworten. Die Plattformspalte ist nur eine Zuordnung; keine Plattform-API ist verbunden.
 
 Die FAQ-Datei enthält `faq` mit Einträgen aus `stichwoerter` (Liste) und `antwort`. Für einen Kunden müssen die Demoantworten durch dessen freigegebene Angaben ersetzt werden. Ein eindeutiger Stichworttreffer übernimmt die hinterlegte Antwort. Lob erhält einen kurzen Dank. Unbekannte oder mehrere Fragen bleiben ohne Antwortentwurf; Beschwerden erhalten einen Hinweisentwurf zur privaten Klärung und bleiben manuell zu prüfen. Hinweise auf persönliche Daten sowie Spamverdacht erhalten keine Antwort.
 

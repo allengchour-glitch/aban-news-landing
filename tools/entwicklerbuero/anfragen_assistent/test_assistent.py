@@ -56,6 +56,49 @@ class AssistentTest(unittest.TestCase):
                 verarbeiten(p, root / "ausgabe", "Demo")
             self.assertFalse((root / "ausgabe").exists())
 
+    def test_doppelte_csv_spalten_stoppen_vor_ausgabe(self):
+        beschwerde = 'Beschwerde: defekt.\nBitte dringend prüfen.'
+        kontakt = 'Wie kann ich Kontakt aufnehmen?\nBitte Büroauskunft.'
+        basis = ['id', 'betreff', 'nachricht']
+        faelle = [
+            ('id', basis + ['id'], ['demo-1', 'Anfrage', beschwerde, 'demo-2']),
+            ('betreff', basis + ['betreff'], ['demo-1', 'Beschwerde', kontakt, 'Kontakt']),
+            ('nachricht', basis + ['nachricht'], ['demo-1', 'Anfrage', beschwerde, kontakt]),
+            ('nachricht umgekehrt', basis + ['nachricht'], ['demo-1', 'Anfrage', kontakt, beschwerde]),
+            ('zusatzspalte', basis + ['notiz', 'notiz'], ['demo-1', 'Anfrage', kontakt, 'eins', 'zwei']),
+        ]
+        for name, spalten, werte in faelle:
+            with self.subTest(spalte=name), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                quelle, out = root / 'eingabe.csv', root / 'ausgabe'
+                with quelle.open('w', encoding='utf-8-sig', newline='') as f:
+                    writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+                    writer.writerow(spalten)
+                    writer.writerow(werte)
+                vorher = quelle.read_bytes()
+                with self.assertRaisesRegex(ValueError, r'^CSV-Spaltennamen müssen eindeutig sein\.$'):
+                    verarbeiten(quelle, out, 'Erfundener Demobetrieb')
+                self.assertEqual(quelle.read_bytes(), vorher)
+                self.assertFalse(out.exists())
+
+    def test_eindeutige_umgeordnete_spalten_mit_zusatz_bleiben_nutzbar(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            quelle, out = root / 'eingabe.csv', root / 'ausgabe'
+            with quelle.open('w', encoding='utf-8-sig', newline='') as f:
+                writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+                writer.writerow(['notiz', 'nachricht', 'id', 'betreff'])
+                writer.writerow(['Zusatz, "nur intern"', 'Die Arbeit ist defekt.\nBitte dringend prüfen.', 'demo-1', 'Beschwerde'])
+            vorher = quelle.read_bytes()
+            bericht = verarbeiten(quelle, out, 'Erfundener Demobetrieb')
+            self.assertEqual((bericht['anfragen'], bericht['entwuerfe'], bericht['zur_sichtung'], bericht['versendet']), (1, 1, 1, 0))
+            with (out / 'uebersicht.csv').open(encoding='utf-8-sig', newline='') as f:
+                row = next(csv.DictReader(f))
+            self.assertEqual((row['id'], row['betreff'], row['kategorie'], row['prioritaet']),
+                             ('demo-1', 'Beschwerde', 'reklamation', 'zuerst prüfen'))
+            self.assertIn('Bitte beschreiben Sie den Mangel', (out / row['entwurf']).read_text())
+            self.assertEqual(quelle.read_bytes(), vorher)
+
     def test_falsches_schema(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "falsch.csv"

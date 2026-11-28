@@ -64,6 +64,61 @@ class KommentarTest(unittest.TestCase):
             writer.writerow(['offen', 'youtube', 'Was kostet das?'])
         return quelle, wissen
 
+    def test_doppelte_csv_spalten_erhalten_eingaben_und_verlauf(self):
+        beschwerde = 'Beschwerde: Die Arbeit ist defekt.\nBitte prüfen.'
+        kontakt = 'Wie kann ich Kontakt aufnehmen?\nBitte Büroauskunft.'
+        basis = ['id', 'plattform', 'text']
+        faelle = [
+            ('id', basis + ['id'], ['demo-1', 'instagram', kontakt, 'demo-2'], 'vorhanden'),
+            ('plattform', basis + ['plattform'], ['demo-1', 'instagram', kontakt, 'youtube'], 'ohne'),
+            ('text', basis + ['text'], ['demo-1', 'instagram', beschwerde, kontakt], 'vorhanden'),
+            ('text umgekehrt', basis + ['text'], ['demo-1', 'instagram', kontakt, beschwerde], 'neu'),
+            ('zusatzspalte', basis + ['notiz', 'notiz'], ['demo-1', 'instagram', kontakt, 'eins', 'zwei'], 'vorhanden'),
+        ]
+        for name, spalten, werte, modus in faelle:
+            with self.subTest(spalte=name, verlauf=modus), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                quelle, wissen, out = root / 'eingabe.csv', root / 'faq.json', root / 'ausgabe'
+                wissen.write_text(json.dumps({'faq': FAQ}, ensure_ascii=False), encoding='utf-8')
+                with quelle.open('w', encoding='utf-8-sig', newline='') as f:
+                    writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+                    writer.writerow(spalten)
+                    writer.writerow(werte)
+                state = root / 'verlauf.json'
+                if modus == 'vorhanden':
+                    state.write_text(json.dumps({'version': 1, 'vorbereitet': ['a' * 64]}, indent=2) + '\n', encoding='utf-8')
+                vorher = {p: p.read_bytes() for p in [quelle, wissen] + ([state] if state.exists() else [])}
+                with self.assertRaisesRegex(ValueError, r'^CSV-Spaltennamen müssen eindeutig sein\.$'):
+                    verarbeiten(quelle, out, wissen, None if modus == 'ohne' else state)
+                for pfad, inhalt in vorher.items():
+                    self.assertEqual(pfad.read_bytes(), inhalt)
+                if modus != 'vorhanden':
+                    self.assertFalse(state.exists())
+                self.assertFalse(out.exists())
+                self.assertFalse((root / 'verlauf.json.lock').exists())
+
+    def test_eindeutige_umgeordnete_spalten_mit_zusatz_erhalten_faq_entwurf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            quelle, wissen, state, out = root / 'eingabe.csv', root / 'faq.json', root / 'verlauf.json', root / 'ausgabe'
+            wissen.write_text(json.dumps({'faq': FAQ}, ensure_ascii=False), encoding='utf-8')
+            with quelle.open('w', encoding='utf-8-sig', newline='') as f:
+                writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+                writer.writerow(['notiz', 'text', 'plattform', 'id'])
+                writer.writerow(['Zusatz, "nur intern"', 'Kontakt?\nBitte Büroauskunft.', 'instagram', 'demo-1'])
+            vorher = {p: p.read_bytes() for p in [quelle, wissen]}
+            bericht = verarbeiten(quelle, out, wissen, state)
+            self.assertEqual((bericht['kommentare'], bericht['entwurf_pruefen'], bericht['manuell_pruefen'], bericht['veroeffentlicht']), (1, 1, 0, 0))
+            with (out / 'antwortentwuerfe.csv').open(encoding='utf-8-sig', newline='') as f:
+                row = next(csv.DictReader(f))
+            self.assertEqual((row['id'], row['plattform'], row['kategorie'], row['status'], row['antwortentwurf']),
+                             ('demo-1', 'instagram', 'faq', 'Entwurf prüfen', FAQ[0]['antwort']))
+            self.assertIn('Kontakt?\nBitte Büroauskunft.', (out / 'index.html').read_text())
+            self.assertEqual(len(json.loads(state.read_text())['vorbereitet']), 1)
+            self.assertFalse((root / 'verlauf.json.lock').exists())
+            for pfad, inhalt in vorher.items():
+                self.assertEqual(pfad.read_bytes(), inhalt)
+
     def test_verlauf_verhindert_doppelte_entwuerfe_aber_behaelt_prueffaelle(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
