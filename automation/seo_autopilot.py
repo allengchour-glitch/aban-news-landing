@@ -26,11 +26,14 @@ Ledger dropship/_seo_autopilot.tsv (Datum, Handle, Phrase, Kollektion, Produkte)
   N=10 [SCHARF=1] python3 automation/seo_autopilot.py --auffrischen   # bestehende Artikel: Produktblock + FAQ/JSON-LD
   python3 automation/seo_autopilot.py --kanarienvogel # Prüfregeln testen (ohne Netz)
 """
+import hashlib
 import html as H, json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HIER)
 sys.path.insert(0, HIER)
+from decimal import Decimal, InvalidOperation
+from html.parser import HTMLParser
 from eimer_etikette import nachlauf
 
 SCHARF = os.environ.get("SCHARF") == "1"
@@ -60,10 +63,10 @@ GUT = re.compile(r"waschbar|orthopäd|test|vergleich|welche|wie|kaufen|für |gr�
 
 
 # ---------------------------------------------------------------- Werkzeuge
-def gql(q, v=None):
+def gql(q, v=None, versuche=8):
     tok = (os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read()).strip()
     letzter = ""
-    for a in range(8):
+    for a in range(versuche):
         try:
             r = urllib.request.Request(URL, data=json.dumps({"query": q, "variables": v or {}}).encode(),
                                        headers={"X-Shopify-Access-Token": tok, "Content-Type": "application/json"})
@@ -74,7 +77,8 @@ def gql(q, v=None):
             letzter = json.dumps(j.get("errors"))[:200]
         except Exception as e:
             letzter = f"{type(e).__name__}: {str(e)[:150]}"
-        time.sleep(4 + 3 * a)
+        if a + 1 < versuche:
+            time.sleep(4 + 3 * a)
     print("Shopify-Fehler: " + letzter, file=sys.stderr)
     raise RuntimeError(letzter)
 
@@ -429,10 +433,15 @@ ZUBEHOER = ("form", "formen", "halter", "staender", "stander", "schablone", "zub
             "organizer", "deko")
 
 
+def body_hash(body, *, shopify=False):
+    # Shopify rückt Tags mit Zeilenumbrüchen ein. Wortabstände im Text bleiben für den Vergleich wesentlich.
+    if shopify:
+        body = re.sub(r">[ \t]*[\r\n]\s*(?=<)", ">", body.strip())
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
+
+
 def body_gleich(a, b):
-    """Shopify formt den Artikel-Body beim Speichern um («<ul><li>» → «<ul>\n<li>\n»): Rücklesen ohne Leerraum vergleichen.
-    Vorher war JEDES Auffrischen «fehler» (23.11.: 9 von 9) und derselbe Artikel kam bei jedem Lauf wieder dran."""
-    return re.sub(r"\s+", "", a or "") == re.sub(r"\s+", "", b or "")
+    return isinstance(a, str) and isinstance(b, str) and body_hash(a, shopify=True) == body_hash(b, shopify=True)
 
 
 ERWACHSENE = re.compile(r"\b(manner|maenner|mann|herren|frauen|frau|damen|sie|ihn|mama|papa|muttertag|vatertag)\b")
@@ -444,17 +453,19 @@ def ware_zum_thema(titel, handle):
     02.10.: erst «erste Kollektion» (Salzlampe → Quarzuhr), dann «längstes Titelwort» (Silk-Pillowcase → «Baumwolle»,
     Ätherische Öle → «Schweizer») — beides falsch. Jetzt nennt Gemini die Produkt-Suchwörter, der Titel-Test bleibt hart."""
     from titel_kauderwelsch_wache import gemini
-    try:
-        kandidaten = [w for w in (gemini(SUCH_PROMPT.format(titel=titel)).get("woerter") or []) if isinstance(w, str)]
-    except RuntimeError:
-        kandidaten = []
+    antwort = gemini(SUCH_PROMPT.format(titel=titel))
+    woerter = antwort.get("woerter") if isinstance(antwort, dict) else None
+    if not isinstance(woerter, list) or not any(isinstance(w, str) and w.strip() for w in woerter):
+        raise RuntimeError("keine auswertbaren Suchwörter")
+    kandidaten = [w for w in woerter if isinstance(w, str) and w.strip()]
     for w in kandidaten[:3]:
         n = norm(w).replace(" ", "")
         if len(n) < 4 or n in ALLGEMEIN or KONKURRENZ.search(w):
             continue
         stamm = n[:-1] if n.endswith(("n", "s", "e")) and len(n) > 6 else n
         d = gql('query($q:String!){products(first:40,query:$q){nodes{handle title status featuredMedia{preview{image{url}}} '
-                'priceRangeV2{minVariantPrice{amount}} variants(first:1){nodes{availableForSale}}}}}',
+                'priceRangeV2{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}} '
+                'variants(first:1){nodes{availableForSale}}}}}',
                 {"q": f"status:active AND title:{stamm}*"})["products"]["nodes"]
         gut = []
         for p in d:
@@ -464,14 +475,55 @@ def ware_zum_thema(titel, handle):
                 continue
             if not any(v["availableForSale"] for v in p["variants"]["nodes"]):
                 continue
-            gut.append({"handle": p["handle"], "titel": p["title"], "info": "", "bild": p["featuredMedia"]["preview"]["image"]["url"],
-                        "preis": f"{float(p['priceRangeV2']['minVariantPrice']['amount']):.2f}"})
+            gut.append({"handle": p["handle"], "titel": p["title"],
+                        "preistext": chf_preisspanne(p.get("priceRangeV2"))})
         if len(gut) >= 3:
             return w, gut[:4]
     return None, []
 
+def chf_preisspanne(spannweite):
+    """Ein fixer Preis setzt zwei übereinstimmende Grenzen in Shopwährung voraus."""
+    try:
+        mindest, hoechst = (spannweite[k] for k in ("minVariantPrice", "maxVariantPrice"))
+        if mindest["currencyCode"] != "CHF" or hoechst["currencyCode"] != "CHF":
+            return ""
+        von, bis = Decimal(mindest["amount"]), Decimal(hoechst["amount"])
+        if not (von.is_finite() and bis.is_finite() and 0 <= von <= bis):
+            return ""
+    except (TypeError, KeyError, InvalidOperation):
+        return ""
+    return f"CHF {von:.2f}" if von == bis else f"CHF {von:.2f}–{bis:.2f}"
+
+
+class Variantenlinks(HTMLParser):
+    """Manuell ausgewählte Produktvarianten, auch in absoluten oder übersetzten internen Links."""
+    def __init__(self, html):
+        super().__init__()
+        self.handles = set()
+        self.feed(html)
+        self.close()
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "a":
+            return
+        try:
+            url = urllib.parse.urlsplit(dict(attrs).get("href") or "")
+        except ValueError:
+            return
+        if url.netloc and url.hostname not in ("luxestyle.ch", "www.luxestyle.ch"):
+            return
+        produkt = re.fullmatch(r"/(?:[a-z]{2}(?:-[a-z]{2})?/)?products/([^/]+)/?", url.path, re.I)
+        varianten = urllib.parse.parse_qs(url.query).get("variant", [])
+        if produkt and any(v.isascii() and v.isdecimal() for v in varianten):
+            self.handles.add(urllib.parse.unquote(produkt[1]))
+
+
 def produkt_block(produkte, khandle, ktitel):
-    zeilen = "".join(f'<li><a href="/products/{p["handle"]}">{H.escape(p["titel"])}</a> – CHF {p["preis"]}</li>' for p in produkte[:4])
+    karten = []
+    for p in produkte[:4]:
+        preis = f" – {p['preistext']}" if p["preistext"] else ""
+        karten.append(f'<li><a href="/products/{p["handle"]}">{H.escape(p["titel"])}</a>{preis}</li>')
+    zeilen = "".join(karten)
     return (f"<h2>Passend dazu im Shop</h2><ul>{zeilen}</ul>"
             f'<p><a href="/collections/{khandle}">Mehr dazu im Shop ansehen</a></p>')
 
@@ -546,6 +598,39 @@ def auffrisch_ledger():
     return d
 
 
+def auffrisch_beleg(handle, status, aktionen, *werte):
+    with open(AUFFRISCH_LEDGER, "a", encoding="utf-8") as f:
+        f.write("\t".join((handle, time.strftime("%Y-%m-%d"), status, aktionen, *werte)) + "\n")
+        f.flush()
+        os.fsync(f.fileno())
+
+
+def artikel_lesen(artikel_id):
+    return gql('query($id:ID!){node(id:$id){... on Article {body isPublished}}}', {"id": artikel_id}).get("node")
+
+
+def artikel_einmal_schreiben(a, body, aktionen):
+    """Erst den alten und den erwarteten Body belegen. Nur den einen Schreibaufruf ohne Wiederholung senden."""
+    auffrisch_beleg(a["handle"], "unklar", aktionen, a["id"], body_hash(a["body"]), body_hash(body, shopify=True))
+    try:
+        r = gql('mutation($id:ID!,$a:ArticleUpdateInput!){articleUpdate(id:$id,article:$a){article{body} userErrors{message}}}',
+                {"id": a["id"], "a": {"body": body}}, versuche=1).get("articleUpdate") or {}
+        if r.get("userErrors"):
+            print(f"    ✗ {r['userErrors']}", flush=True)
+            return "fehler"
+        if body_gleich((r.get("article") or {}).get("body"), body):
+            return "ok"
+    except RuntimeError as e:
+        print(f"    Schreibantwort unklar ({str(e)[:100]}), prüfe gespeicherten Artikel", flush=True)
+    try:
+        gelesen = artikel_lesen(a["id"])
+        if gelesen and gelesen.get("isPublished") and body_gleich(gelesen.get("body"), body):
+            return "ok"
+    except RuntimeError as e:
+        print(f"    Rücklesen unklar ({str(e)[:100]})", flush=True)
+    return "unklar"
+
+
 def besuche_je_artikel():
     try:
         d = gql('{ shopifyqlQuery(query: "FROM sessions SHOW sessions GROUP BY landing_page_path WHERE human_or_bot_session = '
@@ -578,8 +663,37 @@ def auffrischen(n):
             return True
         return z[2] in ("fehler", "teil") or (jetzt - time.mktime(time.strptime(z[1][:10], "%Y-%m-%d"))) / 86400 >= PRODUKT_TAGE
     nur = [h for h in os.environ.get("NUR", "").split(",") if h]
-    kand = [a for a in arts if (a["handle"] in nur) if nur] or \
-           [a for a in arts if not nur and faellig(a) and "/collections/" in (a["body"] or "")]
+    # Der Artikellauf hat die aktuellen Bodies soeben gelesen. Offene Writes vor der normalen Auswahl auflösen.
+    offen = {z[4]: z for z in led.values() if len(z) == 7 and z[2] == "unklar"}
+    vorhandene_ids = {a["id"] for a in arts}
+    for artikel_id, z in offen.items():
+        if artikel_id not in vorhandene_ids and (not nur or z[0] in nur):
+            print(f"  {z[0]}: offen, kein veröffentlichter Artikel mit gespeicherter ID", flush=True)
+    kand = []
+    for a in arts:
+        if nur and a["handle"] not in nur:
+            continue
+        z = offen.get(a["id"]) or led.get(a["handle"])
+        if z and z[2] == "unklar":
+            if (len(z) != 7 or z[4] != a["id"] or not isinstance(a.get("body"), str)
+                    or not all(re.fullmatch(r"[0-9a-f]{64}", h) for h in z[5:7])):
+                print(f"  {a['handle']}: offener Schreibbeleg unvollständig oder unpassend", flush=True)
+                continue
+            if body_hash(a["body"], shopify=True) == z[6]:
+                if SCHARF:
+                    auffrisch_beleg(z[0], "teil" if "faq-später" in z[3].split(",") else "ok", z[3])
+                print(f"  {a['handle']}: früherer Schreibversuch bestätigt", flush=True)
+                continue
+            if body_hash(a["body"]) != z[5]:
+                print(f"  {a['handle']}: abweichender Text nach offenem Schreibversuch, erhalten", flush=True)
+                continue
+            if a["handle"] != z[0]:
+                print(f"  {a['handle']}: Handle seit offenem Schreibversuch geändert, erhalten", flush=True)
+                continue
+            # Exakt der alte Text: mit frisch ermittelter Ware und neuer Gegenprobe planen.
+            kand.append(a)
+        elif nur or (faellig(a) and "/collections/" in (a["body"] or "")):
+            kand.append(a)
     kand.sort(key=lambda a: (-besuche.get(a["handle"], 0), MARKE_P[0] in (a["body"] or "")))   # Besuchte zuerst
     print(f"Auffrischen: {len(arts)} veröffentlichte, {len(kand)} fällig, bearbeite bis {n}", flush=True)
     ok = 0
@@ -590,16 +704,28 @@ def auffrischen(n):
         roh = re.sub(re.escape(MARKE_F[0]) + r".*?" + re.escape(MARKE_F[1]), "", roh, flags=re.S)
         text = text_aus(roh)
         was = []
-        # Produkte: nur solche, deren Titel das Kernwort des Artikels trägt (Relevanz vor Menge)
-        wort, produkte = ware_zum_thema(a["title"], a["handle"])
-        if not produkte and MARKE_P[0] in body:
-            body = block_ersetzen(body, MARKE_P, "")          # alter, nicht mehr belegbarer Block raus
-            was.append("produkte-entfernt")
-        if produkte:
-            kh = next((k for k in re.findall(r'/collections/([a-z0-9-]+)', roh) if k not in ("all", "frontpage")), "all")
-            body = block_ersetzen(body, MARKE_P, produkt_block(produkte, kh, wort.capitalize()) if kh != "all" else
-                                  produkt_block(produkte, "all", "Shop").split("<p><a href=\"/collections/all")[0])
-            was.append(f"produkte:{wort}")
+        # Produktkarten mit redaktioneller Variantenwahl bleiben im ursprünglichen Block.
+        produktabschnitte = re.findall(re.escape(MARKE_P[0]) + r"(.*?)" + re.escape(MARKE_P[1]), body, re.S)
+        if any(Variantenlinks(block).handles for block in produktabschnitte):
+            was.append("Variantenlinks erhalten")
+        else:
+            try:
+                wort, produkte = ware_zum_thema(a["title"], a["handle"])
+            except RuntimeError as e:
+                print(f"  {a['handle']}: Produktauswahl unklar ({str(e)[:100]})", flush=True)
+                continue
+            kuratiert = Variantenlinks(roh).handles
+            produkte = [p for p in produkte if p["handle"] not in kuratiert]
+            if not produkte and MARKE_P[0] in body:
+                body = block_ersetzen(body, MARKE_P, "")
+                was.append("produkte-entfernt")
+            if produkte:
+                kh = next((k for k in re.findall(r'/collections/([a-z0-9-]+)', roh) if k not in ("all", "frontpage")), "all")
+                block = produkt_block(produkte, kh, wort.capitalize())
+                if kh == "all":
+                    block = block.split('<p><a href="/collections/all')[0]
+                body = block_ersetzen(body, MARKE_P, block)
+                was.append(f"produkte:{wort}")
         # FAQ: vorhandene Sektion → nur JSON-LD; sonst neu aus dem Artikeltext (nicht doppelt, wenn Block schon steht)
         if "FAQPage" not in roh and MARKE_F[0] not in body:
             alt = faq_vorhanden(roh)
@@ -626,21 +752,26 @@ def auffrischen(n):
                     was.append("faq-abgelehnt")
                     print(f"    FAQ abgelehnt: {grund}", flush=True)
         if body == (a["body"] or ""):
+            if SCHARF and ("Variantenlinks erhalten" in was or a["id"] in offen) and "faq-später" not in was:
+                auffrisch_beleg(a["handle"], "ok", ",".join(was) or "Original geprüft, kein Änderungsbedarf")
             print(f"  · {a['handle']}: nichts zu tun ({', '.join(was) or 'keine Ware/FAQ'})", flush=True)
             continue
         print(f"  {'✓' if SCHARF else '(trocken)'} {a['handle']} [{besuche.get(a['handle'], 0)} Besuche]: {', '.join(was)}", flush=True)
         if not SCHARF:
             open(f"/tmp/seo_auffrischen_{a['handle'][:40]}.html", "w").write(body)
             continue
-        r = gql('mutation($id:ID!,$a:ArticleUpdateInput!){articleUpdate(id:$id,article:$a){article{body} userErrors{message}}}',
-                {"id": a["id"], "a": {"body": body}})["articleUpdate"]
-        status = "ok" if not r["userErrors"] and r["article"] and body_gleich(r["article"]["body"], body) else "fehler"   # Rücklesen
+        aktuell = artikel_lesen(a["id"])
+        if not aktuell or not aktuell.get("isPublished") or aktuell.get("body") != a["body"]:
+            print(f"  {a['handle']}: Artikel seit der Auswahl geändert, Auffrischen verschoben", flush=True)
+            continue
+        aktionen = ",".join(was)
+        status = artikel_einmal_schreiben(a, body, aktionen)
+        if status == "unklar":
+            print(f"  {a['handle']}: Schreibstand offen, nächster Lauf vergleicht Original und Ziel", flush=True)
+            continue
         if status == "ok" and "faq-später" in was:
             status = "teil"
-        if r["userErrors"]:
-            print(f"    ✗ {r['userErrors']}", flush=True)
-        with open(AUFFRISCH_LEDGER, "a", encoding="utf-8") as f:
-            f.write(f"{a['handle']}\t{time.strftime('%Y-%m-%d')}\t{status}\t{','.join(was)}\n")
+        auffrisch_beleg(a["handle"], status, aktionen)
         ok += status in ("ok", "teil")
     print(f"FERTIG Auffrischen: {ok} aktualisiert", flush=True)
     return 0
