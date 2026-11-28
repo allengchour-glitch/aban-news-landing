@@ -663,3 +663,5 @@ slug:funkmikrofon-set-mit-echo-und-klangregelung-736192
 name:funkmikrofonsetmitechound
 slug:wasserdichter-multifunktionskamera-rucksack
 slug:herren-kunstfellmantel-mit-leopardenmuster
+slug:kostum-marsupilami-fgssck4383k
+name:kostümmarsupilami
