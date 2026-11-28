@@ -13,6 +13,7 @@ on:
       - 'cockpit-sw.js'
       - 'js/ki-studio.js'
       - 'js/kit-preis.js'
+      - 'ki-sichtbarkeit-audit.html'
       - 'ki-studio.html'
       - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
@@ -25,6 +26,7 @@ on:
       - 'cockpit-sw.js'
       - 'js/ki-studio.js'
       - 'js/kit-preis.js'
+      - 'ki-sichtbarkeit-audit.html'
       - 'ki-studio.html'
       - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
@@ -50,6 +52,9 @@ jobs:
 
       - name: Ratgeber-Kaufziele bei Katalogabgleich
         run: node functions/_kit_preis.test.mjs
+
+      - name: Audit-Workbook Kaufziel bei Katalogantwort
+        run: node functions/_audit_checkout.test.mjs
 
       - name: KI-Studio Werkzeuganfragen und manuelle Wiederaufnahme
         run: node functions/_studio_client.test.mjs
