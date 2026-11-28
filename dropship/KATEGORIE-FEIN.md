@@ -1,24 +1,52 @@
-# Feinkategorie (automatisch, 2026-11-27 21:00 UTC)
+# Feinkategorie (automatisch, 2026-11-28 00:30 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36533 |
-| shopify-feiner | 16337 |
-| rueckfall-grob | 1314 |
-| anderer-zweig | 1094 |
-| kein-google | 1015 |
-| ohne-kategorie | 59 |
-| kreuz | 16 |
-| schon-im-ledger | 16 |
+| gleich | 36308 |
+| shopify-feiner | 16502 |
+| rueckfall-grob | 1312 |
+| anderer-zweig | 1075 |
+| kein-google | 1014 |
+| verfeinern | 184 |
+| kreuz | 24 |
+| ohne-kategorie | 16 |
+| schon-im-ledger | 13 |
 | titelprobe-nein | 13 |
 | keine-zuordnung | 1 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
+| **geschrieben** | 184 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 59 → Lighting > Lamps
+- 55 → Lighting > Night Lights & Ambient Lighting
+- 12 → Lighting > Lighting Fixtures > Wall Light Fixtures
+- 10 → Clothing > Dresses
+- 5 → Decor > Throw Pillows
+- 4 → Clothing > Shirts & Tops
+- 4 → Handbags, Wallets & Cases > Handbags
+- 3 → Decor > Window Treatments > Curtains & Drapes
+- 3 → Electronics Accessories > Computer Components > Input Devices > Keyboards
+- 3 → Linens & Bedding > Bedding > Pillows
+- 2 → Clothing > Skirts
+- 2 → Kitchen & Dining > Tableware > Drinkware > Mugs
+- 2 → Lighting > Lighting Fixtures > Ceiling Light Fixtures
+- 2 → Electronics Accessories > Cables
+- 2 → Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs
+- 2 → Business & Home Security
+- 2 → Messenger Bags
+- 2 → Backpacks
+- 1 → Clothing > Outerwear > Coats & Jackets
+- 1 → Clothing > Outerwear > Vests
+- 1 → Cameras & Optics
+- 1 → Lighting > Light Ropes & Strings
+- 1 → Video Game Console Accessories
+- 1 → Computers > Smart Glasses
+- 1 → Household Appliances > Climate Control Appliances > Fans
+- 1 → Decor > Door Mats
+- 1 → Lighting > Light Bulbs
+- 1 → Decor > Seasonal & Holiday Decorations
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 

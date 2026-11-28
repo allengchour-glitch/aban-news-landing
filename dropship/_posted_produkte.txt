@@ -655,3 +655,6 @@ slug:kubanische-gliederkette-mit-strass-45-cm
 slug:plusch-hai-50-cm-fga57713
 name:plüschhai50cm
 name:velours
+name:wild
+slug:fliegerbrille-fgabo54559
+name:fliegerbrille

@@ -1,22 +1,29 @@
-# Preis-Verlustschutz — scharf 2026-11-27 21:31 UTC
+# Preis-Verlustschutz — scharf 2026-11-28 00:30 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **13** · Varianten gehoben: **49** · gesperrt (Faktor > 2.0): 6
-- Median-Faktor der Hebungen: 1.03× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 13 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **20** · Varianten gehoben: **128** · gesperrt (Faktor > 2.0): 2
+- Median-Faktor der Hebungen: 1.08× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 20 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Einzelrad Kinderrollschuhe mit verstellbarem Ant | 78.90 | 64.02 | **79.90** | 1.01× |
-| Cocktail-Shaker-Set | 77.90 | 64.59 | **79.90** | 1.03× |
-| Faltbarer Einkaufstrolley aus Aluminium | 78.90 | 64.40 | **79.90** | 1.01× |
-| Kabellose Hochdruckreiniger-Pistole | 77.90 | 63.32 | **78.90** | 1.01× |
-| Vier-Jahreszeiten Katzenbett aus Holz | 78.90 | 65.02 | **80.90** | 1.03× |
-| Grosser Keramiktopf | 77.90 | 63.72 | **78.90** | 1.01× |
-| Faltbarer Mehrzweck-Rollwagen für Küche & Hausha | 77.90 | 63.08 | **78.90** | 1.01× |
-| Boho Wandteppich handgewoben, 120x150cm | 76.90 | 62.37 | **77.90** | 1.01× |
-| Yogamatte für Frauen, 8mm dick, 185x80cm | 62.90 | 50.92 | **63.90** | 1.02× |
-| Business Travel Rucksack mit Laptopfach | 63.90 | 82.11 | **101.90** | 1.59× |
-| Intelligente Antihaft-Bryingpfanne mit Temperatu | 79.90 | 85.63 | **105.90** | 1.33× |
-| 38-Stück BBQ-Werkzeug-Set mit Holzgriff | 77.90 | 63.76 | **78.90** | 1.01× |
+| KTV Mikrofon-Set für Familien-Karaoke | 76.90 | 70.16 | **86.90** | 1.13× |
+| Reisekissen für Rückbank | 76.90 | 62.20 | **77.90** | 1.01× |
+| RC High-Speed Jeep im Massstab 1:16 | 75.90 | 62.90 | **77.90** | 1.03× |
+| Baumwoll-Spitze Bettwäsche-Set mit Gartenblumen | 75.90 | 76.08 | **94.90** | 1.25× |
+| Freizeitrucksack im Retro-Stil | 75.90 | 61.41 | **76.90** | 1.01× |
+| Wasserfestes Fototuch für Innen- & Aussenbereich | 56.90 | 46.32 | **57.90** | 1.02× |
+| Retro Britische Outdoor-Freizeitschuhe | 76.90 | 62.44 | **77.90** | 1.01× |
+| Zuckerwattemaschine | 75.90 | 71.97 | **89.90** | 1.18× |
+| Column Rucksack für Laptops bis 17,3 Zoll | 75.90 | 67.03 | **82.90** | 1.09× |
+| Crystal String Perlen-Sandalen | 75.90 | 65.46 | **81.90** | 1.08× |
+| Edelstahl-Hundehalskette | 51.90 | 46.10 | **57.90** | 1.12× |
+| Tiger-Drachenklaue 3D-Modell aus Edelstahl | 75.90 | 61.50 | **76.90** | 1.01× |
+| Schneidebrett aus Massivholz, antibakteriell | 74.90 | 60.92 | **75.90** | 1.01× |
+| Bauch- und Brustschutz für Boxtraining | 75.90 | 61.50 | **76.90** | 1.01× |
+| Drehbarer, ausziehbarer Wasserhahn, schwarz | 41.90 | 34.21 | **42.90** | 1.02× |
+| Aluminiumkoffer – tragbarer, faltbarer Einkaufsw | 75.90 | 61.65 | **76.90** | 1.01× |
+| Hundenapf aus Keramik | 75.90 | 62.27 | **77.90** | 1.03× |
+| Saugroboter mit Fernbedienung und App-Steuerung | 76.90 | 75.11 | **92.90** | 1.21× |
+| Vase für Blumen und Dekoration | 76.90 | 80.28 | **99.90** | 1.30× |

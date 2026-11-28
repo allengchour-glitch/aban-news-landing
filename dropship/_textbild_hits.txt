@@ -19055,3 +19055,21 @@ gid://shopify/Product/16741859983751	15->2	Lauflernschuhe aus Kunstleder mit Kle
 gid://shopify/Product/16741862539655	39->0	Lauflernschuhe mit Klettverschluss
 gid://shopify/Product/16741872992647	25->3	Nachttischlampe modern 30×12×7 cm
 gid://shopify/Product/16741873516935	9->0	Roter Vorhang für Schlafzimmer – 40 % Verdunkelung
+gid://shopify/Product/16741887017351	12->0	Umhängetasche aus Canvas klein 20×7×23 cm
+gid://shopify/Product/16741921030535	17->0	Küchenregal für die Arbeitsplatte
+gid://shopify/Product/16742010290567	56->0	LED Wandlicht Regenbogen Neon
+gid://shopify/Product/16742010552711	40->0	Neon-Nachtlicht mit Touch-Steuerung
+gid://shopify/Product/16742015598983	133->0	Wasserdichter Canvas-Rucksack mit Lederdetails
+gid://shopify/Product/16742016450951	25->0	Holz-Handlampe für den Nachttisch
+gid://shopify/Product/16742018351495	66->0	Holz-Pizzaschieber mit Antihaft-Oberfläche
+gid://shopify/Product/16742087426439	104->0	Solar-Licht für Camping – faltbare, wasserdichte Laterne
+gid://shopify/Product/16742088507783	8->0	Feuerwerk-Glühbirnen
+gid://shopify/Product/16742088933767	68->1	Faltbare Aufbewahrungssitzbank für Sofa und Schuhe
+gid://shopify/Product/16742091293063	17->0	Wasserdichte Brusttasche mit verstellbarem Schultergurt
+gid://shopify/Product/16742091915655	65->0	Minimalistisches quadratisches Wohnkissen
+gid://shopify/Product/16742099321223	20->0	Küchenhelfer-Set 7-Teilig aus Edelstahl
+gid://shopify/Product/16742135366023	30->0	5-in-1 Gemüseschneider aus Edelstahl
+gid://shopify/Product/16742219874695	20->0	Nachtlicht Rosenbouquet für Muttertag
+gid://shopify/Product/16742223872391	15->0	Himmelspunkte Nachtlicht für Kinder
+gid://shopify/Product/16742225871239	11->0	Atmosphärische Nachtlampe mit USB-Stromversorgung
+gid://shopify/Product/16742227804551	36->0	Schultertasche für Herren, schwarz
