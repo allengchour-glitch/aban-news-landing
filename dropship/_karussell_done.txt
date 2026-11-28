@@ -32,3 +32,4 @@
 2026-11-24T11:38:19.002Z	metricool:440145177	kabelloses-lavalier-mikrofon-622600
 2026-11-25T12:45:20.206Z	metricool:441685781	nahtloser-body-shaper-mit-rundhals-und-bauchko-341953
 2026-11-26T12:47:54.931Z	metricool:443070915	intelligentes-nacken-und-schultermassagegerat-c6c310
+2026-11-28T14:19:49.537Z	metricool:445481263	herren-kunstfellmantel-mit-leopardenmuster-614000

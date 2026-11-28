@@ -661,3 +661,5 @@ name:fliegerbrille
 name:dolce
 slug:funkmikrofon-set-mit-echo-und-klangregelung-736192
 name:funkmikrofonsetmitechound
+slug:wasserdichter-multifunktionskamera-rucksack
+slug:herren-kunstfellmantel-mit-leopardenmuster
