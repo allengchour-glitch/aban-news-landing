@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 323,
-  "updatedAt": "2026-11-28T18:11:42Z",
+  "revision": 324,
+  "updatedAt": "2026-11-28T18:29:58Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51101,6 +51101,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026"
       ]
+    },
+    {
+      "revision": 324,
+      "at": "2026-11-28T18:29:58Z",
+      "summary": "Die Geschenkideen-Kollektion führt auf Deutsch und Französisch zum individuellen Gestalten. Die Standardkollektion verlinkt die Samsung-Hülle und das Spiralnotizbuch. Auf dem Handy öffnen sich in beiden Sprachen die geprüften Ausführungen. Die französische Spezialansicht zeigt die übersetzten Such- und Gestaltungsfunktionen. Alle 42 gespeicherten Theme-Übersetzungen wurden zurückgelesen.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg"
+      ]
     }
   ],
   "salesGoal": {
@@ -83473,5 +83481,80 @@
     "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026",
     "status": "partially_complete",
     "nextStep": "Für die Verwendung der historischen Tondatei bleibt zu belegen, mit welchem SoundFont sie erzeugt wurde. Den nächsten fälligen Pin anhand seines tatsächlichen Kanalzustands prüfen."
+  },
+  "run324": {
+    "taskId": "personalizer-fullscreen-20261029",
+    "status": "partially_complete",
+    "collectionId": "688427434369",
+    "giftCollectionId": "687793897857",
+    "notebook": {
+      "productId": "15451569324417",
+      "variantId": "55893188411777",
+      "priceCHF": "28.90",
+      "mobile": {
+        "width": 390,
+        "height": 844,
+        "locales": [
+          "de",
+          "fr"
+        ],
+        "scriptStatus": 200,
+        "printMapStatus": 200,
+        "canvas": true,
+        "upload": true
+      }
+    },
+    "samsung": {
+      "productId": "16672778289543",
+      "variantCount": 84,
+      "frenchFields": 9,
+      "galaxyS20Matt": {
+        "variantId": "67813421941127",
+        "priceCHF": "29.90"
+      },
+      "galaxyS20Transparent": {
+        "variantId": "67813423448455",
+        "priceCHF": "23.90"
+      }
+    },
+    "cardHolderFollowUp": {
+      "time": "2026-11-28T19:17:00+01:00",
+      "pendingObjects": 3
+    },
+    "themeNativeFrench": {
+      "themeId": "214565814663",
+      "freshTranslatedKeys": 42,
+      "verifiedFrenchTemplate": "luxe-gestalten",
+      "dynamicVariantLinksMissingLocale": 231,
+      "publicCoqueSearchResults": 0,
+      "publicDynamicWrongLocale": 12,
+      "publicStaticFrench": 18,
+      "localCoqueSearchResults": 3,
+      "localDynamicFrench": 12,
+      "localTargetStatus": 200,
+      "catalogPatch": "tested_not_live"
+    },
+    "mugEditor": {
+      "assetVersion": "v6.4.0",
+      "textPreview": true,
+      "localRestore": true,
+      "frenchControls": "German",
+      "frPatch": {
+        "strings": 157,
+        "isolatedBrowserTests": 5,
+        "cdnRelease": false
+      }
+    },
+    "nextScheduled": "2026-11-29T08:00:00+01:00",
+    "editorChecker": {
+      "localTests": 9,
+      "testedV6Products": [
+        "16672778289543",
+        "15451569324417"
+      ],
+      "fullCatalogScan": false
+    },
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg",
+    "nextStep": "Im bestehenden Lauf am 29.11. um 08:00 Uhr Zürich gemäss §13 der Übergabe die noch offenen französischen Kaufwege weiterführen. Katalogsuche, dynamische Links und Editorbedienung nach einem freigegebenen Release im Shop prüfen."
   }
 }

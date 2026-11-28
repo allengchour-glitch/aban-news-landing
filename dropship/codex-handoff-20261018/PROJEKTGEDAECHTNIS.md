@@ -1,3 +1,13 @@
+# R324 · Personalisierte Geschenke · 28.11.2026
+
+Die Geschenkideen-Kollektion führt auf Deutsch und Französisch zum individuellen Gestalten. Die Standardkollektion verlinkt die Samsung-Hülle und das Spiralnotizbuch. Auf dem Handy öffnen sich in beiden Sprachen die geprüften Ausführungen. Die französische Spezialansicht zeigt die übersetzten Such- und Gestaltungsfunktionen. Alle 42 gespeicherten Theme-Übersetzungen wurden zurückgelesen.
+
+Im bestehenden Lauf am 29.11. um 08:00 Uhr Zürich gemäss §13 der Übergabe die noch offenen französischen Kaufwege weiterführen. Katalogsuche, dynamische Links und Editorbedienung nach einem freigegebenen Release im Shop prüfen. [Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg)
+
+[LUXESTYLE_R324_20261128_SELBST_GESTALTEN]
+
+---
+
 # R323 · Nachtrag zum 19-Uhr-Lauf · 28.11.2026
 
 Der fällige Pinterest-Beitrag wechselte von PENDING um 19:10:15 Uhr auf PUBLISHED um 19:11:17 Uhr Zürich. Mit diesem Pin sind heute 14 Kanal-Auslieferungen bestehender Beiträge belegt. Sieben spätere Kanaltermine verteilen sich auf sechs Objekte. Der nächste Pin ist für 20:00 Uhr Zürich vorgesehen.

@@ -3954,3 +3954,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
 
 [LUXESTYLE_R323_20261128_1910]
+
+### R324 · Personalisierte Geschenke
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Selbst gestalten | Einleitung und Suchfelder der Standardkollektion `688427434369` für den deutsch- und den französischsprachigen Shop überarbeitet. | Beide öffentlichen Sprachseiten enthalten je zwei geprüfte Wege zur Samsung-Hülle und zum Spiralnotizbuch. [DE](https://luxestyle.ch/collections/selbst-gestalten-1) · [FR](https://luxestyle.ch/fr/collections/selbst-gestalten-1) |
+| Spiralnotizbuch | Französischen Produkttitel, Suchmaschinentitel und Suchbeschreibung für `15451569324417` ergänzt und öffentlich geprüft. | Der Kaufweg führt zur Variante `55893188411777` für CHF 28.90. Mobil (390 × 844) erreichten DE und FR die richtige Variante. Gestalterskript und Druckkarte antworteten mit HTTP 200. Zeichenfläche und Upload-Feld wurden dargestellt. |
+| Samsung-Hülle | Drei französische Produkt- und Suchfelder, zwei Optionsnamen und vier Ausführungsbezeichnungen des Produkts `16672778289543` ergänzt. Den Wechsel am Mobilgerät geprüft. | Alle 84 Varianten blieben erhalten. Für Galaxy S20 wechselte die Auswahl von Matt (`67813421941127`, CHF 29.90) auf Transparent (`67813423448455`, CHF 23.90). URL und Formular wählten dieselbe Variante. |
+| Geschenkideen | In beiden Sprachfassungen der Kollektion `687793897857` einen Textlink zum individuellen Gestalten ergänzt. | Beide neuen Einstiege antworteten mit HTTP 200. Die zehn bestehenden Links jeder Sprache blieben erhalten. [DE](https://luxestyle.ch/pages/selbst-gestalten) · [FR](https://luxestyle.ch/fr/pages/selbst-gestalten) |
+| Französischer Gestalterkatalog | 42 fehlende französische Übersetzungen im Shopify-Theme `214565814663` gespeichert und zurückgelesen. Die Spezialansicht `luxe-gestalten` öffentlich geprüft. | Alle 42 Werte sind bestätigt. Die FR-Ansicht zeigt «Votre idée. Votre création.», «Rechercher un produit» und «Personnaliser ce produit». Öffentlich ergab «coque» null Treffer, 12 von 12 dynamischen Karten führten auf Deutsch, 18 von 18 statischen Links auf Französisch. Im Ausgangsdatenbestand fehlte bei 231 dynamischen Variantenadressen `/fr/`. |
+| Tassengestalter | Im mobilen Editor v6.4.0 Text eingegeben, die Vorschau geprüft und den lokalen Entwurf wiederhergestellt. | Textvorschau und lokales Wiederherstellen funktionierten. Die Bedienung des Editors auf der französischen Produktseite war deutsch. |
+| Katalogvorschau | Die französische Suche und die Sprachführung der dynamischen Links lokal korrigiert. Die Variantenadressen aus DE und FR gezielt im Shop gegengeprüft. | In der lokalen Vorschau zeigte «coque» drei Treffer. Alle zwölf geprüften dynamischen Links führten auf Französisch. Die geprüften Variantenadressen antworteten mit HTTP 200. Eine Theme-Veröffentlichung steht aus. |
+| Editor und Prüfer | 157 französische Texte im Editor-Quellpatch vorbereitet. Bestehenden Fallback und die Sprachfassungen fr, fr-CH, de-CH und en mit fünf isolierten Browserfällen geprüft. Den Prüfer um die V6-Karten für Samsung-Hülle und Spiralnotizbuch erweitert. | Die fünf Browserfälle und neun lokale Prüfertests bestanden. Die Editor-Übersetzung wurde nicht am CDN veröffentlicht. Der Prüfer lief für die dokumentierten Tests, eine vollständige Katalogmessung steht aus. |
+| Kartenetui | Die drei bereits gemeldeten Planerobjekte um 19:17 Uhr Zürich gezielt nachgelesen. | Alle drei Objekte waren PENDING. Die Rücklesung löste keine Ausspielung oder Planänderung aus. |
+
+[Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg)
+
+[LUXESTYLE_R324_20261128_SELBST_GESTALTEN]
