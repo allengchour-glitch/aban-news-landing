@@ -436,3 +436,13 @@ Der Entwurf benennt «Farbe» als «Couleur ou embout seul», «Modell» als «C
 Zur Entscheidung steht die französische Fassung dieses einen Produkts. Bei Umsetzung zuerst die Quelldigests neu lesen und danach beide Variante-IDs, Preise und sichtbare französische Auswahl im öffentlichen Formular abgleichen. Der Entwurf ist in diesem Lauf nicht im Shop gespeichert.
 
 Der Nachmittagslauf wurde zusätzlich als R320 im ursprünglichen Projektgedächtnis und im Tagesprotokoll gespeichert. Die drei Dateien wurden auf Inhalt und SHA zurückgelesen. [Gedächtnis und Tagesprotokoll](https://github.com/allengchour-glitch/aban-news-landing/commit/354288caa7e5a86842e1b6d2b81bd4e61c2cc653)
+
+
+### Französische Auswahlhilfe für das Magnetkabel veröffentlicht
+
+Nach der Freigabe des Inhabers wurden für Produkt `15452603187585` die fehlenden französischen Einträge gespeichert und mit den aktuellen deutschen Quelldigests zurückgelesen. Die 19 Felder umfassen Produktname, Beschreibung, SEO-Titel, Meta-Beschreibung, zwei Optionsnamen und 13 Optionswerte. Die Auswahlhilfe erklärt «Le câble n’est pas inclus avec l’embout seul.»
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Ersatzkopf | Französische Varianten-URL bis zum Warenkorbformular geprüft. | «Embout seul» und «USB-C» sind ausgewählt. CHF 15.90, Formular-ID `67797485224327`. [USB-C-Ersatzkopf](https://luxestyle.ch/fr/products/magnetisch-ladecable-044e0c?variant=67797485224327) |
+| Kabel | Französische Varianten-URL bis zum Warenkorbformular geprüft. | «Bleu» und «3 en 1» sind ausgewählt. CHF 16.90, Formular-ID `67797484929415`. [Blaues 3-in-1-Kabel](https://luxestyle.ch/fr/products/magnetisch-ladecable-044e0c?variant=67797484929415) |
