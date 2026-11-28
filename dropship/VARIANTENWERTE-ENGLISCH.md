@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-28 14:20 UTC, Stand 2026-11-28 15:38 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-28 14:20 UTC, Stand 2026-11-28 15:46 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **5'408**
-- Optionen mit englischen Werten (Kandidaten): 227
+- Produkte gesehen: **6'606**
+- Optionen mit englischen Werten (Kandidaten): 249
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 554
+- Werte mit unbekanntem Wort (unverändert): 589
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 12
-- übersprungen «kleidungsstueck-im-wert»: 9
+- übersprungen «kleidungsstueck-im-wert»: 10
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -23,6 +23,7 @@
 - `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
 - `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil · Titel nennt Set: Herren Oberteil | Herren Shorts | Damen Shirt | Damen Stil Rock | Grün Cheongsam Anzug
 - `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
+- `15449108578689` [Farbe] **Damen Langarm-Top aus Gold-Samt** — weste: Lange Ärmel | Vest | Off shoulder
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -69,5 +70,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 37, `diamond` 36, `powder` 29, `opp` 20, `deer` 19, `degrees` 17, `tea` 14, `one` 14, `⟨satzbau:praeposition⟩` 12, `hat` 10, `insert` 9, `blossom` 8, `rope` 8, `to` 8, `electric` 7, `cherry` 7, `bag` 7, `hot` 7, `glittering` 7, `soft` 7, `washed` 7, `elegant` 6, `size` 6, `handle` 6, `gun` 6, `color` 6, `machine` 6, `waist` 6, `ice` 6, `stone` 6, `three` 5, `bright` 5, `milk` 5, `storage` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `meter` 5, `plugin` 4, `models` 4, `touch` 4, `drill` 4, `gallium` 4, `nitride` 4, `4x` 4, `⟨satzbau:material-vor-farbe⟩` 4, `⟨satzbau:adjektivfolge⟩` 4, `fog` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `otg` 4, `light` 3
+`⟨satzbau:adjektiv-vor-nomen⟩` 37, `diamond` 36, `powder` 29, `opp` 20, `deer` 19, `degrees` 17, `one` 16, `tea` 14, `⟨satzbau:praeposition⟩` 12, `hat` 10, `to` 10, `insert` 9, `elegant` 8, `cherry` 8, `blossom` 8, `waist` 8, `rope` 8, `electric` 7, `bag` 7, `hot` 7, `machine` 7, `glittering` 7, `soft` 7, `washed` 7, `size` 6, `milk` 6, `handle` 6, `gun` 6, `color` 6, `ice` 6, `stone` 6, `three` 5, `bright` 5, `storage` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `meter` 5, `plugin` 4, `models` 4, `touch` 4, `light` 4, `drill` 4, `gallium` 4, `nitride` 4, `4x` 4, `⟨satzbau:material-vor-farbe⟩` 4, `⟨satzbau:adjektivfolge⟩` 4, `fog` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `skin` 4, `charming` 4, `crotch` 4
 

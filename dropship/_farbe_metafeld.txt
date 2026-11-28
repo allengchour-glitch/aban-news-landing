@@ -548,3 +548,4 @@ gid://shopify/Product/16736594297223	Weiss
 gid://shopify/Product/16736677593479	Gold
 gid://shopify/Product/16737960231303	Schwarz
 gid://shopify/Product/16742227804551	Schwarz
+gid://shopify/Product/16744090796423	Braun
