@@ -1,3 +1,11 @@
+# R327 · Modellwahl, französische Bilder und Druckvorschau · 28.11.2026
+
+Beim Gestalter für Pullover funktioniert die Modellwahl jetzt auf den deutschen und französischen Produktseiten. Für Tasse und T-Shirt sind acht französische Alternativtexte öffentlich bestätigt. In der privaten mobilen Theme-Vorschau zeigt das T-Shirt nach dem Wechsel auf 2XL den Preis CHF 26.90 und bezeichnet die Druckzone auf Französisch als «Recto», auf Deutsch als «Vorderseite». Die Übernahme des geprüften Editors ins Haupttheme und die redaktionelle Angleichung der französischen Versandrichtlinie sind offen. [Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md)
+
+[LUXESTYLE_R327_20261128_GESTALTER_KAUFWEG]
+
+---
+
 # R326 · Tasse, T-Shirt und Druckvorschau · 28.11.2026
 
 Der öffentliche Gestaltungsleitfaden führt auf Deutsch und Französisch direkt zur Samsung-Hülle und benennt die Schweizer Gratisversandgrenze ab CHF 50 nach Rabatt. Die französische Anleitung erklärt die drei deutschen Schaltflächen der Druckvorschau. Für Tasse und weisses T-Shirt sind die französischen Produkt- und Suchtexte sowie die geprüften Variantenpreise im mobilen Shop bestätigt.

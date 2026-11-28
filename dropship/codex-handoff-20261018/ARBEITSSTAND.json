@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 326,
-  "updatedAt": "2026-11-28T19:04:30Z",
+  "revision": 327,
+  "updatedAt": "2026-11-28T20:08:58Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51125,6 +51125,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau"
       ]
+    },
+    {
+      "revision": 327,
+      "at": "2026-11-28T20:08:58Z",
+      "summary": "Beim Gestalter für Pullover funktioniert die Modellwahl jetzt auf den deutschen und französischen Produktseiten. Für Tasse und T-Shirt sind acht französische Alternativtexte öffentlich bestätigt. In der privaten mobilen Theme-Vorschau zeigt das T-Shirt nach dem Wechsel auf 2XL den Preis CHF 26.90 und bezeichnet die Druckzone auf Französisch als «Recto», auf Deutsch als «Vorderseite».",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83667,5 +83675,147 @@
     },
     "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau",
     "nextStep": "Die Übernahme der geprüften Vorschaufassung ins Live-Theme und die redaktionelle Korrektur der französischen Versandrichtlinie stehen aus."
+  },
+  "run327": {
+    "taskId": "personalizer-fullscreen-20261029",
+    "hoodie": {
+      "productId": "15422815699329",
+      "publicMobileVariantChecks": {
+        "locales": [
+          "de",
+          "fr"
+        ],
+        "from": {
+          "variantId": "55777955643777",
+          "label": "Rundhals S",
+          "priceCHF": "39.90"
+        },
+        "to": {
+          "variantId": "67814157877639",
+          "label": "Bio-Hoodie S",
+          "priceCHF": "75.90"
+        },
+        "verified": [
+          "Varianten-URL",
+          "Warenkorbformular",
+          "Preis"
+        ],
+        "variantCount": 13
+      },
+      "frFields": 7,
+      "knownRemaining": "Die französische Hauptbeschreibung mit eingebettetem Editor enthält noch deutschen Text."
+    },
+    "media": {
+      "mugProductId": "15422823465345",
+      "shirtProductId": "15422857642369",
+      "translatedFrAltTexts": 8,
+      "imagesPerProduct": 4,
+      "publicImageOccurrencesChecked": 32,
+      "readback": [
+        "französische kanonische Produktseiten",
+        "Produkt-JSON"
+      ]
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timeZone": "Europe/Zurich",
+      "localDatesRead": 8,
+      "otherPublisherChannelsDeliveredOnNov28": {
+        "instagram": 8,
+        "facebook": 4,
+        "tiktok": 1,
+        "pinterest": 2,
+        "threads": 2
+      },
+      "futureVerifiedAtRead": {
+        "2026-11-29": [
+          "Instagram/Facebook 17:00",
+          "TikTok 18:00",
+          "Pinterest 19:10"
+        ],
+        "2026-11-30": [
+          "Pinterest 19:10",
+          "Pinterest 20:00"
+        ]
+      },
+      "noConfirmedSlotsDec01ThroughDec05AtRead": true,
+      "pinterestDec01": {
+        "cascade": "Fotorechte und Bildabnahme offen",
+        "chain": "Registerbeleg für denselben Pin: bereits publiziert am 27.11.",
+        "eligibleFromSample": 0
+      }
+    },
+    "cascade": {
+      "masterId": "luxe_cascade_creolen_20261122",
+      "materialIntake": "leer",
+      "shopifyOriginal": "Stand 02.11.; vier unveränderte Bild-IDs"
+    },
+    "editorProbe": {
+      "scope": "Shopify-Hauptbeschreibung und öffentliche Karte/Vorschau",
+      "products": [
+        "Tasse",
+        "T-Shirt",
+        "Hoodie"
+      ],
+      "guard": "pruefeEditor",
+      "version": "V6",
+      "findingsPerProduct": [
+        0,
+        0,
+        0
+      ],
+      "defaultTagFilterWouldMiss": "T-Shirt",
+      "commit": "ed25085becda9947847e107e3ad4336ed38054a1",
+      "targetedTestsPassed": 11,
+      "coverage": "Gezielte Prüfung, kein vollständiger CI-Lauf; ci_simulation.sh im Arbeitsbranch fehlte."
+    },
+    "preview": {
+      "themeId": "213482963335",
+      "visibility": "unveröffentlicht",
+      "viewportPx": [
+        390,
+        844
+      ],
+      "shirt": {
+        "from": {
+          "size": "S",
+          "priceCHF": "24.90"
+        },
+        "to": {
+          "size": "2XL",
+          "priceCHF": "26.90"
+        },
+        "printPngPx": [
+          1800,
+          2400
+        ],
+        "productImagePx": [
+          800,
+          800
+        ],
+        "zoneKey": "front",
+        "zoneDe": "Vorderseite",
+        "zoneFr": "Recto",
+        "checks": [
+          "Leerkontrolle vor Bestätigung",
+          "Rückkehr per Fingertipp"
+        ]
+      },
+      "control": "Tasse 325 ml",
+      "liveTheme": "bisheriger Editor",
+      "layoutMD5": "ed3032557b7e66b80c03dacf58b28f3e",
+      "jsMD5": "49807fa1ade700431b78001a94f7d732",
+      "servedJsSHA256": "9c8204625f0ae703eb2d835e33d26a09b2e680a71856ff836207946d0e3d7227"
+    },
+    "shippingPolicy": {
+      "resourceId": "gid://shopify/ShopPolicy/50603786625",
+      "de": "Liefergebiet Schweiz und Liechtenstein",
+      "fr": "beschränkt das Liefergebiet auf Schweizer Adressen, enthält keinen Liechtenstein-Tarif und lässt bei der Schweizer Gratisversandgrenze den Zusatz «nach Rabatt» aus",
+      "locale": "fr",
+      "sourceDigest": "51986315e0b708e0799a02d33e4cd9306e9e64432f02ae16244d0857432c9515",
+      "status": "Öffentlich und in Shopify gegengelesen. Vorschlag zur redaktionellen Korrektur wartet auf Freigabe."
+    },
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md",
+    "nextStep": "Die Übernahme des geprüften Editors ins Haupttheme und die redaktionelle Angleichung der französischen Versandrichtlinie sind offen."
   }
 }

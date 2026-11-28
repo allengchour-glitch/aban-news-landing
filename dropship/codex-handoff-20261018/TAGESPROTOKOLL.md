@@ -4001,3 +4001,22 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/91dca14c87c7be908a4db80bccc4a215a4b46ea5/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#tasse-t-shirt-und-französische-druckvorschau)
 
 [LUXESTYLE_R326_20261128_TASSE_SHIRT_DRUCKVORSCHAU]
+
+### R327 · Modellwahl, französische Bilder und Druckvorschau
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Gestalter für Pullover | Die Modellbezeichnungen und sieben französische Felder korrigiert. Die Auswahl auf dem Handy in beiden Sprachfassungen geprüft. | Rundhals S (CHF 39.90) → Bio-Hoodie S (CHF 75.90). Varianten-URL, Formular und Preis wechselten gemeinsam. Alle 13 Varianten blieben erhalten. Die französische Hauptbeschreibung mit Editor enthält noch deutschen Text. |
+| Französische Bildbeschreibungen | Für Tasse und T-Shirt die ersten je vier Galerie-Fotos auf Französisch beschrieben und beide öffentlichen FR-Produktseiten sowie das Produkt-JSON kontrolliert. | Alle acht Alternativtexte öffentlich bestätigt, einschliesslich der insgesamt 32 Vorkommen in den beiden Galerien. |
+| Private Druckvorschau | Das T-Shirt im unveröffentlichten Theme bei 390 × 844 Pixeln von S (CHF 24.90) auf 2XL (CHF 26.90) umgestellt und die Druckvorschau geöffnet. Die Tasse mit 325 ml gegengeprüft. | Druck-PNG 1800 × 2400, Produktbild 800 × 800. Druckzone «Recto» auf FR und «Vorderseite» auf DE, Leerkontrolle und Rückkehr per Fingertipp geprüft. Das öffentliche Haupttheme verwendet weiterhin den bisherigen Editor. |
+| Metricool | Acht Kalendertage einzeln geprüft. Für den 28.11. die ausgelieferten Beiträge je Kanal gezählt. | 17 bestehende Auslieferungen. Instagram 8, Facebook 4, TikTok 1, Pinterest 2 und Threads 2. Diese Auslieferungen stammen aus der bestehenden Planung. |
+| Zukünftige Termine | Die bestehenden Termine vom 29.11. bis 05.12. je Tag zurückgelesen. | Am 29.11. Instagram und Facebook 17.00 Uhr, TikTok 18.00 Uhr, Pinterest 19.10 Uhr. Am 30.11. Pinterest 19.10 und 20.00 Uhr. Vom 01. bis 05.12. waren beim Abruf auf keinem der sechs Kanäle aktive Termine bestätigt. Alle Zeiten in Europe/Zurich. |
+| Cascade Modell 1 | Den privaten Materialeingang und die vier Shopify-Bild-IDs erneut geprüft. | Materialeingang leer, Shopify-Original vom 02.11. und Bild-IDs unverändert. |
+| Pinterest | Für den 01.12. zwei Kandidaten gegen Fotoabnahme und Publikationsregister geprüft. | Für Cascade sind die Fotorechte und die Bildabnahme offen. Den Gliederketten-Pin weist das Register am 27.11. als veröffentlicht aus. Aus dieser Auswahl entstand kein neuer Termin. |
+| Gestalter-Prüfer | Den vorhandenen Repo-Prüfer an den drei Shopify-Beschreibungen sowie den öffentlichen Karten und Vorschaudateien von Tasse, T-Shirt und Hoodie eingesetzt. | Alle drei Gestalter wurden als V6 erkannt. Der Prüfer meldete in dieser Stichprobe je null Befunde. Sein üblicher Tagfilter hätte das T-Shirt ausgelassen. |
+| Gestalter-Prüfung im Repository | Die gezielte Auswahl nach Produkt-ID für das aktive T-Shirt ohne Filtertag ergänzt. Die Änderung mit elf Tests geprüft. | Alle elf Tests bestanden. Direkte Prüfung an drei Produkten. Ein vollständiger CI-Lauf ist offen. Das genannte Skript ci_simulation.sh fehlte auf dem Arbeitsbranch. |
+| Französische Versandrichtlinie | Die deutsche und französische Versandrichtlinie öffentlich und in Shopify verglichen. Den französischen Übersetzungsschlüssel und die Quellversion geprüft. | Die FR-Fassung beschränkt die Lieferung auf Schweizer Adressen. Der Tarif für Liechtenstein und «nach Rabatt» bei der Schweizer Gratisversandgrenze fehlen. Die redaktionelle Korrektur wartet auf Freigabe. |
+
+[Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md)
+
+[LUXESTYLE_R327_20261128_GESTALTER_KAUFWEG]
