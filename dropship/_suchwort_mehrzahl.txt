@@ -4441,3 +4441,20 @@ gid://shopify/Product/16740575478151	kleider	Schwarzes V-Ausschnitt Damenkleid m
 gid://shopify/Product/16740576067975	kleider	Strickkleid mit langen Ärmeln – Midi
 gid://shopify/Product/16740576461191	kleider	Asymmetrisches Tüllkleid mit Rüschenrand
 gid://shopify/Product/16740617421191	kleider	Rotes Woll-Vestkleid für Frauen
+gid://shopify/Product/16740650451335	kleider	Plus-Size Spaghettiträger A-Linienkleid Midi
+gid://shopify/Product/16740785947015	taschen	Yoga-Matte Aufbewahrungstasche
+gid://shopify/Product/16740786012551	kleider	Bodycon Maxikleid mit Halterneck und Rückenausschnitt
+gid://shopify/Product/16740888314247	taschen	Multifunktionale Reisekosmetiktasche mit LED-Licht
+gid://shopify/Product/16740923801991	kleider	Kaffeebraunes Wickelkleid mit V-Ausschnitt
+gid://shopify/Product/16740925899143	kleider	Schwarzes Satinabendkleid mit Schleife und Schlitz
+gid://shopify/Product/16740927111559	taschen,brillen	Sonnenbrillen Aufbewahrungstasche aus weichem Leder
+gid://shopify/Product/16740938318215	kleider	Langes Damenkleid aus Polyester
+gid://shopify/Product/16740939989383	kleider	Samtkleid Midi mit Twist-Knoten und Falten
+gid://shopify/Product/16740942512519	kleider	Samtkleid mit V-Ausschnitt und A-Linie
+gid://shopify/Product/16740944314759	kleider	Strickkleid mit Gürtel, A-Linienschnitt
+gid://shopify/Product/16741887017351	taschen	Umhängetasche aus Canvas klein 20×7×23 cm
+gid://shopify/Product/16741925814663	taschen	Kleine Canvas-Umhängetasche
+gid://shopify/Product/16742010814855	taschen	Schultertasche Anti-Diebstahl wasserdicht mit USB
+gid://shopify/Product/16742100271495	taschen	Sportliche Schultertasche aus Oxford-Stoff
+gid://shopify/Product/16742227804551	taschen	Schultertasche für Herren, schwarz
+gid://shopify/Product/16742373785991	taschen	Umhängetasche
