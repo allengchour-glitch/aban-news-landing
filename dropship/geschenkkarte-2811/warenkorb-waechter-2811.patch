@@ -1,0 +1,258 @@
+diff --git a/automation/warenkorb_gratisversand.py b/automation/warenkorb_gratisversand.py
+--- a/automation/warenkorb_gratisversand.py
++++ b/automation/warenkorb_gratisversand.py
+@@ -46,7 +46,7 @@
+       pruefen()/einfuegen() gegen ein Attrappen-Theme (theme_attrappe.py): welche Lage löst im Aufseher (fixer_keepalive.sh, letzte
+       Zeile) die Reparatur aus («Hinweis fehlt»), welche wird nur gemeldet, und dass ohne role MAIN nichts geplant oder geschrieben wird
+ """
+-import os, re, sys, time
++import hashlib, os, re, sys, time
+ 
+ HIER = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(HIER)
+ sys.path.insert(0, HIER)
+@@ -73,6 +73,14 @@
+         rechnet die Kasse in der Schweiz 0.00 → «Gratis-Versand in der Schweiz · Ware ab Schweizer Lager». Notschalter = das
+         Produkt-Zeichen (ch_lager_profil.py setzt es nach dem Zuordnen, entfernt es vor dem Lösen). LI: kein Versprechen. {%- endcomment -%}
+     {%- unless cart == empty -%}
++      {%- assign lux_gutschein_im_korb = false -%}
++      {%- for lux_zeile in cart.items -%}
++        {%- if lux_zeile.product.gift_card? -%}
++          {%- assign lux_gutschein_im_korb = true -%}
++          {%- break -%}
++        {%- endif -%}
++      {%- endfor -%}
++      {%- unless lux_gutschein_im_korb -%}
+       {%- assign lux_alle_chlager = true -%}
+       {%- for lux_ci in cart.items -%}{%- unless lux_ci.product.tags contains 'profil-ch-lager' -%}{%- assign lux_alle_chlager = false -%}{%- break -%}{%- endunless -%}{%- endfor -%}
+       <div class="cart-totals__item lux-gratisversand cart-primary-typography" role="status"{% if lux_alle_chlager %} data-lux-alle-chlager="1"{% endif %} style="font-size:0.92em;justify-content:center;text-align:center;">
+@@ -89,6 +97,7 @@
+           <span>🚚 Versand in der Schweiz CHF @VERSAND_CHF@ · noch <strong>{{ lux_gv_rest | money }}</strong> bis zum Gratisversand (@TEXT@)</span>
+         {%- endif -%}
+       </div>
++      {%- endunless -%}
+     {%- endunless -%}
+ """
+ BLOCK = (_VORLAGE.replace("@TARIF@", str(TARIF_RP)).replace("@VERSPRECHEN@", str(VERSPRECHEN_RP))
+@@ -132,6 +141,8 @@
+         b.append(f"Zweitterm nicht ⌈({TARIF_RP} − Betrag) · 10/9⌉")
+     if f"bis zum Gratisversand ({TEXT_SCHWELLE})</span>" not in block or "nach Rabatt" not in TEXT_SCHWELLE:
+         b.append(f"Text nicht «({TEXT_SCHWELLE})» mit «nach Rabatt»")
++    if "if lux_zeile.product.gift_card?" not in block or "unless lux_gutschein_im_korb" not in block:
++        b.append("Gutschein-Abfrage im Versandhinweis fehlt")
+     if not block.endswith(BLOCK_ENDE) or block_finden(block) != (0, len(block)):
+         b.append("Block nicht abgrenzbar (Anfang Marke, Ende «{%- endunless -%}»)")
+     return b
+@@ -148,13 +159,39 @@
+     return None if e < 0 else (a, e + 1 + len(BLOCK_ENDE))
+ 
+ 
++# Normalisierte, aus den datierten Repo-Sicherungen und der ältesten Testfassung
++# bestätigte Versandblöcke. Eine unbekannte Erweiterung gehört ihrem jeweiligen Eigentümer.
++ALTE_VERSANDBLOECKE = {
++    "4c98622b906d0b200028c34c5398d7648c420c747e74828afe6e2636b5a048e3",  # 06.10.
++    "a1bf302d2c618319ceb62bdbf18a1777b87f43423394ad4829f5d0fbd194925d",  # vor CH-Lager, 13.10.
++    "b9f6243fe06d572cffb7ab0cc9c694c814bafd617bccb92203849ed9debd2d83",  # vor Schwelle 40.50
++    "5ba8a4ce39d8caed0a9eb53b7dcab640202bb3ab5458d89c293b1cd212baf99e",  # vor Schwelle 50
++    "3a31865cef98b86cc48bde00d5a88fe9222cfa60e7765f2618ceb70f6f4ae482",  # vor Black Week, 27.11.
++}
++
++
++def versandvergleich(block):
++    """Die separat gepflegte, gültige Aktion darf den Versandvergleich nicht verfälschen."""
++    import bw_warenkorb_hinweis_2711 as bw
++    if block.count(bw.START) == 1 and block.count(bw.ENDE) == 1:
++        erwartet = bw.BLOCK_GUTSCHEIN if "lux_zeile.product.gift_card?" in block else bw.BLOCK
++        zeilen = "      " + erwartet
++        if zeilen in block:
++            block = block.replace(zeilen, "", 1)
++    return kern(block)
++
++
+ def block_ersetzen(inhalt):
+     """Rein: (neuer Text | None, Stand). Ersetzt einen vorhandenen (älteren) Hinweis-Block durch BLOCK; alles andere bleibt Byte für Byte."""
+     pos = block_finden(inhalt)
+     if pos is None:
+         return None, f"Hinweis-Block nicht eindeutig ({inhalt.count(MARKE)}× Marke)"
+-    if kern(inhalt[pos[0]:pos[1]]) == kern(BLOCK):
++    block = inhalt[pos[0]:pos[1]]
++    if versandvergleich(block) == kern(BLOCK):
+         return None, "schon Soll"
++    digest = hashlib.sha256("\n".join(kern(block)).encode()).hexdigest()
++    if digest not in ALTE_VERSANDBLOECKE:
++        return None, "unbekannte oder erweiterte Fassung — nicht ersetzt"
+     return inhalt[:pos[0]] + BLOCK + inhalt[pos[1]:], "ersetzt"
+ 
+ 
+@@ -290,7 +327,7 @@
+         if n_div != 1:
+             befunde.append(f"Hinweis {n_div}× im Live-Snippet (erwartet 1)")
+         pos = block_finden(inhalt)
+-        abw = "Block nicht abgrenzbar" if pos is None else erste_abweichung(kern(inhalt[pos[0]:pos[1]]), kern(BLOCK))
++        abw = "Block nicht abgrenzbar" if pos is None else erste_abweichung(versandvergleich(inhalt[pos[0]:pos[1]]), kern(BLOCK))
+         if abw:   # nur melden: der Aufseher repariert allein «Hinweis fehlt»
+             befunde.append(f"Hinweis-Text im Live-Snippet ≠ Soll ({abw})")
+     if std != VERSAND:
+@@ -406,6 +443,23 @@
+         ok = neu is not None and neu[:a] == t[:a] and neu[a + len(BLOCK):] == t[e:] and kern(neu[a:a + len(BLOCK)]) == kern(BLOCK)
+         pruefe(ok and block_ersetzen(neu)[1] == "schon Soll", f"block_ersetzen an {os.path.basename(p)}: {st}")
+     pruefe(block_ersetzen("ohne Marke")[0] is None, "block_ersetzen ohne Marke schreibt")
++    import bw_warenkorb_hinweis_2711 as bw
++    basis = "<A>\n" + ANKER + BLOCK + "<B>\n"
++    mit_aktion = bw.einfuegen(basis)
++    pruefe(bw.BLOCK_GUTSCHEIN in mit_aktion and bw.einfuegen(mit_aktion) == mit_aktion,
++           "Gutschein-Aktion unpassend oder doppelt eingefügt")
++    pruefe(bw.entfernen(mit_aktion) == basis and bw.entfernen(basis) == basis,
++           "Aktions-Rückbau verändert fremde Zeichen")
++    pruefe(block_ersetzen(mit_aktion) == (None, "schon Soll"), "Gutschein-/Aktionsfassung nicht geschützt")
++    neuere = mit_aktion.replace("lux_bw_an -%}", "lux_bw_an and kundenwahl -%}")
++    pruefe(block_ersetzen(neuere)[0] is None, "unbekannte Aktion wird ersetzt")
++    try:
++        bw.entfernen(neuere)
++    except ValueError:
++        pass
++    else:
++        pruefe(False, "unbekannte Aktion wird entfernt")
++    pruefe(block_ersetzen(basis.replace("CHF 7", "CHF 13"))[0] is None, "unbekannte Tarifbasis wird ersetzt")
+     # 6) Import fragt nichts ab; live_theme() ruft gid() genau einmal je Aufruf (kein Aufruf beim Import)
+     import main_theme
+     ok, m = main_theme.import_ohne_netz("warenkorb_gratisversand", "warenkorb_einig", pfad=HIER + os.pathsep + main_theme.HIER)
+diff --git a/automation/bw_warenkorb_hinweis_2711.py b/automation/bw_warenkorb_hinweis_2711.py
+--- a/automation/bw_warenkorb_hinweis_2711.py
++++ b/automation/bw_warenkorb_hinweis_2711.py
+@@ -37,6 +37,34 @@
+          "      {%- endif -%}\n"
+          "      " + ENDE + "\n")
+ 
++ANKER_GUTSCHEIN = ANKER + "      {%- endunless -%}\n"
++BLOCK_GUTSCHEIN = BLOCK.replace("elsif cart.items_subtotal_price >= 4000 -%}",
++                               "elsif cart.items_subtotal_price >= 4000 and lux_gutschein_im_korb == false -%}")
++
++
++def einfuegen(raw):
++    if START in raw or ENDE in raw:
++        if raw.count(START) == raw.count(ENDE) == 1 and raw.index(START) < raw.index(ENDE):
++            return raw
++        raise ValueError("Unvollständige oder doppelte Black-Week-Markierung")
++    mit_gutschein = "lux_zeile.product.gift_card?" in raw
++    anker = ANKER_GUTSCHEIN if mit_gutschein else ANKER
++    block = BLOCK_GUTSCHEIN if mit_gutschein else BLOCK
++    if raw.count(anker) != 1:
++        raise ValueError("Black-Week-Anker nicht eindeutig, Quelle prüfen")
++    return raw.replace(anker, anker + "      " + block, 1)
++
++
++def entfernen(raw):
++    if START not in raw and ENDE not in raw:
++        return raw
++    if raw.count(START) == raw.count(ENDE) == 1:
++        for block in (BLOCK, BLOCK_GUTSCHEIN):
++            ziel = "      " + block
++            if raw.count(ziel) == 1:
++                return raw.replace(ziel, "", 1)
++    raise ValueError("Black-Week-Block hat sich geändert, nicht entfernt")
++
+ 
+ def lesen(th):
+     n = gql('query($i:ID!){theme(id:$i){files(filenames:["%s"]){nodes{checksumMd5 body{... on OnlineStoreThemeFileBodyText{content}}}}}}' % DATEI,
+@@ -55,17 +83,10 @@
+     th = gid()
+     raw, md5 = lesen(th)
+     zurueck = "--zurueck" in sys.argv
+-    if zurueck:
+-        if START not in raw:
+-            print("Block nicht drin"); return 0
+-        a = raw.index(START); e = raw.index(ENDE) + len(ENDE) + 1
+-        neu = raw[:a] + raw[e:].lstrip(" ") if raw[e - 1] == "\n" else raw[:a] + raw[e:]
+-    else:
+-        if START in raw:
+-            print("schon drin"); return 0
+-        if raw.count(ANKER) != 1:
+-            raise SystemExit(f"Anker {raw.count(ANKER)}× (erwartet 1)")
+-        neu = raw.replace(ANKER, ANKER + "      " + BLOCK, 1)
++    neu = entfernen(raw) if zurueck else einfuegen(raw)
++    if neu == raw:
++        print("Block nicht drin" if zurueck else "schon drin")
++        return 0
+     print(("ENTFERNE" if zurueck else "FÜGE EIN") + f" ({len(raw)} → {len(neu)} Zeichen, md5 {md5})")
+     if os.environ.get("SCHARF") != "1" and not zurueck:
+         print("TROCKEN — SCHARF=1 schreibt"); return 0
+diff --git a/automation/warenkorb_gutschein_snapshot_test.py b/automation/warenkorb_gutschein_snapshot_test.py
+new file mode 100644
+--- /dev/null
++++ b/automation/warenkorb_gutschein_snapshot_test.py
+@@ -0,0 +1,75 @@
++"""Offline-Regression anhand des verifizierten Storefront-Themes 214565814663 vom 28.11.2026."""
++import hashlib
++from pathlib import Path
++
++import bw_warenkorb_hinweis_2711 as bw
++import theme_attrappe as ta
++import warenkorb_einig as einig
++import warenkorb_gratisversand as versand
++
++
++def digest(raw):
++    return hashlib.sha256(raw.encode()).hexdigest()
++
++
++def prueflauf(raw):
++    theme = "gid://shopify/OnlineStoreTheme/214565814663"
++    # Der Test übt nur den Hinweis und den Aufseher aus. Tarif und Produktstichprobe
++    # sind hier Attrappen und treffen keine Aussage zum aktuellen Shopify-Tarif.
++    with ta.ersetzt((versand, "live_theme", lambda: theme), (versand, "theme_datei", lambda _: ("MAIN", raw)),
++                    (versand, "tarif", lambda: (versand.VERSAND, versand.SCHWELLE_TECHNIK)),
++                    (versand, "chlager_pruefen", lambda *_: [])):
++        rc, zeile, _ = ta.lauf(versand.pruefen)
++        return rc, ta.aufseher(zeile, ta.reiz("warenkorb_gratisversand.py"))
++
++
++def test_snapshot():
++    basis = (Path(__file__).resolve().parents[1] / "theme_backup/snippets__cart-summary.liquid.vor-bw-hinweis-2711").read_text()
++    with ta.ohne_netz():
++        live = bw.einfuegen(basis)
++        assert digest(live) == "fbad4dc6c91607c567467286af44c142f6154d3c4e0fd4a4e1bdd6e2eb83f969"
++        assert prueflauf(live) == (1, "MELDEN")
++        assert versand.einfuegen_plan(live)[0] is None
++        assert versand.block_ersetzen(live)[0] is None
++        assert bw.entfernen(live) == basis
++
++        # Der Vorschau-Export behielt die kürzeren historischen Kommentare des Shops bei.
++        # Alle ausführbaren Liquid-Zeilen stammen aus der gemeinsamen Generatorvorlage.
++        start, ende = versand.block_finden(basis)
++        kommentare = iter(versand._KOMMENTAR.findall(basis[start:ende]))
++        block = versand._KOMMENTAR.sub(lambda _: next(kommentare), versand.BLOCK)
++        assert next(kommentare, None) is None
++        ohne_aktion = basis[:start] + block + basis[ende:]
++        vorschau = bw.einfuegen(ohne_aktion)
++        assert digest(vorschau) == "c08ae7795f054c32ef7d7678a3c8e0bb882c0666bc560acb991f72c724c32954"
++        for quelle in (ohne_aktion, vorschau):
++            assert prueflauf(quelle) == (0, "STILL")
++            assert versand.block_ersetzen(quelle) == (None, "schon Soll")
++            assert versand.einfuegen_plan(quelle)[0] is None
++        assert bw.entfernen(vorschau) == ohne_aktion
++        assert bw.einfuegen(vorschau) == vorschau
++
++        unbekannt = vorschau.replace("lux_bw_an -%}", "lux_bw_an and andere_aktion -%}")
++        assert prueflauf(unbekannt) == (1, "MELDEN")
++        assert versand.block_ersetzen(unbekannt)[0] is None
++        try:
++            bw.entfernen(unbekannt)
++        except ValueError:
++            pass
++        else:
++            raise AssertionError("Unbekannte Kampagne würde entfernt")
++
++        for quelle in (live, vorschau, unbekannt):
++            # Der zweite Wächter bietet bei fehlender eigener Marke eine Reparatur an.
++            # Sein echter Planer muss fremde Kampagnen sowie alle weiteren Theme-Dateien erhalten.
++            ohne_zweitmarke = quelle.replace(einig.MARKE, "umbenannter Kommentar")
++            assert einig.MARKE not in ohne_zweitmarke
++            muster = {"layout/theme.liquid": einig.MARKE, "templates/cart.json": einig.MARKE,
++                      versand.DATEI: ohne_zweitmarke}
++            assert einig.plane_aus(muster)[0] == {}
++            assert versand.block_ersetzen(ohne_zweitmarke)[0] is None
++
++
++if __name__ == "__main__":
++    test_snapshot()
++    print("Warenkorb-Snapshot bestanden: Live- und Vorschau-SHA, beide Wächter, unbekannte Aktion und Wiederholung.")
