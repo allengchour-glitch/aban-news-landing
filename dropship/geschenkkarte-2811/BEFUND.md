@@ -25,3 +25,21 @@ Alle 42 Liquid-Prüffälle bestanden. Die beiden vollständigen Custom-Liquid-Bl
 
 Im aktiven Shopify-Theme wurde nichts geändert. Die Kontrolle des tatsächlichen Shopify-Renderers, aller drei Gutscheinwerte, des Empfängerformulars und der DE-/FR-Darstellung bleibt Gegenstand der separaten Theme-Vorschau. Der Warenkorb wird separat bearbeitet.
 
+## Warenkorb und seitlicher Warenkorb
+
+Die vier geprüften Theme-Dateien für den Warenkorb stammen aus demselben Shopify-Theme. In der Originalvorlage behandelt der Lieferhinweis einen Gutschein ohne Lagerkennzeichnung wie eine Sendung aus Asien. Der Warenwert des Gutscheins fliesst ausserdem in eingeblendete Versandkosten und den Black-Week-Hinweis ein. Das wurde anhand der ausgelesenen Vorlagen und Testkörbe nachgestellt. Die tatsächliche Abrechnung wurde nicht geprüft.
+
+In der lokalen Korrektur zählt die Lieferprognose nur physische Positionen. Ein reiner Gutscheinkorb zeigt die E-Mail-Zustellung. In gemischten Körben stammt die Lieferzeile vom enthaltenen physischen Artikel. Bei einem Gutschein im Korb entfallen geschätzte Versandkosten und der noch fehlende Rabattbetrag. Ein von Shopify bereits angewendeter Rabatt bleibt sichtbar. Die neue Prüfung gilt für die Warenkorbseite und den seitlichen Warenkorb einschliesslich nachgeladener Versandanzeige. Tarif, Checkout und Rabattregeln sind davon unberührt.
+
+```sh
+python3 gutschein_warenkorb_vorschau.py original vorschau-warenkorb
+LIQUIDJS_PATH=/pfad/zu/liquid.browser.umd.js node test_gutscheinkorb.cjs original vorschau-warenkorb
+```
+
+72 Offline-Szenarien prüfen reine Gutschein-, Waren- und Mischkörbe, Deutsch und Französisch, die Warenkorbaktualisierung im Browser und verspätete Antworten. Bei physischen Warenkörben wurden die bestehenden Ausgaben mit der Ausgangsfassung verglichen. Der derzeitige Prüflauf von `automation/warenkorb_gratisversand.py` meldet bereits die zusätzliche Black-Week-Sektion gegenüber seiner älteren Vorlage. Der reguläre Aufseher schreibt bei vorhandener Marke nichts zurück. Den separaten Reparaturpfad vor jeder manuellen Verwendung gegen den vollständigen aktuellen Block prüfen.
+
+## Abweichung in der Shopify-Vorschau
+
+Am 28.11.2026 lieferten zwei Ansichten desselben Themes verschiedene Versionen des bestehenden Lieferblocks in `templates/product.json`. Der Shopify-Admin lieferte 82'929 Bytes mit SHA-256 `5f7f25f74dc400f5b12401de23f7cd1e7fa114d495bf5522edd5e143e94d8726`. Die Bearbeitungsansicht meldete 82'556 Bytes mit SHA-256 `e712e044ab2566810cdaa1fbb3b5e6aa2eb0fbac4774b1a2757c574f18c41407` und keine ausstehenden Änderungen. Im deutschen Text enthält die erste Fassung zusätzliche Preisgrenzen, die zweite an derselben Stelle einen eigenen Liechtenstein-Hinweis. Die öffentliche Panda-Seite bestätigte die Schweizer Lagerangabe.
+
+Die lokale Korrektur verwendet die Admin-Fassung. Beim nächsten Vorschauversuch beide Versionen des Lieferblocks erneut abgleichen und die lokalen Tests gegen dieselbe Basis ausführen. Anschliessend die echte Empfängerauswahl auf DE und FR, einen physischen Artikel sowie den reinen und den gemischten Warenkorb im Shopify-Renderer prüfen.
