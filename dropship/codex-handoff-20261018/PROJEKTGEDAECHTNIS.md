@@ -1,3 +1,13 @@
+# R323 · Nachtrag zum 19-Uhr-Lauf · 28.11.2026
+
+Der fällige Pinterest-Beitrag wechselte von PENDING um 19:10:15 Uhr auf PUBLISHED um 19:11:17 Uhr Zürich. Mit diesem Pin sind heute 14 Kanal-Auslieferungen bestehender Beiträge belegt. Sieben spätere Kanaltermine verteilen sich auf sechs Objekte. Der nächste Pin ist für 20:00 Uhr Zürich vorgesehen.
+
+Für die Verwendung der historischen Tondatei bleibt zu belegen, mit welchem SoundFont sie erzeugt wurde. Den nächsten fälligen Pin anhand seines tatsächlichen Kanalzustands prüfen. [Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
+
+[LUXESTYLE_R323_20261128_1910]
+
+---
+
 # R322 · Abendlauf LuxeStyle · 28.11.2026
 
 Für den Familienpyjama mit Einzelauswahl sind die Kauftexte auf Deutsch und Französisch korrigiert. Bei der verlinkten Partnerlook-Auswahl sind alle 25 französischen Variantenbezeichnungen eingetragen. Metricool bestätigte am 28.11. dreizehn Auslieferungen bestehender Beiträge. Bis 30.11. sind acht weitere Kanaltermine erfasst. Für 1.–5.12. blieben alle sechs Kanäle ohne aktiven Termin.

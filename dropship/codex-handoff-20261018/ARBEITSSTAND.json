@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 322,
-  "updatedAt": "2026-11-28T18:03:46Z",
+  "revision": 323,
+  "updatedAt": "2026-11-28T18:11:42Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51093,6 +51093,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026"
       ]
+    },
+    {
+      "revision": 323,
+      "at": "2026-11-28T18:11:42Z",
+      "summary": "Der fällige Pinterest-Beitrag wechselte von PENDING um 19:10:15 Uhr auf PUBLISHED um 19:11:17 Uhr Zürich. Mit diesem Pin sind heute 14 Kanal-Auslieferungen bestehender Beiträge belegt. Sieben spätere Kanaltermine verteilen sich auf sechs Objekte. Der nächste Pin ist für 20:00 Uhr Zürich vorgesehen.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026"
+      ]
     }
   ],
   "salesGoal": {
@@ -83421,5 +83429,49 @@
     "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026",
     "status": "partially_complete",
     "nextStep": "Die drei veralteten Merchant-Angebote einzeln in Quelle 10667445201 zur Bereinigung vorlegen. Für 1.–5.12. geeignete Beiträge und für Cascade neue Originalaufnahmen und Rechtebelege prüfen. Die anstehende Ausspielung des Kartenetuis bedarf wegen des aktuellen Sperrtags einer Prüfung durch die Freigabestelle."
+  },
+  "run323": {
+    "priorRun": 322,
+    "metricool": {
+      "brandId": "6227837",
+      "postId": "440688256",
+      "uuid": "7864981705944944149",
+      "observations": [
+        {
+          "at": "2026-11-28T19:10:15+01:00",
+          "pinterestStatus": "PENDING"
+        },
+        {
+          "at": "2026-11-28T19:11:17+01:00",
+          "pinterestStatus": "PUBLISHED",
+          "draft": false,
+          "autoPublish": true,
+          "platformId": "1111333645586843417",
+          "publicUrl": "https://www.pinterest.es/pin/1111333645586843417"
+        }
+      ],
+      "todayPublished": 14,
+      "byNetwork": {
+        "instagram": 7,
+        "facebook": 3,
+        "threads": 2,
+        "tiktok": 1,
+        "pinterest": 1
+      },
+      "knownFutureChannelSlots": 7,
+      "knownFuturePostObjects": 6,
+      "nextPin": "2026-11-28T20:00:00+01:00",
+      "plannerWrites": 0
+    },
+    "masterId": "luxe_cascade_creolen_20261122",
+    "soundFont": {
+      "scriptDefault": "FluidR3_GM.sf2",
+      "defaultSoundFontLicense": "MIT",
+      "licenseSource": "https://metadata.ftp-master.debian.org/changelogs/main/f/fluid-soundfont/fluid-soundfont_3.1-5.3_copyright",
+      "historicalExportSoundFont": "unknown"
+    },
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026",
+    "status": "partially_complete",
+    "nextStep": "Für die Verwendung der historischen Tondatei bleibt zu belegen, mit welchem SoundFont sie erzeugt wurde. Den nächsten fälligen Pin anhand seines tatsächlichen Kanalzustands prüfen."
   }
 }

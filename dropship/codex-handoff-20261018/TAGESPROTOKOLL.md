@@ -3942,3 +3942,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
 
 [LUXESTYLE_R322_20261128_19H]
+
+### R323 · Nachtrag zum 19-Uhr-Lauf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Pinterest | Metricool-Objekt `440688256`, UUID `7864981705944944149`, um 19:10:15 Uhr und 19:11:17 Uhr Zürich gezielt rückgelesen. | Der bestehende Pin wechselte von PENDING auf PUBLISHED, mit `draft=false` und `autoPublish=true`. Die Plattform bestätigte die ID `1111333645586843417`. [Pinterest](https://www.pinterest.es/pin/1111333645586843417) |
+| Tagesabdeckung | Den vorigen Tagesstand um die bestätigte Pinterest-Auslieferung fortgeschrieben. | 14 Kanal-Auslieferungen entfielen auf Instagram (7), Facebook (3), Threads (2), TikTok (1) und Pinterest (1). Sieben künftige Kanaltermine auf sechs Objekten sind noch eingeplant, darunter der nächste Pin um 20 Uhr. |
+| Tonspur für Cascade | Die Standard-SoundFont des Produktionsskripts und ihre Lizenzdokumentation abgeglichen. | Für `FluidR3_GM.sf2` dokumentiert Debian die MIT-Lizenz. Da das Skript eine andere SF2-Datei zulässt, bleibt die tatsächlich beim historischen Export verwendete Datei unbekannt. [Debian-Lizenznachweis](https://metadata.ftp-master.debian.org/changelogs/main/f/fluid-soundfont/fluid-soundfont_3.1-5.3_copyright) |
+
+[Abendbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#abendlauf-28112026)
+
+[LUXESTYLE_R323_20261128_1910]
