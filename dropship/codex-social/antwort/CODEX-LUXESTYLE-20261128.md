@@ -26,6 +26,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Schweizer Kundensuche | Google-Suchanfragen und Zielseiten gezielt ausgewertet, den Google-Abruf der Pyjama-Kollektion geprüft und die kaufbare Schmuckbox-Variante direkt aufgerufen. | Messbare Nachfrage für Familienpyjamas und Schmuckboxen. Eine französische Textkorrektur für den Totenkopfring ist zur Freigabe vorbereitet. |
 
+| Kostenlose Kundengewinnung | Schweizer Shopverzeichnis und Referenzbesuche geprüft, Eintrag für LuxeStyle CH formuliert und Google-Kanaldaten der Variante «Kolibri» abgeglichen. | Shopping Total bietet einen kostenlosen Eintrag mit redaktioneller Prüfung. Entwurf vorbereitet. Google-Freigabe für kostenlose Einträge unbekannt. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -264,3 +266,23 @@ Google bestätigt die Pyjama-Kollektion als indexiert und als eigene kanonische 
 | Meta-Beschreibung | Une bague à tête de mort pour compléter une tenue gothique. Choisissez votre taille et consultez le délai de livraison en Suisse sur la fiche produit. |
 
 Für einen neuen Pinterest-Pin fehlt eine konkret freigegebene Bilddatei mit belegtem Social-Nutzungsrecht. Der bestehende Social-Plan erhielt durch diese Recherche keinen neuen Beitrag. Die Auswertung erfasst Suchklicks und Onlineshop-Sitzungen. Eine neue Bestellung wurde dabei nicht nachgewiesen.
+
+## Kostenloser Verzeichniseintrag für LuxeStyle CH
+
+**Shopping Total, Sparte «Bijouterie & Geschenke».** Das offizielle Anmeldeformular nennt einen kostenlosen Eintrag ohne Konto. Die Redaktion prüft jede Anmeldung. Unter den 39 Shops der Rubrik «Bijouterie & Geschenke» und den 18 der Rubrik «Uhren & Schmuck» fand sich kein Eintrag für LuxeStyle. Auch bei der exakten Suche nach Name und Domain gab es keinen Treffer. Anmeldungen im Prüfverfahren sind öffentlich nicht einsehbar. Die erste Formularseite verlangt den Shopnamen. Weitere Pflichtfelder sind vor dem Absenden dieses ersten Schritts unbekannt. [Anmeldeformular](https://shoppingtotal.ch/shop-oder-onlineshop-eintragen/onlineshop-eintragen/) · [Bijouterie & Geschenke](https://shoppingtotal.ch/onlineshops/sparte/bijouterie-geschenke/) · [Zweite Seite](https://shoppingtotal.ch/onlineshops/sparte/bijouterie-geschenke/page/2/) · [Uhren & Schmuck](https://shoppingtotal.ch/onlineshops/sparte/uhren-schmuck/)
+
+| Angabe | Vorbereiteter Eintrag |
+| --- | --- |
+| Name | LuxeStyle CH |
+| Shopadresse | https://luxestyle.ch/ |
+| Sparte | Bijouterie & Geschenke |
+| Standort | Belp, Schweiz |
+| Kurzbeschreibung | LuxeStyle CH ist ein Onlineshop aus Belp. Im Sortiment finden sich Schmuck, Reise-Schmuckkästchen und Organizer für Ringe, Ketten und Ohrringe. Der Shop liefert in die Schweiz und nach Liechtenstein. |
+
+Stand bei dieser Prüfung ist Entwurf. Für die Texte wurden das öffentliche Impressum, die Versandrichtlinie und das Schmucksortiment herangezogen. [Impressum](https://luxestyle.ch/policies/legal-notice) · [Versand](https://luxestyle.ch/policies/shipping-policy) · [Sortiment](https://luxestyle.ch/collections/schmuckaufbewahrung)
+
+Die Shopify-Referenzabfrage vom 29.10. bis 27.11.2026 lieferte keine Zeile für menschliche Sitzungen aus der Schweiz mit `referrer_domain = 'shoppingtotal.ch'`. Nach einer bestätigten Veröffentlichung lassen sich über denselben Filter vermittelte Besuche und Warenkörbe prüfen.
+
+**Google, Variante Kolibri.** Shopify weist für Produkt `16654353695111` beim Kanal Google & YouTube `false`, für Variante `67843310649735` dagegen `true` aus. Das Produkt-Metafeld `mm-google-shopping.excluded_destination` nennt `Shopping_ads`. Für kostenlose Einträge in der Schweiz fehlt der verbindliche Status aus Merchant Center. Beide HYPD-Zugänge melden keine ausgewählte Merchant-Property. Windsor findet Konto `5797470070` (LuxeStyle CH), sein Free-Tarif sperrt den Datenabruf bei der bestehenden Zahl verbundener Konten. [Shopify-Variante](https://admin.shopify.com/store/au3j0y-hq/products/16654353695111/variants/67843310649735) · [Merchant-Konto für HYPD auswählen](https://app.hypd.ai/sources?select=merchant-center&utm_source=mcp&utm_content=none_selected)
+
+Die separate, finale Search-Console-Stichprobe für die Schweizer Websuche vom 29.10. bis 25.11. zeigte für die exakte Produktadresse keine Zeile zum Suchergebnisformat. Bei Produktpfaden mit den geprüften Schmuckbox-Begriffen wurden fünf Impressionen und null Klicks für `PRODUCT_SNIPPETS` gemeldet. Der Merchant-Freigabestatus bleibt davon unabhängig.
