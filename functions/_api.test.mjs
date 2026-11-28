@@ -307,7 +307,7 @@ async function run() {
 
   console.log("\nTest 15 — Browser-Lizenzprüfung endet und bleibt manuell prüfbar:");
   const studioSource=readFileSync(new URL('../js/ki-studio.js',import.meta.url),'utf8');
-  const validateSource=studioSource.slice(studioSource.indexOf('  function validate('),studioSource.indexOf('  var unlockBtn ='));
+  const validateSource=studioSource.slice(studioSource.indexOf('  var validationRequest ='),studioSource.indexOf('  var unlockBtn ='));
   for(const phase of ['transport','inhalt']) for(const quiet of [false,true]){
     const timers=new Map();let timerId=0,calls=0,finish,signal,unlocked=false;
     const btn={disabled:false,textContent:'Freischalten'},sub={textContent:''},saved=[];
