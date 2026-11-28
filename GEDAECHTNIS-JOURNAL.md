@@ -62,6 +62,13 @@
 
 
 
+## 2026-11-28 00:09 · Codex-Abendprüfung LuxeStyle
+- Cascade Modell 1: Der Bildabgleich bei 0,70 s zeigt abweichende Verbindungsstücke in der KI-Vorschau. Vorschau nur für Licht und dunklen Stoff verwenden. Die Drehkarte hält reales Variantenbild, Bildposition und fehlende Takes fest.
+- Google-Schaufenster: Das Nachfrage-Tag allein qualifiziert nicht für Stufe 0. Zwei aktuelle Shopify-Gegenproben tragen ausdrückliche Shopping-Ads-Ausschlüsse, die Wasserwellen-Leuchte zusätzlich eine Bildsperre.
+- Metricool-Plan und vier öffentliche Klaviyo-DNS-Sollwerte nachgelesen. [Abendprotokoll, Kanalentwürfe und Belege](dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md)
+- Nachfrage-Pilot nachgelesen: 11 aktuell ausserhalb Google, 7 mit Anzeigen-Ausschluss, 3 Standardprodukte mit 53 Varianten im Freigabeentwurf, POD separat. Das archivierte Aufnahme-Artefakt enthält das ausgeschlossene Polygel-Set bereits unter Stufe 0. Pilot darum nur mit exakter Produktliste und erneuter Budgetprobe. [Abgleich](dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachfrage-pilot-für-google--abgleich-28112026)
+- Budgetprüfung: 78’000 ist im bestehenden Selektor die Grenze ab Stufe 3. Der allgemeine Aufnahmecheck stoppt erst oberhalb von 140’000. Im 53-Varianten-Pilot daher vor jeder Aufnahme höchstens 77’947 aktuell belegte Varianten und exakt die drei geprüften IDs zulassen. 11 lokale Kontrollen grün, frischer Vollplan offen. [Budgetprüfung](dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#budgetprüfung-des-google-pilots--28112026)
+
 ## 2026-11-27 20:30 · 🤝 Übergabe an Codex
 - Betreiber: «speichere memory für chatgpt codex er macht weiter». Einstieg für Codex: `docs/UEBERGABE-CODEX-2711.md` (Gedächtnis-Orte, Betreiber-Regeln, Zugänge ohne Werte, Motoren, geplante Aufgaben mit Datum, Stand 27.11., Shop-Kampagne, offene Entscheide, Fallen, offene Bestellungen). `AGENTS.md` (Kopie von main + Hinweis oben) liegt jetzt auch auf `claude/luxestyle-status-tztnn1`.
 - Vorher am Abend: Postfach aufgeräumt (95 Threads + 14 Drive-Screenshots in den Papierkorb; Belege/Kunden/Sicherheit/Recht behalten; ein Teilagent verweigerte, weil ihm der Betreiber-Auftrag fehlte — Lehre: Agenten-Prompts müssen den WÖRTLICHEN Betreiber-Auftrag enthalten). #1021-Beschwerde (Kassensturz-Drohung) aus dem Papierkorb zurückgeholt; Bestellung war am 30.10. voll erstattet. Campaign Autopilot: Betreiber setzte CAC 12 (meine erste Zahl; korrigierte Empfehlung 10, Bremse ist ROAS 4x → Vorschlag 3x).

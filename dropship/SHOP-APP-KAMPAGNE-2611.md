@@ -33,3 +33,9 @@ Quelle: Workflow `shop-campaign-app-pimpen` (3 Recherchen, 3 Gegenprüfungen). R
 5. Shop → Catalog → «Ineligible products» öffnen und mir einen Screenshot der Gründe schicken.
 6. Lassen, wie es ist: Budget CHF 100/Monat, Ziel-ROAS 4, Freigabe nötig für Autopilot-Taktiken. Taktiken mit Sonderpreis über 15 % ablehnen.
 7. NICHT einschalten: «Ads on other platforms» (gibt es für die Schweiz nicht). NICHT abschalten: «Sell directly on Shop» und «Shopify Network Intelligence».
+
+## 28.11.2026 · Shop Campaigns weiterentwickeln
+
+LuxeStyle `luxestyle.ch` und CHF im verbundenen Shopify-Konto bestätigt. Der Browser für den Admin wechselte zum Shopify-Login. Der verfügbare Admin-API-Zugang liefert die Autopilot-Kampagneneinstellungen nicht. Der jüngste dokumentierte Autopilot-Stand stammt aus dem Screenshot vom 27.11. (Ziel-ROAS 4×, CAC CHF 12, Monatsziel CHF 100). Für den aktuellen Wert und offene Shop-Taktiken ist der angemeldete Admin erforderlich.
+
+**Vorschlag für künftige Shop-Taktiken:** In Growth → Autopilot → Guardrails den Ziel-ROAS auf 3× setzen. CAC CHF 12 und Monatsziel CHF 100 bilden den Rahmen des Vorschlags. Shopify wendet Änderungen der Guardrails auf künftige Empfehlungen an. Autopilot-erstellte Kampagnen sind im Shop-Kanal schreibgeschützt. Ein direkter Schub braucht eine neue, geprüfte Shop-Taktik. In diesem Lauf wurde keine Kampagne gestartet und keine Einstellung gespeichert. [Autopilot-Leitplanken](https://help.shopify.com/en/manual/promoting-marketing/autopilot/managing-autopilot-strategies#edit-your-autopilot-guardrails-and-permissions) · [Shop Campaigns in Autopilot](https://help.shopify.com/en/manual/promoting-marketing/autopilot/shop-campaigns)
