@@ -42,6 +42,8 @@ def lesen(pfad):
         reader = csv.DictReader(f)
         if not {"id", "betreff", "nachricht"}.issubset(reader.fieldnames or []):
             raise ValueError("CSV braucht die Spalten id, betreff und nachricht.")
+        if len(reader.fieldnames) != len(set(reader.fieldnames)):
+            raise ValueError("CSV-Spaltennamen müssen eindeutig sein.")
         rows, ids = [], set()
         for nummer, row in enumerate(reader, 2):
             if nummer > 5001:

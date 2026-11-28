@@ -114,6 +114,8 @@ def stapel_verarbeiten(eingabe, ausgabe, wissen, bekannt=None):
         reader = csv.DictReader(f)
         if not {"id", "plattform", "text"}.issubset(reader.fieldnames or []):
             raise ValueError("CSV braucht id, plattform und text.")
+        if len(reader.fieldnames) != len(set(reader.fieldnames)):
+            raise ValueError("CSV-Spaltennamen müssen eindeutig sein.")
         rows, ids, ansicht = [], set(), []
         for nummer, row in enumerate(reader, 2):
             if nummer > 5001:
