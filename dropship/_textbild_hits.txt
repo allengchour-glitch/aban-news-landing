@@ -19073,3 +19073,25 @@ gid://shopify/Product/16742219874695	20->0	Nachtlicht Rosenbouquet für Mutterta
 gid://shopify/Product/16742223872391	15->0	Himmelspunkte Nachtlicht für Kinder
 gid://shopify/Product/16742225871239	11->0	Atmosphärische Nachtlampe mit USB-Stromversorgung
 gid://shopify/Product/16742227804551	36->0	Schultertasche für Herren, schwarz
+gid://shopify/Product/16742264406407	104->0	Modernes Nachtlicht mit Knopf- und Fernbedienung
+gid://shopify/Product/16742264799623	78->0	Elektrische Lunchbox mit USB-Aufwärmung, 800 ml
+gid://shopify/Product/16742284165511	66->0	Unterspülen-Organizer aus Eisen – Ausziehbarer Aufbewahrungs
+gid://shopify/Product/16742371066247	38->0	Handlich tragbare Nachttischlampe mit warmem Licht
+gid://shopify/Product/16742373785991	31->0	Umhängetasche
+gid://shopify/Product/16742375162247	13->0	U-Form Reisekissen mit Fleece-Futter
+gid://shopify/Product/16742376735111	69->1	Business-Rucksack mit grosser Computer-Fach
+gid://shopify/Product/16742377488775	22->0	Häsli-Nachtlicht mit LED-Beleuchtung
+gid://shopify/Product/16742416318855	126->0	LED Flamingo Nachtlicht
+gid://shopify/Product/16742423036295	12->0	Induktionsnachtlicht LED, Plexiglas, Druckknopf
+gid://shopify/Product/16742810747271	14->0	RGB Symphony Tischlampe Nachtlicht
+gid://shopify/Product/16742816973191	17->0	Einreihiges Satinkleid mit Ausschnitt
+gid://shopify/Product/16742825001351	25->0	Schlank geschnittener Maxikleid mit Schlitz
+gid://shopify/Product/16742888997255	121->0	Chiffon-Kleid mit Kurzarm und V-Ausschnitt
+gid://shopify/Product/16743014662535	132->1	Weibliches Herbstkleid mit gefalteter Taille
+gid://shopify/Product/16743017054599	23->0	UFO Nachtlicht mit Ladestation für Schreibtisch
+gid://shopify/Product/16743017382279	22->0	3D LED Nachtlicht mit Halloween-Totenkopf
+gid://shopify/Product/16743125287303	121->1	Herren Shirt mit floralen Mustern, kurze Ärmel
+gid://shopify/Product/16743125352839	17->0	Magnetische Levitation-Glühbirne
+gid://shopify/Product/16743139901831	53->2	Digital bedrucktes Herrenhemd
+gid://shopify/Product/16743242072455	21->0	LED Ambient Light für Mittelkonsole – 3 m
+gid://shopify/Product/16743242334599	72->3	Nachtlicht mit Sternenprojektion
