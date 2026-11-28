@@ -43,6 +43,7 @@ ENV: MODUS (produkt|top, Default produkt) · QUELLE (Kollektions-Handle, Default
 import csv
 import hashlib
 from decimal import Decimal
+from io import BytesIO
 import json
 import os
 import re
@@ -602,22 +603,24 @@ def schreibe(slug, bilder_liste, caption, produkte):
     for alt in os.listdir(ordner):            # NEU_BAUEN: alte Slides raus, sonst bleibt ein 06.jpg neben 5 neuen liegen
         if re.fullmatch(r"\d\d\.jpg", alt):
             os.remove(os.path.join(ordner, alt))
-    pfade = []
+    pfade, slide_hashes = [], []
     for i, im in enumerate(bilder_liste, 1):
         p = os.path.join(ordner, f"{i:02d}.jpg")
-        im.save(p, "JPEG", quality=92, optimize=True)
+        ziel = BytesIO() if FORMAT == "ig" else p
+        im.save(ziel, "JPEG", quality=92, optimize=True)
+        if FORMAT == "ig":
+            inhalt = ziel.getvalue()
+            slide_hashes.append(hashlib.sha256(inhalt).hexdigest())
+            with open(p, "wb") as jpg:
+                jpg.write(inhalt)
         pfade.append(os.path.relpath(p, ROOT))
-    with open(os.path.join(ordner, "caption.txt"), "w") as fh:
-        fh.write(caption + "\n")
+    caption_bytes = (caption + "\n").encode("utf-8")
+    with open(os.path.join(ordner, "caption.txt"), "wb") as fh:
+        fh.write(caption_bytes)
     if FORMAT == "ig":
-        # Bindet die vom Renderer verwendete Caption an alle fertigen JPGs, in Slide-Reihenfolge.
-        # Der Poster kann damit alte Bilder auch nach einer Änderung der Queue erkennen.
-        def dateihash(name):
-            with open(os.path.join(ordner, name), "rb") as datei:
-                return hashlib.sha256(datei.read()).hexdigest()
-
-        beleg = {"produkte": produkte, "caption": dateihash("caption.txt"),
-                 "slides": [dateihash(os.path.basename(pfad)) for pfad in pfade]}
+        # Bei parallelen Neurendern zählen nur die Bytes dieses Durchlaufs.
+        beleg = {"produkte": produkte, "caption": hashlib.sha256(caption_bytes).hexdigest(),
+                 "slides": slide_hashes}
         with open(os.path.join(ordner, "preisbeleg.json"), "w") as fh:
             json.dump(beleg, fh)
     if NEU_BAUEN:
