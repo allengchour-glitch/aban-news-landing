@@ -132,3 +132,9 @@ Google liess am 22.11. nur 3 Anträge durch (ab Nr. 4 «Kontingent überschritte
 - **Lieferung vom 25./26.11. (beantragt laut Besitzer am 26.11.):** keine der 10 indexiert. `smartwatches-wearables`, `herren-anzuege-sakkos`, `damen-nachtwaesche`, `damen-wanderschuhe`, `damen-kleider-plissee` «URL ist Google nicht bekannt»; `trainings-fitnessschuhe`, `damen-kleider-jeans`, `malen-nach-zahlen`, `luftreiniger-klimageraete` «gefunden, nicht indexiert»; `outdoor-garten` «gecrawlt, nicht indexiert» (zuletzt 07.11.). Frühere Lieferungen waren nach < 24 h indexiert → Verdacht: die Anträge vom 26.11. gingen nicht durch. Nachmessen am 28.11.; sind sie dann noch unbekannt, kommen sie zurück in die Reihe.
 - **Geliefert (10):** `elektrowerkzeug`, `wc-zubehoer-taschentuchboxen`, `suesses-esswaren`, `taschenlampen`, `kueche-kochen`, `geschirr-tisch`, `kuechenhelfer-vorrat`, `laptop-business-rucksaecke` (gecrawlt 21.11., nicht indexiert), `velo-lauf-trinkrucksaecke`, `herren-handtaschen`. Alle HTTP 200, kein `noindex`, 1,16 bis 1,82 MB.
 - Noch offen in der Warteschlange: 29 Seiten (inkl. Reserve; davon 10 heute geliefert) + 10 beantragte ohne Index.
+
+### 28.11. (gemessen 06:00 bis 06:12 UTC)
+- **Beantragt am 26.11. (10):** nach zwei Tagen weiterhin keine indexiert (5 «URL ist Google nicht bekannt», 4 «gefunden, nicht indexiert», `outdoor-garten` «gecrawlt, nicht indexiert», zuletzt 07.11.) → die Anträge gingen sehr wahrscheinlich nicht durch; die 10 kommen zurück ans Ende der Reihe.
+- **Lieferung vom 27.11.:** keine Rückmeldung des Besitzers. Indexiert: `wc-zubehoer-taschentuchboxen` («Gesendet und indexiert», gecrawlt 27.11. 08:31 UTC). Die anderen 9 sind nicht indexiert.
+- **Geliefert (10):** die 9 von gestern + `herren-kartenetuis` (URL ist Google nicht bekannt). Alle HTTP 200, kein `noindex`, 1,16 bis 1,82 MB.
+- Keine weitere Lieferung geplant (seit 26.11. keine Rückmeldung); auf Zuruf geht es weiter.

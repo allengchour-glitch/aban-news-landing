@@ -110,7 +110,8 @@
   "damen-mode": "2026-11-25",
   "damen-schuhe": "2026-11-25",
   "herren-schuhe": "2026-11-25",
-  "herren-freizeitschuhe": "2026-11-25"
+  "herren-freizeitschuhe": "2026-11-25",
+  "wc-zubehoer-taschentuchboxen": "2026-11-27"
  },
  "geliefert": {
   "2026-11-23": [
@@ -136,6 +137,18 @@
    "damen-mode",
    "damen-schuhe",
    "herren-schuhe"
+  ],
+  "2026-11-28": [
+   "elektrowerkzeug",
+   "suesses-esswaren",
+   "taschenlampen",
+   "kueche-kochen",
+   "geschirr-tisch",
+   "kuechenhelfer-vorrat",
+   "laptop-business-rucksaecke",
+   "velo-lauf-trinkrucksaecke",
+   "herren-handtaschen",
+   "herren-kartenetuis"
   ]
  }
 }
