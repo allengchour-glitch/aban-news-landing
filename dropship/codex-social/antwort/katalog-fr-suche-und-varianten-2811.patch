@@ -1,0 +1,53 @@
+--- a/snippets/luxe-clothing-shop-offers.liquid
++++ b/snippets/luxe-clothing-shop-offers.liquid
+@@ -24,8 +24,7 @@
+               assign pricing_sku = pricing_variant.sku | strip
+               assign pricing_pair = '|' | append: pricing_variant.id | append: ':' | append: pricing_sku | append: '|'
+               assign pricing_pf_id = pricing_sku | split: '_' | last | plus: 0
+-              assign pricing_handle = pricing_product.handle | url_encode
+-              assign pricing_url = '/products/' | append: pricing_handle | append: '?variant=' | append: pricing_variant.id
++              assign pricing_url = pricing_product.url | split: '?' | first | append: '?variant=' | append: pricing_variant.id
+             -%}
+             {%- if pricing_allowed_pairs contains pricing_pair and pricing_pf_id > 0 and pricing_variant.price > 0 -%}
+               {%- unless pricing_first_offer -%},{%- endunless -%}
+--- a/assets/luxe-clothing.js
++++ b/assets/luxe-clothing.js
+@@ -178,7 +178,11 @@
+     const joinSizeLabels = (labels, value) => {const u=[...new Set(labels)], cmp=(a,b)=>a.localeCompare(b,config.locale||'de',{numeric:true});if(u.length===1)return u[0];const eu=u.filter(x=>/^EU\s/.test(x));if(eu.length)return eu.sort(cmp).join(' / ');const m=u.map(x=>/^(\d+(?:,\d+)?) (ml|g)$/.exec(x));if(u.length&&m.every(Boolean)&&new Set(m.map(x=>x[2])).size===1){const n=m.map(x=>Number(x[1].replace(',','.'))).sort((p,q)=>p-q), f=v=>String(v).replace('.',',');return n[0]===n[n.length-1]?u[0]:f(n[0])+'–'+f(n[n.length-1])+' '+m[0][2];}return sizeDe(value,null,roundCm(metricText(value)));};
+     /* LX-KATALOGTEXTE-0511 (Korrektur 06.11.2026): deutsche Modelltitel (Vorrang vor titleDe der Daten, das teils selbst englisch ist); ohne Eintrag der bisherige Titel */
+     const lxTitelDe = {"3":"Leinwand","19":"Keramik-Tasse, weiss glänzend","71":"Unisex-T-Shirt Staple | Bella + Canvas 3001","83":"Kissen mit Allover-Druck","84":"Stoffbeutel mit Allover-Druck","145":"Unisex-Sweatshirt mit Rundhalsausschnitt | Gildan 18000","171":"Premium-Fotoposter auf Luster-Papier","181":"Transparente Hülle für iPhone®","206":"Klassische Dad-Cap | Yupoong 6245CM","242":"Yoga-Leggings mit Allover-Druck","267":"Transparente Hülle für Samsung®","268":"Poster auf mattem Premium-Papier","272":"Badeanzug mit Allover-Druck","279":"Rucksack mit Allover-Druck","282":"Sport-BH mit Allover-Druck","304":"Gerahmtes Poster auf mattem Premium-Papier","320":"Unisex-Sweatshirt aus Recyclingmaterial mit Allover-Druck","358":"Kiss-Cut-Aufkleber","367":"Öko-Stoffbeutel | Econscious EC8000","388":"Unisex-Hoodie aus Recyclingmaterial mit Allover-Druck","390":"Unisex-Bomberjacke mit Allover-Druck","400":"Herren-Jogginghose aus Recyclingmaterial mit Allover-Druck","438":"Klassisches Unisex-T-Shirt | Gildan 5000","456":"Unisex-Bio-Baumwoll-T-Shirt Creator 2.0 | Stanley/Stella STTU169","474":"Spiral-Notizbuch","518":"Mauspad","586":"Schweres Unisex-T-Shirt, stückgefärbt | Comfort Colors 1717","601":"Robuste Hülle für iPhone® (Tough Case)","656":"Magnete mit Konturschnitt","684":"Schlanke Snap-Hülle für Samsung","686":"Robuste Hülle für Samsung (Tough Case)","788":"Trinkflasche aus Edelstahl mit Strohhalm-Deckel","798":"Robuste MagSafe-Hülle für iPhone® (Tough Case)","821":"Unisex-Bio-Hoodie, mittelschwer, Drummer 2.0 | Stanley/Stella SASU009","896":"Slip-Kleid mit Allover-Druck","1483":"Herren-Boardshorts mit Allover-Druck","1552":"Alltags-Umhängetasche | QS309"};
++    const french = /^fr(?:-|$)/i.test(config.locale || '');
++    const frenchShopTitles = new Map();
+     const titleForProduct = product => {
++      const localizedTitles = frenchShopTitles.get(id(product.id));
++      if (localizedTitles?.length === 1) return localizedTitles[0];
+       const extra = presentationFor(product);
+       return titleCm(metricTitle(german && (lxTitelDe[id(product.id)] || string(extra?.titleDe) || string(product.titleDe)) || (german ? dropOz(product.title) : product.title)));
+     };
+@@ -281,7 +285,7 @@
+     const searchAliases={grusskarte:['greeting card'],grusskarten:['greeting card'],karte:['greeting card'],karten:['greeting card'],pintglas:['pint glass'],trinkglas:['glass'],holzornament:['wooden ornament'],holzornamente:['wooden ornament'],weihnachtsanhanger:['wooden ornament'],longsleeve:['long sleeve'],langarmshirt:['long sleeve'],langarmshirts:['long sleeve'],tasse:['mug'],tassen:['mug'],becher:['mug','tumbler'],kapuzenpullover:['hoodie'],rucksack:['backpack'],rucksacke:['backpack'],kissen:['pillow'],decke:['blanket'],decken:['blanket'],handtuch:['towel'],handtucher:['towel'],aufkleber:['sticker','decal'],stickers:['sticker'],decal:['sticker','decal'],decals:['sticker','decal'],kappe:['cap','hat'],kappen:['cap','hat'],pullover:['sweatshirt','hoodie'],beutel:['tote'],stoffbeutel:['tote'],jutebeutel:['tote'],bio:['organic'],hulle:['case'],hullen:['case'],handyhulle:['case'],handyhullen:['case']};
+     const matchesSearch = product => {
+       const query=normal(search.value).trim();if(!query)return true;
+-      const haystack=normal([product.title,titleForProduct(product),product.titleDe,product.brand,product.model,...list(presentationFor(product)?.searchAliases),...categoryIds(product).map(key=>categories.has(key)?titleFor(categories.get(key)):'')].filter(value=>typeof value==='string').join(' '));
++      const haystack=normal([product.title,titleForProduct(product),product.titleDe,product.brand,product.model,...(frenchShopTitles.get(id(product.id)) || []),...list(presentationFor(product)?.searchAliases),...categoryIds(product).map(key=>categories.has(key)?titleFor(categories.get(key)):'')].filter(value=>typeof value==='string').join(' '));
+       if(haystack.includes(query))return true;
+       return query.split(/\s+/).every(term=>[term,...(searchAliases[term]||[])].some(alternative=>haystack.includes(alternative)));
+     };
+@@ -453,7 +457,17 @@
+         if(!byModel.has(row.model))byModel.set(row.model,[]);byModel.get(row.model).push(vid);
+       });
+       const all = new Set();
++      frenchShopTitles.clear();
+       byModel.forEach((vids,model)=>{
++        if (french) {
++          const titles = new Set();
++          for (const variantId of vids) {
++            for (const offer of offersFor({ id: variantId }).offers) {
++              if (offer.available !== false && offer.title) titles.add(offer.title);
++            }
++          }
++          frenchShopTitles.set(model, Array.from(titles));
++        }
+         vids.forEach(v=>all.add(v));
+         const pick=vids.find(v=>{const m=offersFor({id:v});return !m.requiresChoice && m.offers.length===1;}) || vids[0];
+         lxCardOffer.set(model,offersFor({id:pick}).offers.find(o=>o.available!==false));
