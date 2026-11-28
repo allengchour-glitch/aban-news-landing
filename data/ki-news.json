@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-27T13:47:41Z",
+ "stand": "2026-11-28T12:56:11Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,51 +18,59 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Verbraucherzentrale mahnt OpenAI und Anthropic ab",
-   "u": "https://www.heise.de/news/Verbraucherzentrale-mahnt-OpenAI-und-Anthropic-ab-11540670.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-27T12:13:00Z",
-   "s": "Die Verbraucherzentrale Niedersachsen wirft OpenAI und Anthropic unzulässige Preisänderungsklauseln und intransparente Tarife vor.",
-   "sprache": "de"
-  },
-  {
-   "t": "Ökonomie: Forscher sieht 97-prozentige Wahrscheinlichkeit für KI-Blase",
-   "u": "https://www.golem.de/news/oekonomie-forscher-sieht-97-prozentige-wahrscheinlichkeit-fuer-ki-blase-2611-215732.html",
+   "t": "Kryptografie: KI-Labore sollen brisanten Durchbruch zurückhalten",
+   "u": "https://www.golem.de/news/kryptografie-ki-labore-sollen-brisanten-durchbruch-zurueckhalten-2611-215780.html",
    "q": "Golem",
-   "d": "2026-11-27T11:50:02Z",
-   "s": "Finanzblasen werden oft vorhergesagt. Ein Forscher will aus diesem Rauschen die reale Wahrscheinlichkeit schätzen können - und ist bei KI besorgt. (Wirtschaft, Nvidia)",
+   "d": "2026-11-28T12:00:02Z",
+   "s": "Der Informatikprofessor Scott Aaronson erwartet, dass KI einige der heutigen Verschlüsselungssysteme knackt. Auch die Bank of England sieht Risiken. (Verschlüsselung, KI)",
    "sprache": "de"
   },
   {
-   "t": "Bewusstseins-Debatte über Anthropics KI: Warum dieser Philosoph einem Trugschluss aufsitzt",
-   "u": "https://t3n.de/news/bewusstseins-debatte-ueber-anthropics-ki-warum-dieser-philosoph-einem-trugschluss-aufsitzt-1775582/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-27T11:30:55Z",
-   "s": "Es ist eigentlich ein Drahtseilakt, den Anthropic vollführt: Das KI-Unternehmen warnt Investoren vor Sprachmodellen mit Bewusstsein, treibt diese Entwicklung abweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Astra und Sol: Nach OpenAI-Panne werden Nutzungslimits schneller erreicht",
-   "u": "https://www.golem.de/news/astra-und-sol-nach-openai-panne-werden-nutzungslimits-schneller-erreicht-2611-215737.html",
-   "q": "Golem",
-   "d": "2026-11-27T11:20:02Z",
-   "s": "Die Modelle GPT-6.2 Astra und Sol wurden seit ihrer Einführung durch OpenAI falsch abgerechnet. (KI, Wirtschaft)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: IT-Psychologie im Change-Management – wie Technologie Verhalten prägt",
-   "u": "https://www.heise.de/news/IT-Psychologie-im-Change-Management-wie-Technologie-Verhalten-praegt-11530860.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise-Angebot: iX-Workshop: Harness Engineering – Arbeitsrahmen für KI-Coding-Agenten gestalten",
+   "u": "https://www.heise.de/news/iX-Workshop-Harness-Engineering-Arbeitsrahmen-fuer-KI-Coding-Agenten-gestalten-11533370.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-27T11:00:00Z",
-   "s": "KI-Einführung, Security und Technostress bringen klassisches Change-Management an Grenzen. Ab dem 11.02.27 lernen Teilnehmende im Classroom, damit umzugehen.",
+   "d": "2026-11-28T12:00:00Z",
+   "s": "Gute Prompts allein reichen nicht: Entscheidend sind Kontext, Werkzeuge, Regeln und die richtige Kontrolle.",
    "sprache": "de"
   },
   {
-   "t": "ChatGPT: Neue Regeln für Nutzungslimits ab Dezember",
-   "u": "https://t3n.de/news/chatgpt-nutzungslimit-neue-regeln-dezember-1775437/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Cleveres Timing: Warum Google seinen KI-Agenten für den Mac genau jetzt startet",
+   "u": "https://t3n.de/news/google-gemini-mac-1774609/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-27T10:55:00Z",
-   "s": "OpenAI startet mit dem Rollout der gemeinsamen Oberfläche für Chat und Work – zunächst nur für einen kleinen Teil der Nutzer. Doch die profitieren nicht nur. Für manche könnte sich gar einen Nachteil …",
+   "d": "2026-11-28T11:10:00Z",
+   "s": "Google plant, seine KI auf Macs mit mehr Fertigkeiten auszustatten. Gemini kann künftig auch die Steuerung von macOS übernehmen. Warum das Unternehmen damit Apples Vorhaben zuvorkommt. weiterlesen auf…",
+   "sprache": "de"
+  },
+  {
+   "t": "250.000 Seiten, die niemand ganz versteht: Anthropic-Mitarbeiter will mit Claude die Riemannsche Vermutung bewiesen haben",
+   "u": "https://t3n.de/news/riemannsche-vermutung-claude-beweis-250000-seite-1774754/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-28T10:00:00Z",
+   "s": "Der „Heilige Gral“ der Mathematik könnte gefunden sein. Das Problem: Der Beweis wäre für Menschen mehr als 250.000 Seiten lang – und selbst ihr Urheber versteht ihn noch nicht ganz.weiterlesen auf t3n…",
+   "sprache": "de"
+  },
+  {
+   "t": "(g+) KI-gestützte Softwareentwicklung: Wenn das Gedächtnis von Coding-Agenten zum Problem wird",
+   "u": "https://www.golem.de/news/ki-gestuetzte-softwareentwicklung-wenn-das-gedaechtnis-von-coding-agenten-zum-problem-wird-2611-215745.html",
+   "q": "Golem",
+   "d": "2026-11-28T09:00:01Z",
+   "s": "Coding-Agenten können auf frühere Projektentscheidungen zurückgreifen. Doch nicht alle sind noch gültig. Wir zeigen, wie Codex mit widersprüchlichen Vorgaben umgeht. Ein Praxistest von Fabian Deitelho…",
+   "sprache": "de"
+  },
+  {
+   "t": "NYT verbannt Photoshop, Australien lockert Copyright – Fotonews der Woche 48/26",
+   "u": "https://www.heise.de/news/NYT-verbannt-Photoshop-Australien-lockert-Copyright-Fotonews-der-Woche-48-26-11541028.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-28T09:00:00Z",
+   "s": "New York Times verbannt Photoshop, australische Fotografen wehren sich gegen KI-freundliche Copyright-Pläne, und die Royal Photographic Society kürt die Besten.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Kritik für Imbiss-Flyer: Im Auge des Betrachters",
+   "u": "https://netzpolitik.org/2026/ki-kritik-imbissbude-im-auge-des-betrachters/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-28T07:17:57Z",
+   "s": "Breites Angebot: Ein Kiosk wirbt mit KI generierter Schaufensterwerbung in Bremen-Neustadt. – : Lucas FiolaSich über ästhetisch fragwürdige, KI-generierte Imbissbuden-Flyer zu echauffieren, ist leicht…",
    "sprache": "de"
   },
   {
@@ -88,14 +96,6 @@
    "d": "2026-11-26T16:00:00Z",
    "s": "On the same day that Anthropic entered the public market, a painstakingly human video game became one of most successful entertainment launches of all time.",
    "sprache": "en"
-  },
-  {
-   "t": "KI in der Migrationsverwaltung: Automatisiert ins Risiko",
-   "u": "https://netzpolitik.org/2026/ki-in-der-migrationsverwaltung-automatisiert-ins-risiko/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-26T15:21:42Z",
-   "s": "KI soll tief in die Migrationsverwaltung verwoben werden. – CC-BY 4.0: Hanna Barakat & Archival Images of AI + AIxDESIGNDeutschland soll in Zukunft mit KI Asylbescheide, Visumsanträge und Aufenthaltsg…",
-   "sprache": "de"
   }
  ]
 }
