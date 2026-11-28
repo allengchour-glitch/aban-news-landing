@@ -18,6 +18,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 
 | Kundengewinnung | Cascade-Suchtext gespeichert und im Shop sowie öffentlich geprüft. Schweizer Suchbegriffe mit den bereits gemessenen Landeseiten und kaufbaren Varianten abgeglichen. | Cascade-Metadaten live. Priorität für die organische Kundengewinnung sind Fell- und Plüschjacken. Suchvolumen unbekannt. |
 
+| Kaufweg Wintermode | Zwei konkrete Jackenvarianten vom Kollektionsraster bis zum öffentlichen Warenkorb-Formular geprüft und einen mehrdeutigen Mantelabsatz zur Korrektur vorbereitet. | Beide Varianten kaufbar gemeldet. Entwurf betrifft einen Absatz am Wintermantel. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -201,3 +203,19 @@ Cascade, Produkt `15431606829441`. Shopify und öffentlicher Produktaufruf (HTTP
 3. **Goldfarbene Creolen mit Tropfen kaufen.** Die Suchstichprobe lieferte die Cascade-Seite mit dem früheren Titel. Modell 1 ist laut Shopify kaufbar (CHF 26.90). Der überarbeitete Suchtext ist im Shop öffentlich sichtbar. Die Aktualisierung in Suchergebnissen bleibt offen. [Cascade Modell 1](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
 
 Die Suchstichprobe zeigt, für welche dieser Begriffe bereits passende LuxeStyle-Seiten auffindbar waren. Google-Impressionen, Google-Klicks und Suchvolumen bleiben unbekannt. HYPD hat keine ausgewählte Search-Console-Property. Semrush meldet keine verfügbaren API-Einheiten für die Keyword-Berichte. [Search Console freigeben](https://app.hypd.ai/sources?select=search-console&utm_source=mcp&utm_content=none_selected)
+
+
+## Schweizer Suchbesuche · Kaufweg geprüft · 08:14 Uhr Zürich
+
+Die beiden Modelle stehen zuerst im öffentlichen Kollektionsraster. Die direkten Variantenlinks liefern HTTP 200, zeigen die ausgewählte Farbe und Grösse und haben ein aktives Warenkorb-Formular. Shopify meldet beide Varianten als kaufbar. Der Prüfumfang war die Produktauswahl bis zum Formular. [Felljacken & Plüschjacken](https://luxestyle.ch/collections/damen-jacken-kunstfell)
+
+| Suchabsicht | Geprüfte Variante | Ziel |
+| --- | --- | --- |
+| Kurze Damenjacke mit Kapuze und Fellkragen | Blau / M, CHF 34.90 | [Produkt ansehen](https://luxestyle.ch/products/kurze-kapuzenjacke-mit-fellkragen-626300?variant=67737574343047) |
+| Gefütterter Wintermantel für Damen mit Fellkragen | Grau / M, CHF 30.90 | [Produkt ansehen](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911) |
+
+**Ein Textentwurf zur Freigabe.** Wintermantel `gid://shopify/Product/16652033491335`, Feld `descriptionHtml`, nur der erste Absatz. Die bestehende Formulierung «Er besteht aus Baumwolle und ist nicht abnehmbar» lässt offen, was gemeint ist. Die Grössen M bis 6XL sowie Grau und Schwarz sind über die Varianten belegt. Für dieses Modell fehlen verifizierte Masse.
+
+> Dieser gefütterte Wintermantel mit Fellkragen ist schmal geschnitten. Das Modell gibt es in Grau und Schwarz, in den Grössen M bis 6XL.
+
+Die Gegenprobe des konkreten HTML-Diffs lässt den Text nach dem ersten Absatz bytegenau gleich. Shopify-`updatedAt` zum Zeitpunkt der Gegenprobe `2026-10-28T20:50:18Z`. Status des Textes ist Entwurf. [Wintermantel](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911)
