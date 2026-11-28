@@ -9615,3 +9615,9 @@ gid://shopify/Product/15494855262593	zugeordnet	54	Casual Midi-Kleid mit Knopfle
 gid://shopify/Product/15494855754113	zugeordnet	15	Bedrucktes Rüschenkleid mit V-Ausschnitt
 gid://shopify/Product/15494855885185	zugeordnet	12	Besticktes V-Ausschnitt Maxikleid
 gid://shopify/Product/15494856081793	zugeordnet	24	Color-Block Langarmbluse für Damen
+gid://shopify/Product/15494856540545	zugeordnet	36	Lässiges Baumwoll-Leinen Hemd
+gid://shopify/Product/15494856704385	zugeordnet	30	Damen-Top mit V-Ausschnitt, Rüschen und 3/4-Ärmeln
+gid://shopify/Product/15494892880257	zugeordnet	6	Casual Langarmhemd für Herren
+gid://shopify/Product/15494893142401	zugeordnet	14	Leichter Cardigan aus Baumwoll-Leinen für Herren
+gid://shopify/Product/15494893339009	zugeordnet	12	Slim-Fit T-Shirt mit Totem-Print
+gid://shopify/Product/15494893437313	zugeordnet	35	Kapuzenjacke Slim-Fit mit UV-Schutz
