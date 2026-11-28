@@ -617,3 +617,9 @@ Die drei folgenden veralteten Einträge in der tatsächlich einliefernden Primä
 - Ring: `shopify_ZZ_15449477677441_55882200711553`
 
 Der Abgleich ist erledigt. Die Bereinigung liegt bei der zuständigen Merchant-Rolle. Im Abendlauf erfolgte kein Schreibzugriff auf die Datenquelle. [Merchant-Diagnose](https://merchants.google.com/mc/products/diagnostics?a=5797470070)
+
+### Auslieferung um 19.10 Uhr und Musikquellen
+
+Der bestehende Kinder-Geschenke-Pin `440688256`, UUID `7864981705944944149`, stand um 19.10.15 Uhr noch auf `PENDING`. Um 19.11.17 Uhr meldete Pinterest in Metricool `PUBLISHED` mit Plattform-ID `1111333645586843417`. `draft=false` und `autoPublish=true` waren gesetzt. Damit sind heute 14 Auslieferungen belegt: sieben auf Instagram, drei auf Facebook, zwei auf Threads und je eine auf TikTok und Pinterest. Von den zuvor erfassten Terminen liegen sieben Kanaltermine auf sechs Objekten noch in der Zukunft, der nächste heute um 20 Uhr auf Pinterest. [Veröffentlichter Pin](https://www.pinterest.es/pin/1111333645586843417)
+
+Die kanonische Datei `automation/music/luxe-premium.wav` trägt erneut SHA-256 `a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688`. Das Produktionsskript verwendet standardmässig `FluidR3_GM.sf2`. Debian dokumentiert für diese Klangbibliothek die MIT-Lizenz. Das Skript erlaubt eine andere Bibliothek über `SF2`. Welche Datei beim historischen Export tatsächlich eingesetzt wurde, bleibt offen. [Produktionsskript](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/automation/music/produce/make_premium.sh) · [Lizenznachweis](https://metadata.ftp-master.debian.org/changelogs/main/f/fluid-soundfont/fluid-soundfont_3.1-5.3_copyright)
