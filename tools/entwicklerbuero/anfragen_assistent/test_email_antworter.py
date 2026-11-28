@@ -5,7 +5,39 @@ from pathlib import Path
 import tempfile
 import json
 import unittest
+from unittest.mock import Mock, patch
 from email_antworter import verarbeiten
+
+
+class Schreibprobe:
+    """Echte Datei schreiben; danach einen lokalen Fehler oder Austausch auslösen."""
+    def __init__(self, datei, fehler=False, teilweise=False, danach=None):
+        self.datei = datei
+        self.fehler = fehler
+        self.teilweise = teilweise
+        self.danach = danach
+
+    def __enter__(self):
+        self.datei.__enter__()
+        return self
+
+    def __exit__(self, *args):
+        return self.datei.__exit__(*args)
+
+    def __getattr__(self, name):
+        return getattr(self.datei, name)
+
+    def write(self, inhalt):
+        if self.fehler:
+            if self.teilweise:
+                self.datei.write(inhalt[:max(1, len(inhalt) // 2)])
+                self.datei.flush()
+            raise OSError('Demo: Schreiben unterbrochen')
+        anzahl = self.datei.write(inhalt)
+        self.datei.flush()
+        if self.danach is not None:
+            self.danach()
+        return anzahl
 
 
 class EmailTest(unittest.TestCase):
@@ -327,6 +359,211 @@ class EmailTest(unittest.TestCase):
             self.run_mail(self.mail(root, Subject="Re: Offerte"), root / "out")
             reply = BytesParser(policy=policy.default).parsebytes((root / "out/antwort-0001.eml").read_bytes())
             self.assertEqual(reply["Subject"], "Re: Offerte")
+
+    def stapel_fuer_schreibprobe(self, root):
+        source = root / 'eingang'
+        source.mkdir()
+        for n in (1, 2):
+            self.mail(source, f'{n}.eml', **{'Message-ID': f'<demo-{n}@example.invalid>'})
+        return source, {p.name: p.read_bytes() for p in source.iterdir()}
+
+    def test_schreibfehler_bereinigt_eigene_ausgabe_und_erlaubt_manuellen_neustart(self):
+        # Dieselbe Fehlerinjektion trifft das bisherige wb/w und das neue xb.
+        for name in ('antwort-0001.eml', 'antwort-0002.eml', 'index.html', 'bericht.json'):
+            for teilweise in (False, True):
+                with self.subTest(datei=name, teilweise=teilweise), tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    source, original = self.stapel_fuer_schreibprobe(root)
+                    out = root / 'out'
+                    oeffnen = Path.open
+                    gestoert = []
+
+                    def mit_fehler(p, *args, **kwargs):
+                        mode = args[0] if args else kwargs.get('mode', 'r')
+                        datei = oeffnen(p, *args, **kwargs)
+                        if p == out / name and any(c in mode for c in 'wx'):
+                            gestoert.append(p.name)
+                            return Schreibprobe(datei, fehler=True, teilweise=teilweise)
+                        return datei
+
+                    with patch.object(Path, 'open', mit_fehler):
+                        with self.assertRaisesRegex(OSError, 'Demo: Schreiben unterbrochen'):
+                            self.run_mail(source, out)
+                    self.assertEqual(gestoert, [name], 'Keine automatische Wiederholung nach Schreibfehler.')
+                    self.assertFalse(out.exists(), 'Eigene Teilausgabe darf den manuellen Neustart nicht blockieren.')
+                    self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+                    # Ein ausdrücklicher neuer Aufruf nach Ende der Störung.
+                    bericht = self.run_mail(source, out)
+                    self.assertEqual((bericht['gelesen'], bericht['entwuerfe'], bericht['versendet']), (2, 2, 0))
+                    self.assertEqual(json.loads((out / 'bericht.json').read_text()), bericht)
+                    self.assertEqual(sorted(p.name for p in out.iterdir()),
+                                     ['antwort-0001.eml', 'antwort-0002.eml', 'bericht.json', 'index.html'])
+                    antwort = BytesParser(policy=policy.default).parsebytes((out / 'antwort-0001.eml').read_bytes())
+                    self.assertEqual(antwort['X-Unsent'], '1')
+                    self.assertEqual(antwort['To'].addresses[0].addr_spec, 'kunde@example.invalid')
+
+    def test_serialisierungsfehler_erzeugt_keine_teilausgabe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, original = self.stapel_fuer_schreibprobe(root)
+            out = root / 'out'
+            with patch.dict(verarbeiten.__globals__, {'erstellen': Mock(side_effect=ValueError('Demo: Ansicht unlesbar'))}):
+                with self.assertRaisesRegex(ValueError, 'Demo: Ansicht unlesbar'):
+                    self.run_mail(source, out)
+            self.assertFalse(out.exists())
+            self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+
+    def test_bestehende_ausgabepfade_bleiben_unveraendert(self):
+        for art in ('ordner', 'datei', 'symlink', 'defekter-symlink'):
+            with self.subTest(art=art), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                source, original = self.stapel_fuer_schreibprobe(root)
+                out, fremd = root / 'out', root / 'fremd'
+                fremd.mkdir()
+                (fremd / 'behalten.txt').write_bytes(b'Fremder Bestand')
+                if art == 'ordner':
+                    out.mkdir()
+                    (out / 'behalten.txt').write_bytes(b'Eigener Altbestand')
+                elif art == 'datei':
+                    out.write_bytes(b'Vorhandene Datei')
+                else:
+                    try:
+                        out.symlink_to(fremd if art == 'symlink' else root / 'fehlt', target_is_directory=True)
+                    except (OSError, NotImplementedError):
+                        self.skipTest('Diese Umgebung unterstützt keine Verzeichnis-Symlinks.')
+                before = out.lstat()
+                with self.assertRaises((ValueError, OSError)):
+                    self.run_mail(source, out)
+                self.assertEqual((out.lstat().st_dev, out.lstat().st_ino), (before.st_dev, before.st_ino))
+                self.assertEqual((fremd / 'behalten.txt').read_bytes(), b'Fremder Bestand')
+                self.assertEqual(sorted(p.name for p in fremd.iterdir()), ['behalten.txt'])
+                if art == 'ordner':
+                    self.assertEqual((out / 'behalten.txt').read_bytes(), b'Eigener Altbestand')
+                    self.assertEqual(sorted(p.name for p in out.iterdir()), ['behalten.txt'])
+                elif art == 'datei':
+                    self.assertEqual(out.read_bytes(), b'Vorhandene Datei')
+                else:
+                    self.assertTrue(out.is_symlink())
+                    self.assertEqual(out.readlink(), fremd if art == 'symlink' else root / 'fehlt')
+                self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+
+    def test_eingeschobene_fremde_ausgabedatei_wird_nicht_ersetzt(self):
+        for symlink in (False, True):
+            with self.subTest(symlink=symlink), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                source, original = self.stapel_fuer_schreibprobe(root)
+                out = root / 'out'
+                behalten = root / 'behalten.txt'
+                behalten.write_bytes(b'Fremde Daten erhalten')
+                oeffnen = Path.open
+                eingeschoben = []
+
+                def fremde_datei(p, *args, **kwargs):
+                    mode = args[0] if args else kwargs.get('mode', 'r')
+                    if p == out / 'antwort-0002.eml' and any(c in mode for c in 'wx'):
+                        eingeschoben.append(p.name)
+                        if symlink:
+                            p.symlink_to(behalten)
+                        else:
+                            with oeffnen(p, 'xb') as f:
+                                f.write(b'Fremde Daten erhalten')
+                        # xb muss jetzt ablehnen. Die alte wb-Fassung öffnet die
+                        # Fremddatei und trifft denselben partiellen Schreibfehler.
+                        return Schreibprobe(oeffnen(p, *args, **kwargs), fehler=True, teilweise=True)
+                    return oeffnen(p, *args, **kwargs)
+
+                with patch.object(Path, 'open', fremde_datei):
+                    with self.assertRaises(OSError):
+                        self.run_mail(source, out)
+                self.assertEqual(eingeschoben, ['antwort-0002.eml'])
+                self.assertEqual((out / 'antwort-0002.eml').read_bytes(), b'Fremde Daten erhalten')
+                self.assertEqual(behalten.read_bytes(), b'Fremde Daten erhalten')
+                self.assertEqual((out / 'antwort-0002.eml').is_symlink(), symlink)
+                self.assertEqual(sorted(p.name for p in out.iterdir()), ['antwort-0002.eml'])
+                self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+
+    def test_ausgetauschter_ausgabeordner_wird_nicht_bereinigt(self):
+        for symlink in (False, True):
+            with self.subTest(symlink=symlink), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                source, original = self.stapel_fuer_schreibprobe(root)
+                out, verschoben, fremd = root / 'out', root / 'verschoben', root / 'fremd'
+                fremd.mkdir()
+                (fremd / 'antwort-0001.eml').write_bytes(b'Fremde Antwort erhalten')
+                oeffnen = Path.open
+
+                def ordner_austauschen(p, *args, **kwargs):
+                    mode = args[0] if args else kwargs.get('mode', 'r')
+                    if p == out / 'antwort-0002.eml' and any(c in mode for c in 'wx'):
+                        out.rename(verschoben)
+                        if symlink:
+                            out.symlink_to(fremd, target_is_directory=True)
+                        else:
+                            fremd.rename(out)
+                        raise OSError('Demo: Ausgabeordner ausgetauscht')
+                    return oeffnen(p, *args, **kwargs)
+
+                with patch.object(Path, 'open', ordner_austauschen):
+                    with self.assertRaisesRegex(OSError, 'Demo: Ausgabeordner ausgetauscht'):
+                        self.run_mail(source, out)
+                self.assertEqual((out / 'antwort-0001.eml').read_bytes(), b'Fremde Antwort erhalten')
+                self.assertEqual(sorted(p.name for p in out.iterdir()), ['antwort-0001.eml'])
+                self.assertEqual(out.is_symlink(), symlink)
+                self.assertTrue((verschoben / 'antwort-0001.eml').is_file())
+                self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+
+    def test_symlink_nach_ordneranlage_wird_nicht_als_eigene_ausgabe_uebernommen(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, original = self.stapel_fuer_schreibprobe(root)
+            out, verschoben, fremd = root / 'out', root / 'verschoben', root / 'fremd'
+            fremd.mkdir()
+            (fremd / 'behalten.txt').write_bytes(b'Fremder Ordner erhalten')
+            mkdir = Path.mkdir
+
+            def nach_anlage(p, *args, **kwargs):
+                mkdir(p, *args, **kwargs)
+                if p == out:
+                    out.rename(verschoben)
+                    out.symlink_to(fremd, target_is_directory=True)
+
+            with patch.object(Path, 'mkdir', nach_anlage):
+                with self.assertRaises(OSError):
+                    self.run_mail(source, out)
+            self.assertEqual(sorted(p.name for p in fremd.iterdir()), ['behalten.txt'])
+            self.assertEqual((fremd / 'behalten.txt').read_bytes(), b'Fremder Ordner erhalten')
+            self.assertTrue(out.is_symlink())
+            self.assertEqual(list(verschoben.iterdir()), [])
+            self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+
+    def test_ausgetauschter_ordner_stoppt_vor_naechstem_schreiben(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, original = self.stapel_fuer_schreibprobe(root)
+            out, verschoben, fremd = root / 'out', root / 'verschoben', root / 'fremd'
+            fremd.mkdir()
+            (fremd / 'behalten.txt').write_bytes(b'Fremder Ordner erhalten')
+            oeffnen = Path.open
+
+            def austauschen():
+                out.rename(verschoben)
+                out.symlink_to(fremd, target_is_directory=True)
+
+            def nach_erster_datei(p, *args, **kwargs):
+                mode = args[0] if args else kwargs.get('mode', 'r')
+                datei = oeffnen(p, *args, **kwargs)
+                if p == out / 'antwort-0001.eml' and any(c in mode for c in 'wx'):
+                    return Schreibprobe(datei, danach=austauschen)
+                return datei
+
+            with patch.object(Path, 'open', nach_erster_datei):
+                with self.assertRaises(OSError):
+                    self.run_mail(source, out)
+            self.assertEqual(sorted(p.name for p in fremd.iterdir()), ['behalten.txt'])
+            self.assertEqual((fremd / 'behalten.txt').read_bytes(), b'Fremder Ordner erhalten')
+            self.assertTrue(out.is_symlink())
+            self.assertTrue((verschoben / 'antwort-0001.eml').is_file())
+            self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
 
 
 if __name__ == "__main__":

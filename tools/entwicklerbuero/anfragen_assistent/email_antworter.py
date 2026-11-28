@@ -7,8 +7,10 @@ from email.parser import BytesParser
 from email.utils import formatdate, make_msgid
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
+import stat
 
 from assistent import VERSION, einordnen, entwurf
 from pruefseite import erstellen
@@ -141,6 +143,51 @@ def antwort_erstellen(mail, absender, firma, antwort=None):
     return reply, kategorie, prioritaet
 
 
+def _ausgabe_schreiben(out, dateien):
+    """Neue Ausgabe exklusiv schreiben; bei Schreibfehlern eigene Dateien bereinigen."""
+    out.mkdir(parents=True)
+    ordner = out.lstat()
+    erstellt = []
+
+    def eigener_ordner():
+        try:
+            jetzt = out.lstat()
+            return (stat.S_ISDIR(ordner.st_mode) and stat.S_ISDIR(jetzt.st_mode)
+                    and (jetzt.st_dev, jetzt.st_ino) == (ordner.st_dev, ordner.st_ino))
+        except OSError:
+            return False
+
+    try:
+        for name, inhalt in dateien.items():
+            if not eigener_ordner():
+                raise OSError("Ausgabeordner wurde geändert; manuell prüfen.")
+            pfad = out / name
+            # Keine vorhandene Datei und keinen eingeschobenen Symlink überschreiben.
+            with pfad.open("xb") as f:
+                info = os.fstat(f.fileno())
+                erstellt.append((pfad, (info.st_dev, info.st_ino)))
+                if f.write(inhalt) != len(inhalt):
+                    raise OSError("Ausgabedatei wurde nicht vollständig geschrieben.")
+    except OSError:
+        # Nur eigene noch vorgefundene Dateien entfernen, nie rekursiv löschen.
+        # Ein fremder oder ersetzter Inhalt bleibt zur manuellen Prüfung stehen.
+        for pfad, identitaet in reversed(erstellt):
+            if not eigener_ordner():
+                break
+            try:
+                info = pfad.lstat()
+                if (info.st_dev, info.st_ino) == identitaet:
+                    pfad.unlink()
+            except OSError:
+                pass
+        if eigener_ordner():
+            try:
+                out.rmdir()
+            except OSError:
+                pass
+        raise
+
+
 def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
     absender = adresse(absender_text)
     faq = wissen_lesen(wissen) if wissen is not None else None
@@ -154,7 +201,7 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
         raise ValueError("Ausgabeordner existiert bereits; neuen Ordner wählen.")
     # Erst einlesen und prüfen; Anhänge bleiben unberührt und werden nicht übernommen.
     gelesen = [mail_lesen(p, absender) for p in dateien]
-    out.mkdir(parents=True)
+    ausgabedateien = {}
     seen, ergebnisse, ansicht = set(), [], []
     for nummer, (mail, grund) in enumerate(gelesen, 1):
         quelle = dateien[nummer - 1].name
@@ -173,7 +220,7 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
         if mail:
             reply, kategorie, prioritaet = antwort_erstellen(mail, absender, firma, antwort)
             name = f"antwort-{nummer:04d}.eml"
-            (out / name).write_bytes(reply.as_bytes())
+            ausgabedateien[name] = reply.as_bytes()
             ansicht.append({"nummer": nummer, "quelldatei": quelle, "betreff": mail["betreff"], "empfaenger": str(mail["ziel"]),
                             "original": mail["text"], "entwurf": reply.get_content(),
                             "kategorie": kategorie, "prioritaet": prioritaet})
@@ -182,12 +229,13 @@ def verarbeiten(eingabe, ausgabe, firma, absender_text, wissen=None):
         else:
             ansicht.append({"nummer": nummer, "quelldatei": quelle, "grund": grund})
             ergebnisse.append({"nummer": nummer, "quelldatei": quelle, "status": "Übersprungen", "grund": grund})
-    (out / "index.html").write_text(erstellen(ansicht, firma), encoding="utf-8")
+    ausgabedateien["index.html"] = erstellen(ansicht, firma).encode("utf-8")
     bericht = {"version": VERSION, "gelesen": len(dateien), "entwuerfe": sum("datei" in r for r in ergebnisse),
                "manuell_pruefen": sum(r["status"] == "Manuell prüfen" for r in ergebnisse),
                "versendet": 0, "verfahren": "Freigegebenes Firmenwissen und Wortregeln, kein Sprachmodell" if faq is not None else "Lokale Regeln und Vorlagen, kein Sprachmodell",
                "ergebnisse": ergebnisse}
-    (out / "bericht.json").write_text(json.dumps(bericht, ensure_ascii=False, indent=2), encoding="utf-8")
+    ausgabedateien["bericht.json"] = json.dumps(bericht, ensure_ascii=False, indent=2).encode("utf-8")
+    _ausgabe_schreiben(out, ausgabedateien)
     return bericht
 
 
