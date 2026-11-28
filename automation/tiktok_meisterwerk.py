@@ -54,22 +54,22 @@ def produkt_slide(slug, tmpnr):
     Zeitpunkt des Meisterwerks erneut belegt, nicht nur zum Zeitpunkt des Karussells.
     """
     d = K.gql("""query($q:String!){products(first:1,query:$q){nodes{
-        title status priceRangeV2{minVariantPrice{amount}}
+        title status priceRangeV2{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}}
         media(first:8){nodes{... on MediaImage{image{url width height}}}}}}}""",
         {"q": f"handle:{slug}"})
     n = ((((d or {}).get("data") or {}).get("products") or {}).get("nodes") or [])
     if not n:
         # abgeschnittener Alt-Slug: genau EIN Prefix-Treffer ist eindeutig
         d = K.gql("""query($q:String!){products(first:3,query:$q){nodes{
-            title status priceRangeV2{minVariantPrice{amount}}
+            title status priceRangeV2{minVariantPrice{amount currencyCode} maxVariantPrice{amount currencyCode}}
             media(first:8){nodes{... on MediaImage{image{url width height}}}}}}}""",
             {"q": f"handle:{slug}*"})
         n = ((((d or {}).get("data") or {}).get("products") or {}).get("nodes") or [])
         if len(n) != 1:
             return None
-    if n[0]["status"] != "ACTIVE":
-        return None
     p = n[0]
+    if p["status"] != "ACTIVE" or K.preisbereich(p) is None:
+        return None
     urls = K.bilder(p)
     if not urls:
         return None
@@ -78,7 +78,7 @@ def produkt_slide(slug, tmpnr):
         return None
     if K.TOPISCH.search(p["title"]):
         return None  # topische Kosmetik wird nicht beworben (Betreiber 30.08.)
-    preis = K.chf(p["priceRangeV2"]["minVariantPrice"]["amount"])
+    preis = K.preistext(p)
     return K.slide_hook(tmp, "Neu im Shop", preis, p["title"], None, None, wisch=False)
 
 
