@@ -9,7 +9,6 @@ import tempfile
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from playwright.sync_api import sync_playwright
 
 
 BASIS = "8b3ab325a67292cd6a5c498d08a744b9d4aa3a6e"
@@ -76,6 +75,8 @@ def pruefen(browser, sprache, dateien, texte):
 
 
 def main():
+    from playwright.sync_api import sync_playwright
+
     basis = original(QUELLE)
     assert hashlib.sha256(basis).hexdigest() == "e7e30bc231e6817f70e2cbd8089f57c82ad5ea7c285585709223798c16adb930"
     patch = Path(__file__).resolve().with_name("pod-v640-fr.patch")

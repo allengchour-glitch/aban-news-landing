@@ -1,0 +1,52 @@
+--- a/portage.js
++++ b/portage.js
+@@ -315,6 +315,12 @@
+       dpiMax: 'Résolution sur le produit : environ {n} ppp. C’est le maximum utile à ce format. Votre photo est assez grande.',
+       qSperre: 'La zone « {a} » atteint environ {n} ppp. Pour commander, il en faut au moins {min}. Réduisez la taille du motif, choisissez une image de meilleure résolution ou retirez-la.',
+       draftBack: 'Votre brouillon a été restauré.', draftLost: 'Certaines photos étaient encore en cours d’envoi. Ajoutez-les à nouveau.',
++      emptyGone: 'Le calque de texte vide a été supprimé.', emptyGoneMany: 'Les calques de texte vides ont été supprimés.',
++      badImg: 'Impossible d’ouvrir cette image. Choisissez un fichier PNG, JPG ou WebP.',
++      netErr: 'Connexion interrompue. Veuillez réessayer.', genErr: 'L’opération a échoué. Veuillez réessayer.',
++      upFallback: 'La photo n’a pas pu être envoyée. Veuillez réessayer.',
++      tooManyPx: 'La photo contient trop de pixels. Choisissez une version plus petite.',
++      soldOut: 'Cette variante est épuisée. Choisissez-en une autre.',
+       reviewHead: 'Vérifier le bon à tirer', reviewIntro: 'Vérifiez chaque zone d’impression. Le fichier PNG affiché est celui qui sera envoyé.',
+       reviewProduct: 'Produit', reviewVariant: 'Variante', standardVariant: 'Variante standard', reviewModel: 'Modèle Printful', reviewPlacements: 'Zones d’impression',
+       reviewPrint: 'Fichier qui sera imprimé', reviewOnProduct: 'Sur le produit', reviewMugView: 'Vue de face de la tasse',
+@@ -426,17 +432,17 @@
+   /** Kundentexte zu den Hinweis-Codes der Karte. Die Karte darf eigene Texte mitbringen (kundentext / kundentextEn). Nur Hinweise
+    *  mit art «einschraenkung» oder ein Code dieser Tabelle werden angezeigt; interne Texte der Karte («Erfahrungswert», Verweise auf Messdateien) nie. */
+   var HINWEIS_TEXTE = {
+-    stickerei: { de: 'Stickerei: Dein Motiv wird gestickt. Nimm ein einfaches Motiv mit wenigen Farben. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.',
++    stickerei: { fr: 'Le motif sera brodé. Choisissez un dessin simple avec peu de couleurs. Évitez les photos, les dégradés et les traits très fins.', de: 'Stickerei: Dein Motiv wird gestickt. Nimm ein einfaches Motiv mit wenigen Farben. Fotos, Farbverläufe und sehr feine Linien lassen sich nicht sticken.',
+       en: 'Embroidery: your design is stitched. Use a simple design with few colors. Photos, gradients and very fine lines cannot be stitched.' },
+-    gestrickt: { de: 'Gestrickt: Das Motiv wird als Maschenraster umgesetzt. Feine Details und Fotos gehen verloren.',
++    gestrickt: { fr: 'Le tricot reproduit le motif sous forme de mailles. Les photos et les détails fins perdent en précision.', de: 'Gestrickt: Das Motiv wird als Maschenraster umgesetzt. Feine Details und Fotos gehen verloren.',
+       en: 'Knitted: the design is made as a stitch grid. Fine details and photos are lost.' },
+-    allover_einzeldatei: { de: 'Rundum-Druck: Dein Motiv läuft über das ganze Teil und über die Nähte.',
++    allover_einzeldatei: { fr: 'Le motif couvre toute la pièce, y compris les coutures.', de: 'Rundum-Druck: Dein Motiv läuft über das ganze Teil und über die Nähte.',
+       en: 'All-over print: your design runs across the whole piece and over the seams.' },
+-    kappe: { de: 'Kappe: Die Fläche ist klein und gewölbt. Halte das Motiv klein und ohne feine Details.',
++    kappe: { fr: 'La zone est petite et arrondie. Choisissez un motif compact et évitez les détails fins.', de: 'Kappe: Die Fläche ist klein und gewölbt. Halte das Motiv klein und ohne feine Details.',
+       en: 'Cap: the area is small and curved. Keep the design small and free of fine details.' },
+-    tasche: { de: 'Tasche: Die Druckfläche endet vor Nähten und Henkeln. Setze das Motiv nicht an den Rand.',
++    tasche: { fr: 'La zone d’impression s’arrête avant les coutures et les anses. Gardez une marge autour du motif.', de: 'Tasche: Die Druckfläche endet vor Nähten und Henkeln. Setze das Motiv nicht an den Rand.',
+       en: 'Bag: the print area ends before seams and handles. Do not place the design at the edge.' },
+-    rundumdruck: { de: 'Das Motiv läuft rund um das Gefäss. Halte den Bereich am Henkel frei.',
++    rundumdruck: { fr: 'Le motif fait le tour du récipient. Laissez libre la zone près de l’anse.', de: 'Das Motiv läuft rund um das Gefäss. Halte den Bereich am Henkel frei.',
+       en: 'The design wraps around the vessel. Keep the area near the handle free.' },
+   };
+ 
+@@ -2094,10 +2100,11 @@
+       if (text || !ausfuehrungOk() || ausverkauft()) ui.cta.setAttribute('aria-disabled', 'true'); else ui.cta.removeAttribute('aria-disabled');
+     }
+     function hinweisText(h) {
++      if (FR && h.kundentextFr) return h.kundentextFr;
+       if (h.kundentext && !EN) return h.kundentext;
+       if (h.kundentextEn && EN) return h.kundentextEn;
+       var t = HINWEIS_TEXTE[h.code];
+-      if (t) return EN ? t.en : t.de;
++      if (t) return FR ? t.fr : (EN ? t.en : t.de);
+       return h.art === 'einschraenkung' && h.text ? h.text : null;
+     }
+     function hinweiseAktualisieren() {
