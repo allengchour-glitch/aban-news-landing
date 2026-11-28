@@ -19095,3 +19095,4 @@ gid://shopify/Product/16743125352839	17->0	Magnetische Levitation-Glühbirne
 gid://shopify/Product/16743139901831	53->2	Digital bedrucktes Herrenhemd
 gid://shopify/Product/16743242072455	21->0	LED Ambient Light für Mittelkonsole – 3 m
 gid://shopify/Product/16743242334599	72->3	Nachtlicht mit Sternenprojektion
+gid://shopify/Product/15494256263553	50->0	Wasserdichte Anti-Rutsch Hundeschuhe · 4 Stück
