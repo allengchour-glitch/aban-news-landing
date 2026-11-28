@@ -1,0 +1,132 @@
+--- a/pod/v6/lspod-designer-v6-6.4.0.js
++++ b/pod/v6/lspod-designer-v6-6.4.0.js
+@@ -77,6 +77,7 @@
+     'crown', 'coffee', 'peace', 'moon-stars', 'mushroom-retro', 'cherry', 'flame', 'word-love', 'word-vibes'];
+   var LOCALE = ((window.Shopify && Shopify.locale) || document.documentElement.lang || 'de').toLowerCase();
+   var EN = LOCALE.indexOf('en') === 0;
++  var FR = /^fr(?:-|$)/.test(LOCALE);
+   var CART_ADD_URL = (window.Shopify && Shopify.routes && Shopify.routes.cart_add_url) || '/cart/add.js';
+   var CART_URL = (window.Shopify && Shopify.routes && Shopify.routes.cart_url) || '/cart';
+ 
+@@ -115,6 +116,7 @@
+ 
+   // ── Schriften und Farben (wie v5) ───────────────────────────────────────────────────────────────
+   var SCHRIFT_NAMEN = EN ? ['Modern Sans', 'Elegant Serif', 'Handwriting', 'Bold Display', 'Mono']
++    : FR ? ['Sans empattement', 'Sérif élégant', 'Manuscrite', 'Titre gras', 'Monospace']
+     : ['Modern ohne Serifen', 'Elegant mit Serifen', 'Handschrift', 'Kräftige Überschrift', 'Schreibmaschine'];
+   var SCHRIFT_CSS = ["'Helvetica Neue',Arial,sans-serif", "Georgia,'Times New Roman',serif", "'Brush Script MT','Segoe Script',cursive",
+     "'Arial Black','Helvetica Neue',sans-serif", "'Courier New',monospace"];
+@@ -200,6 +202,75 @@
+       reviewBuilding: 'Druckvorschau wird erstellt …',
+       reviewChanged: 'Dein Design oder die Ausführung hat sich geändert. Bitte prüfe die Druckvorschau erneut.',
+     },
++    fr: {
++      head: 'Personnalisez votre produit', ph: 'Votre texte…', addText: 'Ajouter du texte', addImg: 'Ajouter une image', addSticker: 'Ajouter un sticker',
++      stickers: 'Choisir un sticker', front: 'Recto', back: 'Verso',
++      tapHint: 'Faites glisser le motif pour le déplacer. Utilisez un coin pour le redimensionner ou le tourner. Touchez une image pour la retoucher.',
++      uploading: 'Envoi en cours…', upErr: 'Échec de l’envoi : ', tooBig: 'Le fichier dépasse 10 Mo.',
++      cta: 'Vérifier le bon à tirer', empty: 'Ajoutez d’abord du texte, une image ou un sticker.',
++      baking: 'Préparation du fichier d’impression…', adding: 'Ajout au panier…', added: 'Article ajouté. Ouverture du panier…',
++      addErr: 'Impossible d’ajouter l’article : ', printErr: 'Le fichier d’impression n’a pas pu être créé. Veuillez réessayer.',
++      stillUp: 'L’image est en cours d’envoi. Veuillez patienter.', noVar: 'Choisissez une taille ou une couleur en haut de la page.',
++      layerText: 'Texte', layerImage: 'Image', layerSticker: 'Sticker', layers: 'Calques', noLayers: 'Aucun calque',
++      tabsLabel: 'Choisir une zone d’impression', extra: 'Supplément', blocked: '« {a} » et « {b} » sont incompatibles. Retirez d’abord les calques de « {b} ».',
++      lockTitle: 'Incompatible avec « {b} »', areaInfo: 'Zone d’impression de {w} × {h} cm', fileInfo: 'Fichier de {w} × {h} px à {dpi} ppp',
++      fileInfoNoDpi: 'Fichier de {w} × {h} px', capNote: 'Votre appareil créera un fichier limité à {w} × {h} px (environ {dpi} ppp).',
++      viewWhole: 'Afficher le modèle entier', viewArea: 'Agrandir la zone d’impression', outsideNote: 'Seule la partie du motif située dans la zone d’impression sera imprimée.',
++      dpiLine: 'Résolution sur le produit : environ {n} ppp (minimum requis : {min} ppp).',
++      dpiLow: 'Résolution trop faible : environ {n} ppp au lieu des {min} ppp requis. Réduisez la taille du motif ou choisissez une image de meilleure résolution.',
++      legacyLow: 'L’image risque de manquer de netteté. Réduisez sa taille sur le produit ou choisissez une image de meilleure résolution.',
++      embroPhoto: 'Pour la broderie, choisissez un motif simple avec peu de couleurs. Les photos se prêtent mal à cette technique.',
++      panelHint: 'Pour une impression intégrale, personnalisez chaque pièce que vous souhaitez faire imprimer.',
++      fWidth: 'Largeur (cm)', fFont: 'Hauteur du texte (mm)', fSize: 'Taille (%)', fRot: 'Rotation (°)', fOp: 'Opacité (%)',
++      exact: 'Valeurs précises', centerH: 'Centrer horizontalement', centerV: 'Centrer verticalement',
++      sumHead: 'Suppléments par zone', sumTotal: 'Total des suppléments : CHF {x}', sumNote: 'Le supplément s’applique à chaque zone personnalisée.',
++      previewBtn: 'Aperçu du fichier d’impression', previewHead: 'Ce qui sera imprimé',
++      previewSub: 'Le damier indique les parties transparentes. Seul le motif sera imprimé.', previewInfo: 'Fichier de {w} × {h} px', close: 'Fermer',
++      undo: 'Annuler', redo: 'Rétablir', undoT: 'Annuler (Ctrl+Z)', redoT: 'Rétablir (Ctrl+Y)', up: 'Monter', down: 'Descendre',
++      sizeL: 'Taille', rotL: 'Rotation', spacing: 'Espacement', outline: 'Contour', lines: 'Lignes', printSize: 'Taille d’impression', small: 'Petite', medium: 'Moyenne', large: 'Grande', fill: 'Remplir',
++      dup: 'Dupliquer', toFront: 'Au premier plan', toBack: 'À l’arrière-plan', crop: 'Recadrer', flip: 'Miroir', cutout: 'Détourer',
++      frame: 'Cadre', bw: 'Noir et blanc', reset: 'Réinitialiser', bright: 'Luminosité', contrast: 'Contraste', saturation: 'Saturation', sharp: 'Netteté',
++      bold: 'Gras', italic: 'Italique', alignL: 'Gauche', alignC: 'Centre', alignR: 'Droite', alignLT: 'Aligner à gauche', alignCT: 'Centrer', alignRT: 'Aligner à droite', customColor: 'Couleur personnalisée',
++      cropHead: 'Déplacez le cadre pour recadrer l’image', apply: 'Appliquer', cancel: 'Annuler', fontL: 'Police', colorL: 'Couleur', statusL: 'État',
++      noMap: 'Cette variante ne peut pas encore être personnalisée. Choisissez une autre taille ou couleur en haut de la page.',
++      orphan: 'La zone « {a} » n’existe pas pour cette variante. Retirez son motif ou choisissez une autre variante.',
++      notPossible: 'indisponible ici', orphanTitle: 'Indisponible pour cette variante',
++      tooHeavy: 'Le fichier est trop volumineux. Utilisez une photo plus petite ou retirez des motifs.',
++      shrunk: 'Le fichier a été ramené à {w} × {h} px pour permettre son envoi.',
++      upTimeout: 'L’envoi prend trop de temps. Vérifiez votre connexion et réessayez.',
++      varChanged: 'Vous avez changé de variante. Vérifiez à nouveau le bon à tirer.',
++      tooMany: 'Trop de zones à imprimer en une fois. Répartissez votre personnalisation sur deux commandes.',
++      sheetInfo: 'Planche d’impression de {w} × {h} cm',
++      sichtLabel: 'Vue', sichtDruck: 'Zone d’impression', sichtProdukt: 'Sur le produit',
++      pvAlt: 'Aperçu du motif sur le produit', pvLaedt: 'Préparation de l’aperçu…',
++      pvNote: 'L’aperçu est indicatif. Les couleurs, les plis et la position du motif peuvent varier légèrement à l’impression.',
++      pvFarbe: 'La couleur fixe du modèle ne permet pas un aperçu fidèle de cette variante. Vérifiez le motif dans « {druck} ».',
++      pvNichtDa: 'L’aperçu sur le produit est indisponible pour cette variante. Vous pouvez continuer dans « {druck} » pour voir ce qui sera imprimé.',
++      pvStickerei: 'La broderie utilise du fil et ne reproduit pas les dégradés. Vérifiez le motif dans « {druck} ».',
++      pvRundum: 'Le motif couvre plusieurs pièces et coutures. Vérifiez chaque pièce dans « {druck} ».',
++      pvKeine: 'Ce produit n’a pas d’aperçu sur photo. Vérifiez le motif dans « {druck} ».',
++      sichtBearbeiten: 'Modifier', sichtDruckversion: 'Fichier d’impression', sichtVorschau: 'Aperçu', sichtLive: 'Vue : {a}',
++      bearbeitenNote: 'Vous placez le motif sur la photo du produit. Le « Fichier d’impression » fait foi.',
++      druckNote: 'Seules les parties du motif situées dans la zone d’impression seront imprimées.',
++      bearbeitenFoto: 'La photo ne se charge pas. Vous pouvez continuer dans « Fichier d’impression ». Seul ce fichier sera imprimé.',
++      zoomStufen: ['Produit entier', 'Produit', 'Zone d’impression'],
++      noCombo: 'Cette combinaison est indisponible. Choisissez une autre variante.',
++      kontrastDunkel: 'Le motif et le tissu sont foncés. Pour que le motif soit visible, choisissez un motif ou un tissu plus clair.',
++      kontrastHell: 'Le motif et le tissu sont clairs. Pour que le motif soit visible, choisissez un motif ou un tissu plus foncé.',
++      dpiMid: 'Pour une impression nette, visez {gut} ppp.',
++      dpiMax: 'Résolution sur le produit : environ {n} ppp. C’est le maximum utile à ce format. Votre photo est assez grande.',
++      qSperre: 'La zone « {a} » atteint environ {n} ppp. Pour commander, il en faut au moins {min}. Réduisez la taille du motif, choisissez une image de meilleure résolution ou retirez-la.',
++      draftBack: 'Votre brouillon a été restauré.', draftLost: 'Certaines photos étaient encore en cours d’envoi. Ajoutez-les à nouveau.',
++      reviewHead: 'Vérifier le bon à tirer', reviewIntro: 'Vérifiez chaque zone d’impression. Le fichier PNG affiché est celui qui sera envoyé.',
++      reviewProduct: 'Produit', reviewVariant: 'Variante', standardVariant: 'Variante standard', reviewModel: 'Modèle Printful', reviewPlacements: 'Zones d’impression',
++      reviewPrint: 'Fichier qui sera imprimé', reviewOnProduct: 'Sur le produit', reviewMugView: 'Vue de face de la tasse',
++      reviewMugNote: 'La vue de face peut masquer les côtés d’un motif panoramique. Le fichier d’impression fait foi.',
++      reviewFallback: 'L’aperçu sur le produit est indisponible. Le fichier d’impression affiché fait foi.',
++      cardRequired: 'Les données d’impression n’ont pas pu être vérifiées. Rechargez la page. Sans ces données, la personnalisation et la commande sont indisponibles.',
++      reviewAccept: 'J’ai vérifié chaque zone d’impression et la variante choisie.',
++      reviewConfirm: 'Confirmer le bon à tirer et ajouter au panier', reviewBack: 'Continuer à personnaliser',
++      reviewBuilding: 'Préparation du bon à tirer…', reviewChanged: 'Le motif ou la variante a changé. Vérifiez à nouveau le bon à tirer.',
++    },
+     en: {
+       head: 'Design it yourself', ph: 'Your text …', addText: '➕ Text', addImg: '\u{1F5BC}\uFE0F Image', addSticker: '⭐ Sticker',
+       stickers: 'Pick a sticker', front: 'Front', back: 'Back',
+@@ -273,7 +344,8 @@
+       reviewChanged: 'Your design or option changed. Please review the print preview again.',
+     },
+   };
+-  var T = EN ? TEXTE.en : TEXTE.de;
++  // Legacy-Warenkorbschlüssel (pSide/pPrintFile/pDesign) und sprachneutrale Einheiten beibehalten.
++  var T = FR ? Object.assign({}, TEXTE.de, TEXTE.fr) : (EN ? TEXTE.en : TEXTE.de);
+   /** Platzhalter {a} {b} {w} … ersetzen. */
+   function fmt(text, werte) {
+     return String(text).replace(/\{(\w+)\}/g, function (_, k) { return werte && werte[k] != null ? werte[k] : ''; });
+@@ -1152,7 +1224,15 @@
+     }
+     function gewaehlt() { return ebeneMitId(st.sel); }
+     function gewaehltesBild() { var e = gewaehlt(); return e && e.type === 'image' ? e : null; }
+-    function titelVon(p) { return (EN ? p.titelEn : p.titelDe) || p.titelDe || p.titelEn || p.id; }
++    function titelVon(p) {
++      if (FR) {
++        if (p.titelFr) return p.titelFr;
++        if (p.titelDe === 'Druckfläche') return T.sichtDruck;
++        if (p.titelDe === 'Vorne' || p.titelEn === 'Front') return T.front;
++        if (p.titelDe === 'Hinten' || p.titelEn === 'Back') return T.back;
++      }
++      return (EN ? p.titelEn : p.titelDe) || p.titelDe || p.titelEn || p.id;
++    }
+     function neueId() { return 'L' + (++idZaehler); }
+ 
+     function warenkorbFormular() { return document.querySelector('form[action*="/cart/add"]') || null; }
+@@ -1367,8 +1447,8 @@
+         content.addEventListener('load', function () { if (st.sel === e.id) chromeNachziehen(); });   // die Höhe eines Bildes steht erst nach dem Laden fest
+       }
+       var frame = el('div', { class: 'lsp6-sel-frame' });
+-      var handle = el('div', { class: 'lsp6-handle', text: '⤡', title: EN ? 'Resize and rotate' : 'Skalieren und drehen' });
+-      var del = el('div', { class: 'lsp6-del', text: '✕', title: EN ? 'Delete' : 'Löschen', role: 'button' });
++      var handle = el('div', { class: 'lsp6-handle', text: '⤡', title: FR ? 'Redimensionner et tourner' : (EN ? 'Resize and rotate' : 'Skalieren und drehen') });
++      var del = el('div', { class: 'lsp6-del', text: '✕', title: FR ? 'Supprimer' : (EN ? 'Delete' : 'Löschen'), role: 'button' });
+       [frame, handle, del].forEach(function (n) { n.hidden = true; root.appendChild(n); });
+       root.insertBefore(content, frame);
+       ui.host.appendChild(root);
