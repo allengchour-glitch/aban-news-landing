@@ -371,3 +371,68 @@ Shop `luxestyle.ch`, Konto `5797470070`. Eine zusätzliche Seite mit 24 abgelehn
 | CSS-Kapazität | Die zwei am 27.11. in der Shopify-Nachkontrolle beanstandeten Produkte gegen das damalige Manifest und den heutigen Kanalstatus abgeglichen. | Stirnband `15447947313537` und Sportuhr `15447586931073` sind heute im Google-Kanal ausgelistet. Die damals gezählten 76’949 Shopify-Varianten belegen keinen aktuellen Google-Kontostand. Die CSS-Kapazitätsmeldung für Shopping-Anzeigen bleibt ohne bestätigte Behebung. [Lauf](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824) |
 
 Die nächste Google-Prüfung soll pro beanstandetem Angebot das tatsächlich verarbeitete Bild und den Zielstatus für kostenlose Einträge in der Schweiz abgleichen. Ein neues Bild auf Shopify kann bereits öffentlich sein, während Google noch den alten Datensatz führt.
+
+
+## Nachmittagslauf 28.11.2026
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Google Merchant | Das konkrete Angebot für das Glitzer-Spray `shopify_ZZ_15448799183233_55877744591233` in Konto 5797470070 nach der Shopify-Korrektur neu gelesen. | Google verarbeitet 60 ml Inhalt und 100 ml Bezugsmenge. Der frühere Hinweis auf das fehlende Grundpreismass ist für `FREE_LISTINGS` verschwunden. Die Zulassung CH/LI war bereits vor der Korrektur vorhanden. Shopify bestätigt CHF 15.90 und CHF 26.50 pro 100 ml. [Variante](https://luxestyle.ch/products/glitzer-spray-fur-strahlende-haut-436033?variant=55877744591233) |
+| Lieferantenfotos und Bilder | Bestehenden CJ-Verlauf sowie separate Suche nach neuen Antworten geprüft. Bei der Öl-Sprühflasche die Set-Angebote 10 bis 12 noch einmal im Google-Fehlerbericht identifiziert. | Keine passende Lieferantenantwort gefunden. Für diese drei Sets meldet Google weiterhin Bildüberlagerungen in CH. Die Anfrage umfasst die anderen 16 dokumentierten Varianten. Die zuletzt korrigierten Rucksack-, Uhren- und Lockenstabvarianten tauchten im erneut gelesenen Ausschnitt (24 Zeilen) nicht auf. Ihre Google-Freigaben sind weiterhin unbestätigt. |
+| Metricool | Shopify 94368563585, Marke 6227837, Europe/Zurich und die sechs vereinbarten Kanalidentitäten bestätigt. Planung ab 14 Uhr bis einschliesslich 05.12. und fällige Beiträge kanalweise gelesen. | Heute acht bestehende Kanalpublikationen als `PUBLISHED` bestätigt, vier zusätzlich seit dem Morgenlauf. Instagram vier, Facebook zwei, Threads zwei. Neun zukünftige Bildobjekte ergeben elf Kanaltermine. Keine neuen Termine durch Codex. |
+| Kanalziele | Beide Bio-Ziele bis zur Kollektion geprüft, deren Produktzuordnung in Shopify gegengeprüft und den regulären Suchweg aufgerufen. Das native Pinterest-Konto und die Board-ID geprüft. | Die Bio-Kollektion enthält Cascade nicht. Die öffentliche Shopsuche «Creolen Cascade» liefert das exakte Produkt (HTTP 200). Das Schmuck-Board 1111333714239531707 gehört zu luxestyleCH. Das Board mit Endziffer 706 gehört zur Herrenmode. [Shopsuche](https://luxestyle.ch/search?q=Creolen+Cascade&type=product) · [Schmuck-Board](https://www.pinterest.com/luxestylech/schmuck-accessoires/) |
+| Klaviyo und Ads | Bei Klaviyo den Zugang zur für den Erstbericht benötigten Bestellmetrik geprüft. Bei HYPD die Auswahl für den gezielten Ads-Abgleich gelesen. | Klaviyo meldet `UNAUTHORIZED` und verlangt eine Neuanmeldung. Aktuelle Kennzahlen zu Checkout-Abbruch, Welcome/Capture und Rückgewinnung bleiben unbekannt. In HYPD ist kein Google-Ads-Konto ausgewählt. Aktuelle Keyword-Zustände sind dort nicht lesbar. Die vier öffentlichen DNS-Einträge wurden heute bereits bestätigt. [HYPD-Kontoauswahl](https://app.hypd.ai/sources?select=google-ads&utm_source=mcp&utm_content=none_selected) |
+
+### Planung und tatsächliche Auslieferung
+
+| Datum Zürich | Bereits publiziert bzw. im Plan vorhanden | Lücken |
+| --- | --- | --- |
+| 28.11. | Publiziert sind Instagram, Facebook und Threads. Noch geplant sind Instagram/Facebook um 17:00, TikTok um 18:00 und Pinterest um 19:10 sowie 20:00. | YouTube |
+| 29.11. | Instagram/Facebook um 17:00, TikTok um 18:00, Pinterest um 19:10. | Threads, YouTube |
+| 30.11. | Pinterest um 19:10 und 20:00. | Instagram, Facebook, Threads, TikTok, YouTube |
+| 01., 02., 03., 04. und 05.12. | Kein Kanaltermin im geprüften Plan. | Alle sechs Kanäle an jedem der fünf Daten |
+
+Alle elf zukünftigen Kanaltermine sind `PENDING` bei `draft=false` und globalem `autoPublish=true`. Bei den Instagram-Terminen ist der kanalbezogene Schalter aktiv. Für die zwei TikTok- und fünf Pinterest-Termine lieferte Metricool kein separates kanalspezifisches Autopublish-Feld. Tatsächliche Auslieferung bei Fälligkeit prüfen. Kein neuer zukünftiger Zeitkonflikt und keine identischen sichtbaren Medien-URLs oder Texte pro Kanal im Prüffenster. Das deckt nur diesen Zeitraum ab.
+
+Beide bestehenden Threads-Beiträge vom 28.11. um 11 Uhr wurden unter zwei UUIDs separat ausgeliefert. Zum alten Instagram-Fehler «Santa Fe» (UUID `2617033623294002916`) antwortet die originale Bildadresse heute mit HTTP 200 und einem gültigen JPEG. Metricool meldet für den Beitrag weiterhin `ERROR`. [Threads-Beitrag 1](https://www.threads.com/@luxestyle.ch/post/DgR_oEEjc80) · [Threads-Beitrag 2](https://www.threads.com/@luxestyle.ch/post/DgR_sV5iKnF) · [Facebook um 10:49](https://facebook.com/122108214291350792/posts/1528138479204080)
+
+Die Tagesauswertung für den 21.–27.11. steht oben unter «Kennzahlen». TikTok lieferte 3’770 Aufrufe und 10 Interaktionen an sechs Tagen, Pinterest 468 Impressionen und 8 Interaktionen an vier Tagen. Fehlende Tage und die Wiedergabedauer bleiben unbekannt. Die Kanalwerte werden nicht in Verkäufe umgerechnet.
+
+### Cascade · Drehfassung zur Freigabe
+
+Modell 1 kostet CHF 26.90. Shopify-Produkt `15431606829441`, Variante `67870931517831`, SKU `CJLX293479401AZ`, aktiv und kaufbar, Tracking aus, Bestellpolitik `CONTINUE`. 16 aktuelle Tags ohne Treffer im Kanalwächter einschliesslich `rueckhol`. Öffentliche Variante und Warenkorbformular erreichbar. [Produkt](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831) · [Geprüftes Variantenfoto, 750 × 750](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec5377d7-40ed-42d4-8e8b-07c4873e3d91.jpg?v=1790745331)
+
+Die Shopify-Galerie enthält eine geprüfte MP4 mit Medien-ID `69697518698881`. Sie ist 9 Sekunden lang, 606 × 1080, 30 fps und stumm. Neun Stichbilder zeigen denselben Ohrausschnitt mit eingeblendeten Werbe- und Preistexten. Der frühere KI-Lichttest weicht in der Produktform ab. Für den einen 18-Sekunden-Master fehlen produktgetreue Originalaufnahmen, Beleg der kommerziellen Nutzungs- und Bearbeitungsrechte und die Abnahme der Endfassung. Kein neuer Render, Upload oder Versand. Die kanonische Musikdatei ist hashgleich vorhanden. Die Projektbeschreibung nennt eine Eigenkomposition, die kommerzielle Nutzung der enthaltenen Samples ist noch offen. Die Kristall-MP4 war am angegebenen Pfad nicht vorhanden.
+
+Drei reale Takes von 8, 8 und 10 Sekunden bei festem Weissabgleich drehen, jeweils mit einer Sekunde Vor- und Nachlauf. Das Paar vor dunklem Stoff und warmem Taupe für die Übersicht gleich aufhängen, den Lichtzug durch die Diffusion bei jedem Anschluss in dieselbe Richtung führen. Ein Gesamt-Take trägt Anfang und Schluss, ein Makro zeigt den Verbindungsring, ein dritter Take die Fahrt zum Paar. Bildformat 1080 × 1920 mit 30 fps. Ohne Voiceover. Beim fertigen Film Form, Farbe, kleinen Ring, Kugel, Tropfen, Ton, lesbaren Kontrast und die tatsächlichen Plattform-Ausschnitte abnehmen.
+
+| Schnittzeit | Bild und Text |
+| --- | --- |
+| 0–2 s | Ein Einstieg für denselben Film. Hook A beginnt mit dem gesamten Paar und dem Lichtwechsel «Wie wandert der Glanz?». Hook B beginnt seitlich am kleinen Ring «Vom Verschluss zum Tropfen». |
+| 2–6 s | Das Paar ruht. Der weiche Lichtreflex bewegt sich über beide Creolen. |
+| 6–10 s | Seitliches Makro. Fokus vom echten Verbindungsring über die Kugel bis zum Tropfen. Die vollständige Verbindung im Bild halten. |
+| 10–15 s | Kurze ruhige Fahrt aufs Paar. Einblendung «Creolen Cascade» oberhalb des Produkts. |
+| 15–18 s | Einstellung halten. «Cascade entdecken» unterhalb des Produkts. Die Schnitte liegen nach 60, 180, 300 und 450 Bildern, der Film endet nach 540 Bildern. |
+
+| Kanal | Textentwurf für den fertigen Film | Eindeutiges UTM-Ziel |
+| --- | --- | --- |
+| Instagram | «Ein Lichtreflex wandert von der Kugel zum Tropfen. Du findest das Paar auf luxestyle.ch unter ‹Creolen Cascade›.» | [Ziel für eine spätere Bio-Verlinkung](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=instagram&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=instagram_cascade_modell1) |
+| TikTok | «Schau auf den kleinen Ring zwischen Kugel und Tropfen. Such auf luxestyle.ch nach ‹Creolen Cascade›.» | [Ziel für eine spätere Bio-Verlinkung](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=tiktok&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=tiktok_cascade_modell1) |
+| YouTube Shorts | Titel «Cascade aus der Nähe – vom Verschluss zum Tropfen». Beschreibung «Goldfarbene Creolen im Detail. Modell 1 findest du auf luxestyle.ch unter ‹Creolen Cascade›.» | [Ziel für einen geprüften Profillink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=youtube&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=youtube_cascade_modell1) |
+| Facebook | «Kugel und Tropfen im Seitenlicht. Hier findest du die goldfarbenen Cascade-Creolen in Modell 1.» | [Produktlink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=facebook&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=facebook_cascade_modell1) |
+| Threads | «Erst glänzt die Kugel im Seitenlicht, dann der Tropfen. Welches Detail fällt dir zuerst auf?» | [Produktlink](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=threads&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=threads_cascade_modell1) |
+| Pinterest | Titel «Goldfarbene Creolen mit Tropfen – Cascade». Beschreibung «Modell 1 von der Seite und im Detail. Zum Produkt im Shop.» | [Pin-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=pinterest&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=pinterest_cascade_modell1) |
+
+Die beiden Bio-Kurzlinks `luxestyle.ch/ig` und `luxestyle.ch/tt` führen aktuell zu einer Social-Kollektion mit 41 Produkten. Das Sortiment enthält das Modell nicht. Die Captions verwenden deshalb den nachgewiesenen Suchbegriff. Vor einer späteren Verlinkung das Bio-Ziel erneut prüfen. Für YouTube ist allgemeines Schmuckpublikum vorgesehen. Die Angabe `madeForKids=false` vor Veröffentlichung am konkreten Short prüfen. Für einen separaten Pinterest-Pin fehlen Rechte und Freigabe für das konkrete Foto. Die Auswahl von 28 Einträgen in der Social-Warteschlange enthält Cascade nicht und belegt keine Rechte an einem Ersatzmotiv.
+
+### Eine Verkaufsaktion zur Freigabe
+
+Französische Auswahlhilfe beim Magnetkabel (Produkt `15452603187585`). Auf der französischen Seite stehen deutsche Optionsnamen. Der USB-C-Ersatzkopf für CHF 15.90 und das blaue 3-in-1-Kabel für CHF 16.90 sind zwei verschiedene, kaufbare Varianten. Die Variantenlinks wurden bis zum richtigen vorausgewählten Warenkorbformular geprüft. [Ersatzkopf](https://luxestyle.ch/fr/products/magnetisch-ladecable-044e0c?variant=67797485224327) · [Blaues Kabel](https://luxestyle.ch/fr/products/magnetisch-ladecable-044e0c?variant=67797484929415)
+
+Der Entwurf benennt «Farbe» als «Couleur ou embout seul», «Modell» als «Connecteur», «Magnetkopf» als «Embout seul» und «3in1» als «3 en 1». Dazu kommen die fehlenden französischen Farbwerte und die sachlichen Produkt- und Suchtexte. Vorschlag für die französische Auswahlhilfe:
+
+> Pour acheter un câble, choisissez sa couleur, puis le connecteur. L’option «3 en 1» comprend trois embouts. Pour acheter uniquement un embout de rechange, sélectionnez «Embout seul», puis le connecteur. Le câble n’est pas inclus avec l’embout seul.
+
+Zur Entscheidung steht die französische Fassung dieses einen Produkts. Bei Umsetzung zuerst die Quelldigests neu lesen und danach beide Variante-IDs, Preise und sichtbare französische Auswahl im öffentlichen Formular abgleichen. Der Entwurf ist in diesem Lauf nicht im Shop gespeichert.
+
+Der Nachmittagslauf wurde zusätzlich als R320 im ursprünglichen Projektgedächtnis und im Tagesprotokoll gespeichert. Die drei Dateien wurden auf Inhalt und SHA zurückgelesen. [Gedächtnis und Tagesprotokoll](https://github.com/allengchour-glitch/aban-news-landing/commit/354288caa7e5a86842e1b6d2b81bd4e61c2cc653)
