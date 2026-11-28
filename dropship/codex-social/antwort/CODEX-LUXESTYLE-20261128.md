@@ -16,6 +16,8 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | Shop und Suche | Versandhinweis in zwei live erreichbaren ChatGPT-Zielseiten präzisiert. 53 Google-Pilotvarianten einzeln geprüft. | Zwei öffentliche Gegenproben erfolgreich. Kapazitätsbeleg für Google weiterhin offen. |
 | Morgenlauf 08:02 | Planung, Produktauswahl und Textlayout des Cascade-Masters frisch geprüft. | 4 bestehende Publikationen bestätigt. 13 künftige Kanaltermine. Sichere Textpositionen ermittelt. |
 
+| Kundengewinnung | Cascade-Suchtext gespeichert und im Shop sowie öffentlich geprüft. Schweizer Suchbegriffe mit den bereits gemessenen Landeseiten und kaufbaren Varianten abgeglichen. | Cascade-Metadaten live. Priorität für die organische Kundengewinnung sind Fell- und Plüschjacken. Suchvolumen unbekannt. |
+
 ## Metricool
 
 | Datum | Bestehende Termine · Europe/Zurich | Lücken |
@@ -188,3 +190,14 @@ Instagram und TikTok erst mit bestätigtem Bio-Ziel. Pinterest erst mit bestäti
 ### Zur Freigabe · Cascade-Suchtext präzisieren
 
 Der aktuelle Shopify-SEO-Titel endet mit «Gold». Die vorhandene Produktbeschreibung nennt «Goldoptik» und als Material «Metall». Die bisherige Suchbeschreibung endet mit einem abgeschnittenen Rabatttext. Geprüfter neuer SEO-Titel für das einzelne Produkt 15431606829441 lautet «Creolen Cascade mit Tropfen, goldfarben». Die neue Meta-Beschreibung lautet «Goldfarbene Creolen Cascade mit Tropfenanhängern. Modell 1 ansehen und die Produktdetails entdecken.» Der Entwurf wurde nicht im Shop gespeichert. [Produktseite](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+
+## Kunden gewinnen · 08:09 Uhr Zürich
+
+Cascade, Produkt `15431606829441`. Shopify und öffentlicher Produktaufruf (HTTP 200) bestätigen den SEO-Titel «Creolen Cascade mit Tropfen, goldfarben» und die Meta-Beschreibung «Goldfarbene Creolen Cascade mit Tropfenanhängern. Modell 1 ansehen und die Produktdetails entdecken.» Der öffentliche Tab-Titel ergänzt «– LuxeStyle». Der sichtbare Produktname und der Handle sind beim Rücklesen identisch. [Produktseite](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+1. **Felljacke Damen Schweiz / Plüschjacke Damen Schweiz.** Für ChatGPT-Besuche aus der Schweiz vom 29.10. bis 27.11. zeigt die Kategorie 10 Sitzungen, 4 mit Warenkorb, 3 mit erreichtem und 1 mit abgeschlossenem Checkout. Als Ziel eignet sich die Kategorie mit 35 Produkten. Die kurze Kapuzenjacke in Blau, S und M, ist laut Shopify kaufbar (CHF 34.90). [Kategorie](https://luxestyle.ch/collections/damen-jacken-kunstfell) · [Kapuzenjacke, Blau M](https://luxestyle.ch/products/kurze-kapuzenjacke-mit-fellkragen-626300?variant=67737574343047)
+2. **Wintermantel Damen mit Fellkragen Schweiz.** Die Suchstichprobe lieferte die LuxeStyle-Produktseite. Die Varianten Grau M und L sind laut Shopify kaufbar (CHF 30.90). [Wintermantel, Grau M](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911)
+3. **Goldfarbene Creolen mit Tropfen kaufen.** Die Suchstichprobe lieferte die Cascade-Seite mit dem früheren Titel. Modell 1 ist laut Shopify kaufbar (CHF 26.90). Der überarbeitete Suchtext ist im Shop öffentlich sichtbar. Die Aktualisierung in Suchergebnissen bleibt offen. [Cascade Modell 1](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+Die Suchstichprobe zeigt, für welche dieser Begriffe bereits passende LuxeStyle-Seiten auffindbar waren. Google-Impressionen, Google-Klicks und Suchvolumen bleiben unbekannt. HYPD hat keine ausgewählte Search-Console-Property. Semrush meldet keine verfügbaren API-Einheiten für die Keyword-Berichte. [Search Console freigeben](https://app.hypd.ai/sources?select=search-console&utm_source=mcp&utm_content=none_selected)
