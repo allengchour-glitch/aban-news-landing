@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 324,
-  "updatedAt": "2026-11-28T18:29:58Z",
+  "revision": 325,
+  "updatedAt": "2026-11-28T18:35:30Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51109,6 +51109,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg"
       ]
+    },
+    {
+      "revision": 325,
+      "at": "2026-11-28T18:35:30Z",
+      "summary": "Der Gestalterkatalog ist auf dem unveröffentlichten Shopify-Theme «LuxeStyle – Printful Fix 08.11.2026» mobil geprüft. «coque» fand drei Hüllen, «tasse» eine Tasse. Alle zwölf dynamischen und alle 18 statischen Links der französischen Ansicht behielten die Sprache. Der Klick auf die transparente Samsung-Hülle öffnete die französische Variante.",
+      "sources": [
+        "https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335"
+      ]
     }
   ],
   "salesGoal": {
@@ -83556,5 +83564,23 @@
     },
     "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg",
     "nextStep": "Im bestehenden Lauf am 29.11. um 08:00 Uhr Zürich gemäss §13 der Übergabe die noch offenen französischen Kaufwege weiterführen. Katalogsuche, dynamische Links und Editorbedienung nach einem freigegebenen Release im Shop prüfen."
+  },
+  "run325": {
+    "taskId": "personalizer-fullscreen-20261029",
+    "previewThemeId": "213482963335",
+    "themeRole": "UNPUBLISHED",
+    "matchedCurrentSourcesBeforeChange": true,
+    "previewCodeChecksums": [
+      "0ff7623282d7f6f289dc9fa3052df0a9",
+      "ac20ab4b17d19d507fd0bb34fa3934e9"
+    ],
+    "frenchLabels": 42,
+    "verifiedFrenchLabels": 42,
+    "confirmedFrenchVariant": "67813423448455",
+    "confirmedStatus": 200,
+    "themePublished": false,
+    "mainSourceChanged": false,
+    "report": "https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335",
+    "nextStep": "Die Übernahme dieser geprüften Katalogfassung ins Live-Theme steht aus. Die 157 französischen Editor-Bedientexte liegen weiterhin als geprüfter Quellpatch im Repository."
   }
 }

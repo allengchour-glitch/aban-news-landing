@@ -1,3 +1,13 @@
+# R325 · Shopify-Vorschau für den Gestalterkatalog · 28.11.2026
+
+Der Gestalterkatalog ist auf dem unveröffentlichten Shopify-Theme «LuxeStyle – Printful Fix 08.11.2026» mobil geprüft. «coque» fand drei Hüllen, «tasse» eine Tasse. Alle zwölf dynamischen und alle 18 statischen Links der französischen Ansicht behielten die Sprache. Der Klick auf die transparente Samsung-Hülle öffnete die französische Variante.
+
+Die Übernahme dieser geprüften Katalogfassung ins Live-Theme steht aus. Die 157 französischen Editor-Bedientexte liegen weiterhin als geprüfter Quellpatch im Repository. [Arbeitsbeleg](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335)
+
+[LUXESTYLE_R325_20261128_GESTALTER_VORSCHAU]
+
+---
+
 # R324 · Personalisierte Geschenke · 28.11.2026
 
 Die Geschenkideen-Kollektion führt auf Deutsch und Französisch zum individuellen Gestalten. Die Standardkollektion verlinkt die Samsung-Hülle und das Spiralnotizbuch. Auf dem Handy öffnen sich in beiden Sprachen die geprüften Ausführungen. Die französische Spezialansicht zeigt die übersetzten Such- und Gestaltungsfunktionen. Alle 42 gespeicherten Theme-Übersetzungen wurden zurückgelesen.

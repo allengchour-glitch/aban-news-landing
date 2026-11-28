@@ -3972,3 +3972,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Arbeitsbeleg](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#selbst-gestalten--deutscher-und-französischer-kaufweg)
 
 [LUXESTYLE_R324_20261128_SELBST_GESTALTEN]
+
+### R325 · Shopify-Vorschau für den Gestalterkatalog
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Theme-Vorschau | Vor dem Übertragen der beiden Katalogdateien ihre Ausgangsfassungen mit dem Live-Theme abgeglichen. In Theme `213482963335` beide Dateien und alle 42 französischen Katalogtexte zurückgelesen. | Vorschau-Prüfsummen `0ff7623282d7f6f289dc9fa3052df0a9` und `ac20ab4b17d19d507fd0bb34fa3934e9`. Die Ausgangsprüfsummen des Live-Themes blieben erhalten. |
+| Mobile Suche und Variantenlinks | In der echten Shopify-Vorschau die französische Überschrift, Suchdialoge und Produktkarten geprüft. In DE und FR nach Hüllen und Tassen gesucht. | FR lieferte drei Hüllen und eine Tasse. 12 von 12 dynamischen und 18 von 18 statischen Links blieben französisch, die geprüften Dialoglinks je 2 von 2. Variante `67813423448455` antwortete auf Französisch mit HTTP 200. DE lieferte sechs Hüllen und eine Tasse, alle zwölf dynamischen Links blieben deutsch. |
+
+[Arbeitsbeleg](https://luxestyle.ch/fr/collections/selbst-gestalten-1?view=luxe-gestalten&preview_theme_id=213482963335)
+
+[LUXESTYLE_R325_20261128_GESTALTER_VORSCHAU]
