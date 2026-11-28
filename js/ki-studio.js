@@ -62,9 +62,12 @@
     }
   }
 
+  var validationRequest = 0;
   function validate(k, quiet) {
     k = (k || '').trim();
     if (!k) return;
+    // Eine neu gestartete Prüfung ersetzt die ältere, auch die stille Startprüfung.
+    var currentRequest = ++validationRequest;
     var btn = $('proUnlock'); if (btn && !quiet) { btn.disabled = true; btn.textContent = T.working; }
     var controller = new AbortController(), timer;
     // Eine Frist umfasst Transport und Antwortinhalt; keine automatische Wiederholung.
@@ -80,6 +83,7 @@
       if (!r.ok) throw new Error('Lizenzprüfung derzeit nicht verfügbar');
       return r.json();
     }), deadline]).then(function (d) {
+      if (currentRequest !== validationRequest) return;
       if (!d || typeof d !== 'object' || Array.isArray(d) || typeof d.valid !== 'boolean') {
         throw new Error('Unvollständige Lizenzantwort');
       }
@@ -92,8 +96,12 @@
         var unavailable = !d || d.status === 'error' || d.error;
         if (subEl && (!quiet || unavailable)) subEl.textContent = unavailable ? T.licenseUnavailable : T.invalid;
       }
-    }).catch(function () { if (subEl) subEl.textContent = T.licenseUnavailable; })
-      .finally(function () { clearTimeout(timer); if (btn) { btn.disabled = false; btn.textContent = T.unlock; } });
+    }).catch(function () {
+      if (currentRequest === validationRequest && subEl) subEl.textContent = T.licenseUnavailable;
+    }).finally(function () {
+      clearTimeout(timer);
+      if (currentRequest === validationRequest && btn) { btn.disabled = false; btn.textContent = T.unlock; }
+    });
   }
 
   var unlockBtn = $('proUnlock');

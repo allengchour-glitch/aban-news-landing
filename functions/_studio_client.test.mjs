@@ -11,8 +11,8 @@ const output={answer:'Demoantwort aus dem Test',text:'Demoantwort aus dem Test',
 const markt={fetched_at:'2026-11-21T10:00:00Z',assets:[{name:'Demo',symbol:'DEMO',change_24h:1}]};
 const antwort=(data=output,status=200)=>({ok:status>=200&&status<300,status,json:async()=>data});
 const tools=[['chat','toolChat','outChat','/api/chat'],['generate','toolGen','outGen','/api/generate'],['hype','toolHype','outHype','/api/hype-check'],['aeo','toolAeo','outAeo','/api/ki-erwaehnung'],['translate','toolTranslate','outTr','/api/generate'],['prompt','toolPrompt','outPr','/api/generate'],['brief','toolBrief','outBrief','/api/generate']];
-function harness(lang='de',fetcher=()=>antwort()){
-  const nodes=new Map(),events={},timers=new Map(),calls=[],writes=[],clickErrors=[];let next=0,now=0;
+function harness(lang='de',fetcher=()=>antwort(),licenseFetcher=()=>antwort({valid:true,tier:'monthly'})){
+  const nodes=new Map(),events={},timers=new Map(),calls=[],licenseCalls=[],writes=[],clickErrors=[];let next=0,now=0;
   function element(id=''){
     const n={id,value:'Demo-Eingabe unverändert',hidden:false,disabled:false,style:{},attrs:{},children:[],events:{},className:'',_text:'',
       setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k]??null;},
@@ -28,18 +28,81 @@ function harness(lang='de',fetcher=()=>antwort()){
     navigator:{clipboard:{writeText:async()=>{}}},AbortController,Promise,JSON,Error,Array,
     setTimeout:(fn,ms)=>{timers.set(++next,{fn,due:now+ms,ms});return next;},clearTimeout:id=>timers.delete(id),
     fetch:(url,opts={})=>{
-      if(url==='/api/pro-validate')return Promise.resolve(antwort({valid:true,tier:'monthly'}));
+      if(url==='/api/pro-validate'){licenseCalls.push({url,opts});return Promise.resolve(licenseFetcher(url,opts));}
       calls.push({url,opts});return Promise.resolve(fetcher(url,opts));
     }};
   vm.runInNewContext(source,context);
   function click(tool){const btn=get('button-'+tool);btn.attrs['data-tool']=tool;if(!btn.textContent)btn.textContent='Demo starten';
     const target={closest:selector=>selector==='.run'?btn:null};
     for(const fn of events.click||[])try{fn({target});}catch(e){clickErrors.push(String(e));}return btn;}
-  return {get,calls,writes,timers,clickErrors,click,setFetch:fn=>{fetcher=fn;},advance:async ms=>{now+=ms;for(const [id,t]of [...timers])if(t.due<=now){timers.delete(id);t.fn();}await flush();}};
+  function unlock(key,enter=false){get('proKey').value=key;if(enter)get('proKey').events.keydown({key:'Enter'});else get('proUnlock').events.click();}
+  return {get,calls,licenseCalls,writes,timers,clickErrors,click,unlock,setFetch:fn=>{fetcher=fn;},advance:async ms=>{now+=ms;for(const [id,t]of [...timers])if(t.due<=now){timers.delete(id);t.fn();}await flush();}};
 }
 const fristtext=(lang,text)=>lang==='de'?/keine bestätigte Antwort/i.test(text)&&/bereits/i.test(text)&&/(keine automatische Wiederholung|nicht automatisch)/i.test(text):/no confirmed response/i.test(text)&&/already/i.test(text)&&/(nothing is retried automatically|not automatically)/i.test(text);
 
 for(const lang of ['de','en']){
+  // Die gespeicherte Lizenz wird beim Laden still geprüft. Eine neue manuelle
+  // Prüfung ist bereits möglich, bevor die ältere Antwort angekommen ist.
+  for(const oldReply of ['ungueltig','monat','http-fehler','netzfehler','inhalt']){
+    const old=warten();let licenseCount=0;
+    const h=harness(lang,()=>antwort(),()=>{
+      licenseCount++;
+      if(licenseCount===1)return oldReply==='inhalt'?{ok:true,status:200,json:()=>old.promise}:old.promise;
+      return antwort({valid:true,tier:'yearly'});
+    });
+    h.unlock('demo-neuer-jahresschluessel');await flush();
+    const current={status:h.get('proStatus').textContent,sub:h.get('unlockSub').textContent,writes:JSON.stringify(h.writes)};
+    check(lang+'/'+oldReply+': neuer Jahresschlüssel vor alter Antwort bestätigt',
+      tools.every(([,id])=>h.get(id).getAttribute('data-locked')==='0')&&!h.get('yearlyBonus').hidden&&h.writes.length===1&&h.writes[0][1]==='demo-neuer-jahresschluessel');
+    if(oldReply==='inhalt')old.resolve({valid:false,status:'invalid'});
+    else if(oldReply==='netzfehler')old.resolve(Promise.reject(new Error('Nur synthetischer Netzfehler')));
+    else old.resolve(antwort(oldReply==='monat'?{valid:true,tier:'monthly'}:{valid:false,status:'invalid'},oldReply==='http-fehler'?503:200));
+    await flush();
+    check(lang+'/'+oldReply+': alte Antwort ändert Freigabe, Jahresbonus oder Speicher nicht',
+      tools.every(([,id])=>h.get(id).getAttribute('data-locked')==='0')&&!h.get('yearlyBonus').hidden&&h.get('proStatus').textContent===current.status&&h.get('unlockSub').textContent===current.sub&&JSON.stringify(h.writes)===current.writes);
+    h.click('generate');await flush();
+    check(lang+'/'+oldReply+': Werkzeug verwendet genau den neu bestätigten Schlüssel',
+      h.calls.length===1&&h.calls[0].opts.headers['X-Pro-Key']==='demo-neuer-jahresschluessel'&&h.get('outGen').textContent===output.text&&h.licenseCalls.length===2&&h.timers.size===0);
+  }
+  for(const oldReply of ['ungueltig','monat','http-fehler']){
+    const old=warten(),current=warten();let count=0;
+    const h=harness(lang,()=>antwort(),()=>++count===1?old.promise:current.promise);
+    h.unlock('demo-neuer-schluessel');await flush();
+    old.resolve(antwort(oldReply==='monat'?{valid:true,tier:'monthly'}:{valid:false,status:'invalid'},oldReply==='http-fehler'?503:200));await flush();
+    check(lang+'/'+oldReply+': altes Finally entsperrt laufende neue Prüfung nicht',h.get('proUnlock').disabled&&h.writes.length===0&&h.timers.size===1);
+    current.resolve(antwort({valid:true,tier:'monthly'}));await flush();
+    check(lang+'/'+oldReply+': aktuelle Prüfung endet normal und bereinigt Timer',!h.get('proUnlock').disabled&&h.writes.length===1&&h.writes[0][1]==='demo-neuer-schluessel'&&h.timers.size===0);
+  }
+  for(const phase of ['transport','inhalt']){
+    const old=warten();let count=0;
+    const h=harness(lang,()=>antwort(),()=>++count===1?(phase==='transport'?old.promise:{ok:true,status:200,json:()=>old.promise}):antwort({valid:true,tier:'yearly'}));
+    h.unlock('demo-frischer-schluessel');await flush();
+    const status=h.get('proStatus').textContent,sub=h.get('unlockSub').textContent,writes=JSON.stringify(h.writes);
+    await h.advance(15000);
+    check(lang+'/'+phase+': alte Lizenzfrist ändert aktuelle Freigabe nicht',h.get('proStatus').textContent===status&&h.get('unlockSub').textContent===sub&&!h.get('yearlyBonus').hidden&&JSON.stringify(h.writes)===writes&&h.timers.size===0);
+    old.resolve(phase==='transport'?antwort({valid:true,tier:'monthly'}):{valid:true,tier:'monthly'});await flush();
+    check(lang+'/'+phase+': Antwort nach alter Frist bleibt wirkungslos ohne Retry',h.get('proStatus').textContent===status&&h.get('unlockSub').textContent===sub&&JSON.stringify(h.writes)===writes&&h.licenseCalls.length===2);
+  }
+  {
+    const old=warten(),current=warten();let count=0;
+    const h=harness(lang,()=>antwort(),()=>++count===1?old.promise:current.promise);
+    await h.advance(1000);h.unlock('demo-aktuell-abgelehnt');await flush();
+    await h.advance(14000);
+    check(lang+': alte Frist beendet laufende neue Lizenzprüfung nicht',h.get('proUnlock').disabled&&h.timers.size===1&&h.writes.length===0);
+    current.resolve(antwort({valid:false,status:'invalid'}));await flush();
+    check(lang+': aktuelle ausdrückliche Ablehnung bleibt wirksam',tools.every(([,id])=>h.get(id).getAttribute('data-locked')==='1')&&h.get('unlockSub').textContent===(lang==='de'?'Schlüssel ungültig oder abgelaufen.':'Key invalid or expired.')&&!h.get('proUnlock').disabled&&h.writes.length===0&&h.timers.size===0);
+    old.resolve(antwort({valid:true,tier:'yearly'}));await flush();
+    check(lang+': verspätete alte Freigabe überschreibt Ablehnung nicht',tools.every(([,id])=>h.get(id).getAttribute('data-locked')==='1')&&h.writes.length===0&&h.licenseCalls.length===2);
+  }
+  {
+    const first=warten(),second=warten();let count=0;
+    const h=harness(lang,()=>antwort(),()=>++count===1?antwort({valid:true,tier:'monthly'}):count===2?first.promise:second.promise);await flush();
+    h.unlock('demo-erster-enter',true);h.unlock('demo-zweiter-enter',true);await flush();
+    second.resolve(antwort({valid:true,tier:'yearly'}));await flush();
+    const writes=JSON.stringify(h.writes),status=h.get('proStatus').textContent;
+    first.resolve(antwort({valid:true,tier:'monthly'}));await flush();
+    check(lang+': zwei Enter-Prüfungen behalten jüngsten bestätigten Schlüssel',h.writes.at(-1)[1]==='demo-zweiter-enter'&&JSON.stringify(h.writes)===writes&&h.get('proStatus').textContent===status&&!h.get('yearlyBonus').hidden&&h.timers.size===0&&h.licenseCalls.length===3);
+  }
   for(const [tool,,out,endpoint]of tools){
     const pending=warten();const h=harness(lang,(url)=>url==='/data/markets.json'?antwort(markt):pending.promise);await flush();
     const beforeWrites=JSON.stringify(h.writes),beforeInput=h.get('proKey').value,beforeDraft=h.get('genZiel').value;
