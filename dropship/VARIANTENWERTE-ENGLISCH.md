@@ -1,31 +1,44 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-28 14:20 UTC, Stand 2026-11-28 14:21 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-28 14:20 UTC, Stand 2026-11-28 14:26 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'252**
-- Optionen mit englischen Werten (Kandidaten): 15
+- Produkte gesehen: **3'026**
+- Optionen mit englischen Werten (Kandidaten): 137
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 132
+- Werte mit unbekanntem Wort (unverändert): 406
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
+- übersprungen «kollision-nach-uebersetzung»: 11
+- übersprungen «kleidungsstueck-im-wert»: 8
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
 > Zwei verschiedene Kleidungsstücke in EINER Option, oder ein Kleidungsstück, das nicht zum Titel passt. Beispiel Jeansjacke: «Blue Coat» / «Blue Pants» — die zweite «Farbe» ist eine Hose. Entscheid am Bild und Preis: Option umbenennen (z. B. «Artikel»: Jacke/Hose) oder Variante entfernen.
 
-_keine_
-
+- `15447957733761` [Farbe] **Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche** — hose, jacke: coat | coat-100 | coat-110 | coat-120 | coat-130 | coat-140 | coat-150 | coat-Female S
+- `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
+- `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil · Titel nennt Set: Herren Oberteil | Herren Shorts | Damen Shirt | Damen Stil Rock | Grün Cheongsam Anzug
+- `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
-_keine_
-
+- `15447596302721` [Farbe] glanzendes-mini-kleid-mit-raffung-634500: Marineblaublau → Marineblau
+- `15447598268801` [Farbe] damen-kleid-mit-puffarmeln-und-taillengurtel-613900: Marineblaublau → Marineblau
+- `15447603413377` [Farbe] leinenhemd-kurzarm-loose-fit-fur-herren-613900: Marineblaublau → Marineblau
+- `15447603806593` [Farbe] casual-loose-fit-t-shirt-mit-zwei-taschen-628400: Marineblaublau → Marineblau
+- `15447603937665` [Farbe] herren-jacquard-polo-shirt-mit-reissverschluss-614101: Marineblaublau → Marineblau
+- `15447604658561` [Farbe] polo-shirt-kurzarm-slim-fit-pique-baumwolle-615000: Marineblaublau → Marineblau
+- `15447605510529` [Farbe] leinenhemd-langarmlig-fur-herren-624700: Marineblaublau → Marineblau
+- `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
+- `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
+- `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
+- `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -55,5 +68,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 29, `opp` 20, `⟨satzbau:praeposition⟩` 12, `size` 6, `plugin` 4, `models` 4, `bright` 4, `powder` 4, `drill` 4, `elektrisch` 3, `elegant` 2, `three` 2, `touch` 2, `modelle` 2, `light` 2, `pin` 2, `breathing` 2, `stk.` 2, `⟨satzbau:nomen-vor-farbe⟩` 2, `stk` 1, `drei` 1, `tea` 1, `diamant` 1, `zhu` 1, `kaki` 1, `electric` 1, `including` 1, `rabbit` 1, `elephant` 1, `expensive` 1, `one` 1, `star` 1, `schwimmmatte` 1, `⟨satzbau:nomen-nomen⟩` 1
+`diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 35, `opp` 20, `deer` 19, `degrees` 17, `powder` 15, `tea` 12, `⟨satzbau:praeposition⟩` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `electric` 7, `bag` 7, `one` 6, `size` 6, `waist` 6, `soft` 6, `three` 5, `cherry` 5, `storage` 5, `color` 5, `blossom` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `plugin` 4, `models` 4, `bright` 4, `drill` 4, `milk` 4, `gun` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `glittering` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `elegant` 3, `light` 3, `elektrisch` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `brushed` 3, `×` 3, `⟨satzbau:adjektivfolge⟩` 3, `roman` 3, `rod` 3
 

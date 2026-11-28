@@ -9621,3 +9621,9 @@ gid://shopify/Product/15494892880257	zugeordnet	6	Casual Langarmhemd für Herren
 gid://shopify/Product/15494893142401	zugeordnet	14	Leichter Cardigan aus Baumwoll-Leinen für Herren
 gid://shopify/Product/15494893339009	zugeordnet	12	Slim-Fit T-Shirt mit Totem-Print
 gid://shopify/Product/15494893437313	zugeordnet	35	Kapuzenjacke Slim-Fit mit UV-Schutz
+gid://shopify/Product/16740839195015	zugeordnet	6	Langes Satin-Ice Silk Nachthemd mit Trägern
+gid://shopify/Product/16743130628487	zugeordnet	15	Graues Karomuster Langarmshirt für Herren
+gid://shopify/Product/16743540392327	zugeordnet	10	Herrenhemd mit Streifen und Stehkragen
+gid://shopify/Product/16743787331975	zugeordnet	98	Sommer-Shirt Männer Kurzarm Leinen-Polyester
+gid://shopify/Product/16743993639303	zugeordnet	65	Geometrisches Kurzarmshirt für Herren
+gid://shopify/Product/16744056324487	bild-urls-tot
