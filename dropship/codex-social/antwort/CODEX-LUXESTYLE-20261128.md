@@ -13,6 +13,7 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | Pilot-Budget | Letzten Workflow-Stand, aktuelle Aufnahmegrenzen und die gemeinsame Google-Sperrliste geprüft. | 11 lokale Kontrollfälle bestanden. Frischer Gesamtstand für Aufnahme weiterhin offen. |
 | ChatGPT-Suche | CH-Einstiegsseiten ausgewertet und die Prüfung von Weiterleitungszielen auf dem Branch korrigiert. | Fell- und Plüschjacken mit 10 Sitzungen und einem abgeschlossenen Checkout. Ein genaueres Weiterleitungsziel als Shop-Entwurf. |
 | ChatGPT-Suche live | Bestehende Weiterleitung der alten Wellness-Geschenkbox aktualisiert und zurückgelesen. | Öffentlicher Aufruf landet auf Geschenk-Sets & Bundles (HTTP 200). |
+| Shop und Suche | Versandhinweis in zwei live erreichbaren ChatGPT-Zielseiten präzisiert. 53 Google-Pilotvarianten einzeln geprüft. | Zwei öffentliche Gegenproben erfolgreich. Kapazitätsbeleg für Google weiterhin offen. |
 
 ## Metricool
 
@@ -135,3 +136,11 @@ Die Fell- und Plüschjacken-Kollektion war in Shopify Online Store veröffentlic
 Auf «push alles» die einzelne, zuvor geprüfte Shopify-Weiterleitung `gid://shopify/UrlRedirect/2135651320199` aktualisiert. Alter Zielpfad `/collections/premium-geschenke`, neuer Zielpfad `/collections/sets-bundles`. Shopify meldete keine Fehler. ID, Quellpfad und neues Ziel anschliessend über Admin zurückgelesen. Im frischen öffentlichen Aufruf öffnet der alte Link die veröffentlichte Zielkollektion mit HTTP 200 und dem Titel «Geschenk-Sets & Bundles kaufen». Das ist ein Auslieferungsbeleg für die Weiterleitung. Auswirkungen auf Suchtraffic sind noch nicht messbar. [Alter Link zur Gegenprobe](https://luxestyle.ch/products/geschenkbox-mit-decke-und-wellness-produkten-605100) · [Öffentliches Ziel](https://luxestyle.ch/collections/sets-bundles)
 
 Der Google-Pilot wartet auf eine neue belegte Kapazitätsrechnung. Der jüngste Schaufenster-Lauf war weiterhin `46014333824` vom 27.11. Der Shopify-Admin für Shop Campaigns zeigte erneut die Anmeldeseite. Google-Kanal und Autopilot erhielten keine Änderung. [Schaufenster-Lauf](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824)
+
+## Versandhinweise auf ChatGPT-Zielseiten · 28.11.2026
+
+Auf «verb. alles» zwei veröffentlichte Kollektionsseiten gezielt korrigiert. In «Geschenk-Sets & Bundles» steht jetzt in der Seitenbeschreibung und der Suchbeschreibung «Gratisversand in der Schweiz ab CHF 50 nach Rabatt». In «Kuscheldecken & Heizdecken» ist der sichtbare Versandhinweis genauso präzisiert. In Shopify zurückgelesen und für beide Seiten per frischem öffentlichen HTTP-200-Abruf verifiziert. Die Fell- und Plüschjacken sowie die Punk- und Gothicschmuck-Kollektion nannten den Rabattabzug bereits. [Geschenk-Sets & Bundles](https://luxestyle.ch/collections/sets-bundles) · [Kuscheldecken & Heizdecken](https://luxestyle.ch/collections/kuschel-heizdecken)
+
+**Google-Pilot:** Die 53 Varianten der drei ausgewählten Produkte im Shopify-Admin einzeln gelesen. Kapuzenjacke 12 von 12, Leinenhemd 30 von 30, LED-Makeup-Spiegel 11 von 11 als kaufbar gemeldet. Die Produkte sind im Online Store veröffentlicht, besitzen ein Produktbild und haben aktuell kein `excluded_destination`-Feld. Tracking ist aus, `inventoryPolicy=CONTINUE`. Der jüngste vollständige Schaufenster-Lauf bleibt `46014333824` vom 27.11. Die frische Google-Gesamtzahl fehlt, die Produkte sind in Shopify weiterhin ausserhalb des Google-Kanals. [Schaufenster-Lauf](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824)
+
+Für Shop Campaigns bleibt ein angemeldeter Autopilot-Admin die Voraussetzung. Es gab keine Änderungen an Shop-Kampagnen oder am Google-Kanal.
