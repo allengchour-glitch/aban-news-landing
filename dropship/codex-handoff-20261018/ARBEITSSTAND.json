@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 320,
-  "updatedAt": "2026-11-28T13:02:18Z",
+  "revision": 321,
+  "updatedAt": "2026-11-28T16:13:50Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51077,6 +51077,14 @@
       "sources": [
         "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026"
       ]
+    },
+    {
+      "revision": 321,
+      "at": "2026-11-28T16:13:50Z",
+      "summary": "Die Haupt-Geschenkkollektion führt auf Deutsch und Französisch zur geprüften Panda-Variante aus dem Schweizer Lager. Die drei Gutscheinwerte sind digital. Um 17:12 Uhr Zürich waren die Girlandenbeiträge auf Instagram und Facebook veröffentlicht.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung"
+      ]
     }
   ],
   "salesGoal": {
@@ -83313,5 +83321,56 @@
       "newRightsEvidence": false
     },
     "next": "Cascade: geeignete Produktaufnahmen mit belegten Rechten prüfen. Öl-Sprühflasche: neue Lieferantennachweise je SKU abgleichen."
+  },
+  "run321": {
+    "status": "partially_complete",
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung",
+    "giftCollection": {
+      "checkedLocales": [
+        "de",
+        "fr"
+      ],
+      "pandaVariantId": "55970886648193",
+      "priceCHF": "19.90",
+      "quantity": 1,
+      "warehouseCountry": "CH",
+      "collectionId": "687793897857",
+      "ageRecommendationYears": 3,
+      "heightCm": 15
+    },
+    "giftCard": {
+      "status": "open_mobile_shipping_display",
+      "valuesCHF": [
+        25,
+        50,
+        100
+      ],
+      "requiresShipping": [
+        false,
+        false,
+        false
+      ],
+      "publicTextCheckedLocales": [
+        "de",
+        "fr"
+      ]
+    },
+    "metricool": {
+      "brandId": "6227837",
+      "uuid": "-2282068295365802712",
+      "facebookStatus": "PUBLISHED",
+      "instagramStatus": "PUBLISHED",
+      "instagramCheckedAt": "2026-11-28T17:12:00+01:00",
+      "writes": 0,
+      "facebookCheckedAt": "2026-11-28T17:12:00+01:00",
+      "instagramPreviously": {
+        "at": "2026-11-28T17:05:00+01:00",
+        "status": "PUBLISHING"
+      },
+      "instagramUrl": "https://www.instagram.com/p/DgSpF06DTWY/",
+      "facebookUrl": "https://facebook.com/122108214291350792/posts/122156414337350792",
+      "deliveryCheckComplete": true
+    },
+    "nextStep": "Den mobilen Versandhinweis beim Gutschein nach der Theme-Korrektur öffentlich prüfen."
   }
 }

@@ -3912,3 +3912,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Nachmittagslauf 28.11.2026](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026)
 
 [LUXESTYLE_R320_20261128_14H]
+
+### R321 · Geschenktermin und laufende Auslieferung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Geschenke aus dem Schweizer Lager | Die geprüfte Panda-Ausführung in der deutschen und französischen Haupt-Geschenkkollektion verlinkt. | Die Auswahl führt zur Variante `55970886648193`, einem Plüschpanda für CHF 19.90. |
+| Digitaler Gutschein | Die drei Werte in Shopify geprüft und die deutschen und französischen Produkttexte korrigiert. | Die Produkttexte für den digitalen Gutschein sind auf Deutsch und Französisch korrigiert. Alle drei Gutscheinwerte (CHF 25, 50 und 100) sind in Shopify versandfrei (`requiresShipping=false`). Die mobile Produktansicht zeigte dennoch Paketversand für CHF 7 und eine Anlieferung aus Asien. Die öffentliche Gegenprobe der Theme-Korrektur steht aus. |
+| Girlande | Die Auslieferung des bestehenden Beitrags mit UUID `-2282068295365802712` je Kanal geprüft. | Facebook meldete `PUBLISHED`. Instagram wechselte von `PUBLISHING` um 17:05 Uhr zu `PUBLISHED` um 17:12 Uhr Zürich. [Instagram](https://www.instagram.com/p/DgSpF06DTWY/) · [Facebook](https://facebook.com/122108214291350792/posts/122156414337350792). Die Auslieferungsprüfung ist abgeschlossen. Die Prüfung löste keine neue Veröffentlichung aus. |
+
+[Geschenktermin und laufende Auslieferung](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung)
+
+[LUXESTYLE_R321_20261128_GESCHENKTERMIN]

@@ -1,3 +1,13 @@
+# R321 · Geschenktermin und laufende Auslieferung · 28.11.2026
+
+Die Haupt-Geschenkkollektion führt auf Deutsch und Französisch zur geprüften Panda-Variante aus dem Schweizer Lager. Die drei Gutscheinwerte sind digital. Um 17:12 Uhr Zürich waren die Girlandenbeiträge auf Instagram und Facebook veröffentlicht. Instagram wechselte von `PUBLISHING` um 17:05 Uhr zu `PUBLISHED` um 17:12 Uhr Zürich. [Instagram](https://www.instagram.com/p/DgSpF06DTWY/) · [Facebook](https://facebook.com/122108214291350792/posts/122156414337350792). Die Auslieferungsprüfung ist abgeschlossen.
+
+Die mobile Produktansicht zeigte dennoch Paketversand für CHF 7 und eine Anlieferung aus Asien. Die öffentliche Gegenprobe der Theme-Korrektur steht aus. Den mobilen Versandhinweis beim Gutschein nach der Theme-Korrektur öffentlich prüfen. [Belege auf dem Besitzerbranch](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#geschenktermin-und-laufende-auslieferung)
+
+[LUXESTYLE_R321_20261128_GESCHENKTERMIN]
+
+---
+
 # R320 · Nachmittagslauf LuxeStyle · 28.11.2026
 
 Metricool bestätigte heute acht kanalbezogene Veröffentlichungen, davon vier seit der Morgenprüfung. Elf künftige Kanaltermine reichen bis 30.11. Vom 1. bis 5.12. sind auf den sechs geprüften Kanälen Tageslücken offen. Google verarbeitet beim Glitzer-Spray die Grundpreismasse und bestätigt kostenlose Einträge in CH und LI. Für den Cascade-Master und die Öl-Sprühflaschen fehlen weiterhin geeignete Medien bzw. Nutzungsbelege.
