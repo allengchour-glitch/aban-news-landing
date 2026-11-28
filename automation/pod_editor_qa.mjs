@@ -17,26 +17,37 @@ async function tok() {
   try { const t = (await import('node:fs')).readFileSync('/tmp/cj_shop_token.txt', 'utf8').trim(); if (t) return t; } catch {}
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
-  return (await r.json()).access_token;
+  if (!r.ok) throw new Error(`Shopify-Anmeldung fehlgeschlagen (HTTP ${r.status}).`);
+  const token = (await r.json()).access_token;
+  if (!token) throw new Error('Shopify-Anmeldung lieferte keinen Zugriffstoken.');
+  return token;
 }
 async function gql(t, query, variables) {
   for (let a = 0; a < 5; a++) {
     const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t },
       body: JSON.stringify({ query, variables }) });
-    const j = await r.json().catch(() => ({}));
-    if (j.errors && JSON.stringify(j.errors).includes('THROTTLED')) { await sleep(3000); continue; }
+    if (!r.ok) throw new Error(`Shopify-Abfrage fehlgeschlagen (HTTP ${r.status}). Editor-QA unvollständig.`);
+    const j = await r.json();
+    if (j.errors?.length) {
+      if (j.errors.every(e => e.extensions?.code === 'THROTTLED')) { await sleep(3000); continue; }
+      throw new Error('Shopify-GraphQL meldet Fehler. Editor-QA unvollständig.');
+    }
     return j.data;
   }
-  return null;
+  throw new Error('Shopify-Abfrage blieb gedrosselt. Editor-QA unvollständig.');
 }
 
 const t = await tok();
 let cursor = null, findings = [], checked = 0;
+const cursors = new Set();
 while (true) {
   const d = await gql(t, `query($c:String){ products(first:50,after:$c,query:"tag:printful_personalized_product status:active"){
     pageInfo{hasNextPage endCursor} edges{node{ handle descriptionHtml }} }}`, { c: cursor });
-  const page = d?.products; if (!page) break;
+  const page = d?.products;
+  if (!Array.isArray(page?.edges) || typeof page.pageInfo?.hasNextPage !== 'boolean') {
+    throw new Error('Unvollständige Shopify-Produktseite. Editor-QA abgebrochen.');
+  }
   for (const e of page.edges) {
     const h = e.node.descriptionHtml || '';
     const urls = [...h.matchAll(/data-img-(?:front|back)="([^"]+)"/g)].map(m => m[1]);
@@ -51,8 +62,10 @@ while (true) {
     }
     if (/\.js\?v=\d+\?v=/.test(h)) findings.push(`${e.node.handle}: designer.js ?v=-Kette`);
   }
-  cursor = page.pageInfo.endCursor;
   if (!page.pageInfo.hasNextPage) break;
+  cursor = page.pageInfo.endCursor;
+  if (!cursor || cursors.has(cursor)) throw new Error('Kein neuer Shopify-Cursor. Editor-QA unvollständig.');
+  cursors.add(cursor);
 }
 console.log(`Editor-QA: ${checked} Editor-Produkte geprüft, ${findings.length} Befunde.`);
 findings.forEach(f => console.log(' ✗', f));
