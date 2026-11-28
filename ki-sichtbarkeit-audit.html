@@ -155,11 +155,21 @@ var URL_=(window.ABAN_CHECKOUT&&window.ABAN_CHECKOUT.AUDIT_BUY_URL)||"";
    dem Shop-Katalog (den schreibt stripe-shop.yml), sonst Mail-Bestellung. So wird
    der Knopf live, sobald der Katalog einen Link hat — ohne Codeänderung hier. */
 (function(){var b=document.getElementById("buybtn");
-function scharf(u,preis){b.href=u;b.target="_blank";b.rel="noopener";b.textContent=preis?"Workbook holen — "+preis:"Zum Workbook-Checkout";document.getElementById("bestellhinweis").textContent="Der Knopf öffnet den Checkout für das Audit-Workbook. Bitte prüfe die Zahlungs- und Lieferangaben vor dem Kauf.";}
+function kaufziel(u){
+  if(typeof u!=="string")return "";
+  u=u.trim();if(!u||/[\u0000-\u0020\u007f]/.test(u))return "";
+  try{var ziel=new URL(u);return ziel.protocol==="https:"&&!ziel.username&&!ziel.password?u:"";}catch(e){return "";}
+}
+function scharf(u,preis){
+  u=kaufziel(u);if(!u)return;
+  var p=typeof preis==="string"?preis.trim():"";
+  b.href=u;b.target="_blank";b.rel="noopener";b.textContent=p?"Workbook holen — "+p:"Zum Workbook-Checkout";document.getElementById("bestellhinweis").textContent="Der Knopf öffnet den Checkout für das Audit-Workbook. Bitte prüfe die Zahlungs- und Lieferangaben vor dem Kauf.";
+}
 if(URL_){scharf(URL_);return;}
 fetch('/data/shop-products.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():[]}).then(function(l){
-  var p=(l||[]).filter(function(x){return x.slug==='ki-sichtbarkeit-audit'})[0];
-  if(p&&p.buy)scharf(p.buy,p.price);
+  if(!Array.isArray(l))return;
+  var treffer=l.filter(function(x){return x&&typeof x==="object"&&!Array.isArray(x)&&x.slug==='ki-sichtbarkeit-audit'});
+  if(treffer.length===1)scharf(treffer[0].buy,treffer[0].price);
 }).catch(function(){});})();
 </script>
 </div></main>
