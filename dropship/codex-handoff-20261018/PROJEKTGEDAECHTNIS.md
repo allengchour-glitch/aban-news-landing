@@ -1,3 +1,13 @@
+# R320 · Nachmittagslauf LuxeStyle · 28.11.2026
+
+Metricool bestätigte heute acht kanalbezogene Veröffentlichungen, davon vier seit der Morgenprüfung. Elf künftige Kanaltermine reichen bis 30.11. Vom 1. bis 5.12. sind auf den sechs geprüften Kanälen Tageslücken offen. Google verarbeitet beim Glitzer-Spray die Grundpreismasse und bestätigt kostenlose Einträge in CH und LI. Für den Cascade-Master und die Öl-Sprühflaschen fehlen weiterhin geeignete Medien bzw. Nutzungsbelege.
+
+Nächste Schritte sind die fehlenden Termine mit freigegebenem Material zu prüfen, den gleichen Cascade-Master nach den Produktionsvorgaben fortzuführen und eingehende CJ-Nachweise je Variante abzugleichen. Master `luxe_cascade_creolen_20261122`, Aufgabe `merchant-oil-overlay-15450848723329`. [Nachmittagslauf 28.11.2026](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026)
+
+[LUXESTYLE_R320_20261128_14H]
+
+---
+
 # R319 – Edle Produkte ohne Kopf und Papierhalter – 22.11.2026
 
 Auf «nimm edle produkte» Cascade Modell 1 als Schmuckmotiv gewählt. Exaktes Shopify- und CJ-Variantenfoto pixelgleich. Zwei kostenlose Tests. Korrigierter 2,125-Sekunden-Ausschnitt ohne Kopf und Papierhalter geprüft. Ambre als zweite Produktauswahl.

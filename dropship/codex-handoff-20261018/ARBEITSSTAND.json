@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 319,
-  "updatedAt": "2026-11-22T17:37:05Z",
+  "revision": 320,
+  "updatedAt": "2026-11-28T13:02:18Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,61 +16,23 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-21",
-    "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
-    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition. R280: First bounded Merchant sample, page of 10 and exact cases only. No repeated metrics, flows or broad sales reports. R281 morning: reuse earlier 21 Nov Metricool and Klaviyo evidence. Four planned windows plus 20 Nov actual delivery and one exact merchant offer follow-up. No further intensive reports or purchase-watch reads.",
+    "currentDayEvidenceDate": "2026-11-28",
+    "currentDayEvidenceKind": "R320_WIEDERVERWENDUNG_TAGESBERICHT",
+    "currentDayEvidence": "Der Tagesbericht vom Besitzerbranch enthält die bereits erhobenen Kanalwerte 21.–27.11. und den blockierten Klaviyo-Zugriff. Für die Nachmittagsfortsetzung wurden die bestehenden Tagesbelege verwendet.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-21",
-        "range": "2026-11-14/2026-11-20",
-        "definitionCalls": 6,
-        "dataCalls": 6,
+        "localDate": "2026-11-28",
+        "range": "2026-11-21/2026-11-27",
         "missingIsUnknown": true,
-        "watchDefinitionCalls": 1,
-        "watchDataCalls": 1,
-        "watchRange": "2026-11-17/2026-11-20",
-        "proof": "dropship/codex-handoff-20261018/runs/20261121-r278/METRICOOL-MESSUNG.json"
+        "proof": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md"
       },
       "klaviyo": {
-        "localDate": "2026-11-21",
-        "accountAttempts": 1,
-        "metricDiscoveryCalls": 0,
-        "flowReports": 0,
-        "status": "AUTH_BLOCKED_UNAUTHORIZED"
+        "localDate": "2026-11-28",
+        "status": "AUTH_BLOCKED",
+        "proof": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md"
       },
-      "ordersQueried": false,
-      "purchaseWatchEnded": true,
-      "broadSalesRead": false,
-      "searchConsole": {
-        "localDate": "2026-11-21",
-        "range": "2026-11-04/2026-11-17",
-        "property": "sc-domain:luxestyle.ch",
-        "calls": 1,
-        "targets": 5,
-        "rows": 3,
-        "missingUnknown": true,
-        "proof": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json"
-      },
-      "merchant": {
-        "localDate": "2026-11-21",
-        "sampleSize": 10,
-        "hasNextPage": true,
-        "exactOffersOnlyAfterPage": true,
-        "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
-      }
-    },
-    "targetedContinuation": {
-      "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
-      "actualSubagents": 6,
-      "metricsReportsClaimedComplete": false,
-      "priorDayReportDate": "2026-11-20",
-      "existingCadenceUnchanged": true
-    },
-    "r277BeforeFirstDailyQueries": {
-      "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
-      "noReportsInR277": true
-    },
-    "dailyReportContinuation": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json"
+      "purchaseWatchEnded": true
+    }
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -51107,6 +51069,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R319-EDLER-SCHMUCKMASTER-20261122.md"
       ]
+    },
+    {
+      "revision": 320,
+      "at": "2026-11-28T13:02:18Z",
+      "summary": "Metricool bestätigte heute acht kanalbezogene Veröffentlichungen, davon vier seit der Morgenprüfung. Elf künftige Kanaltermine reichen bis 30.11. Vom 1. bis 5.12. sind auf den sechs geprüften Kanälen Tageslücken offen. Google verarbeitet beim Glitzer-Spray die Grundpreismasse und bestätigt kostenlose Einträge in CH und LI. Für den Cascade-Master und die Öl-Sprühflaschen fehlen weiterhin geeignete Medien bzw. Nutzungsbelege.",
+      "sources": [
+        "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026"
+      ]
     }
   ],
   "salesGoal": {
@@ -53180,6 +53150,71 @@
           "purchaseWatchEnded": true,
           "broadSalesRead": false
         }
+      }
+    },
+    {
+      "dateZurich": "2026-11-21",
+      "archivedByRun": "R320",
+      "record": {
+        "timezone": "Europe/Zurich",
+        "checkLogBeforeReading": true,
+        "metricsFlowAndBroadSalesMaxPerDay": 1,
+        "exception": "new_concrete_finding_with_recorded_reason",
+        "currentDayEvidenceDate": "2026-11-21",
+        "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
+        "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition. R280: First bounded Merchant sample, page of 10 and exact cases only. No repeated metrics, flows or broad sales reports. R281 morning: reuse earlier 21 Nov Metricool and Klaviyo evidence. Four planned windows plus 20 Nov actual delivery and one exact merchant offer follow-up. No further intensive reports or purchase-watch reads.",
+        "completedReports": {
+          "metricool": {
+            "localDate": "2026-11-21",
+            "range": "2026-11-14/2026-11-20",
+            "definitionCalls": 6,
+            "dataCalls": 6,
+            "missingIsUnknown": true,
+            "watchDefinitionCalls": 1,
+            "watchDataCalls": 1,
+            "watchRange": "2026-11-17/2026-11-20",
+            "proof": "dropship/codex-handoff-20261018/runs/20261121-r278/METRICOOL-MESSUNG.json"
+          },
+          "klaviyo": {
+            "localDate": "2026-11-21",
+            "accountAttempts": 1,
+            "metricDiscoveryCalls": 0,
+            "flowReports": 0,
+            "status": "AUTH_BLOCKED_UNAUTHORIZED"
+          },
+          "ordersQueried": false,
+          "purchaseWatchEnded": true,
+          "broadSalesRead": false,
+          "searchConsole": {
+            "localDate": "2026-11-21",
+            "range": "2026-11-04/2026-11-17",
+            "property": "sc-domain:luxestyle.ch",
+            "calls": 1,
+            "targets": 5,
+            "rows": 3,
+            "missingUnknown": true,
+            "proof": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json"
+          },
+          "merchant": {
+            "localDate": "2026-11-21",
+            "sampleSize": 10,
+            "hasNextPage": true,
+            "exactOffersOnlyAfterPage": true,
+            "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
+          }
+        },
+        "targetedContinuation": {
+          "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+          "actualSubagents": 6,
+          "metricsReportsClaimedComplete": false,
+          "priorDayReportDate": "2026-11-20",
+          "existingCadenceUnchanged": true
+        },
+        "r277BeforeFirstDailyQueries": {
+          "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+          "noReportsInR277": true
+        },
+        "dailyReportContinuation": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json"
       }
     }
   ],
@@ -83243,5 +83278,40 @@
     "freeRenders": 2,
     "paidCredits": 0,
     "metricoolWrites": 0
+  },
+  "run320": {
+    "status": "partially_complete",
+    "report": "https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026",
+    "masterId": "luxe_cascade_creolen_20261122",
+    "productId": "15431606829441",
+    "variantId": "67870931517831",
+    "metricool": {
+      "brandId": "6227837",
+      "channelPublicationsToday": 8,
+      "additionalSinceMorning": 4,
+      "futureChannelSlots": 11,
+      "lastScheduledDate": "2026-11-30",
+      "uncoveredAllSix": "2026-12-01/2026-12-05",
+      "writes": 0
+    },
+    "merchant": {
+      "shopId": "5797470070",
+      "productId": "15448799183233",
+      "variantId": "55877744591233",
+      "unitPricingMeasure": "60 ml",
+      "unitPricingBaseMeasure": "100 ml",
+      "freeListingsApproved": [
+        "CH",
+        "LI"
+      ],
+      "previousUnitMeasureWarningPresent": false
+    },
+    "supplier": {
+      "taskId": "merchant-oil-overlay-15450848723329",
+      "threadId": "1a2221c15e739b08",
+      "requestedVariants": 16,
+      "newRightsEvidence": false
+    },
+    "next": "Cascade: geeignete Produktaufnahmen mit belegten Rechten prüfen. Öl-Sprühflasche: neue Lieferantennachweise je SKU abgleichen."
   }
 }

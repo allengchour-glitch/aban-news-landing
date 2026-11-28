@@ -3897,3 +3897,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Produktauswahl und Prüfdaten](R319-EDLER-SCHMUCKMASTER-20261122.md)
 
 [LUXESTYLE_R319_20261122]
+
+## 28.11.2026
+
+### R320 · Nachmittagslauf um 14 Uhr
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+| --- | --- | --- |
+| Metricool | Auslieferungen auf Kanalebene und Planung bis einschliesslich 5.12. geprüft. | Acht Veröffentlichungen bestehender Abläufe am 28.11. bestätigt, vier seit der Morgenprüfung. Elf künftige Kanaltermine bis 30.11. Vom 1. bis 5.12. sind alle sechs Kanäle offen. Keine eigene Ausspielung. |
+| Google Merchant | Verarbeitetes Angebot für Glitzer-Spray, Variante `55877744591233`, gezielt rückgelesen. | 60 ml Inhalt, 100 ml Bezugsmenge. Google führt kostenlose Einträge für CH und LI als zugelassen. Die zuvor gemeldete fehlende Mengenangabe erscheint im aktuellen Datensatz nicht mehr. |
+| Cascade | Vorhandenes neunsekündiges Shopvideo für denselben 18-Sekunden-Master geprüft. | Eingebrannte Einblendungen. Für die Abnahme fehlen geeignetes produktgetreues Filmmaterial und belegte kommerzielle Bearbeitungsrechte. |
+| CJ | Bestehenden Mailverlauf zur Fotoanfrage für die Öl-Sprühflasche geprüft. | Der Verlauf enthält die bereits versandte Anfrage für 16 Varianten. Neue Originalfotos oder Rechtebelege stehen aus. |
+
+[Nachmittagslauf 28.11.2026](https://github.com/allengchour-glitch/aban-news-landing/blob/claude/luxestyle-status-tztnn1/dropship/codex-social/antwort/CODEX-LUXESTYLE-20261128.md#nachmittagslauf-28112026)
+
+[LUXESTYLE_R320_20261128_14H]
