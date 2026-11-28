@@ -14,6 +14,13 @@ Gemessen ab 28.11.2026, 00:09 Uhr, Europe/Zurich. Seit dem Abendbriefing auf dem
 | ChatGPT-Suche | CH-Einstiegsseiten ausgewertet und die Prüfung von Weiterleitungszielen auf dem Branch korrigiert. | Fell- und Plüschjacken mit 10 Sitzungen und einem abgeschlossenen Checkout. Ein genaueres Weiterleitungsziel als Shop-Entwurf. |
 | ChatGPT-Suche live | Bestehende Weiterleitung der alten Wellness-Geschenkbox aktualisiert und zurückgelesen. | Öffentlicher Aufruf landet auf Geschenk-Sets & Bundles (HTTP 200). |
 | Shop und Suche | Versandhinweis in zwei live erreichbaren ChatGPT-Zielseiten präzisiert. 53 Google-Pilotvarianten einzeln geprüft. | Zwei öffentliche Gegenproben erfolgreich. Kapazitätsbeleg für Google weiterhin offen. |
+| Morgenlauf 08:02 | Planung, Produktauswahl und Textlayout des Cascade-Masters frisch geprüft. | 4 bestehende Publikationen bestätigt. 13 künftige Kanaltermine. Sichere Textpositionen ermittelt. |
+
+| Kundengewinnung | Cascade-Suchtext gespeichert und im Shop sowie öffentlich geprüft. Schweizer Suchbegriffe mit den bereits gemessenen Landeseiten und kaufbaren Varianten abgeglichen. | Cascade-Metadaten live. Priorität für die organische Kundengewinnung sind Fell- und Plüschjacken. Suchvolumen unbekannt. |
+
+| Kaufweg Wintermode | Zwei konkrete Jackenvarianten vom Kollektionsraster bis zum öffentlichen Warenkorb-Formular geprüft und einen mehrdeutigen Mantelabsatz zur Korrektur vorbereitet. | Beide Varianten kaufbar gemeldet. Entwurf betrifft einen Absatz am Wintermantel. |
+
+| CJ-Support | Mailverlauf zu LX1047 gelesen und den bestehenden Ticketzugang geprüft. | CJ-Mail verweist auf den Supportbereich. Der Ticketstand ist wegen der CJ-Menschprüfung unbekannt. |
 
 ## Metricool
 
@@ -144,3 +151,80 @@ Auf «verb. alles» zwei veröffentlichte Kollektionsseiten gezielt korrigiert. 
 **Google-Pilot:** Die 53 Varianten der drei ausgewählten Produkte im Shopify-Admin einzeln gelesen. Kapuzenjacke 12 von 12, Leinenhemd 30 von 30, LED-Makeup-Spiegel 11 von 11 als kaufbar gemeldet. Die Produkte sind im Online Store veröffentlicht, besitzen ein Produktbild und haben aktuell kein `excluded_destination`-Feld. Tracking ist aus, `inventoryPolicy=CONTINUE`. Der jüngste vollständige Schaufenster-Lauf bleibt `46014333824` vom 27.11. Die frische Google-Gesamtzahl fehlt, die Produkte sind in Shopify weiterhin ausserhalb des Google-Kanals. [Schaufenster-Lauf](https://github.com/allengchour-glitch/aban-news-landing/actions/runs/46014333824)
 
 Für Shop Campaigns bleibt ein angemeldeter Autopilot-Admin die Voraussetzung. Es gab keine Änderungen an Shop-Kampagnen oder am Google-Kanal.
+
+## Morgenlauf 28.11.2026 · 08:02 Uhr Zürich
+
+Shopify 94368563585 und alle sechs Metricool-Kanalidentitäten der Marke 6227837 mit Zeitzone Europe/Zurich frisch bestätigt. Vier fällige bestehende Beiträge sind kanalbezogen `PUBLISHED`. Instagram 01:34, 01:36 und 07:49, Facebook 01:36. Keine neuen Termine durch Codex. 13 künftige Kanaltermine in 11 Bildobjekten mit `draft=false` und `autoPublish=true`. Zwei verschiedene Threads-Beiträge stehen zeitgleich am 28.11. um 11:00 (IDs 439081423 und 442296598). Keine identischen sichtbaren Medien-URLs oder Beitragstexte pro Kanal im geprüften Fenster. [Instagram-Beleg 07:49](https://www.instagram.com/p/DgRphq3jUIx/)
+
+| Datum | Bestätigte künftige Planung |
+| --- | --- |
+| 28.11. | Threads 11:00 zweimal, Instagram und Facebook 17:00, TikTok 18:00, Pinterest 19:10 und 20:00. YouTube offen. |
+| 29.11. | Instagram und Facebook 17:00, TikTok 18:00, Pinterest 19:10. Threads und YouTube offen. |
+| 30.11. | Pinterest 19:10 und 20:00. Die übrigen fünf Kanäle offen. |
+| 01.–05.12. | Alle sechs Kanäle offen. |
+
+Die am selben Zürcher Kalendertag erhobenen Kennzahlen 21.–27.11. gelten weiter. Für den Klaviyo-Flowreport verlangt der Connector eine Neuanmeldung. Die vier öffentlichen DNS-Werte waren im heutigen Abgleich bereits bestätigt.
+
+### Cascade · Textpositionen für den gleichen 18-Sekunden-Master
+
+Modell 1, Produkt 15431606829441, Variante 67870931517831, SKU CJLX293479401AZ. Shopify ACTIVE, CHF 26.90, Tracking aus, `CONTINUE`, 16 Tags ohne Sperrtreffer inklusive `rueckhol`. Der frische öffentliche Aufruf bestätigte HTTP 200, Modell 1, CHF 26.90 und den Warenkorb-Button. [Produkt](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831) · [Aktuelles Originalfoto der Variante](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec5377d7-40ed-42d4-8e8b-07c4873e3d91.jpg?v=1790745331)
+
+Aufnahmefolge 0–2 s Einstieg, 2–6 s Licht über das ruhende Paar, 6–10 s reales Makro von Verschluss über Kugel zum Tropfen, 10–15 s Paar im Profil, 15–18 s Abschluss. Warmes Taupe, dunkler Stoff, ruhige Kamera. Pflicht für den Dreh ist ein farb- und formgetreues Originalpaar. Die vorhandene 2,125-s-Vorschau (718 × 1282, 24 fps, stumm, SHA-256 `aa3792897c2540decfcaa5141ca2e8838973b19e8b6a8058c54187386747d2c2`) bleibt Lichtreferenz. Es gibt keine neuen Originaltakes im Suchfenster von Drive und kein neues Varianten-Video in Shopify. Filmaufnahmen und kommerzielle Nutzungsrechte fehlen weiterhin. Für Musik zusätzlich Herkunft der Samples und Freigabe der Pflichtdatei klären. Die alte lokale Kristall-Korrekturdatei war am dokumentierten Pfad nicht lesbar.
+
+| Schnitt | Einblendung | Position auf 1080 × 1920 |
+| --- | --- | --- |
+| 0–2 s, Hook A | Ein Akzent in / Goldfarbe | x144, y476, 68 px, zwei Zeilen |
+| 0–2 s, Hook B | Vom Verschluss / zum Tropfen | x144, y476, 68 px, zwei Zeilen |
+| 10,20–14,60 s | Creolen Cascade | x144, y496, 66 px |
+| 15–18 s | Cascade entdecken | x144, y1315, 58 px |
+
+Text als DejaVu Sans Bold auf 1080 × 1920 vermessen. Längste Zeile 632 px bei 732 px verfügbarer Breite. Die Textblöcke liegen ausserhalb der gemessenen Produktzone y630–1225 und bleiben in zentrierten 4:5- und 1:1-Ausschnitten. Kleinste Schriftgrösse bei 360 px Bildschirmbreite rund 19 px. App-Steuerelemente und Kontrast erst im echten Export abnehmen. Es wurde kein neuer Film gerendert oder hochgeladen.
+
+| Kanal | Textentwurf | Produktlink |
+| --- | --- | --- |
+| Instagram | Ein warmer Reflex auf dunklem Stoff. Die goldfarbenen Creolen «Cascade» aus der Nähe. Link in Bio. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=instagram&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=instagram_cascade_modell1) |
+| TikTok | Vom Verschluss bis zum Tropfen. «Cascade» ganz nah. Link in Bio. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=tiktok&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=tiktok_cascade_modell1) |
+| YouTube Shorts | Titel «Cascade Creolen – vom Verschluss zum Tropfen». Beschreibung «Goldfarbene Creolen im Detail.» Shop-Link im Kanalprofil. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=youtube&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=youtube_cascade_modell1) |
+| Facebook | Goldfarbene Creolen mit Tropfen. Schau dir Modell 1 und die Produktdetails im Onlineshop an. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=facebook&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=facebook_cascade_modell1) |
+| Threads | Welches Detail fällt dir zuerst auf, die Kugel oder der Tropfen? Entdecke Modell 1 im Shop. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=threads&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=threads_cascade_modell1) |
+| Pinterest | Titel «Goldfarbene Creolen Cascade mit Tropfen». Beschreibung «Schmuck-Detailaufnahme auf dunklem Stoff.» Produktlink als Pin-Ziel. | [UTM-Ziel](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831&utm_source=pinterest&utm_medium=organic_social&utm_campaign=cascade_master_18s&utm_content=pinterest_cascade_modell1) |
+
+Instagram und TikTok erst mit bestätigtem Bio-Ziel. Pinterest erst mit bestätigtem passenden Kontoboard. YouTube-Entwurf richtet sich an allgemeines Schmuckpublikum, geplantes `madeForKids=false` vor Einsatz im konkreten Beitrag bestätigen.
+
+### Zur Freigabe · Cascade-Suchtext präzisieren
+
+Der aktuelle Shopify-SEO-Titel endet mit «Gold». Die vorhandene Produktbeschreibung nennt «Goldoptik» und als Material «Metall». Die bisherige Suchbeschreibung endet mit einem abgeschnittenen Rabatttext. Geprüfter neuer SEO-Titel für das einzelne Produkt 15431606829441 lautet «Creolen Cascade mit Tropfen, goldfarben». Die neue Meta-Beschreibung lautet «Goldfarbene Creolen Cascade mit Tropfenanhängern. Modell 1 ansehen und die Produktdetails entdecken.» Der Entwurf wurde nicht im Shop gespeichert. [Produktseite](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+
+## Kunden gewinnen · 08:09 Uhr Zürich
+
+Cascade, Produkt `15431606829441`. Shopify und öffentlicher Produktaufruf (HTTP 200) bestätigen den SEO-Titel «Creolen Cascade mit Tropfen, goldfarben» und die Meta-Beschreibung «Goldfarbene Creolen Cascade mit Tropfenanhängern. Modell 1 ansehen und die Produktdetails entdecken.» Der öffentliche Tab-Titel ergänzt «– LuxeStyle». Der sichtbare Produktname und der Handle sind beim Rücklesen identisch. [Produktseite](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+1. **Felljacke Damen Schweiz / Plüschjacke Damen Schweiz.** Für ChatGPT-Besuche aus der Schweiz vom 29.10. bis 27.11. zeigt die Kategorie 10 Sitzungen, 4 mit Warenkorb, 3 mit erreichtem und 1 mit abgeschlossenem Checkout. Als Ziel eignet sich die Kategorie mit 35 Produkten. Die kurze Kapuzenjacke in Blau, S und M, ist laut Shopify kaufbar (CHF 34.90). [Kategorie](https://luxestyle.ch/collections/damen-jacken-kunstfell) · [Kapuzenjacke, Blau M](https://luxestyle.ch/products/kurze-kapuzenjacke-mit-fellkragen-626300?variant=67737574343047)
+2. **Wintermantel Damen mit Fellkragen Schweiz.** Die Suchstichprobe lieferte die LuxeStyle-Produktseite. Die Varianten Grau M und L sind laut Shopify kaufbar (CHF 30.90). [Wintermantel, Grau M](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911)
+3. **Goldfarbene Creolen mit Tropfen kaufen.** Die Suchstichprobe lieferte die Cascade-Seite mit dem früheren Titel. Modell 1 ist laut Shopify kaufbar (CHF 26.90). Der überarbeitete Suchtext ist im Shop öffentlich sichtbar. Die Aktualisierung in Suchergebnissen bleibt offen. [Cascade Modell 1](https://luxestyle.ch/products/creolen-ohrhanger-cascade-mit-tropfen-gold?variant=67870931517831)
+
+Die Suchstichprobe zeigt, für welche dieser Begriffe bereits passende LuxeStyle-Seiten auffindbar waren. Google-Impressionen, Google-Klicks und Suchvolumen bleiben unbekannt. HYPD hat keine ausgewählte Search-Console-Property. Semrush meldet keine verfügbaren API-Einheiten für die Keyword-Berichte. [Search Console freigeben](https://app.hypd.ai/sources?select=search-console&utm_source=mcp&utm_content=none_selected)
+
+
+## Schweizer Suchbesuche · Kaufweg geprüft · 08:14 Uhr Zürich
+
+Die beiden Modelle stehen zuerst im öffentlichen Kollektionsraster. Die direkten Variantenlinks liefern HTTP 200, zeigen die ausgewählte Farbe und Grösse und haben ein aktives Warenkorb-Formular. Shopify meldet beide Varianten als kaufbar. Der Prüfumfang war die Produktauswahl bis zum Formular. [Felljacken & Plüschjacken](https://luxestyle.ch/collections/damen-jacken-kunstfell)
+
+| Suchabsicht | Geprüfte Variante | Ziel |
+| --- | --- | --- |
+| Kurze Damenjacke mit Kapuze und Fellkragen | Blau / M, CHF 34.90 | [Produkt ansehen](https://luxestyle.ch/products/kurze-kapuzenjacke-mit-fellkragen-626300?variant=67737574343047) |
+| Gefütterter Wintermantel für Damen mit Fellkragen | Grau / M, CHF 30.90 | [Produkt ansehen](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911) |
+
+**Ein Textentwurf zur Freigabe.** Wintermantel `gid://shopify/Product/16652033491335`, Feld `descriptionHtml`, nur der erste Absatz. Die bestehende Formulierung «Er besteht aus Baumwolle und ist nicht abnehmbar» lässt offen, was gemeint ist. Die Grössen M bis 6XL sowie Grau und Schwarz sind über die Varianten belegt. Für dieses Modell fehlen verifizierte Masse.
+
+> Dieser gefütterte Wintermantel mit Fellkragen ist schmal geschnitten. Das Modell gibt es in Grau und Schwarz, in den Grössen M bis 6XL.
+
+Die Gegenprobe des konkreten HTML-Diffs lässt den Text nach dem ersten Absatz bytegenau gleich. Shopify-`updatedAt` zum Zeitpunkt der Gegenprobe `2026-10-28T20:50:18Z`. Status des Textes ist Entwurf. [Wintermantel](https://luxestyle.ch/products/gefutterter-wintermantel-mit-fellkragen-606600?variant=67737571819911)
+
+
+## CJ-Ticket zu LX1047 · 08:16 Uhr Zürich
+
+Laut Projektjournal wurde das Ticket `T202611271548558321` für CJ-Auftrag `SD2611251301040644900` am 27.11. um 16:48 Uhr Zürich eröffnet. Der Termin am 28.11. um 06:39 Uhr Zürich war als Nachkontrolle vorgesehen. Die jüngste Mail im geprüften Verlauf kam am 27.11.2026 um 13:32 Uhr Zürich. CJ verweist auf den Supportbereich. Die Frage zur Markenkennzeichnung der Augencreme und der Versandstatus bleiben in der Mail offen. [CJ-Mail](https://mail.google.com/mail/#all/1a21b832510ebb07) · [Ticketbeleg im Projektjournal](https://github.com/allengchour-glitch/aban-news-landing/blob/dc8a8ee3f8b1e49f256386e10532525e897b9799/GEDAECHTNIS-JOURNAL.md#L114-L116)
+
+Der Browser wurde auf «Human verification» umgeleitet. Die Ticketantwort und der aktuelle Status sind unbekannt. [CJ-Supportbereich](https://cjdropshipping.com/mine/ticket)
